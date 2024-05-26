@@ -29,6 +29,8 @@ mod:AddCallback(ModCallbacks.MC_USE_ITEM, Reeee.onUse, CollectibleType.COLLECTIB
 
 end
 
+-- testing testing 123
+
 
 
 return Reeee
