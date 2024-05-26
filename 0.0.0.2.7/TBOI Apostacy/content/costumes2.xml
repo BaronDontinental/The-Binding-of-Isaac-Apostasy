@@ -1,0 +1,3 @@
+<costumes anm2root="gfx/">
+    <costume id="130" anm2path="character_L22_Gluttony.anm2" type="none" priority="101" />
+</costumes>

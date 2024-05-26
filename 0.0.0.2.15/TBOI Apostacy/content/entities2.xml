@@ -1,0 +1,54 @@
+<entities anm2root="gfx/" version="5" >
+    
+
+<!--Environmental objects-->
+    <entity anm2path="Bulb_Bum.anm2" baseHP="0" boss="0" champion="0" 
+    collisionDamage="0" collisionMass="3" collisionRadius="12" friction="1" 
+    id="6" name="Bulb Bum" numGridCollisionPoints="24" shadowSize="15" stageHP="0" 
+    variant="300" shutdoor="false" sheetid="105" >
+        <gibs amount="6" blood="1" bone="1" eye="1" gut="1" large="0" />
+    </entity>
+
+    <entity anm2path="Filing_Cabinet.anm2" baseHP="0" boss="0" champion="0" 
+    collisionDamage="0" collisionMass="3" collisionRadius="12" friction="1" 
+    id="6" name="Filing Cabinet" numGridCollisionPoints="24" shadowSize="15" stageHP="0" 
+    variant="300" shutdoor="false" sheetid="112" >
+        <gibs amount="6" blood="1" bone="1" eye="1" gut="1" large="0" />
+    </entity>
+
+    <entity anm2path="Stone_Bum.anm2" baseHP="0" boss="0" champion="0" 
+    collisionDamage="0" collisionMass="3" collisionRadius="12" friction="1" 
+    id="6" name="Stone Bum" numGridCollisionPoints="24" shadowSize="15" stageHP="0" 
+    variant="300" shutdoor="false" sheetid="119" >
+        <gibs amount="6" blood="1" bone="1" eye="1" gut="1" large="0" />
+    </entity>
+
+    <entity anm2path="Mimic.anm2" baseHP="0" boss="0" champion="0" 
+    collisionDamage="0" collisionMass="3" collisionRadius="12" friction="1" 
+    id="6" name="Mimic" numGridCollisionPoints="24" shadowSize="15" stageHP="0" 
+    variant="300" shutdoor="false" sheetid="126" >
+        <gibs amount="6" blood="1" bone="1" eye="1" gut="1" large="0" />
+    </entity>
+
+    <entity anm2path="Key_Stone.anm2" baseHP="0" boss="0" champion="0" 
+    collisionDamage="0" collisionMass="3" collisionRadius="12" friction="1" 
+    id="6" name="Key Stone" numGridCollisionPoints="24" shadowSize="15" stageHP="0" 
+    variant="300" shutdoor="false" sheetid="140" >
+        <gibs amount="6" blood="1" bone="1" eye="1" gut="1" large="0" />
+    </entity>
+
+<!--Familiars-->
+
+<entity anm2path="Lil_Sloth.anm2" baseHP="0" boss="0" champion="0" 
+    collisionDamage="0" collisionMass="3" collisionRadius="13" friction="1" 
+    id="3" name="Lil Sloth" numGridCollisionPoints="12" shadowSize="11" stageHP="0" 
+    sheetid="82" >
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
+        <preload id="7" variant="1" />
+        <preload id="1000" variant="50" subtype="1" />
+        <preload-snd id="12" /> <!--sound-->
+    </entity>
+
+
+
+</entities>

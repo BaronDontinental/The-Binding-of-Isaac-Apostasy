@@ -1,0 +1,39 @@
+<players root="gfx/characters/costumes/" 
+         portraitroot="gfx/ui/stage/" 
+         nameimageroot="gfx/ui/boss/">
+	<player id="19" name="L19_Sloth" skin="Character_019_Sloth.png" hp="4" items="" bombs="1"
+          nameimage="PlayerName_01_Isaac.png" 
+          portrait="PlayerPortrait_Isaac.png" skinColor="-1" costumeSuffix="slothl"
+		  birthright="Lazy" />
+		  
+	<player hp="2" bombs="1" name="B19_Sloth"
+	nameimage="PlayerName_01_Isaac.png" portrait="PlayerPortrait_Isaac.png" skin="Character_019_Sloth.png" skinColor="-1"
+	bSkinParent="L19_Sloth"/>
+	
+	<player id="20" name="L20_Pride" skin="Character_020_Pride.png" costume="36" hp="4" items="" bombs="1"
+          nameimage="PlayerName_01_Isaac.png" 
+          portrait="PlayerPortrait_Isaac.png" skinColor="5" costumeSuffix="apollyon"
+		  birthright="Gloat" />
+		  
+	<player id="21" name="L21_Envy" skin="Character_021_Envy.png" hp="4" items="" bombs="1"
+          nameimage="PlayerName_01_Isaac.png" 
+          portrait="PlayerPortrait_Isaac.png" skinColor="-1"
+		  birthright="Gloat" />	  
+	
+	<player id="22" name="L22_Gluttony" skin="Character_022_Gluttony.png" hp="2" black="4" achievement=""
+          nameimage="PlayerName_13_Lilith.png" 
+          portrait="PlayerPortrait_Lilith_b.png" costume="90" skinColor="1" costumeSuffix="lilithb"
+		  birthright="???" /> 
+		  
+	<player id="23" name="L23_Lust" skin="Character_023_Lust.png" hp="4" items="" bombs="1"
+          nameimage="PlayerName_01_Isaac.png" 
+          portrait="PlayerPortrait_Isaac.png" skinColor="-1"
+		  birthright="Gloat" />	 
+		  
+	<player id="24" name="L24_Wrath" skin="Character_024_Wrath.png" hp="4" items="" bombs="1"
+          nameimage="PlayerName_01_Isaac.png" 
+          portrait="PlayerPortrait_Isaac.png" skinColor="-1"
+		  birthright="Gloat" />	 
+		  
+	
+</players>  

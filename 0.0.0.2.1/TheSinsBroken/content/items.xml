@@ -1,0 +1,7 @@
+<items gfxroot="gfx/items/" deathanm2="gfx/death_items.anm2" version="1">  
+    
+    <active maxcharges="4" description="Better items ?" name="Weighted_Dice" gfx="Collectible_Sacred_Dice_icon.png" quality="2" />
+    
+
+
+</items> 

@@ -1,0 +1,13 @@
+<pocketitems>
+    <card type="object" pickup="6" name="Couch Potato"
+        id="13" mimiccharge="4" hud="Couch_Potato" />
+    <!--to spawn it in (spawn 5.300.98)-->
+    <card type="object" pickup="6" name="4 Tile"
+        id="23" mimiccharge="4" hud="4_Tile" />
+    <card type="" pickup="6" name="King of Clubs"
+        id="39" mimiccharge="4" hud="King_of_Clubs" />
+    <card type="" pickup="6" name="King of Spades"
+        id="69" mimiccharge="4" hud="King_of_Spades" />
+        
+
+</pocketitems>

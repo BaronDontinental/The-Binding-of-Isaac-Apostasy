@@ -1,0 +1,60 @@
+<ItemPools>
+	<Pool Name="treasure">
+		<Item Name="Spinup Dice" Weight="0.5"  DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Familiar Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Eden Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+	</Pool>
+
+	<Pool Name="devil">
+		<Item Name="Satanic Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+	</Pool>
+
+	<Pool Name="demonBeggar">
+		<Item Name="Satanic Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+	</Pool>
+
+	<Pool Name="angel">
+		<Item Name="Sacred Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+	</Pool>
+
+	<Pool Name="secret">
+		<Item Name="Spinup Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Eden Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+	</Pool>
+
+	<Pool Name="bossrush">
+		<Item Name="Satanic Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Spinup Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Sacred Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Familiar Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Eden Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+	</Pool>
+
+	<Pool Name="greedTreasure">
+		<Item Name="Spinup Dice" Weight="0.5" DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Sacred Dice" Weight="0.5"  DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Eden Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+	</Pool>
+
+	<Pool Name="greedShop">
+		<Item Name="Satanic Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Spinup Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Sacred Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Familiar Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Eden Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+	</Pool>
+
+	<Pool Name="greedDevil">
+		<Item Name="Satanic Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+	</Pool>
+
+	<Pool Name="greedAngel">
+		<Item Name="Sacred Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+	</Pool>
+
+	<Pool Name="greedSecret">
+		<Item Name="Spinup Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+		<Item Name="Eden Dice" Weight="1"  DecreaseBy="1" RemoveOn="0.1"/>
+	</Pool>
+
+</ItemPools>

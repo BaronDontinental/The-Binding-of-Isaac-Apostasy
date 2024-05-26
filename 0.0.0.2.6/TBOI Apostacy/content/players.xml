@@ -1,0 +1,67 @@
+<players root="gfx/characters/costumes/" 
+         portraitroot="gfx/ui/stage/" 
+         nameimageroot="gfx/ui/boss/">
+
+	<player id="19" name="L19_Sloth" skin="Character_019_Sloth.png" hp="4" items="" bombs="1"
+          nameimage="PlayerName_01_Isaac.png" 
+          portrait="PlayerPortrait_Isaac.png" skinColor="-1" costumeSuffix="slothl"
+		  birthright="Lazy" />
+		  
+	<player id="20" name="L20_Pride" skin="Character_020_Pride.png" hp="4" items="" bombs="1"
+          nameimage="PlayerName_01_Isaac.png" 
+          portrait="PlayerPortrait_Isaac.png" skinColor="5" costumeSuffix="pridel"
+		  birthright="Gloat" />
+		  
+	<player id="21" name="L21_Envy" skin="Character_021_Envy.png" hp="4" items="" bombs="1"
+          nameimage="PlayerName_01_Isaac.png" 
+          portrait="PlayerPortrait_Isaac.png" skinColor="-1"
+		  birthright="Gloat" />	  
+	
+	<player id="22" name="L22_Gluttony" skin="Character_022_Gluttony.png" hp="2" black="4" achievement=""
+          nameimage="PlayerName_01_Isaac.png" 
+          portrait="PlayerPortrait_Isaac.png" costume="130" skinColor="1" costumeSuffix="gluttonyl"
+		  birthright="???" /> 
+		  
+	<player id="23" name="L23_Lust" skin="Character_023_Lust.png" hp="4" items="" bombs="1"
+          nameimage="PlayerName_01_Isaac.png" 
+          portrait="PlayerPortrait_Isaac.png" skinColor="-1"
+		  birthright="Gloat" />	 
+		  
+	<player id="24" name="L24_Wrath" skin="Character_024_Wrath.png" hp="4" items="" bombs="1"
+          nameimage="PlayerName_01_Isaac.png" 
+          portrait="PlayerPortrait_Isaac.png" skinColor="-1"
+		  birthright="Gloat" />	 
+		  
+<!-- Start Tainted Characters-->
+
+	<player id="25" name="B25_Sloth" skin="Character_025_SlothB.png" hp="2" bombs="1"
+		nameimage="PlayerName_01_Isaac.png" 
+		portrait="PlayerPortrait_Isaac.png"  skinColor="-1"
+		bSkinParent="L19_Sloth"/>
+	
+	<player id="26" name="B26_Pride" skin="Character_026_PrideB.png" hp="2" bombs="1"
+		nameimage="PlayerName_01_Isaac.png" 
+		portrait="PlayerPortrait_Isaac.png"  skinColor="-1"
+		bSkinParent="L20_Pride"/>
+	
+	<player id="27" name="B27_Envy" skin="Character_027_EnvyB.png" hp="2" bombs="1"
+		nameimage="PlayerName_01_Isaac.png" 
+		portrait="PlayerPortrait_Isaac.png"  skinColor="-1"
+		bSkinParent="L21_Envy"/>
+	
+	<player id="28" name="B28_Gluttony" skin="Character_028_GluttonyB.png" hp="2" bombs="1"
+		nameimage="PlayerName_01_Isaac.png" 
+		portrait="PlayerPortrait_Isaac.png"  skinColor="-1"
+		bSkinParent="L22_Gluttony"/>
+
+	<player id="29" name="B29_Lust" skin="Character_029_LustB.png" hp="2" bombs="1"
+		nameimage="PlayerName_01_Isaac.png" 
+		portrait="PlayerPortrait_Isaac.png"  skinColor="-1"
+		bSkinParent="L23_Lust"/>
+
+	<player id="30" name="B30_Wrath" skin="Character_030_WrathB.png" hp="2" bombs="1"
+		nameimage="PlayerName_01_Isaac.png" 
+		portrait="PlayerPortrait_Isaac.png"  skinColor="-1"
+		bSkinParent="L24_Wrath"/>
+
+</players>  

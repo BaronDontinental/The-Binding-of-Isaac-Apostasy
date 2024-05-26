@@ -1,0 +1,10 @@
+<babies root="gfx/Characters/Player2/" >
+    <baby id="3" name="Super Sloth Baby" skin="Super_Sloth_Baby.png" achievement="" />
+    <baby id="11" name="Ugly Baby" skin="Ugly_Baby.png" achievement="" />
+    <baby id="18" name="Super Lust Baby" skin="Super_Lust_Baby.png" achievement="" />
+    <baby id="26" name="Suspicious Baby" skin="Suspicious_Baby.png" achievement="" />
+    <baby id="33" name="Super Wrath Baby" skin="Super_Wrath_Baby.png" achievement="" />
+    <baby id="41" name="Vengeful Baby" skin="Vengeful_Baby.png" achievement="" />
+    
+
+</babies>

@@ -1,0 +1,268 @@
+<items gfxroot="gfx/items/" version="1">
+
+    <!--FWI: if you make two items with duplicate ID#s it will fuck everything up, so dont plz ;) 
+    Also we breaking this bitch down by character and then we can organize however we want after that
+    And the ID#s so far are based on what collum they are in the Character items Sheets (for tainted start at 102)
+    -->
+ 
+<!--_____________________________________________________________________________________-->
+    <!--SLOTH ITEMS ZONE-->
+    <familiar id="2" name="Slug" description="Ew" cache=""
+        tags="" gfx="Slug.png" quality="1" />
+        <!--Super sloth baby is in babies.xml-->
+    <passive id="4" name="Rotgut" description="Bad Stash" cache=""
+        tags="" gfx="Rotgut.png" quality="1" />
+    <passive id="5" name="Trench Foot" description="Feel Immersed" cache=""
+        tags="" gfx="Trench_Foot.png" quality="1" />
+    <trinket id="6" name="Active Carbos" description="" cache=""
+        tags="" gfx="Active_Carbos.png" quality="1" />
+    <familiar id="7" name="Lil' Sloth" description="Sloppy Friend" cache=""
+        tags="" gfx="Lil_Sloth.png" quality="1" />
+    <trinket id="8" name="Puzzle Cube" description="" cache=""
+        tags="" gfx="Puzzle_Cube.png" quality="1" />
+    <passive id="9" name="BO" description="You smell terrible." cache=""
+        tags="" gfx="BO.png" quality="1" />
+    <active id="10" name="Lazybony" description="" cache=""
+        tags="" maxcharges="4" gfx="Lazybony.png" quality="1" />
+        <!--Ugly Baby is in babies.xml-->
+    <active id="12" name="Upchuck" description="" cache=""
+        tags="" maxcharges="3" gfx="Upchuck.png" quality="1" />
+        <!--Couch potato is in pocketitems.xml-->
+    <passive id="14" name="Disability Papers" description="" cache=""
+        tags="" gfx="Disability_Papers.png" quality="1" />
+        <!--The idler is lost to the edmund lands maybe..-->
+    <passive id="16" name="Death Cap" description="" cache=""
+        tags="" gfx="Death_Cap.png" quality="1" />
+
+<!--_____________________________________________________________________________________-->
+    <!--LUST ITEMS ZONE-->
+    <passive id="17" name="Cooties" description="Don't touch me." cache=""
+        tags="" gfx="Cooties.png" quality="1" />
+        <!--Super lust baby is in babies.xml-->
+    <active id="19" name="Epipen" description="It's in my back pocket" cache=""
+        tags="" maxcharges="2" gfx="Epipen.png" quality="1" />
+    <passive id="20" name="Nitroglycerin" description="Mix things up a bit" cache=""
+        tags="" gfx="Nitroglycerin.png" quality="1" />
+    <trinket id="21" name="Message in a Bottle" description="Open it" cache=""
+        tags="" gfx="Message_in_a_Bottle.png" quality="1" />
+    <familiar id="22" name="Lil' Lust" description="She just wants a hug"  cache=""
+        tags="" gfx="Lil_Lust.png" quality="1" />
+        <!--4 Tile is in pocketitems.xml-->
+    <trinket id="24" name="Stick of Deoderant" description="Smells good." cache=""
+        tags="" gfx="Stick_of_Deoderant.png" />
+    <passive id="25" name="Glyph of Matrimony" description="Forever together" cache=""
+        tags="" gfx="Glyph_of_Matrimony.png" quality="1" />
+        <!--Suspicious baby is in babies.xml-->
+    <passive id="27" name="House Arrest" description="A shocking aura" cache=""
+        tags="" gfx="House_Arrest.png" quality="1" />
+    <active id="28" name="Empty Syringe" description="Spread your love" cache=""
+        tags="" maxcharges="6" gfx="Empty_Syringe.png" quality="!" />
+    <passive id="29" name="Restraining Order" description="Stay away from me" cache=""
+        tags="" gfx="Restraining_Order.png" quality="1" /> 
+        <!--OOh WAAh  goodbye the stalker achievement-->
+        <!--ummm idk how to do transformations yet.  ill figure that out later-->
+    
+<!--_____________________________________________________________________________________-->
+    <!--WRATH ITEMS ZONE-->
+    <passive id="32" name="Transfuse" description="" cache=""
+        tags="" gfx="Trasfuse.png" quality="1" />
+        <!--Super wrath baby is in the babies.xml-->
+    <passive id="34" name="Hornfel's Horn" description="" cache=""
+        tags="" gfx="Hornfels_Horn.png" quality="1" />
+    <passive id="35" name="Bowling Bombs" description="" cache=""
+        tags="" gfx="Bowling_Bombs.png" quality="1" />
+    <trinket id="36" name="Dud Bomb" description="" cache=""
+        tags="" gfx="Dud_Bomb.png" quality="1" />
+    <familiar id="37" name="Lil' Wrath" description="" cache=""
+        tags="" gfx="Lil_Wrath.png" quality="1" />
+    <active id="38" name="Blank Tile" description="" cache=""
+        tags="" maxcharges="12" gfx="Blank_Tile.png" quality="1" />
+        <!--king of clubs is in the pocket items xml-->
+    <active id="40" name="Blitzfrag" description="" cache=""
+        tags="" maxcharges="12" gfx="Blitzfrag.png" quality="1" />
+        <!--Vengeful baby is in babies.png-->
+    <passive id="42" name="Malicious Intense" description="Locked and Loaded" cache=""
+        tags="" gfx="Malicious_Intense.png" quality="" />
+    <active id="43" name="Suicide Pact" description="Are you sure you want to quit?" cache=""
+        tags="" maxcharges="-1" gfx="Suicide_Pact.png" quality="" />
+    <passive id="44" name="Inferno Bombs" description="" cache=""
+        tags="" gfx="Inferno_Bombs.png" quality="" />
+        <!--OOh WAAh  goodbye the Vexed achievement-->
+        <!--ummm idk how to do transformations yet.  ill figure that out later-->
+
+<!--_____________________________________________________________________________________-->
+    <!--GLUTTONY ITEM ZONE-->
+    <active id="47" name="Devour" description="Consume thy enemy" cache=""
+        tags="" maxcharges="0" gfx="Devour.png" quality="1" />
+        <!--Super gluttony baby is in babies.xml-->
+    <passive id="49" name="Wide Brim Hat" description="Ain't enough room for the two of us" cache=""
+        tags="" gfx="Wide_Brim_Hat.png" quality="1" />
+    <passive id="50" name="Vox Populi" description="I feel bloated" cache=""
+        tags="" gfx="Vox_Populi.png" quality="1" />
+    <trinket id="51" name="Ginger Breadmund" description="Can't catch me!" cache=""
+        tags="" gfx="Ginger_Breadmund.png" quality="1" />
+    <familiar id="52" name="Lil' Gluttony" description="Give him sustenance" cache=""
+        tags="" gfx="Lil_Gluttony.png" quality="1" />
+    <passive id="53" name="Cake?" description="It's a lie!" cache=""
+        tags="" gfx="Cake.png" quality="1" />
+    <active id="54" name="Cake!" description="Make a wish!" cache=""
+        tags="" gfx="Cake.png" quality="1" />
+    <passive id="55" name="Grease" description="Real sick" cache=""
+        tags="" gfx="Grease.png" quality="1" />
+        <!--Chunky baby is in babies.xml-->
+    <active id="57" name="Bottomless Pit" description="Nom Nom" cache=""
+        tags="" maxcharges="12" gfx="Grease.png" quality="1" />
+    <active id="58" name="Regular Cookbook" description="I'm not cooking tonight" cache=""
+        tags="" maxcharges="12" gfx="Regular_Cookbook.png" quality="1" />
+    <passive id="59" name="Pack 'em in" description="Bonus fruit" cache=""
+        tags="" gfx="Pack_em_in.png" quality="1" />
+        <!--ooh wahh no achievement-->
+        <!--IDK how to do transformations yet...-->
+
+<!--_____________________________________________________________________________________-->
+    <!--PRIDE ITEMS ZONE-->
+    <passive id="62" name="Chicken" description="Dance, Baby!" cache=""
+        tags="" gfx="Chicken.png" quality="1" />
+        <!--Super Pride Baby is in the babies.xml-->
+    <passive id="64" name="The Shaker" description="Salt of the Earth" cache=""
+        tags="" gfx="The_Shaker.png" quality="1" />
+    <passive id="65" name="Salt Lamp" description="Light of the world" cache=""
+        tags="" gfx="Salt_Lamp.png" quality="1" />
+    <trinket id="66" name="Participation Award" description="I won, but at what cost" cache=""
+        tags="" gfx="Participation_Award.png" quality="1" />
+    <familiar id="67" name="Lil' Pride" description="Don't let it go to your head" cache=""
+        tags="" gfx="Lil_Pride.png" quality="1" />
+    <trinket id="68" name="Just Cause" description="It was intentional" cache=""
+        tags="" gfx="Just_Cause.png" quality="1" />
+        <!--King of spades is in the pocket items xml-->
+    <active id="70" name="Big, Boi, Bathwater" description="$19 Big, Boi, Bathwater" cache=""
+        tags="" maxcharges="6" gfx="Big_Boi_Bathwater.png" quality="1" />
+        <!--Big shot baby is in the babies.xml-->
+    <active id="72" name="Reeee!" description="Rage against the machine" cache=""
+        tags="" maxcharges="0" gfx="Reeee.png" quality="1" />
+    <passive id="73" name="Vaccine" description="I need to do my own research" cache=""
+        tags="" gfx="Vaccine.png" quality="1"  />
+    <passive id="74" name="Bombinomicon" description="We do a little bit of trolling" cache=""
+        tags="" gfx="Bombinomicon" quality="1" /> 
+        <!--RIP Achievements-->
+    <passive id="76" name="Haughty Spirit" description="Much gain with injustice" cache=""
+        tags="" gfx="Haughty_Spirit.png" quality="1" />
+    
+<!--_____________________________________________________________________________________-->
+    <!--ENVY ITEMS ZONE-->
+    <passive id="77" name="Moar" description="All your loot are belong to us" cache=""
+        tags="" gfx="Moar.png" quality="1" />
+        <!--Super Envy Baby is in babies.xml-->
+    <passive id="79" name="Chaos?" description="Wait. What?" cache=""
+        tags="" gfx="collectibles_402_chaos.png" quality="1" />
+    <passive id="80" name="Split Decision" description="" cache=""
+        tags="" gfx="Split_Decision.png" quality="1" />
+    <trinket id="81" name="Snake Eyes" description="" cache=""
+        tags="" gfx="Snake_Eyes.png" quality="1" />
+    <familiar id="82" name="Lil Envy" description="" cache=""
+        tags="" gfx="Lil_Envy.png" quality="1" />
+    <passive id="83" name="Yin-Yang" description="Some good in bad, Some bad in good" cache=""
+        tags="" gfx="Yin_Yang.png" quality="1" />
+    <passive id="84" name="Cold Shoulder" description="Silent Treatment" cache=""
+        tags="" gfx="Cold_Shoulder.png" quality="1" />
+    <passive id="85" name="Heartfelt Desire" description="" cache=""
+        tags="" gfx="Heartfelt_Desire.png" quality="1" />
+        <!--Shoop baby is in babies.xml-->
+    <passive id="87" name="Envious Conception" description="" cache=""
+        tags="" gfx="Envious Conception" quality="1" />
+    <active id="88" name="Cloning Machine" description="Multiple you's" cache=""
+        tags="" maxcharges="4" gfx="Cloning_Machine.png" quality="1" />
+    <active id="89" name="Weighted Dice" description="Is it chance, or is it just plain luck" cache=""
+        tags="" maxcharges="4" gfx="Weighted_Dice.png" quality="1" />
+        <!--Achievement oohwahh-->
+        <!--Achievement oohwahh-->
+
+<!--_____________________________________________________________________________________-->
+    <!--THIS MARKS THE END OF THE NORMAL CHARACTERS ITEMS-->
+
+<!--_____________________________________________________________________________________-->
+    <!-- TAINTED SLOTH ITEMS ZONE-->
+    <trinket id="102" name="Mycotoxins" description="" cache=""
+        tags="" gfx="Mycotoxins.png" quality="1" />
+        <!--12 tile is in pocketitems.xml-->
+        <!--Soul of Gurgle is in pocketitems.xml-->
+     <!--Bulb Bum is in Entities2.xml-->
+    <passive id="106" name="Sludgy 'Don't Slip'" description="" cache=""
+        tags="" gfx="Sludgy_Dont_Slip.png" quality="1" />
+    <active id="107" name="HP... Yuck" description="" cache=""
+        tags="" maxcharges="0" gfx="HP_Yuck" quality="" />
+    <passive id="108" name="1000 Hours" description="" cache=""
+        tags="" gfx="1000_Hours.png" quality="1" />
+    
+<!--_____________________________________________________________________________________-->
+    <!--TAINTED LUST ITEM ZONE-->
+    <passive id="109" name="Immune System" description="" cache=""
+        tags="" gfx="Immune_System" quality="1" />
+        <!--6 Tile is in pocketitems.xml-->
+        <!--Soul of the Fanatic is in Pocketitems.xml-->    
+        <!--Filing Cabinet is in Entities2.xml-->
+    <passive id="113" name="Fragrancy" description="" cache=""
+        tags="" gfx="Fragrancy.png" quality="1" />
+    <active id="114" name="LSS" description="" cache=""
+        tags="" maxcharges="4" gfx="LSS.png" quality="1" />
+    <passive id="115" name="Surf" description="" cache=""
+        tags="" gfx="Surf.png" quality="1" />
+
+<!--_____________________________________________________________________________________-->
+    <!--TAINTED WRATH ITEM ZONE-->
+    <trinket id="116" name="Golden Fuse" description="" cache=""
+        tags="" gfx="Golden_Fuse.png" quality="1" />
+        <!--10 Tile is in Pocketitems.xml-->
+        <!--Soul of the Boomer is in pocketitmes.xml-->
+        <!--Stone Bum is in entities2.xml-->
+    <passive id="120" name="Blood Pressure" description="" cache=""
+        tags="" gfx="Blood_Pressure.png" quality="1" />
+    <active id="121" name="Invest-a-Bomb" description="" cache=""
+        tags="" maxcharges="0" gfx="Invest_a_Bomb.png" quality="1" />
+        <!--Bomb Shelter will have to be added later in the Room Editor shit-->
+
+<!--_____________________________________________________________________________________-->
+    <!--TAINTED Gluttony ITEM ZONE-->
+    <trinket id="123" name="Takeout" description="" cache=""
+        tags="" gfx="Takeout.png" quality="1" />
+        <!--1 Tile is in Pocketitems.xml-->
+        <!--Soul of the Vis is in pocketitmes.xml-->
+        <!--Mimic is in entities2.xml-->
+    <passive id="127" name="Double Wide Surprise" description="" cache=""
+        tags="" gfx="Double_Wide_Surprise.png" quality="1" />
+    <passive id="128" name="Bloated Gut" description="" cache=""
+        tags="" gfx="Bloated_Gut.png" quality="1" />
+    <passive id="129" name="Biggie Bag" description="" cache=""
+        tags="" gfx="Biggie_Bag.png" quality="1" />
+
+<!--_____________________________________________________________________________________-->
+    <!--TAINTED PRIDE ITEM ZONE-->
+    <trinket id="130" name="The Hand That's Left" description="" cache=""
+        tags="" gfx="The_Hand_Thats_Left.png" quality="1" />
+        <!--7 Tile is in Pocketitems.xml-->
+        <!--Soul of Pride is in pocketitmes.xml-->
+                                                                                            <!--Holo Cards needs more explanation-->
+    <active id="134" name="Ethos" description="" cache=""
+        tags="" maxcharges="1" gfx="Ethos.png" quality="1" />
+    <active id="135" name="Jacob Jr." description="" cache=""
+        tags="" maxcharges="1" gfx="Jacob_Jr.png" quality="1" />
+    <active id="136" name="Prejudice" description="" cache=""
+        tags="" maxcharges="2" gfx="Prejudice.png" quality="1" />
+    
+<!--_____________________________________________________________________________________-->
+    <!--TAINTED ENVY ITEM ZONE-->
+    <trinket id="137" name="Paranoia" description="" cache=""
+        tags="" gfx="Paranoia.png" quality="1" />
+        <!--8 Tile is in Pocketitems.xml-->
+        <!--Soul of the Beggar is in pocketitmes.xml-->
+        <!--Key Stone is in entities2.xml-->
+    <passive id="141" name="Split Personality" description="" cache=""
+        tags="" gfx="Split_Personality.png" quality="1" />
+    <trinket id="142" name="Naughty List" description="" cache=""
+        tags="" gfx="Naughty_List.png" quality="1" />
+    <passive id="143" name="Oily Penny" description="" cache=""
+        tags="" gfx="Oily_Penny.png" quality="1" />
+
+    <!--DONT PUT ANYTHING PAST THIS, DUMBASS-->
+
+</items>

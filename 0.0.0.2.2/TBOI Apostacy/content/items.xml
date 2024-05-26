@@ -1,0 +1,95 @@
+<items gfxroot="gfx/items/" version="1">
+
+    <!--FWI: if you make two items with duplicate ID#s it will fuck everything up, so dont plz ;) 
+    Also we breaking this bitch down by character and then we can organize however we want after that
+    And the ID#s so far are based on what collum they are in the Character items Sheets
+    -->
+
+    <!--SLOTH ITEMS ZONE-->
+    <familiar id="2" name="Slug" description="Ew" 
+        tags="" gfx="Slug.png" quality="1" />
+        <!--Super sloth baby is in babies.xml-->
+    <passive id="4" name="Rotgut" description="Bad Stash" 
+        tags="" gfx="Rotgut.png" quality="1" />
+    <passive id="5" name="Trench Foot" description="Feel Immersed" 
+        tags="" gfx="Trench_Foot.png" quality="1" />
+    <trinket id="6" name="Active Carbos" description=""
+        tags="" gfx="Active_Carbos.png" quality="1" />
+    <familiar id="7" name="Lil' Sloth" description="Sloppy Friend"
+        tags="" gfx="Lil_Sloth.png" quality="1" />
+    <trinket id="8" name="Puzzle Cube" description=""
+        tags="" gfx="Puzzle_Cube.png" quality="1" />
+    <passive id="9" name="BO" description="You smell terrible."
+        tags="" gfx="BO.png" quality="1" />
+    <active id="10" name="Lazybony" description=""
+        tags="" maxcharges="4" gfx="Lazybony.png" quality="1" />
+        <!--Ugly Baby is in babies.xml-->
+    <active id="12" name="Upchuck" description=""
+        tags="" maxcharges="3" gfx="Upchuck.png" quality="1" />
+        <!--Couch potato is in pocketitems.xml-->
+    <passive id="14" name="Disability Papers" description=""
+        tags="" gfx="Disability_Papers.png" quality="1" />
+        <!--The idler is lost to the edmund lands maybe..-->
+    <passive id="16" name="Death Cap" description=""
+        tags="" gfx="Death_Cap.png" quality="1" />
+    
+    <!--LUST ITEMS ZONE-->
+    <passive id="17" name="Cooties" description="Don't touch me."
+        tags="" gfx="Cooties.png" quality="1" />
+        <!--Super lust baby is in babies.xml-->
+    <active id="19" name="Epipen" description="It's in my back pocket"
+        tags="" maxcharges="2" gfx="Epipen.png" quality="1" />
+    <passive id="20" name="Nitroglycerin" description="Mix things up a bit"
+        tags="" gfx="Nitroglycerin.png" quality="1" />
+    <trinket id="21" name="Message in a Bottle" description="Open it"
+        tags="" gfx="Message_in_a_Bottle.png" quality="1" />
+    <familiar id="22" name="Lil' Lust" description="She just wants a hug" 
+        tags="" gfx="Lil_Lust.png" quality="1" />
+        <!--4 Tile is in pocketitems.xml-->
+    <trinket id="24" name="Stick of Deoderant" description="Smells good."
+        tags="" gfx="Stick_of_Deoderant.png" />
+    <passive id="25" name="Glyph of Matrimony" description="Forever together"
+        tags="" gfx="Glyph_of_Matrimony.png" quality="1" />
+        <!--Suspicious baby is in babies.xml-->
+    <passive id="27" name="House Arrest" description="A shocking aura"
+        tags="" gfx="House_Arrest.png" quality="1" />
+    <active id="28" name="Empty Syringe" description="Spread your love"
+        tags="" maxcharges="6" gfx="Empty_Syringe.png" quality="!" />
+    <passive id="29" name="Restraining Order" description="Stay away from me"
+        tags="" gfx="Restraining_Order.png" quality="1" />
+        <!--OOh WAAh  goodbye the stalker achievement-->
+        <!--ummm idk how to do transformations yet.  ill figure that out later-->
+    
+    <!--WRATH ITEMS ZONE-->
+    <passive id="32" name="Transfuse" description=""
+        tags="" gfx="Trasfuse.png" quality="1" />
+        <!--Super wrath baby is in the babies.xml-->
+    <passive id="34" name="Hornfel's Horn" description=""
+        tags="" gfx="Hornfels_Horn.png" quality="1" />
+    <passive id="35" name="Bowling Bombs" description=""
+        tags="" gfx="Bowling_Bombs.png" quality="1" />
+    <trinket id="36" name="Dud Bomb" description=""
+        tags="" gfx="Dud_Bomb.png" quality="1" />
+    <familiar id="37" name="Lil' Wrath" description=""
+        tags="" gfx="Lil_Wrath.png" quality="1" />
+    <active id="38" name="Blank Tile" description=""
+        tags="" maxcharges="12" gfx="Blank_Tile.png" quality="1" />
+        <!--king of clubs is in the pocket items xml-->
+    <active id="40" name="Blitzfrag" description=""
+        tag="" maxcharges="12" gfx="Blitzfrag.png" quality="1" />
+        <!--Vengeful baby is in babies.png-->
+    <passive id="42" name="Malicious Intense" description="Locked and Loaded"
+        tag="" gfx="Malicious_Intense.png" quality="" />
+    <active id="43" name="Suicide Pact" description="Are you sure you want to quit?"
+        tag="" maxcharges="-1" quality="" />
+    <passive id="44" name="Inferno Bombs" description=""
+        tag="" gfx="Inferno_Bombs.png" quality="" />
+        <!--OOh WAAh  goodbye the Vexed achievement-->
+        <!--ummm idk how to do transformations yet.  ill figure that out later-->
+    
+
+
+
+    <!--DONT PUT ANYTHING PAST THIS DUMBASS-->
+
+</items>

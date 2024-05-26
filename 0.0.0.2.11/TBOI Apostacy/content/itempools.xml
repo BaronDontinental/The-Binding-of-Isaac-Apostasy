@@ -1,0 +1,125 @@
+<ItemPools>
+
+<!--__________________________________________________-->
+    <Pool Name="treasure">
+        <Item Name="Rotgut" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="shop">
+        <Item Name="Moar" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="boss">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="devil">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="angel">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="secret">
+        <Item Name="Disability Papers" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="library">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="goldenChest">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="redChest">
+        <Item Name="Rotgut" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="beggar">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="demonBeggar">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="curse">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="keyMaster">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="batteryBum">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="momsChest">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="greedTreasure">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="greedBoss">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="greedShop">
+        <Item Name="Moar" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="greedDevil">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="greedAngel">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="greedSecret">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="craneGame">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="ultraSecret">
+        <Item Name="Disability Papers" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="bombBum">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="planetarium">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="oldChest">
+        <Item Name="Disability Papers" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="babyShop">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="woodenChest">
+        
+    </Pool>
+<!--__________________________________________________-->
+    <Pool Name="rottenBeggar">
+        <Item Name="Rotgut" Weight="1" DecreaseBy="1" RemoveOn="0.1" />\
+
+    </Pool>
+
+
+</ItemPools>

@@ -1,0 +1,7 @@
+<items gfxroot="gfx/items/" version="1">
+    <active maxcharges="6" description="+1" name="Spinup Dice" gfx="Collectible_Spinup_Dice_icon.png" quality="4" />
+    <active maxcharges="4" description="Better items ?" name="Weighted_Dice" gfx="Collectible_Sacred_Dice_icon.png" quality="2" />
+    <active maxcharges="3" description="Get stronger but at what cost ?" name="Satanic Dice" gfx="Collectible_Satanic_Dice_icon.png" quality="2" />
+    <active maxcharges="6" description="Embrace more chaos" name="Eden Dice" gfx="Collectible_Eden_Dice.png" quality="4" />
+    <active maxcharges="6" description="Babies don't care" name="Familiar Dice" gfx="Collectible_Familiar_Dice_icon.png" quality="2" />
+</items>
