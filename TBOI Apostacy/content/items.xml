@@ -187,8 +187,8 @@
         <!--12 tile is in pocketitems.xml-->
         <!--Soul of Gurgle is in pocketitems.xml-->
      <!--Bulb Bum is in Entities2.xml-->
-    <passive id="106" name="Sludgy 'Don't Slip'" description="" cache=""
-        tags="" gfx="Sludgy_Dont_Slip.png" quality="1" />
+    <passive id="106" name="Sludgy" description="" cache=""
+        tags="" gfx="Sludgy.png" quality="1" />
     <active id="107" name="HP... Yuck" description="" cache=""
         tags="" maxcharges="0" gfx="HP_Yuck" quality="" />
     <passive id="108" name="1000 Hours" description="" cache=""
