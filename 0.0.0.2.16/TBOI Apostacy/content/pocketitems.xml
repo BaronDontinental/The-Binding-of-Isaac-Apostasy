@@ -1,0 +1,37 @@
+<pocketitems>
+    <card type="object" pickup="6" name="Couch Potato"
+        id="13" mimiccharge="4" hud="Couch_Potato" />
+    <!--to spawn it in (spawn 5.300.98)-->
+    <card type="object" pickup="6" name="4 Tile"
+        id="23" mimiccharge="4" hud="4_Tile" />
+    <card type="" pickup="6" name="King of Clubs"
+        id="39" mimiccharge="4" hud="King_of_Clubs" />
+    <card type="" pickup="6" name="King of Spades"
+        id="69" mimiccharge="4" hud="King_of_Spades" />
+    <card type="object" pickup="6" name="12 Tile"
+        id="103" mimiccharge="4" hud="12_Tile" />
+    <card type="object" pickup="6" name="Soul of Gurgle"
+        id="104" mimiccharge="4" hud="Soul_of_Gurgle" />
+    <card type="object" pickup="6" name="6 Tile"
+        id="110" mimiccharge="4" hud="6_Tile" />
+    <card type="object" pickup="6" name="Soul of the Fanatic"
+        id="111" mimiccharge="4" hud="Soul_of_the_Fanatic" />
+    <card type="object" pickup="6" name="10 Tile" 
+        id="117" mimiccharge="4" hud="10_Tile" />
+    <card type="object" pickup="6" name="Soul of the Boomer"
+        id="118" mimiccharge="4" hud="Soul_of_the_Boomer" />
+    <card type="object" pickup="6" name="1 Tile"
+        id="124" mimiccharge="4" hud="1_Tile" />
+    <card type="object" pickup="6" name="Soul of the Vis"
+        id="125" mimiccharge="4" hud="Soul_of_the_Vis" />
+    <card type="object" pickup="6" name="7 Tile"
+        id="131" mimiccharge="4" hud="7_Tile.png" />
+    <card type="object" pickup="6" name="Soul of Pride"
+        id="132" mimiccharge="4" hud="Soul_of_Pride.png" />
+    <card type="object" pickup="6" name="8 Tile"
+        id="138" mimiccharge="4" hud="8_Tile.png" />
+    <card type="object" pickup="6" name="Soul of the Beggar"
+        id="139" mimiccharge="4" hud="Soul_of_the_Beggar.png" />
+        
+    
+</pocketitems>

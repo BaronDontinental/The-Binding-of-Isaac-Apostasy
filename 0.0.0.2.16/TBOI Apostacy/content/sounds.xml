@@ -1,0 +1,8 @@
+<sounds root="sfx/">
+    <sound name="AlexBarf">
+        <sample weight="1" path="alexbarf.wav" />
+        <!-- <sample weight="1" path="alexbarf3.wav" /> -->
+    </sound>
+
+
+</sounds>
