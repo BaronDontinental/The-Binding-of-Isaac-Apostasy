@@ -1,0 +1,234 @@
+<achievements gfxroot="gfx/ui/achievement/">
+<!--Template: <achievement id="" name="" text='"" has appeared in the basement' gfx="Achievement_.png" />  -->
+<!--Template Alt: <achievement id="" name="" text='You unlocked ""' gfx="Achievement_.png" />-->
+<!--If you need an apostrophy in the text use this: &apos; -->
+
+<!--______________________________________________________________________________________________________________-->
+<!--CHARACTER UNLOCKS-->
+    <!--Normal-->
+    <achievement name="Sloth" text='You unlocked "The Gurgle"' gfx="Achievement_Sloth.png" />
+    <achievement name="Lust" text='You unlocked "The Fanatic"' gfx="Achievement_Lust.png" />
+    <achievement name="Wrath" text='You unlocked "The Boomer"' gfx="Achievement_Wrath.png" />
+    <achievement name="Gluttony" text='You unlocked "The Vis"' gfx="Achievement_Gluttony.png" />
+    <achievement name="Pride" text='You unlocked "Pride"' gfx="Achievement_Pride.png" />
+    <achievement name="Envy" text='You unlocked "The Beggar"' gfx="Achievement_Envy.png" />
+    <!--Tainted-->
+    <achievement name="SlothB" text='You unlocked "The Idler"' gfx="Achievement_SlothB.png" />
+    <achievement name="LustB" text='You unlocked "The Stalker"' gfx="Achievement_LustB.png" />
+    <achievement name="WrathB" text='You unlocked "The Vexed"' gfx="Achievement_WrathB.png" />
+    <achievement name="GluttonyB" text='You unlocked "The Voracious"' gfx="Achievement_GluttonyB.png" />
+    <achievement name="PrideB" text='You unlocked "The Number One"' gfx="Achievement_PrideB.png" />
+    <achievement name="EnvyB" text='You unlocked "The Dissatisfied"' gfx="Achievement_EnvyB.png" />
+
+<!--______________________________________________________________________________________________________________-->
+<!--SLOTH ZONE-->
+    <!--Beat Boss Rush as Sloth-->
+    <achievement id="2" name="Slug" text='"A Slug" has appeared in the basement' gfx="Achievement_Slug.png" />
+    <!--Beat Mom's Heart in hard mode as Sloth-->
+    <achievement id="3" name="Super Sloth Baby" text='You unlocked "Super Sloth Baby"' gfx="Achievement_Super_Sloth_Baby.png" />
+    <!--Beat Satan as Sloth-->
+    <achievement id="4" name="Rotgut" text='"Rotgut" has appeared in the basement' gfx="Achievement_Rotgut.png" />
+    <!--Beat Isaac as Sloth-->
+    <achievement id="5" name="Trench Foot" text='"Trench Foot" has appeared in the basement' gfx="Achievement_Trench_Foot.png" />
+    <!--Beat The Lamb as Sloth-->
+    <achievement id="6" name="Active Carbos" text='"Active Carbos" has appeared in the basement' gfx="Achievement_Active_Carbos.png" />
+    <!--Beat ??? as Sloth-->
+    <achievement id="7" name="Lil Sloth" text='"Lil&apos; Sloth" has appeared in the basement' gfx="Achievement_Lil_Sloth.png" />
+    <!--Beat Greed mode as Sloth-->
+    <achievement id="8" name="Puzzle Cube" text='"Puzzle Cube" has appeared in the basement' gfx="Achievement_Puzzle_Cube.png" />
+    <!--Beat Greedier mode as Sloth-->
+    <achievement id="9" name="BO" text='"BO" has appeared in the basement' gfx="Achievement_BO.png" />
+    <!--Beat Hush as Sloth-->
+    <achievement id="10" name="Lazybony" text='"Lazybony" has appeared in the basement' gfx="Achievement_Lazybony.png" />
+    <!--Beat Mega Satan as Sloth-->
+    <achievement id="11" name="Ugly Baby" text='You unlocked "Ugly Baby"' gfx="Achievement_Ugly_Baby.png" />
+    <!--Beat Delerium as Sloth-->
+    <achievement id="12" name="Upchuck" text='"Upchuck" has appeared in the basement' gfx="Achievement_Upchuck.png" />
+    <!--Beat Mother as Sloth-->
+    <achievement id="13" name="Couch Potato" text='"Couch Potato" has appeared in the basement' gfx="Achievement_Couch_Potato.png" />
+    <!--Beat The Beast as Sloth-->
+    <achievement id="14" name="Disability Papers" text='"Disability Papers" has appeared in the basement' gfx="Achievement_Disability_Papers.png" />
+    <!--Achieve all hard post-it marks as Sloth-->
+    <achievement id="16" name="Death Cap" text='"Death Cap" has appeared in the basement' gfx="Achievement_Death_Cap.png" />
+<!--______________________________________________________________________________________________________________-->
+<!--LUST ZONE-->    
+    <!--Beat Boss Rush as Lust-->
+    <achievement id="17" name="Cooties" text='"Cooties" has appeared in the basement' gfx="Achievement_Cooties.png" />
+    <!--Beat Mom's Heart in hard mode as Lust-->
+    <achievement id="18" name="Super Lust Baby" text='You unlocked "Super Lust Baby"' gfx="Achievement_Super_Lust_Baby.png" />
+    <!--Beat Satan as Lust-->
+    <achievement id="19" name="Epipen" text='"Epipen" has appeared in the basement' gfx="Achievement_Epipen.png" />
+    <!--Beat Isaac as Lust-->
+    <achievement id="20" name="Nitroglycerin" text='"Nitroglycerin" has appeared in the basement' gfx="Achievement_Nitroglycerin.png" />
+    <!--Beat The Lamb as Lust-->
+    <achievement id="21" name="Message in a Bottle" text='"Message in a Bottle" has appeared in the basement' gfx="Achievement_Message_in_a_Bottle.png" />
+    <!--Beat ??? as Lust-->
+    <achievement id="22" name="Lil Lust" text='"Lil&apos; Lust" has appeared in the basement' gfx="Achievement_Lil_Lust.png" />
+    <!--Beat Greed Mode as Lust-->
+    <achievement id="23" name="4 Tile" text='"4 Tile" has appeared in the basement' gfx="Achievement_4_Tile.png" />
+    <!--Beat Greedier Mode as Lust-->
+    <achievement id="24" name="Stick of Deoderant" text='"Stick of Deoderant" has appeared in the basement' gfx="Achievement_Stick_of_Deoderant.png" />
+    <!--Beat Hush as Lust-->
+    <achievement id="25" name="Glyph of Matrimony" text='"Glyph of Matrimony" has appeared in the basement' gfx="Achievement_Glyph_of_Matrimony.png" />
+    <!--Beat Mega Satan as Lust-->
+    <achievement id="26" name="Suspicious Baby" text='You unlocked "Suspicious Baby"' gfx="Achievement_Suspicious_Baby.png" />
+    <!--Beat Delerium as Lust-->
+    <achievement id="27" name="House Arrest" text='"House Arrest" has appeared in the basement' gfx="Achievement_House_Arrest.png" />
+    <!--Beat Mother as Lust-->
+    <achievement id="28" name="Empty Syringe" text='"Empty Syringe" has appeared in the basement' gfx="Achievement_Empty_Syringe.png" />
+    <!--Beat The Beast as Lust-->
+    <achievement id="29" name="Restraining Order" text='"Restraining Order" has appeared in the basement' gfx="Achievement_Restraining_Order.png" />
+    <!--Achieve all hard post_it marks as Lust-->
+    <achievement id="31" name="Overdose" text='You have "Overdosed"' gfx="Achievement_Overdose.png" />
+<!--______________________________________________________________________________________________________________-->
+<!--WRATH ZONE-->
+    <!--Beat Boss Rush as Wrath-->    
+    <achievement id="32" name="Transfuse" text='"Transfuse" has appeared in the basement' gfx="Achievement_Transfuse.png" />
+    <!--Beat Mom's Heart in hard mode as Wrath--> 
+    <achievement id="33" name="Super Wrath Baby" text='You unlocked "Super Wrath Baby"' gfx="Achievement_Super_Wrath_Baby.png" />
+    <!--Beat Satan as Wrath--> 
+    <achievement id="34" name="Horfels Horn" text='"Horfel&apos;s Horn" has appeared in the basement' gfx="Achievement_Horfels_Horn.png" />
+    <!--Beat Isaac as Wrath--> 
+    <achievement id="35" name="Bowling Bombs" text='"Bowling Bombs" has appeared in the basement' gfx="Achievement_Bowling_Bombs.png" />
+    <!--Beat The Lamb as Wrath--> 
+    <achievement id="36" name="Dud Bombs" text='"Dud Bombs" has appeared in the basement' gfx="Achievement_Dud_Bombs.png" />
+    <!--Beat ??? as Wrath--> 
+    <achievement id="37" name="Lil Wrath" text='"Lil&apos; Wrath" has appeared in the basement' gfx="Achievement_Lil_Wrath.png" />
+    <!--Beat Greed Mode as Wrath--> 
+    <achievement id="38" name="Blank Tile" text='"Blank Tile" has appeared in the basement' gfx="Achievement_Blank_Tile.png" />
+    <!--Beat Greedier mode as Wrath--> 
+    <achievement id="39" name="King of Clubs" text='"King of Clubs" has appeared in the basement' gfx="Achievement_King_of_Clubs.png" />
+    <!--Beat Hush as Wrath--> 
+    <achievement id="40" name="Blitzfrag" text='"Blitzfrag" has appeared in the basement' gfx="Achievement_Blitzfrag.png" />
+    <!--Beat Mega Satan as Wrath--> 
+    <achievement id="41" name="Vengeful Baby" text='You unlocked "Vengeful Baby"' gfx="Achievement_Vengeful_Baby.png" />
+    <!--Beat Delerium as Wrath--> 
+    <achievement id="42" name="Malicious Intense" text='"Malicious Intense" has appeared in the basement' gfx="Achievement_Malicious_Intense.png" />
+    <!--Beat Mother as Wrath--> 
+    <achievement id="43" name="Suicide Pact" text='"Suicide Pact" has appeared in the basement' gfx="Achievement_Suicide_Pact.png" />
+    <!--Beat The Beast as Wrath--> 
+    <achievement id="44" name="Inferno Bombs" text='"Inferno Bombs" has appeared in the basement' gfx="Achievement_Inferno_Bombs.png" />
+    <!--Achieve all hard post-it marks as Wrath--> 
+    <achievement id="46" name="King Bombo" text='You have been crowned "King Bombo"' gfx="Achievement_King_Bombo.png" />
+<!--______________________________________________________________________________________________________________-->
+<!--Gluttony ZONE--> 
+    <!--Beat Boss Rush as Gluttony-->
+    <achievement id="47" name="Devour" text='"Devour" has appeared in the basement' gfx="Achievement_Devour.png" />
+    <!--Beat Mom's Heart in hard mode as Gluttony-->
+    <achievement id="48" name="Super Gluttony Baby" text='You unlocked "Super Gluttony Baby"' gfx="Achievement_Super_Gluttony_Baby.png" />
+    <!--Beat Satan as Gluttony-->
+    <achievement id="49" name="Wide Brim Hat" text='"Wide Brim Hat" has appeared in the basement' gfx="Achievement_Wide_Brim_Hat.png" />
+    <!--Beat Isaac as Gluttony-->
+    <achievement id="50" name="Vox Populi" text='"Vox Populi" has appeared in the basement' gfx="Achievement_Vox_Populi.png" />
+    <!--Beat The Lamb as Gluttony-->
+    <achievement id="51" name="Ginger Breadmund" text='"Ginger Breadmund" has appeared in the basement' gfx="Achievement_Ginger_Breadmund.png" />
+    <!--Beat ??? as Gluttony-->
+    <achievement id="52" name="Lil Gluttony" text='"Lil&apos; Gluttony" has appeared in the basement' gfx="Achievement_Lil_Gluttony.png" />
+    <!--Beat Greed Mode as Gluttony-->
+    <achievement id="53" name="Cake1" text='"Cake&quest;" has appeared in the basement' gfx="Achievement_Cake1.png" />
+    <!--Beat Greedier Mode as Gluttony-->
+    <achievement id="54" name="Cake2" text='"Cake&excl;" has appeared in the basement' gfx="Achievement_Cake2.png" />
+    <!--Beat Hush as Gluttony-->
+    <achievement id="55" name="Grease" text='"Grease" has appeared in the basement' gfx="Achievement_Grease.png" />
+    <!--Beat Mega Satan as Gluttony-->
+    <achievement id="56" name="Chunky Baby" text='You unlocked "Chunky Baby"' gfx="Achievement_Chunky_Baby.png" />
+    <!--Beat Delerium as Gluttony-->
+    <achievement id="57" name="Bottomless Pit" text='"Bottomless Pit" has appeared in the basement' gfx="Achievement_Bottomless_Pit.png" />
+    <!--Beat Mother as Gluttony-->
+    <achievement id="58" name="Regular Cookbook" text='"Regular Cookbook" has appeared in the basement' gfx="Achievement_Regular_Cookbook.png" />
+    <!--Beat The Beast as Gluttony-->
+    <achievement id="59" name="Pack em in" text='"Pack &apos;em in" has appeared in the basement' gfx="Achievement_Pack_em_in.png" />
+    <!--Achieve all hard mode post-it marks as Gluttony-->
+    <achievement id="61" name="Mr Plumsworth" text='Hi "Mr&period; Plumsworth" how are you&quest;' gfx="Achievement_Mr_Plumsworth.png" />
+<!--______________________________________________________________________________________________________________-->
+<!--PRIDE ZONE--> 
+    <!--Beat Boss Rush as Pride-->
+    <achievement id="62" name="Chicken" text='"Chicken" has appeared in the basement' gfx="Achievement_Chicken.png" />
+    <!--Beat Mom's Heart in hard mode as Pride-->
+    <achievement id="63" name="Super Pride Baby" text='You unlocked "Super Pride Baby"' gfx="Achievement_Super_Pride_Baby.png" />
+    <!--Beat Satan as Pride-->
+    <achievement id="64" name="The Shaker" text='"The Shaker" has appeared in the basement' gfx="Achievement_The_Shaker.png" />
+    <!--Beat Isaac as Pride-->
+    <achievement id="65" name="Salt Lamp" text='"Salt Lamp" has appeared in the basement' gfx="Achievement_Salt_Lamp.png" />
+    <!--Beat The Lamb as Pride-->
+    <achievement id="66" name="Participation Award" text='"A Participation Award" has appeared in the basement' gfx="Achievement_Participation_Award.png" />
+    <!--Beat ??? as Pride-->
+    <achievement id="67" name="Lil Pride" text='"Lil&apos; Pride" has appeared in the basement' gfx="Achievement_Lil_Pride.png" />
+    <!--Beat Greed Mode as Pride-->
+    <achievement id="68" name="Just Cause" text='"Just Cause" has appeared in the basement' gfx="Achievement_Just_Cause.png" />
+    <!--Beat Greedier Mode as Pride-->
+    <achievement id="69" name="King of Spades" text='"King of Spades" has appeared in the basement' gfx="Achievement_King_of_Spades.png" />
+    <!--Beat Hush as Pride-->
+    <achievement id="70" name="Big Boi Bathwater" text='"Big&comma; Boi&comma; Bathwater" has appeared in the basement' gfx="Achievement_Big Boi Bathwater.png" />
+    <!--Beat Mega Satan as Pride-->
+    <achievement id="71" name="Big Shot Baby" text='You unlocked "Big Shot Baby"' gfx="Achievement_Big_Shot_Baby.png" />
+    <!--Beat Delerium as Pride-->
+    <achievement id="72" name="Reeee" text='"Reeee&excl;" has appeared in the basement' gfx="Achievement_Reeee.png" />
+        <!--Lose 10 runs as Pride-->
+        <achievement name="Reeee Pride" text='Pride now holds... "Reeee&excl;"' gfx="Achievement_Reeee_Pride.png" />
+    <!--Beat Mother as Pride-->
+    <achievement id="73" name="Vaccine" text='"Vaccine" has appeared in the basement' gfx="Achievement_Vaccine.png" />
+    <!--Beat The Beast as Pride-->
+    <achievement id="74" name="Bombinomicon" text='"Bombinomicon" has appeared in the basement' gfx="Achievement_Bombinomicon.png" />
+    <!--Achieve all hard mode post-it marks as Pride-->
+    <achievement id="76" name="Haughty Spirit" text='"Haughty Spirit" has appeared in the basement' gfx="Achievement_Haughty_Spirit.png" />
+<!--______________________________________________________________________________________________________________-->
+<!--ENVY ZONE--> 
+    <!--Beat Boss Rush as Envy-->
+    <achievement id="77" name="Moar" text='"Moar" has appeared in the basement' gfx="Achievement_Moar.png" />
+    <!--Beat Mom's Heart on hard mode as Envy-->
+    <achievement id="78" name="Super Envy Baby" text='You unlocked "Super Envy Baby"' gfx="Achievement_Super_Envy_Baby.png" />
+    <!--Beat Satan as Envy-->
+    <achievement id="79" name="Chaos?" text='"Chaos&quest;" has appeared in the basement' gfx="Achievement_Chaos2.png" />
+    <!--Beat Isaac as Envy-->
+    <achievement id="80" name="Split Decision" text='"Split Decision" has appeared in the basement' gfx="Achievement_Split_Decision.png" />
+    <!--Beat The Lamb as Envy-->
+    <achievement id="81" name="Snake Eyes" text='"Snake Eyes" has appeared in the basement' gfx="Achievement_Snake_Eyes.png" />
+    <!--Beat ??? as Envy-->
+    <achievement id="82" name="Lil Envy" text='You unlocked "Lil&apos; Envy"' gfx="Achievement_Lil_Envy.png" />
+    <!--Beat Greed Mode as Envy-->
+    <achievement id="83" name="Yin Yang" text='"Yin&dash;Yang" has appeared in the basement' gfx="Achievement_Yin_Yang.png" />
+    <!--Beat Greedier Mode as Envy-->
+    <achievement id="84" name="Cold Shoulder" text='"Cold Shoulder" has appeared in the basement' gfx="Achievement_Cold_Shoulder.png" />
+    <!--Beat Hush as Envy-->
+    <achievement id="85" name="Heartfelt Desire" text='"Heartfelt Desire" has appeared in the basement' gfx="Achievement_Heartfelt_Desire.png" />
+    <!--Beat Mega Satan as Envy-->
+    <achievement id="86" name="Shoop Baby" text='You unlocked "Shoop Baby"' gfx="Achievement_Shoop_Baby.png" />
+    <!--Beat Delerium as Envy-->
+    <achievement id="87" name="Envious Conception" text='"Envious Conception" has appeared in the basement' gfx="Achievement_Envious_Conception.png" />
+    <!--Beat Mother as Envy-->
+    <achievement id="88" name="Cloning Machine" text='"Cloning Machine" has appeared in the basement' gfx="Achievement_Cloning_Machine.png" />
+    <!--Beat The Beast as Envy-->
+    <achievement id="89" name="Weighted Dice" text='"Weighted Dice" has appeared in the basement' gfx="Achievement_Weighted_Dice.png" />
+    <!--Achieve all hard mode post-it marks as Envy-->
+    <achievement id="91" name="ObamaPhone" text='"ObamaPhone" has appeared in the basement' gfx="Achievement_ObamaPhone.png" />
+<!--______________________________________________________________________________________________________________-->
+<!--TAINTED SLOTH ZONE--> 
+    <!--Beat Isaac, ???, Satan, and The Lamb as Tainted Sloth-->
+    <achievement name="Mycotoxins" text='"Mycotoxins" has appeared in the basement' gfx="Achievement_Mycotoxins.png" />
+    <!--Beat Greedier Mode as Tainted Sloth-->
+    <achievement name="12 Tile" text='"12 Tile" has appeared in the basement' gfx="Achievement_12_Tile.png" />
+    <!--Beat Boss Rush and Hush as Tainted Sloth-->
+    <achievement name="Soul of the Gurgle" text='"Soul of the Gurgle" has appeared in the basement' gfx="Achievement_Soul_of_the_Gurgle.png" />
+    <!--Beat Mega Satan as Tainted Sloth-->
+    <achievement name="Bulb Bum" text='"Bulb Bum" has appeared in the basement' gfx="Achievement_Bulb_Bum.png" />
+    <!--Beat Delerium as Tainted Sloth-->
+    <achievement name="Sludgy" text='"Sludgy" has appeared in the basement' gfx="Achievement_Sludgy.png" />
+    <!--Beat Mother as Tainted Sloth-->
+    <achievement name="HP Yuck" text='"HP Yuck" has appeared in the basement' gfx="Achievement_HP_Yuck.png" />
+    <!--Beat The Beast as Tainted Sloth-->
+    <achievement name="1000 Hours" text='"1000 Hours" has appeared in the basement' gfx="Achievement_1000 Hours.png" />
+<!--______________________________________________________________________________________________________________-->
+<!--TAINTED LUST ZONE-->
+    <achievement name="Immune System" text='"Immune System" has appeared in the basement' gfx="Achievement_Immune_System.png" />
+    <achievement name="6 Tile" text='"6 Tile" has appeared in the basement' gfx="Achievement_6_Tile.png" />
+    <achievement name="Soul of the Fanatic" text='"Soul of the Fanatic" has appeared in the basement' gfx="Achievement_Soul_of_the_Fanatic.png" />
+    <achievement name="Filing Cabinet" text='"Filing Cabinet" has appeared in the basement' gfx="Achievement_Filing_Cabinet.png" />
+    <achievement name="Fragrancy" text='"Fragrancy" has appeared in the basement' gfx="Achievement_Fragrancy.png" />
+    <achievement name="LSS" text='"LSS" has appeared in the basement' gfx="Achievement_LSS.png" />
+    <achievement name="Surf" text='"Surf" has appeared in the basement' gfx="Achievement_Surf.png" />
+    
+
+
+
+</achievements>
