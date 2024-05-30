@@ -19,7 +19,6 @@
     <achievement name="GluttonyB" text='You unlocked "The Voracious"' gfx="Achievement_GluttonyB.png" />
     <achievement name="PrideB" text='You unlocked "The Number One"' gfx="Achievement_PrideB.png" />
     <achievement name="EnvyB" text='You unlocked "The Dissatisfied"' gfx="Achievement_EnvyB.png" />
-
 <!--______________________________________________________________________________________________________________-->
 <!--SLOTH ZONE-->
     <!--Beat Boss Rush as Sloth-->
@@ -298,7 +297,4 @@
     <achievement name="Naughty List" text='"Naughty List" has appeared in the basement' gfx="Achievement_Naughty_List.png" />
     <!--Beat The Beast as Tainted Envy-->
     <achievement name="Oily Penny" text='"Oily Penny" has appeared in the basement' gfx="Achievement_Oily_Penny.png" />
-
-
-
 </achievements>
