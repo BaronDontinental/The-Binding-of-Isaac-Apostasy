@@ -254,24 +254,50 @@
 <!--TAINTED GLUTTONY ZONE-->
     <!--Beat Isaac, ???, Satan, and The Lamb as Tainted Gluttony-->
     <achievement name="Takeout" text='"Takeout" has appeared in the basement' gfx="Achievement_Takeout.png" />
+    <!--Beat Greedier Mode as Tainted GLuttony-->
     <achievement name="1 Tile" text='"1 Tile" has appeared in the basement' gfx="Achievement_1_Tile.png" />
+    <!--Beat Boss Rush and Hush as Tainted GLuttony-->
     <achievement name="Soul of the Vis" text='"Soul of the Vis" has appeared in the basement' gfx="Achievement_Soul_of_the_Vis.png" />
+    <!--Beat Mega Satan as Tainted GLuttony-->
     <achievement name="Mimic" text='"Mimic" has appeared in the basement' gfx="Achievement_Mimic.png" />
+    <!--Beat Delerium as Tainted GLuttony-->
     <achievement name="Double Wide Surprise" text='"Double Wide Surprise" has appeared in the basement' gfx="Achievement_Double_Wide_Surprise.png" />
+    <!--Beat Mother as Tainted GLuttony-->
     <achievement name="Bloated Gut" text='"Bloated Gut" has appeared in the basement' gfx="Achievement_Bloated_Gut.png" />
+    <!--Beat The Beast as Tainted GLuttony-->
     <achievement name="Biggie Bag" text='"Biggie Bag" has appeared in the basement' gfx="Achievement_Biggie_Bag.png" />
 <!--______________________________________________________________________________________________________________-->
-<!--TAINTED Pride ZONE-->
+<!--TAINTED PRIDE ZONE-->
     <!--Beat Isaac, ???, Satan, and The Lamb as Tainted Pride-->
     <achievement name="The Hand Thats Left" text='"The Hand That&apos;s Left" has appeared in the basement' gfx="Achievement_The_Hand_Thats_Left.png" />
+    <!--Beat Greedier Mode as Tainted Pride-->
     <achievement name="7 Tile" text='"7 Tile" has appeared in the basement' gfx="Achievement_7_Tile.png" />
+    <!--Beat Boss Rush and Hush as Tainted Pride-->
     <achievement name="Soul of Pride" text='"Soul of Pride" has appeared in the basement' gfx="Achievement_Soul_of_Pride.png" />
+    <!--Beat Mega Satan as Tainted Pride-->
     <achievement name="Holo Cards" text='"Holo Cards" have appeared in the basement' gfx="Achievement_Holo_Cards.png" />
+    <!--Beat Delerium as Tainted Pride-->
     <achievement name="Ethos" text='"Ethos" has appeared in the basement' gfx="Achievement_Ethos.png" />
+    <!--Beat Mother as Tainted Pride-->
     <achievement name="Jacob Jr" text='"Jacob Jr&period;" has appeared in the basement' gfx="Achievement_Jacob_Jr.png" />
+    <!--Beat The Beast as Tainted Pride-->
     <achievement name="Prejudice" text='"Prejudice" has appeared in the basement' gfx="Achievement_Prejudice.png" />
-
-
+<!--______________________________________________________________________________________________________________-->
+<!--TAINTED ENVY ZONE-->
+    <!--Beat Isaac, ???, Satan, and The Lamb as Tainted Envy-->
+    <achievement name="Paranoia" text='"Paranoia" has appeared in the basement' gfx="Achievement_Paranoia.png" />
+    <!--Beat Greedier Mode as Tainted Envy-->
+    <achievement name="8 Tile" text='"8 Tile" has appeared in the basement' gfx="Achievement_8_Tile.png" />
+    <!--Beat Boss Rush and Hush as Tainted Envy-->
+    <achievement name="Soul of the Beggar" text='"Soul of the Beggar" has appeared in the basement' gfx="Achievement_Soul_of_the_Beggar.png" />
+    <!--Beat Mega Satan as Tainted Envy-->
+    <achievement name="Key Stone" text='"Key Stone" has appeared in the basement' gfx="Achievement_Key_Stone.png" />
+    <!--Beat Delerium as Tainted Envy-->
+    <achievement name="Split Personality" text='"Split Personality" has appeared in the basement' gfx="Achievement_Split_Personality.png" />
+    <!--Beat Mother as Tainted Envy-->
+    <achievement name="Naughty List" text='"Naughty List" has appeared in the basement' gfx="Achievement_Naughty_List.png" />
+    <!--Beat The Beast as Tainted Envy-->
+    <achievement name="Oily Penny" text='"Oily Penny" has appeared in the basement' gfx="Achievement_Oily_Penny.png" />
 
 
 
