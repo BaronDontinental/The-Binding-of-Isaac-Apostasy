@@ -220,14 +220,57 @@
     <achievement name="1000 Hours" text='"1000 Hours" has appeared in the basement' gfx="Achievement_1000 Hours.png" />
 <!--______________________________________________________________________________________________________________-->
 <!--TAINTED LUST ZONE-->
+    <!--Beat Isaac, ???, Satan, and The Lamb as Tainted Pride-->    
     <achievement name="Immune System" text='"Immune System" has appeared in the basement' gfx="Achievement_Immune_System.png" />
+    <!--Beat Greedier Mode as Tainted Pride-->
     <achievement name="6 Tile" text='"6 Tile" has appeared in the basement' gfx="Achievement_6_Tile.png" />
+    <!--Beat Boss Rush and Hush as Tainted Pride-->
     <achievement name="Soul of the Fanatic" text='"Soul of the Fanatic" has appeared in the basement' gfx="Achievement_Soul_of_the_Fanatic.png" />
+    <!--Beat Mega Satan as Tainted Pride-->
     <achievement name="Filing Cabinet" text='"Filing Cabinet" has appeared in the basement' gfx="Achievement_Filing_Cabinet.png" />
+    <!--Beat Delerium as Tainted Pride-->
     <achievement name="Fragrancy" text='"Fragrancy" has appeared in the basement' gfx="Achievement_Fragrancy.png" />
+    <!--Beat Mother as Tainted Pride-->
     <achievement name="LSS" text='"LSS" has appeared in the basement' gfx="Achievement_LSS.png" />
+    <!--Beat The Beast as Tainted Pride-->
     <achievement name="Surf" text='"Surf" has appeared in the basement' gfx="Achievement_Surf.png" />
-    
+<!--______________________________________________________________________________________________________________-->
+<!--TAINTED WRATH ZONE-->
+    <!--Beat Isaac, ???, Satan, and The Lamb as Tainted Wrath-->
+    <achievement name="Golden Fuse" text='"Golden Fuse" has appeared in the basement' gfx="Achievement_Golden_Fuse.png" />
+    <!--Beat Greedier Mode as Tainted Wrath-->
+    <achievement name="10 Tile" text='"10 Tile" has appeared in the basement' gfx="Achievement_10_Tile.png" />
+    <!--Beat Boss Rush and Hush as Tainted Wrath-->
+    <achievement name="Soul of the Boomer" text='"Soul of the Boomer" has appeared in the basement' gfx="Achievement_Soul_of_the_Boomer.png" />
+    <!--Beat Mega Satan as Tainted Wrath-->
+    <achievement name="Stone Bum" text='"Stone Bum" has appeared in the basement' gfx="Achievement_Stone_Bum.png" />
+    <!--Beat Delerium as Tainted Wrath-->
+    <achievement name="Blood Pressure" text='"Blood Pressure" has appeared in the basement' gfx="Achievement_Blood_Pressure.png" />
+    <!--Beat Mother as Tainted Wrath-->
+    <achievement name="Invest a Bomb" text='"Invest&dash;a&dash;Bomb" has appeared in the basement' gfx="Achievement_Invest_a_Bomb.png" />
+    <!--Beat The Beast as Tainted Wrath-->
+    <achievement name="Bomb Shelter" text="You hear distant air raid sirens..." gfx="Achievement_Bomb_Shelter.png" />
+<!--______________________________________________________________________________________________________________-->
+<!--TAINTED GLUTTONY ZONE-->
+    <!--Beat Isaac, ???, Satan, and The Lamb as Tainted Gluttony-->
+    <achievement name="Takeout" text='"Takeout" has appeared in the basement' gfx="Achievement_Takeout.png" />
+    <achievement name="1 Tile" text='"1 Tile" has appeared in the basement' gfx="Achievement_1_Tile.png" />
+    <achievement name="Soul of the Vis" text='"Soul of the Vis" has appeared in the basement' gfx="Achievement_Soul_of_the_Vis.png" />
+    <achievement name="Mimic" text='"Mimic" has appeared in the basement' gfx="Achievement_Mimic.png" />
+    <achievement name="Double Wide Surprise" text='"Double Wide Surprise" has appeared in the basement' gfx="Achievement_Double_Wide_Surprise.png" />
+    <achievement name="Bloated Gut" text='"Bloated Gut" has appeared in the basement' gfx="Achievement_Bloated_Gut.png" />
+    <achievement name="Biggie Bag" text='"Biggie Bag" has appeared in the basement' gfx="Achievement_Biggie_Bag.png" />
+<!--______________________________________________________________________________________________________________-->
+<!--TAINTED Pride ZONE-->
+    <!--Beat Isaac, ???, Satan, and The Lamb as Tainted Pride-->
+    <achievement name="The Hand Thats Left" text='"The Hand That&apos;s Left" has appeared in the basement' gfx="Achievement_The_Hand_Thats_Left.png" />
+    <achievement name="7 Tile" text='"7 Tile" has appeared in the basement' gfx="Achievement_7_Tile.png" />
+    <achievement name="Soul of Pride" text='"Soul of Pride" has appeared in the basement' gfx="Achievement_Soul_of_Pride.png" />
+    <achievement name="Holo Cards" text='"Holo Cards" have appeared in the basement' gfx="Achievement_Holo_Cards.png" />
+    <achievement name="Ethos" text='"Ethos" has appeared in the basement' gfx="Achievement_Ethos.png" />
+    <achievement name="Jacob Jr" text='"Jacob Jr&period;" has appeared in the basement' gfx="Achievement_Jacob_Jr.png" />
+    <achievement name="Prejudice" text='"Prejudice" has appeared in the basement' gfx="Achievement_Prejudice.png" />
+
 
 
 
