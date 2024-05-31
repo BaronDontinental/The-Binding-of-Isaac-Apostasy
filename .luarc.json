@@ -2,7 +2,11 @@
     "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
     "runtime.version": "Lua 5.3",
     "workspace.library": [
+<<<<<<< HEAD
         "c:\\Users\\Ninja\\.vscode\\extensions\\filloax.isaac-lua-api-vscode-1.9.3\\out\\emmylua\\repentogon"
+=======
+        "c:\\Users\\Jackson Terrell\\.vscode\\extensions\\filloax.isaac-lua-api-vscode-1.9.3\\out\\emmylua\\repentogon"
+>>>>>>> e4ca067f7c5e20fea3db185b5a6be113b60c1701
     ],
     "diagnostics.globals": [
         "ActionTriggers",

@@ -5,6 +5,7 @@ local sound = SFXManager()
 mod.COLLECTIBLE_ROTGUT = Isaac.GetItemIdByName("Rotgut")
 CollectibleType.COLLECTIBLE_ROTGUT = Isaac.GetItemIdByName("Rotgut")
 SoundEffect.SOUND_SPLURGE = Isaac.GetSoundIdByName("AlexBarf")
+local Shot = nil
 
 function Rotgut:postUpdate()
     local RotFlags = {
@@ -41,21 +42,22 @@ function Rotgut:postUpdate()
                         if roll <= RotFlags.ROT_CHANCE then
                             TearData.RotType = math.random(1)
                             if TearData.RotType == 1 then
-                                
+                                    player:AddCacheFlags(CacheFlag.CACHE_WEAPON) 
                                     Tear:SetColor(Color(0.79, 0.89, 0.27, 1.0, 0, 0, 0), 100, 100, false, false)
-                                    Tear.TearFlags = Tear.TearFlags | RotFlags.TEARFLAG
-                                    Weapon:SetModifiers(WeaponModifier.MONSTROS_LUNG) 
+                                    Tear.TearFlags = Tear.TearFlags | RotFlags.TEARFLAG 
                                     TearData.RotSize = math.random(100)
                                     Tear:SetSize(Tear.Size * (RotFlags.SCALE_1 + RotFlags.SCALE_2 * (TearData.RotSize / 100)), Vector(1,1), 8)
                                     Tear.SpriteScale = Tear.SpriteScale * (RotFlags.SCALE_1 + RotFlags.SCALE_2 * (TearData.RotSize / 100))
                                     Tear.Height = Tear.Height * (RotFlags.SCALE_1 + RotFlags.SCALE_2 * (TearData.RotSize / 100))
                                     Tear.FallingSpeed = player.TearFallingSpeed - (RotFlags.FLY_1)
                                     Tear.FallingAcceleration = player.TearFallingAcceleration + (RotFlags.FLY_2 + math.random(1, 10) / 10)
-
-                                sound:Play(SoundEffect.SOUND_SPLURGE, 1, 0, false, 1)
+                                    sound:Play(SoundEffect.SOUND_SPLURGE, 1, 0, false, 1)
+                                    Shot = true
                             end
                         else
+                            player:AddCacheFlags(CacheFlag.CACHE_WEAPON)
                             TearData.RotType = 0
+                            Shot = false
                         end
                     end
                 end
@@ -63,6 +65,22 @@ function Rotgut:postUpdate()
         end
     end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Rotgut.onPassive)
+
+    function Rotgut.OnCache(player, cacheFlag)
+        if Shot == true then
+            if (cacheFlag == CacheFlag.CACHE_WEAPON) then
+                player.EnableWeaponType(player, WeaponType.WEAPON_MONSTROS_LUNGS, true)
+                player.EnableWeaponType(player, WeaponType.WEAPON_TEARS, false)
+            end
+        else
+            if (cacheFlag == CacheFlag.CACHE_WEAPON) then
+                player.EnableWeaponType(player, WeaponType.WEAPON_MONSTROS_LUNGS, false)
+                player.EnableWeaponType(player, WeaponType.WEAPON_TEARS, true)
+            end
+        end
+    end
+  mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Rotgut.OnCache)
+
 end
 
 return Rotgut

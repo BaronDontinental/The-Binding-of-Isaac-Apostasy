@@ -44,7 +44,7 @@ function Upchuck:postUpdate()
                             local roll = 1
                             if roll <= UpFlags.Up_CHANCE then
                                 TearData.UpType = math.random(1)
-                                if TearData.UpType == 1 then                            
+                                if TearData.UpType == 1 then                          
                                     Tear:SetColor(Color(0.0, 1.0, 0.0, 1.0, 0, 0, 0), 100, 100, false, false)
                                     Tear.TearFlags = Tear.TearFlags | UpFlags.TEARFLAG
                                     TearData.RotSize = 50

@@ -25,7 +25,7 @@
           portrait="PlayerPortrait_Isaac.png" skinColor="-1"
 		  birthright="Desire" />	 
 		  
-	<player id="24" name="L24_Wrath" skin="Character_024_Wrath.png" hp="4" items="" bombs="1"
+	<player id="24" name="L24_Wrath" skin="Character_024_Wrath.png" hp="4" items="" bombs="10"
           nameimage="PlayerName_024_wrathl.png" 
           portrait="PlayerPortrait_Isaac.png" skinColor="-1"
 		  birthright="Destroy" />	 

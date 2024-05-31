@@ -187,6 +187,9 @@ function L20_Pride:postUpdate()
       pool:RemoveCollectible(CollectibleType.COLLECTIBLE_TROPICAMIDE)
       pool:RemoveCollectible(CollectibleType.COLLECTIBLE_MEAT)
       pool:RemoveCollectible(CollectibleType.COLLECTIBLE_SPEED_BALL)
+      pool:RemoveCollectible(CollectibleType.COLLECTIBLE_WOODEN_SPOON)
+      pool:RemoveCollectible(CollectibleType.COLLECTIBLE_MINI_MUSH)
+      pool:RemoveCollectible(CollectibleType.COLLECTIBLE_MAGIC_MUSHROOM)
       end
     end
     mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, L20_Pride.PlayerInit)
