@@ -94,7 +94,7 @@ function L22_Gluttony:postUpdate()
     end
     
   end
-  mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, L22_Gluttony)
+  mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L22_Gluttony)
 
 end
 
