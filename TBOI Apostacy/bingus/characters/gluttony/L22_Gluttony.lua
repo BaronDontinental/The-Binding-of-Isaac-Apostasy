@@ -12,6 +12,7 @@ local L22_GluttonyStats = {
   MAXFIREDELAY = 0,
   TEARHEIGHT = 0,
   TEARFALLINGSPEED = 0,
+  TEARSOFFSET = Vector(-1, -10),
   TEARFLAG = TearFlags,
   Flying = false,
   LUCK = 0,
@@ -70,9 +71,10 @@ function L22_Gluttony:postUpdate()
 
   function L22_Gluttony:OnUpdate()
     local player = Isaac.GetPlayer(0)
-
+    if player:GetPlayerType() ~= GluttonyType then
+      return
+    end
     if (Game:GetFrameCount() == 1 and player:GetName() == "L22_Gluttony") then
-      
     end
   end
   mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L22_Gluttony.OnUpdate)
@@ -84,6 +86,19 @@ function L22_Gluttony:postUpdate()
     end
     player:EvaluateItems()
     player:AddCacheFlags(CacheFlag.CACHE_FLYING)
+
+    --the for loop section is not working
+    for _, entity in pairs(Isaac.GetRoomEntities()) do
+      if entity.Type == EntityType.ENTITY_LASER then
+          local LaserData = entity:GetData()
+          local Laser = entity:ToLaser()
+            if entity.parent == player then
+              Laser.ParentOffset = L22_GluttonyStats.TEARSOFFSET
+            end
+      end
+    end
+
+
     if player.CanFly == true then
       player.CanFly = false
     end
