@@ -26,7 +26,6 @@ function Trench_Foot:postUpdate()
     end
 mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Trench_Foot.onUpdate)
 
----@param Creep EntityEffect
     function Trench_Foot:onEffect(Creep)
         local sprite = Creep:GetSprite()
         local player = Isaac.GetPlayer(0)

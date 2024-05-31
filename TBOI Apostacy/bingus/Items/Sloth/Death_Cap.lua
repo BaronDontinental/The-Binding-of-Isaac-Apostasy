@@ -7,7 +7,6 @@ local numyes = 0
 local num = 0
 
 function Death_Cap:postUpdate()
----@param player EntityPlayer
     function Death_Cap:onUpdate(player)
         if player:HasCollectible(CollectibleType.COLLECTIBLE_DEATH_CAP) then
             player:EvaluateItems()
