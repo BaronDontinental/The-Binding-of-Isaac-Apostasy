@@ -87,11 +87,12 @@ function L22_Gluttony:postUpdate()
     if player.CanFly == true then
       player.CanFly = false
     end
-    if player.velocity ~= Vector(0,0) then
-      player:SetCanShoot(false)
-    else
-      player:SetCanShoot(true)
-    end
+        if Input.IsButtonPressed(Keyboard.KEY_W, 0) or Input.IsButtonPressed(Keyboard.KEY_A, 0) 
+        or Input.IsButtonPressed(Keyboard.KEY_S, 0) or Input.IsButtonPressed(Keyboard.KEY_D, 0) then
+          player:SetCanShoot(false)
+        else
+          player:SetCanShoot(true)
+      end
     
   end
   mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L22_Gluttony.PeUpdate)
