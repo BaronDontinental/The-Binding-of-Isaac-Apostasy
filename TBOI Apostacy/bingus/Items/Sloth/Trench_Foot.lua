@@ -4,6 +4,7 @@ local game = Game()
 mod.COLLECTIBLE_TRENCH_FOOT = Isaac.GetItemIdByName("Trench Foot")
 CollectibleType.COLLECTIBLE_TRENCH_FOOT = Isaac.GetItemIdByName("Trench Foot")
 
+local creep
 local Trench = {
     Size1 = .75,
     Size2 = 1,

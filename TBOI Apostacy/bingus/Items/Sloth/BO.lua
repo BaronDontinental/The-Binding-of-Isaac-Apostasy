@@ -5,6 +5,7 @@ mod.COLLECTIBLE_BO = Isaac.GetItemIdByName("BO")
 CollectibleType.COLLECTIBLE_BO = Isaac.GetItemIdByName("BO")
 local numyes = 0
 local num = 0
+local stink
 function BO:postUpdate()
     function BO:onUpdate(player)
         if player:HasCollectible(CollectibleType.COLLECTIBLE_BO) then
