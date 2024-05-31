@@ -41,12 +41,19 @@ function L22_Gluttony:postUpdate()
       if (cacheFlag == CacheFlag.CACHE_LUCK) then
         player.Luck = player.Luck + L22_GluttonyStats.LUCK
       end
-      if (cacheFlag == CacheFlag.CACHE_TEARCOLOR) then
+      --[[if (cacheFlag == CacheFlag.CACHE_TEARCOLOR) then
         player.TearColor = L22_GluttonyStats.TEARCOLOR
       end
-      --[[if (cacheFlag == CacheFlag.CACHE_TEARFLAG) then
+      if (cacheFlag == CacheFlag.CACHE_TEARFLAG) then
         player.TearFlags = player.TearFlags | L22_GluttonyStats.TEARFLAG
       end ]]
+      if (cacheFlag == CacheFlag.CACHE_WEAPON) then
+        player.EnableWeaponType(player, WeaponType.WEAPON_BRIMSTONE, true)
+        player.EnableWeaponType(player, WeaponType.WEAPON_TEARS, false)
+      end
+      if (cacheFlag == CacheFlag.CACHE_FLYING) then
+        player.CanFly = false
+      end
     end
   end
 
@@ -65,12 +72,29 @@ function L22_Gluttony:postUpdate()
     local player = Isaac.GetPlayer(0)
 
     if (Game:GetFrameCount() == 1 and player:GetName() == "L22_Gluttony") then
-      player:AddCard(math.random(1, 54))
       
     end
   end
-
   mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L22_Gluttony.OnUpdate)
+
+
+  function L22_Gluttony:PeUpdate(player)
+    if player:GetPlayerType() ~= GluttonyType then
+      return
+    end
+    player:EvaluateItems()
+    player:AddCacheFlags(CacheFlag.CACHE_FLYING)
+    if player.CanFly == true then
+      player.CanFly = false
+    end
+    if player.velocity ~= Vector(0,0) then
+      player:SetCanShoot(false)
+    else
+      player:SetCanShoot(true)
+    end
+    
+  end
+  mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, L22_Gluttony)
 
 end
 
