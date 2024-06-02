@@ -38,12 +38,12 @@ function L21_Envy:postUpdate()
             if(cacheFlag == CacheFlag.CACHE_LUCK) then
               player.Luck = player.Luck + L21_EnvyStats.LUCK
             end
-            if(cacheFlag == CacheFlag.CACHE_TEARCOLOR) then
+            --[[if(cacheFlag == CacheFlag.CACHE_TEARCOLOR) then
               player.TearColor = L21_EnvyStats.TEARCOLOR
             end
             if(cacheFlag == CacheFlag.CACHE_TEARFLAG) then
               player.TearFlags = player.TearFlags | L21_EnvyStats.TEARFLAG
-            end
+            end]]
         end
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L21_Envy.OnCache)

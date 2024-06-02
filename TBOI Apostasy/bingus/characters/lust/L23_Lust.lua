@@ -38,12 +38,12 @@ function L23_Lust:postUpdate()
             if(cacheFlag == CacheFlag.CACHE_LUCK) then
               player.Luck = player.Luck + L23_LustStats.LUCK
             end
-            if(cacheFlag == CacheFlag.CACHE_TEARCOLOR) then
-              player.TearColor = L23_LustStats.TEARCOLOR
-            end
-            if(cacheFlag == CacheFlag.CACHE_TEARFLAG) then
-              player.TearFlags = player.TearFlags | L23_LustStats.TEARFLAG
-            end
+            --if(cacheFlag == CacheFlag.CACHE_TEARCOLOR) then
+              --player.TearColor = L23_LustStats.TEARCOLOR
+            --end
+            --if(cacheFlag == CacheFlag.CACHE_TEARFLAG) then
+              --player.TearFlags = player.TearFlags | L23_LustStats.TEARFLAG
+            --end
         end
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L23_Lust.OnCache)
