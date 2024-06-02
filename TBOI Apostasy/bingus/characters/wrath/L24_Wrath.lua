@@ -3,7 +3,7 @@ local Game = Game()
 local WrathGuy = Isaac.GetPlayerTypeByName("L24_Wrath", false)
 
 local L24_WrathStats = {
-    DAMAGE = 1,
+    DAMAGE = 15,
     SPEED = -0,
     SHOTSPEED = 0,
     MAXFIREDELAY = 0,
@@ -12,8 +12,8 @@ local L24_WrathStats = {
     --TEARFLAG = TearFlags,
     Flying = false,
     LUCK = 0,
-    TEARCOLOR = Color(0, 0, 0, 0, 0, 0, 0)
-    
+    TEARCOLOR = Color(0, 0, 0, 0, 0, 0, 0),
+    BOMBPERSIST = 60
 }
 local count
 local HasBombs = nil
@@ -24,7 +24,7 @@ function L24_Wrath:postUpdate()
 
         if(player:GetName() == "L24_Wrath") then
             if(cacheFlag == CacheFlag.CACHE_DAMAGE) then
-              player.Damage = player.Damage + L24_WrathStats.DAMAGE
+              player.Damage = (player.Damage * 10) + L24_WrathStats.DAMAGE
             end
             if(cacheFlag == CacheFlag.CACHE_SPEED) then
               player.MoveSpeed = player.MoveSpeed + L24_WrathStats.SPEED
@@ -55,6 +55,7 @@ function L24_Wrath:postUpdate()
         end
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L24_Wrath.OnCache)
+    local bomb
     function L24_Wrath:OnUpdate()
         local player = Isaac.GetPlayer(0)
 
@@ -68,22 +69,26 @@ function L24_Wrath:postUpdate()
           for _, entity in ipairs(entities) do
             local data = entity:GetData() 
             TempBombParam = entity:ToNPC()
+            Bombinfo = entity:ToBomb()
+            if Bombinfo then
+              Bombinfo.ExplosionDamage = 0 + player.Damage
+            end
             if TempBombParam and TempBombParam:IsEnemy() then
               if TempBombParam:IsDead() and not data.Died then
                 data.Died = true
-                Isaac.Spawn(
+                bomb = Isaac.Spawn(
                   EntityType.ENTITY_PICKUP,
                   PickupVariant.PICKUP_BOMB,
                   BombSubType.BOMB_NORMAL,
                   TempBombParam.Position,
                   TempBombParam.Velocity,
-                  nil)
+                  player):ToPickup()
+                  bomb:Morph(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_BOMB, BombSubType.BOMB_NORMAL, false, true, true)
+                  bomb.Timeout = L24_WrathStats.BOMBPERSIST
+                  bomb:Update()
               end
             end
           end
-
-          -- use morph command to set the ingore modifiers of the bombs to make it so that items wont turn it into another pickup or whatever.  
-
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L24_Wrath.OnUpdate)
 
