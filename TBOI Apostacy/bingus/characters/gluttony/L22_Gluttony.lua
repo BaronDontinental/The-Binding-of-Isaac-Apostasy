@@ -92,7 +92,7 @@ function L22_Gluttony:postUpdate()
       if entity.Type == EntityType.ENTITY_LASER then
           local LaserData = entity:GetData()
           local Laser = entity:ToLaser()
-            if entity.parent == player then
+            if entity.Parent == player then
               Laser.ParentOffset = L22_GluttonyStats.TEARSOFFSET
             end
       end
