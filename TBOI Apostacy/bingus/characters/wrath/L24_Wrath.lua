@@ -81,6 +81,9 @@ function L24_Wrath:postUpdate()
               end
             end
           end
+
+          -- use morph command to set the ingore modifiers of the bombs to make it so that items wont turn it into another pickup or whatever.  
+
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L24_Wrath.OnUpdate)
 
