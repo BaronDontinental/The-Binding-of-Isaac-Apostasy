@@ -6,8 +6,8 @@ local GluttonyBod = Isaac.GetCostumeIdByPath("gfx/characters/character_l22_glutt
 local GluttonyType = Isaac.GetPlayerTypeByName("L22_Gluttony", false)
 
 local L22_GluttonyStats = {
-  DAMAGE = 1,
-  SPEED = -0,
+  DAMAGE = 0,
+  SPEED = -0.20,
   SHOTSPEED = 0,
   MAXFIREDELAY = 0,
   TEARHEIGHT = 0,
