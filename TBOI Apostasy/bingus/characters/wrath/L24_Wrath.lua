@@ -42,12 +42,6 @@ function L24_Wrath:postUpdate()
             if(cacheFlag == CacheFlag.CACHE_LUCK) then
               player.Luck = player.Luck + L24_WrathStats.LUCK
             end
-            --[[if(cacheFlag == CacheFlag.CACHE_TEARCOLOR) then
-              player.TearColor = L24_WrathStats.TEARCOLOR
-            end
-            if(cacheFlag == CacheFlag.CACHE_TEARFLAG) then
-              player.TearFlags = player.TearFlags | L24_WrathStats.TEARFLAG
-            end]]
             if (cacheFlag == CacheFlag.CACHE_WEAPON) then
               player.EnableWeaponType(player, WeaponType.WEAPON_BOMBS, true)
               player.EnableWeaponType(player, WeaponType.WEAPON_TEARS, false)
@@ -60,7 +54,7 @@ function L24_Wrath:postUpdate()
         local player = Isaac.GetPlayer(0)
 
         if(Game:GetFrameCount() == 1 and player:GetName() == "L24_Wrath") then
-            --player:AddBombs(9)
+          --player:AddPill()
         end
         if player:GetPlayerType() ~= WrathGuy then
           return

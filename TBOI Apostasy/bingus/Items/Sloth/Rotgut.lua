@@ -30,6 +30,8 @@ function Rotgut:postUpdate()
         local player = Isaac.GetPlayer(0)
         local copyCount = player:GetCollectibleNum(CollectibleType.COLLECTIBLE_ROTGUT)
         local Weapon = Isaac.GetPlayer(0):GetWeapon(1)
+        player:EvaluateItems()
+        player:AddCacheFlags(CacheFlag.CACHE_WEAPON)
         -- player.FireDelay = player.MaxFireDelay (stops firing)
 
         if copyCount > 0 then
