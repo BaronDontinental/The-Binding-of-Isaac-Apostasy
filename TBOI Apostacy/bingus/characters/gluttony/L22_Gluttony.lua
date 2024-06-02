@@ -1,5 +1,5 @@
 local L22_Gluttony = {}
-local Game = Game()
+local game = Game()
 local sfx = SFXManager()
 
 local GluttonyBod = Isaac.GetCostumeIdByPath("gfx/characters/character_l22_gluttony.anm2")
@@ -12,7 +12,10 @@ local L22_GluttonyStats = {
   MAXFIREDELAY = 0,
   TEARHEIGHT = 0,
   TEARFALLINGSPEED = 0,
-  TEARSOFFSET = Vector(-1, -10),
+  TEARSOFFSETD = Vector(1, 11),
+  TEARSOFFSETU = Vector(1, 15),
+  TEARSOFFSETL = Vector(17, 15),
+  TEARSOFFSETR = Vector(-17, 15),
   TEARFLAG = TearFlags,
   Flying = false,
   LUCK = 0,
@@ -53,7 +56,11 @@ function L22_Gluttony:postUpdate()
         player.EnableWeaponType(player, WeaponType.WEAPON_TEARS, false)
       end
       if (cacheFlag == CacheFlag.CACHE_FLYING) then
-        player.CanFly = false
+        if player:HasCollectible(CollectibleType.COLLECTIBLE_DOGMA) and game:GetLevel():GetStage() == LevelStage.STAGE8 then
+          player.CanFly = true
+        else 
+          player.CanFly = false
+        end
       end
     end
   end
@@ -74,7 +81,7 @@ function L22_Gluttony:postUpdate()
     if player:GetPlayerType() ~= GluttonyType then
       return
     end
-    if (Game:GetFrameCount() == 1 and player:GetName() == "L22_Gluttony") then
+    if (game:GetFrameCount() == 1 and player:GetName() == "L22_Gluttony") then
     end
   end
   mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L22_Gluttony.OnUpdate)
@@ -86,28 +93,35 @@ function L22_Gluttony:postUpdate()
     end
     player:EvaluateItems()
     player:AddCacheFlags(CacheFlag.CACHE_FLYING)
+    
 
-    --the for loop section is not working
-    for _, entity in pairs(Isaac.GetRoomEntities()) do
-      if entity.Type == EntityType.ENTITY_LASER then
-          local LaserData = entity:GetData()
-          local Laser = entity:ToLaser()
-            if entity.Parent == player then
-              Laser.ParentOffset = L22_GluttonyStats.TEARSOFFSET
-            end
+    if player:GetFireDirection() == Direction.RIGHT then
+      player.TearsOffset = L22_GluttonyStats.TEARSOFFSETR
+    end
+      if player:GetFireDirection() == Direction.LEFT then
+        player.TearsOffset = L22_GluttonyStats.TEARSOFFSETL
       end
+        if player:GetFireDirection() == Direction.DOWN then
+          player.TearsOffset = L22_GluttonyStats.TEARSOFFSETD
+        end
+          if player:GetFireDirection() == Direction.UP then
+            player.TearsOffset = L22_GluttonyStats.TEARSOFFSETU
+          end
+
+    if player:HasCollectible(CollectibleType.COLLECTIBLE_DOGMA) and game:GetLevel():GetStage() == LevelStage.STAGE8 then 
+      player.CanFly = true
+      else
+        if player.CanFly == true then
+          player.CanFly = false
+        end
     end
 
-
-    if player.CanFly == true then
-      player.CanFly = false
-    end
-        if Input.IsButtonPressed(Keyboard.KEY_W, 0) or Input.IsButtonPressed(Keyboard.KEY_A, 0) 
-        or Input.IsButtonPressed(Keyboard.KEY_S, 0) or Input.IsButtonPressed(Keyboard.KEY_D, 0) then
+    if Input.IsButtonPressed(Keyboard.KEY_W, 0) or Input.IsButtonPressed(Keyboard.KEY_A, 0) 
+      or Input.IsButtonPressed(Keyboard.KEY_S, 0) or Input.IsButtonPressed(Keyboard.KEY_D, 0) then
           player:SetCanShoot(false)
-        else
-          player:SetCanShoot(true)
-      end
+    else
+        player:SetCanShoot(true)
+    end
     
   end
   mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L22_Gluttony.PeUpdate)
