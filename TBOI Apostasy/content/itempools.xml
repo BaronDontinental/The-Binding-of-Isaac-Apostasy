@@ -11,7 +11,7 @@
 <!--__________________________________________________-->
     <Pool Name="shop">
         <Item Name="Moar" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
-
+        <Item Name="Trench Foot" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="boss">
