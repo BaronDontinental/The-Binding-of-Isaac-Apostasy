@@ -4,7 +4,7 @@ local LustGuy = Isaac.GetPlayerTypeByName("L23_Lust", false)
 EffectVariant.CHARMCLOUD = Isaac.GetEntityVariantByName("Charm Cloud")
 
 local L23_LustStats = {
-    DAMAGE = 1,
+    DAMAGE = 0.375,
     SPEED = -0,
     SHOTSPEED = 0,
     MAXFIREDELAY = 0,
@@ -22,7 +22,7 @@ function L23_Lust:postUpdate()
 
         if(player:GetName() == "L23_Lust") then
             if(cacheFlag == CacheFlag.CACHE_DAMAGE) then
-              player.Damage = player.Damage + L23_LustStats.DAMAGE
+              player.Damage = (player.Damage * 0.75) + L23_LustStats.DAMAGE
             end
             if(cacheFlag == CacheFlag.CACHE_SPEED) then
               player.MoveSpeed = player.MoveSpeed + L23_LustStats.SPEED
@@ -53,7 +53,7 @@ function L23_Lust:postUpdate()
         local player = Isaac.GetPlayer(0)
 
         if(Game:GetFrameCount() == 1 and player:GetName() == "L23_Lust") then
-            player:AddCard(math.random(1, 54)) 
+            --player:AddCard(math.random(1, 54)) 
         end
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L23_Lust.OnUpdate)
