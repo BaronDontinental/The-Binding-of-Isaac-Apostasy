@@ -49,6 +49,15 @@
         <preload-snd id="12" /> <!--sound-->
     </entity>
 
+<!--Effects-->
+    <entity anm2path="charm_cloud_lust.anm2" collisionDamage="" 
+    collisionMass="0" collisionRadius="1" friction="1" 
+    id="1000" name="Charm Cloud" numGridCollisionPoints="0" shadowSize="0" stageHP="0" 
+    subtype="0" variant="2000">
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
+    </entity>
+
+
 
 
 </entities>

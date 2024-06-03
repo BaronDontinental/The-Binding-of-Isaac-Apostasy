@@ -1,5 +1,7 @@
 local L23_Lust = {}
 local Game = Game()
+local LustGuy = Isaac.GetPlayerTypeByName("L23_Lust", false)
+EffectVariant.CHARMCLOUD = Isaac.GetEntityVariantByName("Charm Cloud")
 
 local L23_LustStats = {
     DAMAGE = 1,
@@ -51,10 +53,61 @@ function L23_Lust:postUpdate()
         local player = Isaac.GetPlayer(0)
 
         if(Game:GetFrameCount() == 1 and player:GetName() == "L23_Lust") then
-            player:AddCard(math.random(1, 54))
+            player:AddCard(math.random(1, 54)) 
         end
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L23_Lust.OnUpdate)
+
+    local aura = false
+    local cloud
+
+    function L23_Lust:PeUpdate(player)
+      if player:GetPlayerType() ~= LustGuy then
+        return
+      end
+      local spawnpos = player.Position
+      if not aura then
+        cloud = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CHARMCLOUD, 0, spawnpos, Vector.Zero, player):ToEffect()
+        cloud:FollowParent(player)
+        cloud.SpriteOffset = Vector(0, -20)
+        cloud.IsFollowing = true
+        cloud:Update()
+      end
+      if cloud:Exists() then
+        aura = true
+      else
+        aura = false
+      end
+    end
+  mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L23_Lust.PeUpdate)
+
+  function L23_Lust:EUpdate(CloudL)
+  local player = Isaac.GetPlayer(0)
+  if player:GetPlayerType() ~= LustGuy then
+    return
+  end
+  local sprite = CloudL:GetSprite()
+  local data = CloudL:GetData()
+  data.CharmBlacklist = {}
+  local spawnpos = player.Position
+  local poggers = EntityRef(player)
+  local capsule = CloudL:GetNullCapsule("capsule")
+    for _, entity in ipairs(Isaac.FindInCapsule(capsule, EntityPartition.ENEMY)) do
+      local hit = entity:GetData()
+      if entity:IsVulnerableEnemy() and entity:IsActiveEnemy() then
+          entity:AddCharmed(poggers, 90)
+          entity:TakeDamage(.25, 0, poggers, 50)
+      end
+      if entity:IsVulnerableEnemy() and entity:IsActiveEnemy() and not hit.Charmed then
+        local roll = math.random(1, 100)
+        hit.Charmed = true
+        if roll >= 90 then
+          local fly = Isaac.Spawn(EntityType.ENTITY_FAMILIAR, FamiliarVariant.WISP, 0, spawnpos, Vector.Zero, player):ToFamiliar()
+        end
+      end
+    end
+  end
+  mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, L23_Lust.EUpdate, EffectVariant.CHARMCLOUD)
 end
 
 return L23_Lust

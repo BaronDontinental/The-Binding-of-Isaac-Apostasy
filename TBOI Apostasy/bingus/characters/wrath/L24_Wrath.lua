@@ -67,7 +67,7 @@ function L24_Wrath:postUpdate()
             if Bombinfo then
               Bombinfo.ExplosionDamage = 0 + player.Damage
             end
-            if TempBombParam and TempBombParam:IsEnemy() then
+            if TempBombParam and TempBombParam:IsEnemy() and TempBombParam:IsActiveEnemy(true) then
               if TempBombParam:IsDead() and not data.Died then
                 data.Died = true
                 bomb = Isaac.Spawn(
