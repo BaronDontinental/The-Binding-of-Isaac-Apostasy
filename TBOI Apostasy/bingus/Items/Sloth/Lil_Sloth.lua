@@ -18,6 +18,8 @@ local SLOTH_COOLDOWN = 40
 local SlothCount = 0
 
 function Lil_Sloth:postUpdate()
+    
+---@param player EntityPlayer
     function Lil_Sloth:OnCache(player)
         local effect = player:GetEffects()
         local count = effect:GetCollectibleEffectNum(CollectibleType.COLLECTIBLE_LIL_SLOTH) + player:GetCollectibleNum(CollectibleType.COLLECTIBLE_LIL_SLOTH)
@@ -28,11 +30,13 @@ function Lil_Sloth:postUpdate()
     end
 mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Lil_Sloth.OnCache, CacheFlag.CACHE_FAMILIARS) 
 
+---@param familiar EntityFamiliar
     function Lil_Sloth:init(familiar)
         familiar:AddToFollowers() 
     end
 mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, Lil_Sloth.init, FamiliarVariant.LIL_SLOTH)
 
+---@param familiar EntityFamiliar
     function Lil_Sloth:UpdateFam(familiar)
         local sprite = familiar:GetSprite()
         local player = familiar.Player
