@@ -16,8 +16,8 @@
         tags="" gfx="Trench_Foot.png" quality="1" />
     <trinket id="6" name="Active Carbos" description="Bottle of Boom" cache=""
         tags="" gfx="Active_Carbos.png" quality="1" />
-    <familiar id="7" name="Lil' Sloth" description="Sloppy Friend" cache=""
-        tags="" gfx="Lil_Sloth.png" quality="1" />
+    <familiar id="7" name="Lil' Sloth" description="Sloppy Friend" cache="familiars"
+        tags="baby offensive summonable monstermanual" gfx="Lil_Sloth.png" quality="1" />
     <trinket id="8" name="Puzzle Cube" description="" cache=""
         tags="" gfx="Puzzle_Cube.png" quality="1" />
     <passive id="9" name="BO" description="You smell terrible." cache=""
