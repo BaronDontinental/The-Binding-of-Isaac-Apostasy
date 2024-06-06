@@ -6,7 +6,7 @@ CollectibleType.COLLECTIBLE_LIL_SLOTH = Isaac.GetItemIdByName("Lil' Sloth")
 FamiliarVariant.LIL_SLOTH = Isaac.GetEntityVariantByName("LIL_SLOTH")
 
 local itemconfig = Isaac.GetItemConfig()
-local CONFIG_LILSLOTH = Isaac:GetItemConfig():GetCollectible(CollectibleType.COLLECTIBLE_LIL_SLOTH)
+local CONFIG_LILSLOTH = Isaac.GetItemConfig():GetCollectible(CollectibleType.COLLECTIBLE_LIL_SLOTH)
 
 local SHOOTING_TICK_COOLDOWN = 10
 local TEAR_SPEED =10
@@ -18,82 +18,63 @@ local SLOTH_COOLDOWN = 40
 local SlothCount = 0
 
 function Lil_Sloth:postUpdate()
-    --[[function Lil_Sloth:OnCache(player)
+    function Lil_Sloth:OnCache(player)
         local effect = player:GetEffects()
-        local count = effect:GetCollectibleNum(CollectibleType.COLLECTIBLE_LIL_SLOTH) + player:GetCollectibleNum(CollectibleType.COLLECTIBLE_LIL_SLOTH)
+        local count = effect:GetCollectibleEffectNum(CollectibleType.COLLECTIBLE_LIL_SLOTH) + player:GetCollectibleNum(CollectibleType.COLLECTIBLE_LIL_SLOTH)
         local rng = RNG()
         local seed = math.max(Random(), 1)
         rng:SetSeed(seed, 35)
-
-        player:Checkfamiliar(FamiliarVariant.LIL_SLOTH, count, rng, CONFIG_LILSLOTH)
+        player:CheckFamiliar(FamiliarVariant.LIL_SLOTH, count, rng, CONFIG_LILSLOTH)
     end
-mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Lil_Sloth.OnCache, CacheFlag.CACHE_FAMILIARS) ]]
+mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Lil_Sloth.OnCache, CacheFlag.CACHE_FAMILIARS) 
 
-
-
-   --[[ local function SpawnFollower(Type, player)
-        return Isaac.Spawn(EntityType.ENTITY_FAMILIAR, Type, 0, player.Position, Vector(0,0), player):ToFamiliar()
+    function Lil_Sloth:init(familiar)
+        familiar:AddToFollowers() 
     end
-    local function RealignFamiliars()
-        local Caboose = nil
-        for _, entity in pairs(Isaac.GetRoomEntities()) do
-            if entity.Type == EntityType.ENTITY_FAMILIAR and entity.Child == nil then
-                if Caboose == nil then
-                    Caboose = entity
-                else
-                    if Caboose.FrameCount < entity.FrameCount then
-                        Caboose.Parent = entity
-                        entity.Child = Caboose
-                    else
-                        Caboose.Child = entity
-                        entity.Parent = Caboose
-                    end
-                end
-            end
+mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, Lil_Sloth.init, FamiliarVariant.LIL_SLOTH)
+
+    function Lil_Sloth:UpdateFam(familiar)
+        local sprite = familiar:GetSprite()
+        local player = familiar.Player
+        local firedirection = player:GetFireDirection()
+        local direction
+        local shootanm
+        local doFlip = false
+
+        if firedirection == Direction.LEFT then
+            direction = Vector(-1, 0)
+            shootanm = "FloatShootSide"
+            doFlip = true
+        elseif firedirection == Direction.RIGHT then
+            direction = Vector(1, 0)
+            shootanm = "FloatShootSide"
+        elseif firedirection == Direction.DOWN then
+            direction = Vector(0,1)
+            shootanm = "FloatShootDowm"
+        elseif firedirection == Direction.UP then
+            direction = Vector(0, -1)
+            shootanm = "FloatShootUp"
         end
-    end 
-    -- Turns out that stuff up top isnt needed anymore ig...
-    function Lil_Sloth:FamInit(Sloth)
-        local data = Sloth:GetData()
-        if data.Charge == nil then data.Charge = 0 end
-        if data.Cooldown == nil then data.Cooldown = 0 end
-        Sloth.IsFollower = true
-    end
-mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, Lil_Sloth.FamInit, FamiliarVariant.LIL_SLOTH)
 
-    function Lil_Sloth:FamUpdate(Sloth)
-        local player = Isaac.GetPlayer(0)
-        local data = Sloth:GetData()
-        if data.Charge == nil then data.Charge = 0 end
-        if data.Cooldown == nil then data.Cooldown = 0 end
-        local FireDir = player:GetFireDirection()
-        local MoveDir = player:GetMovementDirection()
-        if FireDir == Direction.NO_DIRECTION or data.Cooldown > 0 then
+        if direction ~= nil and familiar.FireCooldown == 0 then
+            local velocity = direction * TEAR_SPEED + player:GetTearMovementInheritance(direction)
+            local tear = Isaac.Spawn(EntityType.ENTITY_TEAR, TearVariant.BLOOD, 0, familiar.Position, velocity, familiar):ToTear()
+            tear.TearFlags = TearFlags.TEAR_EXPLOSIVE
+            tear.CollisionDamage = TEAR_DAMAGE
+            familiar.FireCooldown = SHOOTING_TICK_COOLDOWN
+            tear.Color = Color(0, 1.0, 0, 1.0, 0, 0, 0)
 
+            sprite.FlipX = doFlip
+            sprite:Play(shootanm, true)
         end
-        Sloth:FollowParent()
-    end
-mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Lil_Sloth.FamUpdate, FamiliarVariant.LIL_SLOTH)
 
-
-    function Lil_Sloth:OnCache(player, cacheFlag)
-        if cacheFlag == CacheFlag.CACHE_FAMILIARS then
-            for _, entity in pairs(Isaac.GetRoomEntities()) do
-                if entity.Type == EntityType.ENTITY_FAMILIAR and entity.Variant == FamiliarVariant.LIL_SLOTH then
-                    SlothCount = SlothCount + 1
-                end
-            end
-            while player:GetCollectibleNum(CollectibleType.COLLECTIBLE_LIL_SLOTH) > SlothCount do
-                SpawnFollower(FamiliarVariant.LIL_SLOTH, player)
-                SlothCount = SlothCount + 1
-            end
+        if sprite:IsFinished() then
+            sprite:Play("FloatDown")
         end
+        familiar:FollowParent()
+        familiar.FireCooldown = math.max(familiar.FireCooldown - 1, 0)
     end
-mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Lil_Sloth.OnCache) ]]
-
-
-
-
+mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Lil_Sloth.UpdateFam, FamiliarVariant.LIL_SLOTH)
 end
 
 return Lil_Sloth
