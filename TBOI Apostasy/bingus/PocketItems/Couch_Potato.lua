@@ -69,11 +69,10 @@ mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Couch_Potato.OnUpdate)
             if index <= #RuneChance then
                 return CustomRunes[index]
             end
-        elseif bPlaying then
-            local player = Isaac.GetPlayer(0)
-            Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, iCurrentCard, player.Position, Vector.Zero, player)
+        --elseif bPlaying then
+            --local player = Isaac.GetPlayer(0)
+            --Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, iCurrentCard, player.Position, Vector.Zero, player)
         end
-
     end
 mod:AddCallback(ModCallbacks.MC_GET_CARD, Couch_Potato.onCard)
 
