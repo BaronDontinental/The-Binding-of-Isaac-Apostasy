@@ -20,7 +20,7 @@ local SlothCount = 0
 function Lil_Sloth:postUpdate()
     
 ---@param player EntityPlayer
-    function Lil_Sloth:OnCache(player)
+    --[[function Lil_Sloth:OnCache(player)
         local effect = player:GetEffects()
         local count = effect:GetCollectibleEffectNum(CollectibleType.COLLECTIBLE_LIL_SLOTH) + player:GetCollectibleNum(CollectibleType.COLLECTIBLE_LIL_SLOTH)
         local rng = RNG()
@@ -78,7 +78,7 @@ mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, Lil_Sloth.init, FamiliarVariant.L
         familiar:FollowParent()
         familiar.FireCooldown = math.max(familiar.FireCooldown - 1, 0)
     end
-mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Lil_Sloth.UpdateFam, FamiliarVariant.LIL_SLOTH)
+mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Lil_Sloth.UpdateFam, FamiliarVariant.LIL_SLOTH)]]
 end
 
 return Lil_Sloth

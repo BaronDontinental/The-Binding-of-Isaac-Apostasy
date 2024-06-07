@@ -1,5 +1,9 @@
 local L21_Envy = {}
 local Game = Game()
+CollectibleType.COLLECTIBLE_ENVYORBIT = Isaac.GetItemIdByName("Envy Orbit")
+local CONFIG_ENVYORBIT = Isaac.GetItemConfig():GetCollectible(CollectibleType.COLLECTIBLE_ENVYORBIT)
+FamiliarVariant.ENVY_ORBIT = Isaac.GetEntityVariantByName("Envy Orbit")
+
 
 local L21_EnvyStats = {
     DAMAGE = 1,
@@ -13,6 +17,7 @@ local L21_EnvyStats = {
     LUCK = 0,
     TEARCOLOR = Color(0, 0, 0, 0, 0, 0, 0)
 }
+local orbitCount = 1
 
 function L21_Envy:postUpdate()
     function L21_Envy:OnCache(player, cacheFlag)
@@ -47,11 +52,28 @@ function L21_Envy:postUpdate()
         end
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L21_Envy.OnCache)
+
+    --[[function L21_Envy:OnCache2(player)
+      if(player:GetName() == "L21_Envy") then
+        local count = 1
+        local rng = RNG()
+        local seed = math.max(Random(), 1)
+        rng:SetSeed(seed, 35)
+        player:CheckFamiliar(FamiliarVariant.ENVY_ORBIT, count, rng, CONFIG_ENVYORBIT)
+      end
+  end
+mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L21_Envy.OnCache2, CacheFlag.CACHE_FAMILIARS)
+
+---@param familiar EntityFamiliar
+function L21_Envy:init(familiar)
+  familiar:AddToOrbit(1) 
+end
+mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, L21_Envy.init, FamiliarVariant.ENVY_ORBIT)]]
+
     function L21_Envy:OnUpdate()
         local player = Isaac.GetPlayer(0)
 
         if(Game:GetFrameCount() == 1 and player:GetName() == "L21_Envy") then
-            player:AddCard(math.random(1, 54))
         end
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L21_Envy.OnUpdate)

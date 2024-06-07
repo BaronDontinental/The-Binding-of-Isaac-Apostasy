@@ -176,6 +176,8 @@
         tags="" maxcharges="4" gfx="Weighted_Dice.png" quality="1" />
         <!--Achievement oohwahh-->
         <!--Achievement oohwahh-->
+    <familiar name="Envy Orbit" description="WHAT" cache="familiars"
+        tags="" gfx="Envy_Orbit.png" quality="1" />
 
 <!--_____________________________________________________________________________________-->
     <!--THIS MARKS THE END OF THE NORMAL CHARACTERS ITEMS-->
