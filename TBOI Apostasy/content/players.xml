@@ -20,7 +20,7 @@
           portrait="PlayerPortrait_Isaac.png" skinColor="1" costumeSuffix="gluttonyl"
 		  birthright="Gobble" /> 
 		  
-	<player id="23" name="L23_Lust" skin="Character_023_Lust.png" hp="4" costume="Character_023_Lustslumps.png" items="" bombs="1"
+	<player id="23" name="L23_Lust" skin="Character_023_Lust.png" hp="4" items="" bombs="1"
           nameimage="PlayerName_023_lustl.png" 
           portrait="PlayerPortrait_Isaac.png" skinColor="-1" costumeSuffix="lustl"
 		  birthright="Desire" />	 
