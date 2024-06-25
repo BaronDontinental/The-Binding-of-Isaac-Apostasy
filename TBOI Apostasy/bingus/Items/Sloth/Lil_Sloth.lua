@@ -3,15 +3,16 @@ local game = Game()
 
 mod.COLLECTIBLE_LIL_SLOTH = Isaac.GetItemIdByName("Lil' Sloth")
 CollectibleType.COLLECTIBLE_LIL_SLOTH = Isaac.GetItemIdByName("Lil' Sloth")
-FamiliarVariant.LIL_SLOTH = Isaac.GetEntityVariantByName("LIL_SLOTH")
+FAMILIAR_SLOTH_VARIANT = Isaac.GetEntityVariantByName("LIL_SLOTH")
 
 local itemconfig = Isaac.GetItemConfig()
 local CONFIG_LILSLOTH = Isaac.GetItemConfig():GetCollectible(CollectibleType.COLLECTIBLE_LIL_SLOTH)
 
-local SHOOTING_TICK_COOLDOWN = 10
+local SHOOTING_TICK_COOLDOWN = 45
 local TEAR_SPEED =10
 local TEAR_SCALE = 0.8
 local TEAR_DAMAGE = 3
+local RNG_SHIFT_INDEX = 35
 
 
 local SLOTH_COOLDOWN = 40
@@ -20,13 +21,13 @@ local SlothCount = 0
 function Lil_Sloth:postUpdate()
     
 ---@param player EntityPlayer
-    --[[function Lil_Sloth:OnCache(player)
+    function Lil_Sloth:OnCache(player)
         local effect = player:GetEffects()
         local count = effect:GetCollectibleEffectNum(CollectibleType.COLLECTIBLE_LIL_SLOTH) + player:GetCollectibleNum(CollectibleType.COLLECTIBLE_LIL_SLOTH)
         local rng = RNG()
         local seed = math.max(Random(), 1)
-        rng:SetSeed(seed, 35)
-        player:CheckFamiliar(FamiliarVariant.LIL_SLOTH, count, rng, CONFIG_LILSLOTH)
+        rng:SetSeed(seed, RNG_SHIFT_INDEX)
+        player:CheckFamiliar(FAMILIAR_SLOTH_VARIANT, count, rng, CONFIG_LILSLOTH)
     end
 mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Lil_Sloth.OnCache, CacheFlag.CACHE_FAMILIARS) 
 
@@ -34,7 +35,7 @@ mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Lil_Sloth.OnCache, CacheFlag.CAC
     function Lil_Sloth:init(familiar)
         familiar:AddToFollowers() 
     end
-mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, Lil_Sloth.init, FamiliarVariant.LIL_SLOTH)
+mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, Lil_Sloth.init, FAMILIAR_SLOTH_VARIANT)
 
 ---@param familiar EntityFamiliar
     function Lil_Sloth:UpdateFam(familiar)
@@ -78,7 +79,7 @@ mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, Lil_Sloth.init, FamiliarVariant.L
         familiar:FollowParent()
         familiar.FireCooldown = math.max(familiar.FireCooldown - 1, 0)
     end
-mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Lil_Sloth.UpdateFam, FamiliarVariant.LIL_SLOTH)]]
+mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Lil_Sloth.UpdateFam, FAMILIAR_SLOTH_VARIANT)
 end
 
 return Lil_Sloth
