@@ -1,8 +1,6 @@
 local L21_Envy = {}
 local Game = Game()
 
-CollectibleType.COLLECTIBLE_ENVYORBIT = Isaac.GetItemIdByName("Envy Orbit")
-local CONFIG_ENVYORBIT = Isaac.GetItemConfig():GetCollectible(CollectibleType.COLLECTIBLE_ENVYORBIT)
 FAMILIAR_ENVY_ORBIT = Isaac.GetEntityVariantByName("ENVY_ORBIT")
 
 local EnvyGuy = Isaac.GetPlayerTypeByName("L21_Envy", false)
@@ -19,9 +17,26 @@ local L21_EnvyStats = {
     LUCK = 0,
     TEARCOLOR = Color(0, 0, 0, 0, 0, 0, 0)
 }
-local dmgCount = 0
-local orbitCount = 0
 local RNG_SHIFT_INDEX = 35
+local fam = {
+  dmgCount = 0,
+  hitChance = 1,
+  CloseOrbitCount = 0,
+  CloseOrbitUpgrade1 = 0,
+  CloseOrbitUpgrade2 = 0,
+  chance = 10,
+  tryspawn = false,
+  Close1 = 0,
+  Close2 = 0,
+  Close3 = 0,
+  Far1 = 0,
+  Far2 = 0,
+  Far3 = 0,
+  ZigZag1 = 0,
+  ZigZag2 = 0,
+  ZigZag3 = 0
+  
+}
 
 function L21_Envy:postUpdate()
     function L21_Envy:OnCache(player, cacheFlag)
@@ -60,10 +75,78 @@ function L21_Envy:postUpdate()
       if player:GetPlayerType() ~= EnvyGuy then
         return
       end
-      print(orbitCount)
-      if dmgCount == 3 then
-        dmgCount = dmgCount - 3
-        orbitCount = orbitCount + 1
+      if fam.dmgCount == 1 then
+        fam.hitChance = fam.hitChance + 1
+        fam.dmgCount = fam.dmgCount - 1
+          local roll = math.random(100)
+          if roll <= (fam.chance * fam.hitChance) then
+            fam.hitChance = -1
+            fam.tryspawn = true
+          end
+      end
+
+      if fam.tryspawn then
+        fam.tryspawn = false
+        local EnvyFamType = math.random(3)
+          if EnvyFamType == 1 then
+            fam.Close1 = fam.Close1 + 1
+            if fam.Close1 == 1 then
+              fam.CloseOrbitCount = fam.CloseOrbitCount + 1
+              elseif fam.Close1 == 2 then
+                fam.CloseOrbitCount = fam.CloseOrbitCount - 1
+                fam.CloseOrbitUpgrade1 = fam.CloseOrbitUpgrade1 + 1
+                elseif fam.Close1 == 3 then
+                  fam.CloseOrbitUpgrade1 = fam.CloseOrbitUpgrade1 - 1
+                  fam.CloseOrbitUpgrade2 = fam.CloseOrbitUpgrade2 + 1
+                  elseif fam.Close1 >= 4 then
+                    fam.tryspawn = true
+                  end
+          elseif EnvyFamType == 2 then
+            fam.Close2 = fam.Close2 + 1
+            if fam.Close2 == 1 then
+              fam.CloseOrbitCount = fam.CloseOrbitCount + 1
+              elseif fam.Close2 == 2 then
+                fam.CloseOrbitCount = fam.CloseOrbitCount - 1
+                fam.CloseOrbitUpgrade1 = fam.CloseOrbitUpgrade1 + 1
+                elseif fam.Close2 == 3 then
+                  fam.CloseOrbitUpgrade1 = fam.CloseOrbitUpgrade1 - 1
+                  fam.CloseOrbitUpgrade2 = fam.CloseOrbitUpgrade2 + 1
+                  elseif fam.Close2 >= 4 then
+                    fam.tryspawn = true
+                  end
+          elseif EnvyFamType == 3 then
+            fam.Close3 = fam.Close3 + 1
+            if fam.Close3 == 1 then
+              fam.CloseOrbitCount = fam.CloseOrbitCount + 1
+              elseif fam.Close3 == 2 then
+                fam.CloseOrbitCount = fam.CloseOrbitCount - 1
+                fam.CloseOrbitUpgrade1 = fam.CloseOrbitUpgrade1 + 1
+                elseif fam.Close3 == 3 then
+                  fam.CloseOrbitUpgrade1 = fam.CloseOrbitUpgrade1 - 1
+                  fam.CloseOrbitUpgrade2 = fam.CloseOrbitUpgrade2 + 1
+                  elseif fam.Close3 >= 4 then
+                    fam.tryspawn = true
+                  end
+
+          elseif EnvyFamType == 4 then
+            fam.Far1 = fam.Far1 + 1
+
+          elseif EnvyFamType == 5 then
+            fam.Far2 = fam.Far2 + 1
+
+          elseif EnvyFamType == 6 then
+            fam.Far3 = fam.Far3 + 1
+
+          elseif EnvyFamType == 7 then
+            fam.ZigZag1 = fam.ZigZag1 + 1
+
+          elseif EnvyFamType == 8 then
+            fam.ZigZag2 = fam.ZigZag2 + 1
+
+          elseif EnvyFamType == 9 then
+            fam.ZigZag3 = fam.ZigZag3 + 1
+
+          end
       end
       player:AddCacheFlags(CacheFlag.CACHE_FAMILIARS)
     end
@@ -74,7 +157,7 @@ function L21_Envy:postUpdate()
       if player:GetPlayerType() ~= EnvyGuy then
         return
       end
-      dmgCount = dmgCount + 1   
+      fam.dmgCount = fam.dmgCount + 1   
     end
     mod:AddCallback(ModCallbacks.MC_POST_ENTITY_TAKE_DMG, L21_Envy.DmgCheck, EntityType.ENTITY_PLAYER)  
 
@@ -83,7 +166,7 @@ function L21_Envy:postUpdate()
       local rng = RNG()
       local seed = math.max(Random(), 1)
       rng:SetSeed(seed, RNG_SHIFT_INDEX)
-      player:CheckFamiliar(FAMILIAR_ENVY_ORBIT, orbitCount, rng)
+      player:CheckFamiliar(FAMILIAR_ENVY_ORBIT, fam.CloseOrbitCount, rng)
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L21_Envy.ChacheFam, CacheFlag.CACHE_FAMILIARS) 
 
