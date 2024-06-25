@@ -42,9 +42,18 @@
 <entity anm2path="Lil_Sloth.anm2" id="3" name="LIL_SLOTH" tag="cansacrifice"
     shadowSize="11" friction="1" />
 
-<entity anm2path="Lil_Sloth.anm2" id="3" name="ENVY_ORBIT" 
+<entity anm2path="EnvyOrbitCloseV1.anm2" id="3" name="ENVY_ORBIT" 
     tag="cansacrifice" shadowSize="11" friction="1" 
-    collisionDamage="7" collisionInterval="7" collisionRadius="8" collisionMass="3"/>
+    collisionDamage="2" collisionInterval="7" collisionRadius="3" collisionMass="3"/>
+<entity anm2path="EnvyOrbitCloseV2.anm2" id="3" name="ENVY_ORBITV2" 
+    tag="cansacrifice" shadowSize="11" friction="1" 
+    collisionDamage="4" collisionInterval="7" collisionRadius="4" collisionMass="3"/>
+<entity anm2path="EnvyOrbitCloseV3.anm2" id="3" name="ENVY_ORBITV3" 
+    tag="cansacrifice" shadowSize="11" friction="1" 
+    collisionDamage="6" collisionInterval="7" collisionRadius="6" collisionMass="3"/>
+<entity anm2path="EnvyOrbitCloseV4.anm2" id="3" name="ENVY_ORBITV4" 
+    tag="cansacrifice" shadowSize="11" friction="1" 
+    collisionDamage="8" collisionInterval="7" collisionRadius="10" collisionMass="3"/>
 
 
 <!--Effects-->

@@ -2,6 +2,9 @@ local L21_Envy = {}
 local Game = Game()
 
 FAMILIAR_ENVY_ORBIT = Isaac.GetEntityVariantByName("ENVY_ORBIT")
+FAMILIAR_ENVY_ORBITV2 = Isaac.GetEntityVariantByName("ENVY_ORBITV2")
+FAMILIAR_ENVY_ORBITV3 = Isaac.GetEntityVariantByName("ENVY_ORBITV3")
+FAMILIAR_ENVY_ORBITV4 = Isaac.GetEntityVariantByName("ENVY_ORBITV4")
 
 local EnvyGuy = Isaac.GetPlayerTypeByName("L21_Envy", false)
 
@@ -24,6 +27,7 @@ local fam = {
   CloseOrbitCount = 0,
   CloseOrbitUpgrade1 = 0,
   CloseOrbitUpgrade2 = 0,
+  CloseOrbitUpgrade3 = 0,
   chance = 10,
   tryspawn = false,
   Close1 = 0,
@@ -98,9 +102,12 @@ function L21_Envy:postUpdate()
                 elseif fam.Close1 == 3 then
                   fam.CloseOrbitUpgrade1 = fam.CloseOrbitUpgrade1 - 1
                   fam.CloseOrbitUpgrade2 = fam.CloseOrbitUpgrade2 + 1
-                  elseif fam.Close1 >= 4 then
-                    fam.tryspawn = true
-                  end
+                  elseif fam.close1 == 4 then
+                    fam.CloseOrbitUpgrade2 = fam.CloseOrbitUpgrade2 - 1
+                    fam.CloseOrbitUpgrade3 = fam.CloseOrbitUpgrade3 + 1
+                    elseif fam.Close1 >= 5 then
+                      fam.tryspawn = true
+                    end
           elseif EnvyFamType == 2 then
             fam.Close2 = fam.Close2 + 1
             if fam.Close2 == 1 then
@@ -111,9 +118,12 @@ function L21_Envy:postUpdate()
                 elseif fam.Close2 == 3 then
                   fam.CloseOrbitUpgrade1 = fam.CloseOrbitUpgrade1 - 1
                   fam.CloseOrbitUpgrade2 = fam.CloseOrbitUpgrade2 + 1
-                  elseif fam.Close2 >= 4 then
-                    fam.tryspawn = true
-                  end
+                  elseif fam.close2 == 4 then
+                    fam.CloseOrbitUpgrade2 = fam.CloseOrbitUpgrade2 - 1
+                    fam.CloseOrbitUpgrade3 = fam.CloseOrbitUpgrade3 + 1
+                    elseif fam.Close2 >= 5 then
+                      fam.tryspawn = true
+                    end
           elseif EnvyFamType == 3 then
             fam.Close3 = fam.Close3 + 1
             if fam.Close3 == 1 then
@@ -124,10 +134,12 @@ function L21_Envy:postUpdate()
                 elseif fam.Close3 == 3 then
                   fam.CloseOrbitUpgrade1 = fam.CloseOrbitUpgrade1 - 1
                   fam.CloseOrbitUpgrade2 = fam.CloseOrbitUpgrade2 + 1
-                  elseif fam.Close3 >= 4 then
-                    fam.tryspawn = true
-                  end
-
+                  elseif fam.close3 == 4 then
+                    fam.CloseOrbitUpgrade2 = fam.CloseOrbitUpgrade2 - 1
+                    fam.CloseOrbitUpgrade3 = fam.CloseOrbitUpgrade3 + 1
+                    elseif fam.Close3 >= 5 then
+                      fam.tryspawn = true
+                    end
           elseif EnvyFamType == 4 then
             fam.Far1 = fam.Far1 + 1
 
@@ -167,6 +179,9 @@ function L21_Envy:postUpdate()
       local seed = math.max(Random(), 1)
       rng:SetSeed(seed, RNG_SHIFT_INDEX)
       player:CheckFamiliar(FAMILIAR_ENVY_ORBIT, fam.CloseOrbitCount, rng)
+      player:CheckFamiliar(FAMILIAR_ENVY_ORBITV2, fam.CloseOrbitUpgrade1, rng)
+      player:CheckFamiliar(FAMILIAR_ENVY_ORBITV3, fam.CloseOrbitUpgrade2, rng)
+      player:CheckFamiliar(FAMILIAR_ENVY_ORBITV4, fam.CloseOrbitUpgrade3, rng)
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L21_Envy.ChacheFam, CacheFlag.CACHE_FAMILIARS) 
 
@@ -175,6 +190,9 @@ function L21_Envy:postUpdate()
       familiar:AddToOrbit(0)
     end
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, L21_Envy.init, FAMILIAR_ENVY_ORBIT)
+    mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, L21_Envy.init, FAMILIAR_ENVY_ORBITV2)
+    mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, L21_Envy.init, FAMILIAR_ENVY_ORBITV3)
+    mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, L21_Envy.init, FAMILIAR_ENVY_ORBITV4)
 
     ---@param familiar EntityFamiliar
     function L21_Envy:UpdateFam(familiar)
@@ -187,13 +205,12 @@ function L21_Envy:postUpdate()
       end
       familiar:CanBlockProjectiles(true)
       familiar.OrbitDistance = Vector(20,20)
-      --familiar.OrbitSpeed = .05
       familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
-
-
-
     end
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_ORBIT)
+    mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_ORBITV2)
+    mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_ORBITV3)
+    mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_ORBITV4)
     function L21_Envy:OnUpdate()
         local player = Isaac.GetPlayer(0)
 
