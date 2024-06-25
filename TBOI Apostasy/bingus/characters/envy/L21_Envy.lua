@@ -328,7 +328,7 @@ function L21_Envy:postUpdate()
                     end
           end
       end
-      --player:AddCacheFlags(CacheFlag.CACHE_FAMILIARS)
+      player:AddCacheFlags(CacheFlag.CACHE_FAMILIARS)
     end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L21_Envy.EUpdate)
 
