@@ -42,6 +42,10 @@
 <entity anm2path="Lil_Sloth.anm2" id="3" name="LIL_SLOTH" tag="cansacrifice"
     shadowSize="11" friction="1" />
 
+<entity anm2path="Lil_Sloth.anm2" id="3" name="ENVY_ORBIT" 
+    tag="cansacrifice" shadowSize="11" friction="1" 
+    collisionDamage="7" collisionInterval="7" collisionRadius="8" collisionMass="3"/>
+
 
 <!--Effects-->
     <entity anm2path="charm_cloud_lust.anm2" collisionDamage="" 

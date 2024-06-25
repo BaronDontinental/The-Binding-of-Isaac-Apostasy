@@ -1,9 +1,11 @@
 local L21_Envy = {}
 local Game = Game()
+
 CollectibleType.COLLECTIBLE_ENVYORBIT = Isaac.GetItemIdByName("Envy Orbit")
 local CONFIG_ENVYORBIT = Isaac.GetItemConfig():GetCollectible(CollectibleType.COLLECTIBLE_ENVYORBIT)
-FamiliarVariant.ENVY_ORBIT = Isaac.GetEntityVariantByName("Envy Orbit")
+FAMILIAR_ENVY_ORBIT = Isaac.GetEntityVariantByName("ENVY_ORBIT")
 
+local EnvyGuy = Isaac.GetPlayerTypeByName("L21_Envy", false)
 
 local L21_EnvyStats = {
     DAMAGE = 1,
@@ -17,7 +19,9 @@ local L21_EnvyStats = {
     LUCK = 0,
     TEARCOLOR = Color(0, 0, 0, 0, 0, 0, 0)
 }
-local orbitCount = 1
+local dmgCount = 0
+local orbitCount = 0
+local RNG_SHIFT_INDEX = 35
 
 function L21_Envy:postUpdate()
     function L21_Envy:OnCache(player, cacheFlag)
@@ -52,24 +56,61 @@ function L21_Envy:postUpdate()
         end
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L21_Envy.OnCache)
-
-    --[[function L21_Envy:OnCache2(player)
-      if(player:GetName() == "L21_Envy") then
-        local count = 1
-        local rng = RNG()
-        local seed = math.max(Random(), 1)
-        rng:SetSeed(seed, 35)
-        player:CheckFamiliar(FamiliarVariant.ENVY_ORBIT, count, rng, CONFIG_ENVYORBIT)
+    function L21_Envy:EUpdate(player)
+      if player:GetPlayerType() ~= EnvyGuy then
+        return
       end
-  end
-mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L21_Envy.OnCache2, CacheFlag.CACHE_FAMILIARS)
+      print(orbitCount)
+      if dmgCount == 3 then
+        dmgCount = dmgCount - 3
+        orbitCount = orbitCount + 1
+      end
+      player:AddCacheFlags(CacheFlag.CACHE_FAMILIARS)
+    end
+    mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L21_Envy.EUpdate)
 
----@param familiar EntityFamiliar
-function L21_Envy:init(familiar)
-  familiar:AddToOrbit(1) 
-end
-mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, L21_Envy.init, FamiliarVariant.ENVY_ORBIT)]]
+    function L21_Envy:DmgCheck(entity, Dmg, DmgFlag, Source, CountDwn)
+      local player = Isaac.GetPlayer(0)
+      if player:GetPlayerType() ~= EnvyGuy then
+        return
+      end
+      dmgCount = dmgCount + 1   
+    end
+    mod:AddCallback(ModCallbacks.MC_POST_ENTITY_TAKE_DMG, L21_Envy.DmgCheck, EntityType.ENTITY_PLAYER)  
 
+  ---@param player EntityPlayer
+    function L21_Envy:ChacheFam(player)
+      local rng = RNG()
+      local seed = math.max(Random(), 1)
+      rng:SetSeed(seed, RNG_SHIFT_INDEX)
+      player:CheckFamiliar(FAMILIAR_ENVY_ORBIT, orbitCount, rng)
+    end
+    mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L21_Envy.ChacheFam, CacheFlag.CACHE_FAMILIARS) 
+
+    ---@param familiar EntityFamiliar
+    function L21_Envy:init(familiar)
+      familiar:AddToOrbit(0)
+    end
+    mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, L21_Envy.init, FAMILIAR_ENVY_ORBIT)
+
+    ---@param familiar EntityFamiliar
+    function L21_Envy:UpdateFam(familiar)
+      local sprite = familiar:GetSprite()
+      local player = familiar.Player
+      local direction
+
+      if sprite:IsFinished() then
+        sprite:Play("Float")
+      end
+      familiar:CanBlockProjectiles(true)
+      familiar.OrbitDistance = Vector(20,20)
+      --familiar.OrbitSpeed = .05
+      familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
+
+
+
+    end
+    mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_ORBIT)
     function L21_Envy:OnUpdate()
         local player = Isaac.GetPlayer(0)
 
