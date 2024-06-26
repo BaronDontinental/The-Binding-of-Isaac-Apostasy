@@ -89,6 +89,9 @@ function L21_Envy:postUpdate()
             if(cacheFlag == CacheFlag.CACHE_LUCK) then
               player.Luck = player.Luck + L21_EnvyStats.LUCK
             end
+            if (cacheFlag == CacheFlag.CACHE_FLYING) then
+              player.CanFly = true
+            end
             --[[if(cacheFlag == CacheFlag.CACHE_TEARCOLOR) then
               player.TearColor = L21_EnvyStats.TEARCOLOR
             end
@@ -103,7 +106,7 @@ function L21_Envy:postUpdate()
       if(Game:GetFrameCount() == 1) then
         fam = {
           dmgCount = 0,
-          hitChance = 1,
+          hitChance = 10,
           CloseOrbit1 = 0,
           CloseOrbit2 = 0,
           CloseOrbit3 = 0,
@@ -148,7 +151,7 @@ function L21_Envy:postUpdate()
       if fam.TrySpawn then
         fam.TryCount = 0
         fam.TrySpawn = false
-        local EnvyFamType = math.random(6)
+        local EnvyFamType = math.random(9)
           if EnvyFamType == 1 then
             fam.Close1 = fam.Close1 + 1
             if fam.Close1 == 1 then
@@ -336,6 +339,10 @@ function L21_Envy:postUpdate()
                     end
           end
       end
+      player:SetCanShoot(false)
+      if player.CanFly == false then
+        player.CanFly = true
+      end
       player:AddCacheFlags(CacheFlag.CACHE_FAMILIARS)
     end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L21_Envy.EUpdate)
@@ -416,19 +423,25 @@ function L21_Envy:postUpdate()
       end
       familiar:CanBlockProjectiles()
       if (familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV1 or familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV2 or
-        familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV3 or familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV3) then
-          familiar.OrbitDistance = Vector(20,20)
-          elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV1 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV2) then
-            familiar.OrbitDistance = Vector(50,50)
-            familiar.OrbitSpeed = .03
-            elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV3 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV4) then
-              familiar.OrbitDistance = Vector(75,75)
-              familiar.OrbitSpeed = .02
-              elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV5 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV6) then
-                familiar.OrbitDistance = Vector(100,100)
-                familiar.OrbitSpeed = .01
+          familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV3 or familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV3) then
+        familiar.OrbitDistance = Vector(20,20)
+        familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
+        elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV1 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV2) then
+          familiar.OrbitDistance = Vector(50,50)
+          familiar.OrbitSpeed = .03
+          familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
+          elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV3 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV4) then
+            familiar.OrbitDistance = Vector(75,75)
+            familiar.OrbitSpeed = .02
+            familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
+            elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV5 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV6) then
+              familiar.OrbitDistance = Vector(100,100)
+              familiar.OrbitSpeed = .01
+              familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
+              elseif (familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV1 or familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV2 or
+                      familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV3 or familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV4) then
+                familiar:MoveDiagonally(1)
       end
-      familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
     end
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_CLOSE_ORBITV1)
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_CLOSE_ORBITV2)
@@ -440,6 +453,10 @@ function L21_Envy:postUpdate()
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_FAR_ORBITV4)
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_FAR_ORBITV5)
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_FAR_ORBITV6)
+    mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_ZIG_ORBITV1)
+    mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_ZIG_ORBITV2)
+    mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_ZIG_ORBITV3)
+    mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_ZIG_ORBITV4)
 end
 
 return L21_Envy
