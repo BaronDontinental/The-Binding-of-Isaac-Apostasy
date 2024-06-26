@@ -118,7 +118,7 @@ function L21_Envy:postUpdate()
           ZigOrbit2 = 0,
           ZigOrbit3 = 0,
           ZigOrbit4 = 0,
-          chance = 10,
+          chance = 15,
           TrySpawn = false,
           Close1 = 0,
           Close2 = 0,
@@ -169,7 +169,8 @@ function L21_Envy:postUpdate()
                           return
                       end  
                     end
-          elseif EnvyFamType == 2 then
+          end
+          if EnvyFamType == 2 then
             fam.Close2 = fam.Close2 + 1
             if fam.Close2 == 1 then
               fam.CloseOrbit1 = fam.CloseOrbit1 + 1
@@ -189,7 +190,8 @@ function L21_Envy:postUpdate()
                           return
                       end  
                     end
-          elseif EnvyFamType == 3 then
+          end
+          if EnvyFamType == 3 then
             fam.Close3 = fam.Close3 + 1
             if fam.Close3 == 1 then
               fam.CloseOrbit1 = fam.CloseOrbit1 + 1
@@ -209,7 +211,8 @@ function L21_Envy:postUpdate()
                           return
                       end  
                     end
-          elseif EnvyFamType == 4 then
+          end
+          if EnvyFamType == 4 then
             fam.Far1 = fam.Far1 + 1
             if fam.Far1 == 1 then
               fam.FarOrbit3 = fam.FarOrbit3 + 1
@@ -228,7 +231,8 @@ function L21_Envy:postUpdate()
                           return
                       end  
                     end
-          elseif EnvyFamType == 5 then
+          end
+          if EnvyFamType == 5 then
             fam.Far2 = fam.Far2 + 1
             if fam.Far2 == 1 then
               fam.FarOrbit1 = fam.FarOrbit1 + 1
@@ -247,7 +251,8 @@ function L21_Envy:postUpdate()
                           return
                       end  
                     end
-          elseif EnvyFamType == 6 then
+          end
+          if EnvyFamType == 6 then
             fam.Far3 = fam.Far3 + 1
             if fam.Far3 == 1 then
               fam.FarOrbit5 = fam.FarOrbit5 + 1
@@ -266,7 +271,8 @@ function L21_Envy:postUpdate()
                           return
                       end  
                     end
-          elseif EnvyFamType == 7 then
+          end
+          if EnvyFamType == 7 then
             fam.ZigZag1 = fam.ZigZag1 + 1
             if fam.ZigZag1 == 1 then
               fam.ZigOrbit1 = fam.ZigOrbit1 + 1
@@ -286,7 +292,8 @@ function L21_Envy:postUpdate()
                           return
                       end  
                     end
-          elseif EnvyFamType == 8 then
+          end
+          if EnvyFamType == 8 then
             fam.ZigZag2 = fam.ZigZag2 + 1
             if fam.ZigZag2 == 1 then
               fam.ZigOrbit1 = fam.ZigOrbit1 + 1
@@ -306,7 +313,8 @@ function L21_Envy:postUpdate()
                           return
                       end  
                     end
-          elseif EnvyFamType == 9 then
+          end
+          if EnvyFamType == 9 then
             fam.ZigZag3 = fam.ZigZag3 + 1
             if fam.ZigZag3 == 1 then
               fam.ZigOrbit1 = fam.ZigOrbit1 + 1
@@ -412,13 +420,13 @@ function L21_Envy:postUpdate()
           familiar.OrbitDistance = Vector(20,20)
           elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV1 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV2) then
             familiar.OrbitDistance = Vector(50,50)
-            familiar.OrbitSpeed = .025
+            familiar.OrbitSpeed = .03
             elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV3 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV4) then
-              familiar.OrbitDistance = Vector(60,60)
+              familiar.OrbitDistance = Vector(75,75)
               familiar.OrbitSpeed = .02
               elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV5 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV6) then
-                familiar.OrbitDistance = Vector(75,75)
-                familiar.OrbitSpeed = .015
+                familiar.OrbitDistance = Vector(100,100)
+                familiar.OrbitSpeed = .01
       end
       familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
     end
