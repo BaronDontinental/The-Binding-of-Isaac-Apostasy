@@ -10,8 +10,8 @@
           portrait="PlayerPortrait_020_pridel.png" skinColor="5" costumeSuffix="pridel"
 		  birthright="Gloat" />
 		  
-	<player id="21" name="L21_Envy" skin="Character_021_Envy.png" hp="4" items="" bombs="1"
-          nameimage="PlayerName_021_envyl.png" 
+	<player id="21" name="L21_Envy" skin="Character_021_Envy.png" hp="6" items="" bombs="1"
+          nameimage="PlayerName_021_envyl.png" eternalheart="1"
           portrait="PlayerPortrait_Isaac.png" skinColor="-1"
 		  birthright="Wish" />	  
 	
