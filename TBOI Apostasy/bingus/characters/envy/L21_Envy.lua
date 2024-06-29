@@ -36,7 +36,7 @@ local RNG_SHIFT_INDEX = 35
 
 local fam = {
   dmgCount = 0,
-  hitChance = 1,
+  hitChance = 3,
   CloseOrbit1 = 0,
   CloseOrbit2 = 0,
   CloseOrbit3 = 0,
@@ -53,7 +53,7 @@ local fam = {
   ZigOrbit4 = 0,
   chance = 10,
   TrySpawn = false,
-  Close1 = 0,
+  Close1 = 1,
   Close2 = 0,
   Close3 = 0,
   Far1 = 0,
@@ -106,7 +106,7 @@ function L21_Envy:postUpdate()
       if(Game:GetFrameCount() == 1) then
         fam = {
           dmgCount = 0,
-          hitChance = 10,
+          hitChance = 3,
           CloseOrbit1 = 0,
           CloseOrbit2 = 0,
           CloseOrbit3 = 0,
@@ -123,7 +123,7 @@ function L21_Envy:postUpdate()
           ZigOrbit4 = 0,
           chance = 10,
           TrySpawn = false,
-          Close1 = 0,
+          Close1 = 1,
           Close2 = 0,
           Close3 = 0,
           Far1 = 0,
