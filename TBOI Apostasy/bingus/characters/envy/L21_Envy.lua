@@ -441,8 +441,7 @@ function L21_Envy:postUpdate()
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, L21_Envy.init, FAMILIAR_ENVY_FAR_ORBITV5)
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, L21_Envy.init, FAMILIAR_ENVY_FAR_ORBITV6)
 
-  ---@param familiar EntityFamiliar
-  ---@param player EntityPlayer
+  ---@param familiar EntityFamiliar 
     function L21_Envy:UpdateFam(familiar)
       local sprite = familiar:GetSprite()
       local player = familiar.Player
