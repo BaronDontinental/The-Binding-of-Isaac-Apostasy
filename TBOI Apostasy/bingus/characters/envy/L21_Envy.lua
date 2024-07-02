@@ -358,6 +358,9 @@ function L21_Envy:postUpdate()
 
   ---@param player EntityPlayer
     function L21_Envy:ChacheFam(player)
+    if player:GetPlayerType() ~= EnvyGuy then
+      return
+    end
       local rng = RNG()
       local seed = math.max(Random(), 1)
       rng:SetSeed(seed, RNG_SHIFT_INDEX)
