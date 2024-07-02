@@ -36,7 +36,7 @@ local RNG_SHIFT_INDEX = 35
 
 local fam = {
   dmgCount = 0,
-  hitChance = 1,
+  hitChance = 3,
   CloseOrbit1 = 0,
   CloseOrbit2 = 0,
   CloseOrbit3 = 0,
@@ -106,7 +106,7 @@ function L21_Envy:postUpdate()
       if(Game:GetFrameCount() == 1) then
         fam = {
           dmgCount = 0,
-          hitChance = 10,
+          hitChance = 3,
           CloseOrbit1 = 0,
           CloseOrbit2 = 0,
           CloseOrbit3 = 0,
