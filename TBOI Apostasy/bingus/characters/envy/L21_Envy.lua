@@ -442,6 +442,7 @@ function L21_Envy:postUpdate()
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, L21_Envy.init, FAMILIAR_ENVY_FAR_ORBITV6)
 
   ---@param familiar EntityFamiliar
+  ---@param player EntityPlayer
     function L21_Envy:UpdateFam(familiar)
       local sprite = familiar:GetSprite()
       local player = familiar.Player
@@ -461,16 +462,45 @@ function L21_Envy:postUpdate()
           familiar.OrbitSpeed = .03
           familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
           elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV3 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV4) then
-            familiar.OrbitDistance = Vector(75,75)
+            familiar.OrbitDistance = Vector(80,80)
             familiar.OrbitSpeed = -.02
             familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
             elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV5 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV6) then
-              familiar.OrbitDistance = Vector(100,100)
-              familiar.OrbitSpeed = .01
+              familiar.OrbitDistance = Vector(120,120)
+              familiar.OrbitSpeed = .02
               familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
               elseif (familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV1 or familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV2 or
                       familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV3 or familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV4) then
-                familiar:MoveDiagonally(1)
+                familiar:MoveDiagonally(1.25)
+      end
+      if familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV1 then
+        familiar.CollisionDamage = player.Damage
+        elseif familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV2 then
+          familiar.CollisionDamage = player.Damage * 2 
+          elseif familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV3 then
+            familiar.CollisionDamage = player.Damage * 3
+            elseif familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV4 then
+              familiar.CollisionDamage = player.Damage * 4
+              elseif familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV1 then
+                familiar.CollisionDamage = player.Damage / 3
+                elseif familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV2 then
+                  familiar.CollisionDamage = player.Damage * (2/3)
+                  elseif familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV3 then
+                    familiar.CollisionDamage = player.Damage * (2/3)
+                    elseif familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV4 then
+                      familiar.CollisionDamage = player.Damage * (4/3)
+                      elseif familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV5 then
+                        familiar.CollisionDamage = player.Damage
+                        elseif familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV6 then
+                          familiar.CollisionDamage = player.Damage * 2
+                          elseif familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV1 then
+                            familiar.CollisionDamage = player.Damage * 3
+                            elseif familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV2 then
+                              familiar.CollisionDamage = player.Damage * 6 
+                              elseif familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV3 then
+                                familiar.CollisionDamage = player.Damage * 9
+                                elseif familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV4 then
+                                  familiar.CollisionDamage = player.Damage * 12
       end
     end
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_CLOSE_ORBITV1)

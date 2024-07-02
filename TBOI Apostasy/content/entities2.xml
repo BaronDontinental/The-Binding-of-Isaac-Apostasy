@@ -44,48 +44,48 @@
 
 <entity anm2path="EnvyOrbitCloseV1.anm2" id="3" name="ENVY_CLOSE_ORBITV1" 
     tag="" shadowSize="11" friction="1" 
-    collisionDamage="2" collisionInterval="7" collisionRadius="3" collisionMass="3"/>
+    collisionDamage="2" collisionInterval="1" collisionRadius="3" collisionMass="3"/>
 <entity anm2path="EnvyOrbitCloseV2.anm2" id="3" name="ENVY_CLOSE_ORBITV2" 
     tag="" shadowSize="11" friction="1" 
-    collisionDamage="4" collisionInterval="7" collisionRadius="4" collisionMass="3"/>
+    collisionDamage="4" collisionInterval="1" collisionRadius="4" collisionMass="3"/>
 <entity anm2path="EnvyOrbitCloseV3.anm2" id="3" name="ENVY_CLOSE_ORBITV3" 
     tag="" shadowSize="11" friction="1" 
-    collisionDamage="6" collisionInterval="7" collisionRadius="6" collisionMass="3"/>
+    collisionDamage="6" collisionInterval="1" collisionRadius="6" collisionMass="3"/>
 <entity anm2path="EnvyOrbitCloseV4.anm2" id="3" name="ENVY_CLOSE_ORBITV4" 
     tag="" shadowSize="11" friction="1" 
-    collisionDamage="8" collisionInterval="7" collisionRadius="10" collisionMass="3"/>
+    collisionDamage="8" collisionInterval="1" collisionRadius="10" collisionMass="3"/>
 
-<entity anm2path="EnvyOrbitCloseV1.anm2" id="3" name="ENVY_FAR_ORBITV1" 
+<entity anm2path="EnvyOrbitFarV1.anm2" id="3" name="ENVY_FAR_ORBITV1" 
     tag="" shadowSize="11" friction="1" 
-    collisionDamage="2" collisionInterval="7" collisionRadius="3" collisionMass="3"/>
-<entity anm2path="EnvyOrbitCloseV2.anm2" id="3" name="ENVY_FAR_ORBITV2" 
+    collisionDamage="2" collisionInterval="1" collisionRadius="3" collisionMass="3"/>
+<entity anm2path="EnvyOrbitFarV2.anm2" id="3" name="ENVY_FAR_ORBITV2" 
     tag="" shadowSize="11" friction="1" 
-    collisionDamage="4" collisionInterval="7" collisionRadius="4" collisionMass="3"/>
-<entity anm2path="EnvyOrbitCloseV2.anm2" id="3" name="ENVY_FAR_ORBITV3" 
+    collisionDamage="4" collisionInterval="1" collisionRadius="4" collisionMass="3"/>
+<entity anm2path="EnvyOrbitFarV1.anm2" id="3" name="ENVY_FAR_ORBITV3" 
     tag="" shadowSize="11" friction="1" 
-    collisionDamage="6" collisionInterval="7" collisionRadius="6" collisionMass="3"/>
-<entity anm2path="EnvyOrbitCloseV3.anm2" id="3" name="ENVY_FAR_ORBITV4" 
+    collisionDamage="6" collisionInterval="1" collisionRadius="6" collisionMass="3"/>
+<entity anm2path="EnvyOrbitFarV2.anm2" id="3" name="ENVY_FAR_ORBITV4" 
     tag="" shadowSize="11" friction="1" 
-    collisionDamage="8" collisionInterval="7" collisionRadius="10" collisionMass="3"/>
-<entity anm2path="EnvyOrbitCloseV3.anm2" id="3" name="ENVY_FAR_ORBITV5" 
+    collisionDamage="8" collisionInterval="1" collisionRadius="10" collisionMass="3"/>
+<entity anm2path="EnvyOrbitFarV1.anm2" id="3" name="ENVY_FAR_ORBITV5" 
     tag="" shadowSize="11" friction="1" 
-    collisionDamage="6" collisionInterval="7" collisionRadius="6" collisionMass="3"/>
-<entity anm2path="EnvyOrbitCloseV4.anm2" id="3" name="ENVY_FAR_ORBITV6" 
+    collisionDamage="6" collisionInterval="1" collisionRadius="6" collisionMass="3"/>
+<entity anm2path="EnvyOrbitFarV2.anm2" id="3" name="ENVY_FAR_ORBITV6" 
     tag="" shadowSize="11" friction="1" 
-    collisionDamage="8" collisionInterval="7" collisionRadius="10" collisionMass="3"/>
+    collisionDamage="8" collisionInterval="1" collisionRadius="10" collisionMass="3"/>
 
-<entity anm2path="EnvyOrbitCloseV1.anm2" id="3" name="ENVY_ZIG_ORBITV1" 
+<entity anm2path="EnvyOrbitZigV1.anm2" id="3" name="ENVY_ZIG_ORBITV1" 
     tag="" shadowSize="11" friction="1" 
-    collisionDamage="2" collisionInterval="7" collisionRadius="3" collisionMass="3"/>
-<entity anm2path="EnvyOrbitCloseV2.anm2" id="3" name="ENVY_ZIG_ORBITV2" 
+    collisionDamage="2" collisionInterval="3" collisionRadius="3" collisionMass="3"/>
+<entity anm2path="EnvyOrbitZigV2.anm2" id="3" name="ENVY_ZIG_ORBITV2" 
     tag="" shadowSize="11" friction="1" 
-    collisionDamage="4" collisionInterval="7" collisionRadius="4" collisionMass="3"/>
-<entity anm2path="EnvyOrbitCloseV3.anm2" id="3" name="ENVY_ZIG_ORBITV3" 
+    collisionDamage="4" collisionInterval="3" collisionRadius="4" collisionMass="3"/>
+<entity anm2path="EnvyOrbitZigV3.anm2" id="3" name="ENVY_ZIG_ORBITV3" 
     tag="" shadowSize="11" friction="1" 
-    collisionDamage="6" collisionInterval="7" collisionRadius="6" collisionMass="3"/>
-<entity anm2path="EnvyOrbitCloseV4.anm2" id="3" name="ENVY_ZIG_ORBITV4" 
+    collisionDamage="6" collisionInterval="3" collisionRadius="6" collisionMass="3"/>
+<entity anm2path="EnvyOrbitZigV4.anm2" id="3" name="ENVY_ZIG_ORBITV4" 
     tag="" shadowSize="11" friction="1" 
-    collisionDamage="8" collisionInterval="7" collisionRadius="10" collisionMass="3"/>
+    collisionDamage="8" collisionInterval="3" collisionRadius="10" collisionMass="3"/>
 
 
 <!--Effects-->
