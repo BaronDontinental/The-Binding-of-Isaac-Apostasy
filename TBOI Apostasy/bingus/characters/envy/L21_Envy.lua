@@ -358,39 +358,6 @@ function L21_Envy:postUpdate()
 
   ---@param player EntityPlayer
     function L21_Envy:ChacheFam(player)
-      if player:GetPlayerType() ~= EnvyGuy then
-        fam = {
-          dmgCount = 0,
-          hitChance = 10,
-          CloseOrbit1 = 0,
-          CloseOrbit2 = 0,
-          CloseOrbit3 = 0,
-          CloseOrbit4 = 0,
-          FarOrbit1 = 0,
-          FarOrbit2 = 0,
-          FarOrbit3 = 0,
-          FarOrbit4 = 0,
-          FarOrbit5 = 0,
-          FarOrbit6 = 0,
-          ZigOrbit1 = 0,
-          ZigOrbit2 = 0,
-          ZigOrbit3 = 0,
-          ZigOrbit4 = 0,
-          chance = 10,
-          TrySpawn = false,
-          Close1 = 0,
-          Close2 = 0,
-          Close3 = 0,
-          Far1 = 0,
-          Far2 = 0,
-          Far3 = 0,
-          ZigZag1 = 0,
-          ZigZag2 = 0,
-          ZigZag3 = 0,
-          TryCount = 0
-          }
-        return
-      end
       local rng = RNG()
       local seed = math.max(Random(), 1)
       rng:SetSeed(seed, RNG_SHIFT_INDEX)
@@ -462,15 +429,15 @@ function L21_Envy:postUpdate()
           familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
           elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV3 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV4) then
             familiar.OrbitDistance = Vector(80,80)
-            familiar.OrbitSpeed = -.02
+            familiar.OrbitSpeed = -.025
             familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
             elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV5 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV6) then
               familiar.OrbitDistance = Vector(120,120)
-              familiar.OrbitSpeed = .02
+              familiar.OrbitSpeed = .015
               familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
               elseif (familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV1 or familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV2 or
                       familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV3 or familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV4) then
-                familiar:MoveDiagonally(1.25)
+                familiar:MoveDiagonally(1)
       end
       if familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV1 then
         familiar.CollisionDamage = player.Damage
