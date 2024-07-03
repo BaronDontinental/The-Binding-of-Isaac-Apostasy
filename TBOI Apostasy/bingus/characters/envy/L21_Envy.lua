@@ -450,17 +450,17 @@ function L21_Envy:postUpdate()
             elseif familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV4 then
               familiar.CollisionDamage = player.Damage * 4
               elseif familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV1 then
-                familiar.CollisionDamage = player.Damage / 3
+                familiar.CollisionDamage = player.Damage 
                 elseif familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV2 then
-                  familiar.CollisionDamage = player.Damage * (2/3)
+                  familiar.CollisionDamage = player.Damage * 2
                   elseif familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV3 then
-                    familiar.CollisionDamage = player.Damage * (2/3)
+                    familiar.CollisionDamage = player.Damage * (3/4)
                     elseif familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV4 then
-                      familiar.CollisionDamage = player.Damage * (4/3)
+                      familiar.CollisionDamage = player.Damage * (6/4)
                       elseif familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV5 then
-                        familiar.CollisionDamage = player.Damage
+                        familiar.CollisionDamage = player.Damage * (2/3)
                         elseif familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV6 then
-                          familiar.CollisionDamage = player.Damage * 2
+                          familiar.CollisionDamage = player.Damage * (4/3)
                           elseif familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV1 then
                             familiar.CollisionDamage = player.Damage * 3
                             elseif familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV2 then
