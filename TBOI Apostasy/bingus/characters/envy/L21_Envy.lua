@@ -138,9 +138,6 @@ function L21_Envy:postUpdate()
       if player:GetPlayerType() ~= EnvyGuy then
         return
       end 
-      if fam.Close1 == 1 then
-        fam.CloseOrbit1 = fam.CloseOrbit1 + 1
-      end
       if fam.dmgCount == 1 then
         fam.hitChance = fam.hitChance + 1
         fam.dmgCount = fam.dmgCount - 1
