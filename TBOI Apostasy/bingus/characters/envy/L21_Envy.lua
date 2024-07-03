@@ -105,7 +105,7 @@ function L21_Envy:postUpdate()
     function L21_Envy:EUpdate(player)
       if(Game:GetFrameCount() == 1) then
         fam = {
-          dmgCount = 1,
+          dmgCount = 0,
           hitChance = 15,
           CloseOrbit1 = 0,
           CloseOrbit2 = 0,
@@ -122,7 +122,7 @@ function L21_Envy:postUpdate()
           ZigOrbit3 = 0,
           ZigOrbit4 = 0,
           chance = 10,
-          TrySpawn = false,
+          TrySpawn = true,
           Close1 = 1,
           Close2 = 0,
           Close3 = 0,
