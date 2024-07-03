@@ -27,7 +27,7 @@
 		  
 	<player id="24" name="L24_Wrath" skin="Character_024_Wrath.png" hp="4" items="" bombs="10"
           nameimage="PlayerName_024_wrathl.png" 
-          portrait="PlayerPortrait_Isaac.png" skinColor="-1"
+          portrait="PlayerPortrait_Isaac.png" skinColor="-1" costumeSuffix="wrathl"
 		  birthright="Destroy" />	 
 		  
 <!-- Start Tainted Characters-->
