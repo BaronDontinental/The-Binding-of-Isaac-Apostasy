@@ -1,8 +1,8 @@
 local Lil_Sloth = {}
 local game = Game()
 
-mod.COLLECTIBLE_LIL_SLOTH = Isaac.GetItemIdByName("Lil' Sloth")
-CollectibleType.COLLECTIBLE_LIL_SLOTH = Isaac.GetItemIdByName("Lil' Sloth")
+mod.COLLECTIBLE_LIL_SLOTH = Isaac.GetItemIdByName("Lil Sloth")
+CollectibleType.COLLECTIBLE_LIL_SLOTH = Isaac.GetItemIdByName("Lil Sloth")
 FAMILIAR_SLOTH_VARIANT = Isaac.GetEntityVariantByName("LIL_SLOTH")
 
 local itemconfig = Isaac.GetItemConfig()

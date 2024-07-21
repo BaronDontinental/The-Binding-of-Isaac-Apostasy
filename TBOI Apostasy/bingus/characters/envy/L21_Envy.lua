@@ -426,7 +426,7 @@ function L21_Envy:postUpdate()
         familiar.OrbitDistance = Vector(20,20)
         familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
         elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV1 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV2) then
-          familiar.OrbitDistance = Vector(50,50)
+          familiar.OrbitDistance = Vector(55,55)
           familiar.OrbitSpeed = .03
           familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
           elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV3 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV4) then

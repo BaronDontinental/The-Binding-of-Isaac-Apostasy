@@ -16,7 +16,7 @@
         tags="" gfx="Trench_Foot.png" quality="1" />
     <trinket id="6" name="Active Carbos" description="Bottle of Boom" cache=""
         tags="" gfx="Active_Carbos.png" quality="1" />
-    <familiar id="7" name="Lil' Sloth" description="Sloppy Friend" cache="familiars"
+    <familiar id="7" name="Lil Sloth" description="Sloppy Friend" cache="familiars"
         tags="baby offensive summonable monstermanual" gfx="Lil_Sloth.png" quality="1" />
     <trinket id="8" name="Puzzle Cube" description="" cache=""
         tags="" gfx="Puzzle_Cube.png" quality="1" />
@@ -45,7 +45,7 @@
         tags="" gfx="Nitroglycerin.png" quality="1" />
     <trinket id="21" name="Message in a Bottle" description="Open it" cache=""
         tags="" gfx="Message_in_a_Bottle.png" quality="1" />
-    <familiar id="22" name="Lil' Lust" description="She just wants a hug"  cache=""
+    <familiar id="22" name="Lil Lust" description="She just wants a hug"  cache=""
         tags="" gfx="Lil_Lust.png" quality="1" />
         <!--4 Tile is in pocketitems.xml-->
     <trinket id="24" name="Stick of Deodorant" description="Smells good." cache=""
@@ -73,7 +73,7 @@
         tags="" gfx="Bowling_Bombs.png" quality="1" />
     <trinket id="36" name="Dud Bomb" description="" cache=""
         tags="" gfx="Dud_Bomb.png" quality="1" />
-    <familiar id="37" name="Lil' Wrath" description="" cache=""
+    <familiar id="37" name="Lil Wrath" description="" cache=""
         tags="" gfx="Lil_Wrath.png" quality="1" />
     <active id="38" name="Blank Tile" description="" cache=""
         tags="" maxcharges="12" gfx="Blank_Tile.png" quality="1" />
@@ -101,7 +101,7 @@
         tags="" gfx="Vox_Populi.png" quality="1" />
     <trinket id="51" name="Ginger Breadmund" description="Can't catch me!" cache=""
         tags="" gfx="Ginger_Breadmund.png" quality="1" />
-    <familiar id="52" name="Lil' Gluttony" description="Give him sustenance" cache=""
+    <familiar id="52" name="Lil Gluttony" description="Give him sustenance" cache=""
         tags="" gfx="Lil_Gluttony.png" quality="1" />
     <passive id="53" name="Cake?" description="It's a lie!" cache=""
         tags="" gfx="Cake.png" quality="1" />
@@ -130,7 +130,7 @@
         tags="" gfx="Salt_Lamp.png" quality="1" />
     <trinket id="66" name="Participation Award" description="I won, but at what cost" cache=""
         tags="" gfx="Participation_Award.png" quality="1" />
-    <familiar id="67" name="Lil' Pride" description="Don't let it go to your head" cache=""
+    <familiar id="67" name="Lil Pride" description="Don't let it go to your head" cache=""
         tags="" gfx="Lil_Pride.png" quality="1" />
     <trinket id="68" name="Just Cause" description="It was intentional" cache=""
         tags="" gfx="Just_Cause.png" quality="1" />
