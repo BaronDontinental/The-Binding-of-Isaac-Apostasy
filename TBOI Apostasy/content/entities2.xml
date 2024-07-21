@@ -41,6 +41,8 @@
 
 <entity anm2path="Lil_Sloth.anm2" id="3" name="LIL_SLOTH" tag="cansacrifice"
     shadowSize="11" friction="1" />
+<entity anm2path="Lil_Sloth.anm2" id="3" name="LIL_WRATH" tag="cansacrifice"
+    shadowSize="11" friction="1" />
 
 <entity anm2path="EnvyOrbitCloseV1.anm2" id="3" name="ENVY_CLOSE_ORBITV1" 
     tag="" shadowSize="11" friction="1" 
