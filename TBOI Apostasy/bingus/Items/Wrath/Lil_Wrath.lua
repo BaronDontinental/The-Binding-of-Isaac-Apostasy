@@ -51,7 +51,7 @@ mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, Lil_Wrath.init, FAMILIAR_LIL_WRAT
             shootanm = "FloatShootSide"
         elseif firedirection == Direction.DOWN then
             direction = Vector(0,1)
-            shootanm = "FloatShootDowm"
+            shootanm = "FloatShootDown"
         elseif firedirection == Direction.UP then
             direction = Vector(0, -1)
             shootanm = "FloatShootUp"
