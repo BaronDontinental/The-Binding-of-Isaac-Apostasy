@@ -7,6 +7,7 @@
         <Item Name="Trench Foot" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Death Cap" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Reeee!" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Lil Wrath" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="shop">
@@ -70,6 +71,7 @@
 <!--__________________________________________________-->
     <Pool Name="greedTreasure">
         <Item Name="Trench Foot" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Lil Wrath" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="greedBoss">
@@ -101,7 +103,7 @@
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="bombBum">
-        
+        <Item Name="Lil Wrath" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="planetarium">
