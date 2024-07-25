@@ -7,7 +7,7 @@ local GluttonyType = Isaac.GetPlayerTypeByName("L22_Gluttony", false)
 
 local L22_GluttonyStats = {
   DAMAGE = 0,
-  SPEED = -0.20,
+  SPEED = -0.15,
   SHOTSPEED = 0,
   MAXFIREDELAY = 0,
   TEARHEIGHT = 0,
