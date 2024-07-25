@@ -8,11 +8,12 @@
         <Item Name="Death Cap" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Reeee!" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Lil Wrath" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Lil Sloth" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="shop">
         <Item Name="Moar" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
-        <Item Name="Trench Foot" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="boss">
@@ -30,6 +31,7 @@
     <Pool Name="secret">
         <Item Name="Disability Papers" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Reeee!" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Death Cap" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="library">
@@ -72,6 +74,9 @@
     <Pool Name="greedTreasure">
         <Item Name="Trench Foot" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Lil Wrath" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Lil Sloth" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Death Cap" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Reeee!" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="greedBoss">
@@ -80,6 +85,7 @@
 <!--__________________________________________________-->
     <Pool Name="greedShop">
         <Item Name="Moar" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Rotgut" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="greedDevil">
@@ -115,7 +121,8 @@
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="babyShop">
-        
+        <Item Name="Lil Wrath" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Lil Sloth" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="woodenChest">
