@@ -62,8 +62,10 @@ local fam = {
   ZigZag1 = 0,
   ZigZag2 = 0,
   ZigZag3 = 0,
-  TryCount = 0
+  TryCount = 0,
+  RollCount = 0
 }
+local EnvyFamType
 
 function L21_Envy:postUpdate()
     function L21_Envy:OnCache(player, cacheFlag)
@@ -122,8 +124,8 @@ function L21_Envy:postUpdate()
           ZigOrbit3 = 0,
           ZigOrbit4 = 0,
           chance = 10,
-          TrySpawn = true,
-          Close1 = 1,
+          TrySpawn = false,
+          Close1 = 0,
           Close2 = 0,
           Close3 = 0,
           Far1 = 0,
@@ -132,7 +134,8 @@ function L21_Envy:postUpdate()
           ZigZag1 = 0,
           ZigZag2 = 0,
           ZigZag3 = 0,
-          TryCount = 0
+          TryCount = 0,
+          RollCount = 0
           }
       end
       if player:GetPlayerType() ~= EnvyGuy then
@@ -145,12 +148,17 @@ function L21_Envy:postUpdate()
           if roll <= (fam.chance * fam.hitChance) then
             fam.hitChance = -1
             fam.TrySpawn = true
+            fam.RollCount = fam.RollCount + 1
           end
       end
       if fam.TrySpawn then
         fam.TryCount = 0
         fam.TrySpawn = false
-        local EnvyFamType = math.random(9)
+        if fam.RollCount == 1 then
+          EnvyFamType = math.random(6)
+        else
+          EnvyFamType = math.random(9)
+        end
           if EnvyFamType == 1 then
             fam.Close1 = fam.Close1 + 1
             if fam.Close1 == 1 then
