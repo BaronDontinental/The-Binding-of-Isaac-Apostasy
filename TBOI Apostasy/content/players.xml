@@ -12,17 +12,17 @@
 		  
 	<player id="21" name="L21_Envy" skin="Character_021_Envy.png" hp="6" items="" bombs="1"
           nameimage="PlayerName_021_envyl.png" eternalheart="1"
-          portrait="PlayerPortrait_Isaac.png" skinColor="-1"
+          portrait="PlayerPortrait_021_envyl.png" skinColor="-1"
 		  birthright="Wish" />	  
 	
 	<player id="22" name="L22_Gluttony" skin="Character_022_Gluttony.png" hp="2" black="4" 
           nameimage="PlayerName_022_gluttonyl.png" 
-          portrait="PlayerPortrait_Isaac.png" skinColor="1" costumeSuffix="gluttonyl"
+          portrait="PlayerPortrait_Isaac.png" skinColor="-1" costumeSuffix="gluttonyl"
 		  birthright="Gobble" /> 
 		  
 	<player id="23" name="L23_Lust" skin="Character_023_Lust.png" hp="4" items="" bombs="1"
           nameimage="PlayerName_023_lustl.png" 
-          portrait="PlayerPortrait_Isaac.png" skinColor="-1" costumeSuffix="lustl"
+          portrait="PlayerPortrait_023_lustl.png" skinColor="-1" costumeSuffix="lustl"
 		  birthright="Desire" />	 
 		  
 	<player id="24" name="L24_Wrath" skin="Character_024_Wrath.png" hp="4" items="" bombs="10"
