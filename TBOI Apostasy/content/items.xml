@@ -8,7 +8,7 @@
 <!--_____________________________________________________________________________________-->
     <!--SLOTH ITEMS ZONE-->
     <familiar id="2" name="Slug" description="Ew" cache=""
-        tags="" gfx="Slug.png" quality="1" />
+        tags="baby" gfx="Slug.png" quality="1" />
         <!--Super sloth baby is in babies.xml-->
     <passive id="4" name="Rotgut" description="Bad Stash" cache=""
         tags="" gfx="Rotgut.png" quality="1" />
@@ -32,7 +32,7 @@
         tags="" gfx="Disability_Papers.png" quality="1" />
         <!--The idler is lost to the edmund lands maybe..-->
     <passive id="16" name="Death Cap" description="" cache=""
-        tags="" gfx="Death_Cap.png" quality="1" />
+        tags="mushroom" gfx="Death_Cap.png" quality="1" />
 
 <!--_____________________________________________________________________________________-->
     <!--LUST ITEMS ZONE-->
@@ -46,7 +46,7 @@
     <trinket id="21" name="Message in a Bottle" description="Open it" cache=""
         tags="" gfx="Message_in_a_Bottle.png" quality="1" />
     <familiar id="22" name="Lil Lust" description="She just wants a hug"  cache=""
-        tags="" gfx="Lil_Lust.png" quality="1" />
+        tags="baby" gfx="Lil_Lust.png" quality="1" />
         <!--4 Tile is in pocketitems.xml-->
     <trinket id="24" name="Stick of Deodorant" description="Smells good." cache=""
         tags="" gfx="Stick_of_Deodorant.png" />
@@ -74,7 +74,7 @@
     <trinket id="36" name="Dud Bomb" description="" cache=""
         tags="" gfx="Dud_Bomb.png" quality="1" />
     <familiar id="37" name="Lil Wrath" description="" cache=""
-        tags="" gfx="Lil_Wrath.png" quality="1" />
+        tags="baby" gfx="Lil_Wrath.png" quality="1" />
     <active id="38" name="Blank Tile" description="" cache=""
         tags="" maxcharges="12" gfx="Blank_Tile.png" quality="1" />
         <!--king of clubs is in the pocket items xml-->
@@ -100,9 +100,9 @@
     <passive id="50" name="Vox Populi" description="I feel bloated" cache=""
         tags="" gfx="Vox_Populi.png" quality="1" />
     <trinket id="51" name="Ginger Breadmund" description="Can't catch me!" cache=""
-        tags="" gfx="Ginger_Breadmund.png" quality="1" />
+        tags="baby" gfx="Ginger_Breadmund.png" quality="1" />
     <familiar id="52" name="Lil Gluttony" description="Give him sustenance" cache=""
-        tags="" gfx="Lil_Gluttony.png" quality="1" />
+        tags="baby" gfx="Lil_Gluttony.png" quality="1" />
     <passive id="53" name="Cake?" description="It's a lie!" cache=""
         tags="" gfx="Cake.png" quality="1" />
     <active id="54" name="Cake!" description="Make a wish!" cache=""
@@ -131,7 +131,7 @@
     <trinket id="66" name="Participation Award" description="I won, but at what cost" cache=""
         tags="" gfx="Participation_Award.png" quality="1" />
     <familiar id="67" name="Lil Pride" description="Don't let it go to your head" cache=""
-        tags="" gfx="Lil_Pride.png" quality="1" />
+        tags="baby" gfx="Lil_Pride.png" quality="1" />
     <trinket id="68" name="Just Cause" description="It was intentional" cache=""
         tags="" gfx="Just_Cause.png" quality="1" />
         <!--King of spades is in the pocket items xml-->
@@ -160,7 +160,7 @@
     <trinket id="81" name="Snake Eyes" description="" cache=""
         tags="" gfx="Snake_Eyes.png" quality="1" />
     <familiar id="82" name="Lil Envy" description="" cache=""
-        tags="" gfx="Lil_Envy.png" quality="1" />
+        tags="baby" gfx="Lil_Envy.png" quality="1" />
     <passive id="83" name="Yin-Yang" description="Some good in bad, Some bad in good" cache=""
         tags="" gfx="Yin_Yang.png" quality="1" />
     <passive id="84" name="Cold Shoulder" description="Silent Treatment" cache=""
