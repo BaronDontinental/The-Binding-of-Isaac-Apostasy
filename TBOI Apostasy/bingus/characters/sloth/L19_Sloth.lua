@@ -1,5 +1,7 @@
 local L19_Sloth = {}
 local Game = Game()
+local level = Game:GetLevel()
+local room = Game:GetRoom()
 
 local L19_SlothStats = {
     DAMAGE = 2.857,
@@ -13,6 +15,9 @@ local L19_SlothStats = {
     LUCK = 1,
     TEARCOLOR = Color(0, 1.0, 0, 1.0, 0, 0, 0)
 }
+
+local clearcount = 0
+local roomcount = 0
 
 function L19_Sloth:postUpdate()
     function L19_Sloth:OnCache(player, cacheFlag)
@@ -58,6 +63,25 @@ function L19_Sloth:postUpdate()
 
     function L19_Sloth:PEffect(player)
       if(player:GetName() == "L19_Sloth") then
+        if level:GetStage() == LevelStage.STAGE1_2 and level:GetStageType() == StageType.STAGETYPE_REPENTANCE_B then
+          roomcount = level:GetRoomCount() - 4
+          else
+            roomcount = level:GetRoomCount() - 3
+        end
+          for i = 7,0,-1 do
+            local door = room:GetDoor(i)
+            if door ~= nil then
+              if door:IsRoomType(RoomType.ROOM_BOSS) then
+                if roomcount >= clearcount then
+                  door:SetLocked(true)
+                  door:Close(true)
+                  door:Bar()
+                  door:Update()
+                else
+                end
+              end
+            end
+          end
         for _, entity in pairs(Isaac.GetRoomEntities()) do
           local data = entity:GetData()
           if entity.Type == EntityType.ENTITY_TEAR then
@@ -70,6 +94,24 @@ function L19_Sloth:postUpdate()
       end
     end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L19_Sloth.PEffect)
+
+
+    function L19_Sloth:NewRoom()
+      if room:IsFirstVisit() and room:IsClear() then
+        clearcount = clearcount + 1
+      end
+    end
+    mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, L19_Sloth.NewRoom)
+
+    function L19_Sloth:RoomClear(rng, spawn)
+      clearcount = clearcount + 1
+    end
+    mod:AddCallback(ModCallbacks.MC_PRE_SPAWN_CLEAN_AWARD, L19_Sloth.RoomClear)
+    
+    function L19_Sloth:NewLevel()
+      clearcount = 1
+    end
+    mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, L19_Sloth.NewLevel)
 
 end
 
