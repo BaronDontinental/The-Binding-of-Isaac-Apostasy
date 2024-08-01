@@ -2,6 +2,7 @@ local L19_Sloth = {}
 local Game = Game()
 local level = Game:GetLevel()
 local room = Game:GetRoom()
+local SlothGuy = Isaac.GetPlayerTypeByName("L19_Sloth", false)
 
 local L19_SlothStats = {
     DAMAGE = 2.857,
@@ -68,7 +69,9 @@ function L19_Sloth:postUpdate()
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L19_Sloth.OnUpdate)
 
     function L19_Sloth:PEffect(player)
-      if(player:GetName() == "L19_Sloth") then
+      if player:GetPlayerType() ~= SlothGuy then
+        return
+      end
         if level:GetStage() == LevelStage.STAGE1_2 and level:GetStageType() == StageType.STAGETYPE_REPENTANCE_B then
           roomcount = level:GetRoomCount() - 4
           else
@@ -103,7 +106,6 @@ function L19_Sloth:postUpdate()
           end
         end
       end
-    end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L19_Sloth.PEffect)
 
 
