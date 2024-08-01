@@ -70,7 +70,7 @@ function L19_Sloth:postUpdate()
             door:Bar()
             door:Update()
           end
-        end ]]
+        end ]] 
         for _, entity in pairs(Isaac.GetRoomEntities()) do
           local data = entity:GetData()
           if entity.Type == EntityType.ENTITY_TEAR then
