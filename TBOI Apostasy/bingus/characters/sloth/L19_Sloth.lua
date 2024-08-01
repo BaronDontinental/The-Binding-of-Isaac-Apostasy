@@ -13,7 +13,13 @@ local L19_SlothStats = {
     TEARFLAG = TearFlags.TEAR_EXPLOSIVE,
     Flying = false,
     LUCK = 1,
-    TEARCOLOR = Color(0, 1.0, 0, 1.0, 0, 0, 0)
+    TEARCOLOR = Color(0, 1.0, 0, 1.0, 0, 0, 0),
+    MIN_TIME = 300,
+    Up_CHANCE = 5,
+    SCALE_1 = 0.4,
+    SCALE_2 = 0.4,
+    FLY_1 = 20,
+    FLY_2 = 1.5
 }
 
 local clearcount = 0
@@ -85,9 +91,14 @@ function L19_Sloth:postUpdate()
         for _, entity in pairs(Isaac.GetRoomEntities()) do
           local data = entity:GetData()
           if entity.Type == EntityType.ENTITY_TEAR then
-            local tear = entity:ToTear()
+            local Tear = entity:ToTear()
+            local TearData = entity:GetData()
             if entity.Variant == TearVariant.BLUE then
-              tear:ChangeVariant(TearVariant.BLOOD)
+              Tear:ChangeVariant(TearVariant.BLOOD)
+              TearData.RotSize = 50
+              Tear.Height = Tear.Height * (L19_SlothStats.SCALE_1 + L19_SlothStats.SCALE_2 * (TearData.RotSize / 100))
+              Tear.FallingSpeed = player.TearFallingSpeed - (L19_SlothStats.FLY_1)
+              Tear.FallingAcceleration = player.TearFallingAcceleration + (L19_SlothStats.FLY_2)
             end
           end
         end
