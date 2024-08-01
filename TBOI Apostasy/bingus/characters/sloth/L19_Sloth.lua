@@ -25,6 +25,7 @@ local L19_SlothStats = {
 
 local clearcount = 0
 local roomcount = 0
+local sacrificecount = 0
 
 function L19_Sloth:postUpdate()
     function L19_Sloth:OnCache(player, cacheFlag)
@@ -113,6 +114,12 @@ function L19_Sloth:postUpdate()
       if room:IsFirstVisit() and room:IsClear() then
         clearcount = clearcount + 1
       end
+      if room:IsFirstVisit() and room:GetType() == RoomType.ROOM_SACRIFICE then
+        local Sspike = room:GetGridEntityFromPos(room:GetCenterPos())
+        print(Sspike:GetType())
+        Sspike:Destroy(true)
+        Isaac.GridSpawn(GridEntityType.GRID_SPIKES, 0, room:GetCenterPos(), true)
+      end
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, L19_Sloth.NewRoom)
 
@@ -125,6 +132,25 @@ function L19_Sloth:postUpdate()
       clearcount = 1
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, L19_Sloth.NewLevel)
+
+    function L19_Sloth:TakeDmg(entity, Amount, DamageFlags, Source, CountdownFrames)
+      local player = Isaac.GetPlayer(0)
+      if player:GetPlayerType() ~= SlothGuy then
+        return
+      end
+      if DamageFlags == DamageFlag.DAMAGE_SPIKES then
+        print("true")
+        if room:GetType() == RoomType.ROOM_SACRIFICE then
+            
+            sacrificecount = sacrificecount + 1
+            print(sacrificecount)
+            
+        end
+      end
+      
+
+    end
+    mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, L19_Sloth.TakeDmg, EntityType.ENTITY_PLAYER)
 
 end
 
