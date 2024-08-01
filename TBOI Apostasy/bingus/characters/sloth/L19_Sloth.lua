@@ -1,5 +1,7 @@
 local L19_Sloth = {}
 local Game = Game()
+local level = Game:GetLevel()
+local room = Game:GetRoom()
 
 local L19_SlothStats = {
     DAMAGE = 2.857,
@@ -58,6 +60,17 @@ function L19_Sloth:postUpdate()
 
     function L19_Sloth:PEffect(player)
       if(player:GetName() == "L19_Sloth") then
+        --[[local clear = level:GetRoomCount()
+        local door = room:GetDoor(DoorSlot.RIGHT0)
+        if door ~= nil then
+          if door:IsRoomType(RoomType.ROOM_BOSS) then
+            print("true")
+            door:SetLocked(true)
+            door:Close(true)
+            door:Bar()
+            door:Update()
+          end
+        end ]]
         for _, entity in pairs(Isaac.GetRoomEntities()) do
           local data = entity:GetData()
           if entity.Type == EntityType.ENTITY_TEAR then
