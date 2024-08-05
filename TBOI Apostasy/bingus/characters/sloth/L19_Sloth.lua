@@ -3,6 +3,8 @@ local Game = Game()
 local level = Game:GetLevel()
 local room = Game:GetRoom()
 local SlothGuy = Isaac.GetPlayerTypeByName("L19_Sloth", false)
+local sprite = Sprite()
+sprite:Load("gfx/1000.015_poof01.anm2", true)
 
 local L19_SlothStats = {
     DAMAGE = 2.857,
@@ -62,10 +64,6 @@ function L19_Sloth:postUpdate()
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L19_Sloth.OnCache)
     function L19_Sloth:OnUpdate()
         local player = Isaac.GetPlayer(0)
-
-        if(Game:GetFrameCount() == 1 and player:GetName() == "L19_Sloth") then
-            player:AddCard(math.random(1, 54))
-        end
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L19_Sloth.OnUpdate)
 
@@ -109,17 +107,10 @@ function L19_Sloth:postUpdate()
       end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L19_Sloth.PEffect)
 
-
     function L19_Sloth:NewRoom()
-      if room:IsFirstVisit() and room:IsClear() then
-        clearcount = clearcount + 1
-      end
-      if room:IsFirstVisit() and room:GetType() == RoomType.ROOM_SACRIFICE then
-        local Sspike = room:GetGridEntityFromPos(room:GetCenterPos())
-        print(Sspike:GetType())
-        Sspike:Destroy(true)
-        Isaac.GridSpawn(GridEntityType.GRID_SPIKES, 0, room:GetCenterPos(), true)
-      end
+        if room:IsFirstVisit() and room:IsClear() then
+          clearcount = clearcount + 1
+        end
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, L19_Sloth.NewRoom)
 
@@ -130,27 +121,32 @@ function L19_Sloth:postUpdate()
     
     function L19_Sloth:NewLevel()
       clearcount = 1
+      sacrificecount = 0
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, L19_Sloth.NewLevel)
 
-    function L19_Sloth:TakeDmg(entity, Amount, DamageFlags, Source, CountdownFrames)
-      local player = Isaac.GetPlayer(0)
+    function L19_Sloth:TakeDmg(player, _, DamageFlags)
+      player = player:ToPlayer()
       if player:GetPlayerType() ~= SlothGuy then
         return
-      end
-      if DamageFlags == DamageFlag.DAMAGE_SPIKES then
-        print("true")
-        if room:GetType() == RoomType.ROOM_SACRIFICE then
-            
-            sacrificecount = sacrificecount + 1
-            print(sacrificecount)
-            
+      end 
+      if (DamageFlags & DamageFlag.DAMAGE_SPIKES) ~= 0 and room:GetType() == RoomType.ROOM_SACRIFICE then    
+        DamageFlags = DamageFlag.DAMAGE_NO_PENALTIES    
+        sacrificecount = sacrificecount + 1
+        print(sacrificecount)
+        if sacrificecount == 11 then
+          sprite:Play("Poof", true)
+          Isaac.GridSpawn(GridEntityType.GRID_SPIKES, 0, Vector(320, 210), false)
         end
       end
-      
-
     end
     mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, L19_Sloth.TakeDmg, EntityType.ENTITY_PLAYER)
+
+    function L19_Sloth:Render()
+      sprite:Update()
+      sprite:Render(Vector(320, 210), Vector.Zero, Vector.Zero)
+    end 
+    mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, L19_Sloth.Render)
 
 end
 
