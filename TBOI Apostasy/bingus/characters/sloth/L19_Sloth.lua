@@ -2,6 +2,9 @@ local L19_Sloth = {}
 local Game = Game()
 local level = Game:GetLevel()
 local room = Game:GetRoom()
+local SlothGuy = Isaac.GetPlayerTypeByName("L19_Sloth", false)
+local sprite = Sprite()
+sprite:Load("gfx/1000.015_poof01.anm2", true)
 
 local L19_SlothStats = {
     DAMAGE = 2.857,
@@ -13,11 +16,18 @@ local L19_SlothStats = {
     TEARFLAG = TearFlags.TEAR_EXPLOSIVE,
     Flying = false,
     LUCK = 1,
-    TEARCOLOR = Color(0, 1.0, 0, 1.0, 0, 0, 0)
+    TEARCOLOR = Color(0, 1.0, 0, 1.0, 0, 0, 0),
+    MIN_TIME = 300,
+    Up_CHANCE = 5,
+    SCALE_1 = 0.4,
+    SCALE_2 = 0.4,
+    FLY_1 = 20,
+    FLY_2 = 1.5
 }
 
 local clearcount = 0
 local roomcount = 0
+local sacrificecount = 0
 
 function L19_Sloth:postUpdate()
     function L19_Sloth:OnCache(player, cacheFlag)
@@ -54,15 +64,13 @@ function L19_Sloth:postUpdate()
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L19_Sloth.OnCache)
     function L19_Sloth:OnUpdate()
         local player = Isaac.GetPlayer(0)
-
-        if(Game:GetFrameCount() == 1 and player:GetName() == "L19_Sloth") then
-            player:AddCard(math.random(1, 54))
-        end
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L19_Sloth.OnUpdate)
 
     function L19_Sloth:PEffect(player)
-      if(player:GetName() == "L19_Sloth") then
+      if player:GetPlayerType() ~= SlothGuy then
+        return
+      end
         if level:GetStage() == LevelStage.STAGE1_2 and level:GetStageType() == StageType.STAGETYPE_REPENTANCE_B then
           roomcount = level:GetRoomCount() - 4
           else
@@ -85,21 +93,24 @@ function L19_Sloth:postUpdate()
         for _, entity in pairs(Isaac.GetRoomEntities()) do
           local data = entity:GetData()
           if entity.Type == EntityType.ENTITY_TEAR then
-            local tear = entity:ToTear()
+            local Tear = entity:ToTear()
+            local TearData = entity:GetData()
             if entity.Variant == TearVariant.BLUE then
-              tear:ChangeVariant(TearVariant.BLOOD)
+              Tear:ChangeVariant(TearVariant.BLOOD)
+              TearData.RotSize = 50
+              Tear.Height = Tear.Height * (L19_SlothStats.SCALE_1 + L19_SlothStats.SCALE_2 * (TearData.RotSize / 100))
+              Tear.FallingSpeed = player.TearFallingSpeed - (L19_SlothStats.FLY_1)
+              Tear.FallingAcceleration = player.TearFallingAcceleration + (L19_SlothStats.FLY_2)
             end
           end
         end
       end
-    end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L19_Sloth.PEffect)
 
-
     function L19_Sloth:NewRoom()
-      if room:IsFirstVisit() and room:IsClear() then
-        clearcount = clearcount + 1
-      end
+        if room:IsFirstVisit() and room:IsClear() then
+          clearcount = clearcount + 1
+        end
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, L19_Sloth.NewRoom)
 
@@ -110,8 +121,32 @@ function L19_Sloth:postUpdate()
     
     function L19_Sloth:NewLevel()
       clearcount = 1
+      sacrificecount = 0
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, L19_Sloth.NewLevel)
+
+    function L19_Sloth:TakeDmg(player, _, DamageFlags)
+      player = player:ToPlayer()
+      if player:GetPlayerType() ~= SlothGuy then
+        return
+      end 
+      if (DamageFlags & DamageFlag.DAMAGE_SPIKES) ~= 0 and room:GetType() == RoomType.ROOM_SACRIFICE then    
+        DamageFlags = DamageFlag.DAMAGE_NO_PENALTIES    
+        sacrificecount = sacrificecount + 1
+        print(sacrificecount)
+        if sacrificecount == 11 then
+          sprite:Play("Poof", true)
+          Isaac.GridSpawn(GridEntityType.GRID_SPIKES, 0, Vector(320, 210), false)
+        end
+      end
+    end
+    mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, L19_Sloth.TakeDmg, EntityType.ENTITY_PLAYER)
+
+    function L19_Sloth:Render()
+      sprite:Update()
+      sprite:Render(Vector(320, 210), Vector.Zero, Vector.Zero)
+    end 
+    mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, L19_Sloth.Render)
 
 end
 
