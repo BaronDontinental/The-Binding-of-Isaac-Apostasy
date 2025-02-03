@@ -5,6 +5,7 @@ local room = Game:GetRoom()
 local SlothGuy = Isaac.GetPlayerTypeByName("L19_Sloth", false)
 local sprite = Sprite()
 sprite:Load("gfx/1000.015_poof01.anm2", true)
+local SlothStation = Isaac.GetEntityTypeByName("Sloth Station")
 
 local L19_SlothStats = {
     DAMAGE = 2.857,
@@ -136,9 +137,10 @@ function L19_Sloth:postUpdate()
         DamageFlags = DamageFlag.DAMAGE_NO_PENALTIES    
         sacrificecount = sacrificecount + 1
         print(sacrificecount)
-        if sacrificecount == 11 then
+        if sacrificecount == 1 then
           sprite:Play("Poof", true)
-          Isaac.GridSpawn(GridEntityType.GRID_SPIKES, 0, Vector(320, 210), false)
+          local free = room:FindFreeTilePosition(Vector(320, 210), 1000)
+          Isaac.Spawn(SlothStation, 1, 1, free, Vector(0, 0))
         end
       end
     end

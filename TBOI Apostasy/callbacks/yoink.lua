@@ -1,18 +1,18 @@
 local yoink = {}
 
 --require character statements here
-local L19_Sloth = require("bingus.characters.sloth.L19_Sloth")
-local L20_Pride = require("bingus.characters.pride.L20_Pride")
-local L21_Envy = require("bingus.characters.envy.L21_Envy")
-local L22_Gluttony = require("bingus.characters.gluttony.L22_Gluttony")
-local L23_Lust = require("bingus.characters.lust.L23_Lust")
-local L24_Wrath = require("bingus.characters.wrath.L24_Wrath")
-local B25_Sloth = require("bingus.characters.Sloth.B25_Sloth")
-local B26_Pride = require("bingus.characters.pride.B26_Pride")
-local B27_Envy = require("bingus.characters.envy.B27_Envy")
-local B28_Gluttony = require("bingus.characters.gluttony.B28_Gluttony")
-local B29_Lust = require("bingus.characters.lust.B29_Lust")
-local B30_Wrath = require("bingus.characters.wrath.B30_Wrath")
+local L19_Sloth = require("bingus.Characters.sloth.L19_Sloth")
+local L20_Pride = require("bingus.Characters.pride.L20_Pride")
+local L21_Envy = require("bingus.Characters.envy.L21_Envy")
+local L22_Gluttony = require("bingus.Characters.gluttony.L22_Gluttony")
+local L23_Lust = require("bingus.Characters.lust.L23_Lust")
+local L24_Wrath = require("bingus.Characters.wrath.L24_Wrath")
+local B25_Sloth = require("bingus.Characters.Sloth.B25_Sloth")
+local B26_Pride = require("bingus.Characters.pride.B26_Pride")
+local B27_Envy = require("bingus.Characters.envy.B27_Envy")
+local B28_Gluttony = require("bingus.Characters.gluttony.B28_Gluttony")
+local B29_Lust = require("bingus.Characters.lust.B29_Lust")
+local B30_Wrath = require("bingus.Characters.wrath.B30_Wrath")
 
 --require item statements here
     --Sloth
@@ -28,6 +28,7 @@ local Lazybony = require("bingus.Items.Sloth.Lazybony")
 local Upchuck = require("bingus.Items.Sloth.Upchuck")
 local Disability_Papers = require("bingus.Items.Sloth.Disability_Papers")
 local Death_Cap = require("bingus.Items.Sloth.Death_Cap")
+local Sloth_Station = require("bingus.Entities.Sloth.Sloth_Station")
     --Lust
 local Cooties = require("bingus.Items.Lust.Cooties")
 local Epipen = require("bingus.Items.Lust.Epipen")
@@ -122,6 +123,7 @@ function yoink:bringI()
     Upchuck:postUpdate()
     Disability_Papers:postUpdate()
     Death_Cap:postUpdate()
+    Sloth_Station:postUpdate()
     --Lust
     Cooties:postUpdate()
     Epipen:postUpdate()
