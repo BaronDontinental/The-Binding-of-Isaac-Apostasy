@@ -8,10 +8,11 @@ local sound = SFXManager()
 local CurrentStage
 local RoomConfig
 local Register
+local dmgStep = 0
 
-local Beggar = {
+--[[local Beggar = {
     ENTITY_SLOTH_STATION = 600
-}
+} ]]
 BeggarState = {
     IDLE = 0,
     PAYNOTHING = 2,
@@ -20,7 +21,7 @@ BeggarState = {
     TELEPORT = 5
 }
 
---ENTITY_SLOTH_STATION = Isaac.GetEntityTypeByName("Sloth Station")
+EntityType.ENTITY_SLOTH_STATION = Isaac.GetEntityTypeByName("Sloth Station")
 
 function Sloth_Station:postUpdate()
     function Sloth_Station:RemoveFromRegister(entity)
@@ -44,11 +45,11 @@ function Sloth_Station:postUpdate()
                     Register[j].Entity.Variant, 0,
                     Register[j].Position,
                     Vector(0,0), nil)
-                if Register[j].Entity.Type == Beggar.ENTITY_SLOTH_STATION then
+                if Register[j].Entity.Type == EntityType.ENTITY_SLOTH_STATION then
                     local beggarFlag = EntityFlag.FLAG_NO_TARGET | EntityFlag.FLAG_NO_STATUS_EFFECTS
                     entity:ClearEntityFlags(entity:GetEntityFlags())
                     entity:AddEntityFlags(beggarFlag)
-                    entity.EntityCollisionClass = EntityCollisionClass.ENTCOLL_PLAYERONLY
+                    entity.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
                 end
             end
         end
@@ -70,6 +71,7 @@ function Sloth_Station:postUpdate()
             local ModData = mod:LoadData()
             Isaac.DebugString(ModData)
             Register = {}
+            dmgStep = 0
             for i = 1, ModData:len(), 21 do
                 local X = tonumber(ModData:sub(i + 5, i + 8))
                 local Y = tonumber(ModData:sub(i + 9, i + 12))
@@ -84,6 +86,7 @@ function Sloth_Station:postUpdate()
             end
             Sloth_Station:SpawnRegister()
         else
+            local level = Game:GetLevel()
             CurStage = level:GetStage()
         end
     end
@@ -103,11 +106,13 @@ function Sloth_Station:postUpdate()
 
         if Game:GetFrameCount() <= 1 then
             Register = {}
+            dmgStep = 0
         end
 
         local level = Game:GetLevel()
         if CurStage ~= level:GetStage() then
             Register = {}
+            dmgStep = 0
         end
         CurStage = level:GetStage()
 
@@ -116,10 +121,58 @@ function Sloth_Station:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, Sloth_Station.onRoom)
 
+    function Sloth_Station:onLevel()
+        Sloth_Station:SaveState()
+    end
+    mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL,Sloth_Station.onLevel)
+
     function Sloth_Station:onExit(shouldSave)
         Sloth_Station:SaveState()
     end
+    mod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, Sloth_Station.onExit)
+
     
+    function Sloth_Station:onBeggar(entity)
+        local player = Isaac.GetPlayer(0)
+        local entity = entity:ToNPC()
+        local beggarFlag = EntityFlag.FLAG_NO_TARGET | EntityFlag.FLAG_NO_STATUS_EFFECTS
+        if entity:GetEntityFlags() ~= beggarFlag then
+            entity:ClearEntityFlags(entity:GetEntityFlags())
+            entity:AddEntityFlags(beggarFlag)
+            entity.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
+            local roomIndex = Game:GetLevel():GetCurrentRoomIndex()
+                table.insert(Register,
+                {
+                    Room = roomIndex,
+                    Position = entity.Position,
+                    Entity = {Type = entity.Type, Variant = entity.Variant}
+                }
+            )
+        end
+        local data = entity:GetData()
+        if data.Position == nil then 
+            data.Position = entity.Position     
+        end
+        entity.Velocity = data.Position - entity.Position
+
+        local sprite = entity:GetSprite()
+        if entity.State == BeggarState.IDLE then
+            if entity.StateFrame == 0 then
+                sprite:Play("Idle", true)
+            end
+            if (entity.Position - player.Position):Length() <= entity.Size + player.Size then
+                if entity.Variant == 0 then
+                    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
+                    dmgStep = dmgStep + 1
+                end
+            end
+        end
+    end
+    mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, Sloth_Station.onBeggar, EntityType.ENTITY_SLOTH_STATION)
+    
+    Sloth_Station:onRoom()
+    Sloth_Station:onLevel()
+
 end
 
 return Sloth_Station
