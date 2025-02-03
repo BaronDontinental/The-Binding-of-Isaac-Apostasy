@@ -96,8 +96,10 @@ function L19_Sloth:postUpdate()
             local Tear = entity:ToTear()
             local TearData = entity:GetData()
             if entity.Variant == TearVariant.BLUE then
+---@diagnostic disable-next-line: need-check-nil
               Tear:ChangeVariant(TearVariant.BLOOD)
               TearData.RotSize = 50
+---@diagnostic disable-next-line: need-check-nil
               Tear.Height = Tear.Height * (L19_SlothStats.SCALE_1 + L19_SlothStats.SCALE_2 * (TearData.RotSize / 100))
               Tear.FallingSpeed = player.TearFallingSpeed - (L19_SlothStats.FLY_1)
               Tear.FallingAcceleration = player.TearFallingAcceleration + (L19_SlothStats.FLY_2)
