@@ -9,6 +9,8 @@ local CurrentStage
 local RoomConfig
 local Register
 local dmgStep = 0
+local roll
+local completed = 0
 
 --[[local Beggar = {
     ENTITY_SLOTH_STATION = 600
@@ -72,6 +74,7 @@ function Sloth_Station:postUpdate()
             Isaac.DebugString(ModData)
             Register = {}
             dmgStep = 0
+            completed = 0
             for i = 1, ModData:len(), 21 do
                 local X = tonumber(ModData:sub(i + 5, i + 8))
                 local Y = tonumber(ModData:sub(i + 9, i + 12))
@@ -107,12 +110,14 @@ function Sloth_Station:postUpdate()
         if Game:GetFrameCount() <= 1 then
             Register = {}
             dmgStep = 0
+            completed = 0
         end
 
         local level = Game:GetLevel()
         if CurStage ~= level:GetStage() then
             Register = {}
             dmgStep = 0
+            completed = 0
         end
         CurStage = level:GetStage()
 
@@ -154,6 +159,7 @@ function Sloth_Station:postUpdate()
             data.Position = entity.Position     
         end
         entity.Velocity = data.Position - entity.Position
+        local free = room:FindFreeTilePosition(entity.Position, 1000)
 
         local sprite = entity:GetSprite()
         if entity.State == BeggarState.IDLE then
@@ -162,8 +168,23 @@ function Sloth_Station:postUpdate()
             end
             if (entity.Position - player.Position):Length() <= entity.Size + player.Size then
                 if entity.Variant == 0 then
-                    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
                     dmgStep = dmgStep + 1
+                    roll = math.random(0,100)
+                end
+                if dmgStep == 1 and completed == 0 then
+                    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
+                    completed = completed + 1
+                    Isaac.Spawn(EntityType.ENTITY_SLOT, SlotVariant.BEGGAR, 0, free, Vector(0,0), nil)
+                    Isaac.Spawn(EntityType.ENTITY_SLOT, SlotVariant.BEGGAR, 0, free, Vector(0,0), nil)
+                end
+                if dmgStep == 2 and completed == 1 then
+                    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
+                    completed =  completed + 1
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, free, Vector(0,0), nil)
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, free, Vector(0,0), nil)
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, free, Vector(0,0), nil)
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, free, Vector(0,0), nil)
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, free, Vector(0,0), nil)
                 end
             end
         end
