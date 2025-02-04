@@ -1,0 +1,5 @@
+1. holding R or starting a run will randomly cause a crash when character is sloth
+2. occasionally, the sacrifice counter for sloth will not tick up, and i have no clue why, it should be working, inorder to clear this bug you have to restart the game
+3. need to add envy orbital counts and sloth clear counts to a register to fix saving and exiting issues.  
+4. sloth station spike does not do knockback
+5. when you restart the game the entity for the sloth station is lost, need to add the register to a .json save.  
