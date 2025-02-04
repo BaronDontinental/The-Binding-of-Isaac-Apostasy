@@ -6,8 +6,6 @@ local SlothGuy = Isaac.GetPlayerTypeByName("L19_Sloth", false)
 local sprite = Sprite()
 sprite:Load("gfx/1000.015_poof01.anm2", true)
 
-local Sloth_Station = require("bingus.Entities.Sloth.Sloth_Station")
-
 
 local L19_SlothStats = {
     DAMAGE = 2.857,
@@ -132,16 +130,17 @@ function L19_Sloth:postUpdate()
 
     function L19_Sloth:TakeDmg(player, _, DamageFlags)
       player = player:ToPlayer()
+      print(DamageFlags)
       if player:GetPlayerType() ~= SlothGuy then
         return
       end 
-      if (DamageFlags & DamageFlag.DAMAGE_SPIKES) ~= 0 and room:GetType() == RoomType.ROOM_SACRIFICE then    
-        DamageFlags = DamageFlag.DAMAGE_NO_PENALTIES    
+    -- bitset integer in next line codes for damage flags of no pentaly and spikes
+      if DamageFlags == 268435584 and room:GetType() == RoomType.ROOM_SACRIFICE then  
+        print(DamageFlags)
         sacrificecount = sacrificecount + 1
         print(sacrificecount)
-        if sacrificecount == 1 then
-          local free = room:FindFreeTilePosition(Vector(320, 210), 1000)
-          Isaac.Spawn(EntityType.ENTITY_SLOTH_STATION, 0, 0, free, Vector(0, 0), nil)
+        if sacrificecount == 11 then
+          Isaac.Spawn(EntityType.ENTITY_SLOTH_STATION, 0, 0, room:FindFreeTilePosition(Vector(320, 210), 50), Vector(0, 0), nil)
         end
       end
     end

@@ -159,74 +159,136 @@ function Sloth_Station:postUpdate()
             data.Position = entity.Position     
         end
         entity.Velocity = data.Position - entity.Position
-        local free = room:FindFreeTilePosition(entity.Position, 1000)
 
         local sprite = entity:GetSprite()
         if entity.State == BeggarState.IDLE then
             if entity.StateFrame == 0 then
-                sprite:Play("Idle", true)
+                --sprite:Play("Idle", true)
             end
             if (entity.Position - player.Position):Length() <= entity.Size + player.Size then
                 if entity.Variant == 0 then
-                    dmgStep = dmgStep + 1
+                    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES | DamageFlag.DAMAGE_SPAWN_COIN, EntityRef(entity), 0)
                     roll = math.random(0,100)
                 end
-                if dmgStep == 1 and completed == 0 then
+                --[[if dmgStep == 1 and completed == 0 then
                     player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
                     completed = completed + 1
-                    Isaac.Spawn(EntityType.ENTITY_SLOT, SlotVariant.BEGGAR, 0, free, Vector(0,0), nil)
-                    Isaac.Spawn(EntityType.ENTITY_SLOT, SlotVariant.BEGGAR, 0, free, Vector(0,0), nil)
+                    Isaac.Spawn(EntityType.ENTITY_SLOT, SlotVariant.BEGGAR, 0, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), nil)
+                    Isaac.Spawn(EntityType.ENTITY_SLOT, SlotVariant.BEGGAR, 0, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), nil)
                 end
                 if dmgStep == 2 and completed == 1 then
                     player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
                     completed =  completed + 1
-                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, free, Vector(0,0), nil)
-                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, free, Vector(0,0), nil)
-                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, free, Vector(0,0), nil)
-                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, free, Vector(0,0), nil)
-                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, free, Vector(0,0), nil)
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), nil)
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), nil)
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), nil)
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), nil)
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), nil)
                 end
 				if dmgStep == 3 and completed == 2 then
 					player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
                     completed =  completed + 1
                     if roll <= 30 then
-                    -- spawn red key
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, CollectibleType.COLLECTIBLE_RED_KEY, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), player)
                     elseif roll <=60 then
-                    -- spawn R key
+                        Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, CollectibleType.COLLECTIBLE_R_KEY, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), player)
                     else
-                    -- spawn genisis
+                        Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, CollectibleType.COLLECTIBLE_GENESIS, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), player)
                     end 
 				end
 				if dmgStep == 4 and completed == 3 then
 				    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
                     completed =  completed + 1
-                    -- spawn mama mega 
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, CollectibleType.COLLECTIBLE_MAMA_MEGA, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), player)
 				end
 				if dmgStep == 5 and completed == 4 then
 				    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
                     completed =  completed + 1
-                    -- spawn angel shop stairway 
+                    Isaac.GridSpawn(GridEntityType.GRID_STAIRS, 0, room:FindFreeTilePosition(Vector(50,50), 1000), true)
 				end
 				if dmgStep == 6 and completed == 5 then
 				    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
                     completed =  completed + 1
-                    -- spawn megachest 
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_MEGACHEST, ChestSubType.CHEST_CLOSED, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), player)
 				end
 				if dmgStep == 7 and completed == 6 then
 				    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
                     completed =  completed + 1
-                    -- spawn reverse emporer 
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_REVERSE_EMPEROR, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), player) 
 				end
 				if dmgStep == 8 and completed == 7 then
-				    qplayer:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
+				    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
                     completed =  completed + 1
-                    -- spawn reverse world
-                end 
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_REVERSE_WORLD, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), player) 
+                end
+                if dmgStep == 9 and completed == 8 then
+                    Register = {}
+                    dmgStep = 0
+                    completed = 0
+                end]]
             end
         end
     end
     mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, Sloth_Station.onBeggar, EntityType.ENTITY_SLOTH_STATION)
-    
+
+    function Sloth_Station:OnDmg(player, _, DamageFlags, entity)
+        print("bogin")
+        if entity.Type == EntityType.ENTITY_SLOTH_STATION then
+            local bogentity = entity.Entity
+            bogentity:ToNPC()
+            dmgStep = dmgStep + 1
+            if dmgStep == 1 and completed == 0 then
+                completed = completed + 1
+                Isaac.Spawn(EntityType.ENTITY_SLOT, SlotVariant.BEGGAR, 0, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), nil)
+                Isaac.Spawn(EntityType.ENTITY_SLOT, SlotVariant.BEGGAR, 0, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), nil)
+            end
+            if dmgStep == 2 and completed == 1 then
+                completed =  completed + 1
+                Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), nil)
+                Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), nil)
+                Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), nil)
+                Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), nil)
+                Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), nil)
+            end
+            if dmgStep == 3 and completed == 2 then
+                completed =  completed + 1
+                if roll <= 30 then
+                Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, CollectibleType.COLLECTIBLE_RED_KEY, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), player)
+                elseif roll <=60 then
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, CollectibleType.COLLECTIBLE_R_KEY, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), player)
+                else
+                    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, CollectibleType.COLLECTIBLE_GENESIS, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), player)
+                end 
+            end
+            if dmgStep == 4 and completed == 3 then
+                completed =  completed + 1
+                Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, CollectibleType.COLLECTIBLE_MAMA_MEGA, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), player)
+            end
+            if dmgStep == 5 and completed == 4 then
+                completed =  completed + 1
+                Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.TALL_LADDER, 1, room:FindFreeTilePosition(Vector(100,50), 1000), Vector(0,0), nil)
+            end
+            if dmgStep == 6 and completed == 5 then
+                completed =  completed + 1
+                Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_MEGACHEST, ChestSubType.CHEST_CLOSED, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), player)
+            end
+            if dmgStep == 7 and completed == 6 then
+                completed =  completed + 1
+                Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_REVERSE_EMPEROR, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), player) 
+            end
+            if dmgStep == 8 and completed == 7 then
+                completed =  completed + 1
+                Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_REVERSE_WORLD, room:FindFreeTilePosition(Isaac.GetRandomPosition(), 1000), Vector(0,0), player) 
+            end
+            if dmgStep >= 9 and completed == 8 then
+                completed = completed + 1
+                bogentity:Kill()
+                Register = {}
+            end
+        end
+    end
+    mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, Sloth_Station.OnDmg, EntityType.ENTITY_PLAYER)
+
     Sloth_Station:onRoom()
     Sloth_Station:onLevel()
 

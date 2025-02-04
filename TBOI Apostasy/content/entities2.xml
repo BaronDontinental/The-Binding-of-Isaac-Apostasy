@@ -40,6 +40,8 @@
     <entity anm2path="Sloth_Station.anm2" boss="0" champion="0" collisionDamage="0" 
     collisionMass="3" variant="0" subtype="0" collisionRadius="12" friction="1" id="600" name="Sloth Station" 
     numGridCollisionPoints="24" shadowSize="0" stageHP="0" shutdoors="false"/>
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0" />
+    
 
 <!--Familiars-->
 
