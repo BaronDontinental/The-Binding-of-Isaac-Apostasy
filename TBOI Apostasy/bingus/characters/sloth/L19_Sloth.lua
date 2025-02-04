@@ -136,7 +136,6 @@ function L19_Sloth:postUpdate()
       end 
     -- bitset integer in next line codes for damage flags of no pentaly and spikes
       if DamageFlags == 268435584 and room:GetType() == RoomType.ROOM_SACRIFICE then  
-        print(DamageFlags)
         sacrificecount = sacrificecount + 1
         print(sacrificecount)
         if sacrificecount == 11 then
