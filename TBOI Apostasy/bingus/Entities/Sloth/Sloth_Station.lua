@@ -186,6 +186,42 @@ function Sloth_Station:postUpdate()
                     Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, free, Vector(0,0), nil)
                     Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_TAROTCARD, Card.CARD_SOUL_CAIN, free, Vector(0,0), nil)
                 end
+				if dmgStep == 3 and completed == 2 then
+					player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
+                    completed =  completed + 1
+                    if roll <= 30 then
+                    -- spawn red key
+                    elseif roll <=60 then
+                    -- spawn R key
+                    else
+                    -- spawn genisis
+                    end 
+				end
+				if dmgStep == 4 and completed == 3 then
+				    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
+                    completed =  completed + 1
+                    -- spawn mama mega 
+				end
+				if dmgStep == 5 and completed == 4 then
+				    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
+                    completed =  completed + 1
+                    -- spawn angel shop stairway 
+				end
+				if dmgStep == 6 and completed == 5 then
+				    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
+                    completed =  completed + 1
+                    -- spawn megachest 
+				end
+				if dmgStep == 7 and completed == 6 then
+				    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
+                    completed =  completed + 1
+                    -- spawn reverse emporer 
+				end
+				if dmgStep == 8 and completed == 7 then
+				    qplayer:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES, EntityRef(entity), 0)
+                    completed =  completed + 1
+                    -- spawn reverse world
+                end 
             end
         end
     end
