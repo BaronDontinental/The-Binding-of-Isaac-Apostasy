@@ -5,6 +5,7 @@ local room = Game:GetRoom()
 local SlothGuy = Isaac.GetPlayerTypeByName("L19_Sloth", false)
 local sprite = Sprite()
 sprite:Load("gfx/1000.015_poof01.anm2", true)
+local sfxManager = SFXManager()
 
 
 local L19_SlothStats = {
@@ -72,6 +73,18 @@ function L19_Sloth:postUpdate()
       if player:GetPlayerType() ~= SlothGuy then
         return
       end
+      local displace = player:GetTearDisplacement()
+      local direction =  player:GetFireDirection()
+      print(displace)
+        if displace == 1 and direction ~= 1 then
+          player.TearsOffset = Vector(-5,-10)
+        elseif displace == -1 and direction ~= 1 then
+          player.TearsOffset = Vector(5,-10)
+        elseif displace == 1 and direction == 1 then
+          player.TearsOffset = Vector(5,10)
+        elseif displace == -1 and direction == 1 then
+          player.TearsOffset = Vector(-5,10)
+        end
         if level:GetStage() == LevelStage.STAGE1_2 and level:GetStageType() == StageType.STAGETYPE_REPENTANCE_B then
           roomcount = level:GetRoomCount() - 4
           else
@@ -88,6 +101,12 @@ function L19_Sloth:postUpdate()
                   door:Update()
                 else
                 end
+              end
+              if door:IsRoomType(RoomType.ROOM_CHALLENGE) and room ~= RoomType.ROOM_CHALLENGE then
+                door:TryUnlock(player, true)
+                sfxManager:Stop(SoundEffect.SOUND_UNLOCK00)
+                door:Open()
+                door:Update()
               end
             end
           end

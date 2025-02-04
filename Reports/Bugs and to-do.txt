@@ -11,7 +11,7 @@ To-do
 ===========================================================================================================================================================================
 1. sloth station spike does not do knockback
 2. Birthrites
-3. Sloth shots from the center
+3. figure out how to bypass not getting any keys issue for sloth
 
 
 
