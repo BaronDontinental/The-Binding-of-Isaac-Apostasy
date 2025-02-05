@@ -18,7 +18,7 @@
 	<player id="22" name="L22_Gluttony" skin="Character_022_Gluttony.png" hp="2" black="4" 
           nameimage="PlayerName_022_gluttonyl.png" 
           portrait="PlayerPortrait_Isaac.png" skinColor="-1" costumeSuffix="gluttonyl"
-		  birthright="Gobble" /> 
+		  birthright="Gobble" modcostume="22"/> 
 		  
 	<player id="23" name="L23_Lust" skin="Character_023_Lust.png" hp="4" items="" bombs="1"
           nameimage="PlayerName_023_lustl.png" 

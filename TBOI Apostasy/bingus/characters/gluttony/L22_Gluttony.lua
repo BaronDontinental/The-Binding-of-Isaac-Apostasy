@@ -1,9 +1,15 @@
 local L22_Gluttony = {}
 local game = Game()
 local sfx = SFXManager()
+local sprite = Sprite()
+sprite:Load("gfx/characters/character_l22_gluttony.anm2", true)
+local hud = game:GetHUD()
 
 local GluttonyBod = Isaac.GetCostumeIdByPath("gfx/characters/character_l22_gluttony.anm2")
 local GluttonyType = Isaac.GetPlayerTypeByName("L22_Gluttony", false)
+
+local shootAnim
+local charge
 
 local L22_GluttonyStats = {
   DAMAGE = 0,
@@ -93,19 +99,27 @@ function L22_Gluttony:postUpdate()
     end
     player:EvaluateItems()
     player:AddCacheFlags(CacheFlag.CACHE_FLYING)
-    
+
+    local weapon = player:GetWeapon(1)
+    charge = weapon:GetCharge()
+    print(charge)
+
 
     if player:GetFireDirection() == Direction.RIGHT then
       player.TearsOffset = L22_GluttonyStats.TEARSOFFSETR
+      shootAnim = "ChargeWalkRight"
     end
       if player:GetFireDirection() == Direction.LEFT then
         player.TearsOffset = L22_GluttonyStats.TEARSOFFSETL
+        shootAnim = "ChargeWalkLeft"
       end
         if player:GetFireDirection() == Direction.DOWN then
           player.TearsOffset = L22_GluttonyStats.TEARSOFFSETD
+          shootAnim = "ChargeWalkDown"
         end
           if player:GetFireDirection() == Direction.UP then
             player.TearsOffset = L22_GluttonyStats.TEARSOFFSETU
+            shootAnim = "ChargeWalkUp"
           end
 
     if player:HasCollectible(CollectibleType.COLLECTIBLE_DOGMA) and game:GetLevel():GetStage() == LevelStage.STAGE8 then 
@@ -122,9 +136,41 @@ function L22_Gluttony:postUpdate()
     else
         player:SetCanShoot(true)
     end
+
+    if charge > 0 --[[and Input.IsButtonPressed(Keyboard.KEY_D, 0)]] then
+      if shootAnim == "ChargeWalkRight" and not sprite:IsPlaying("ChargeWalkRight") then
+        sprite:Play(shootAnim, true)
+      end
+      if shootAnim == "ChargeWalkLeft" and not sprite:IsPlaying("ChargeWalkLeft") then
+        sprite:Play(shootAnim, true)
+      end
+      if shootAnim == "ChargeWalkDown" and not sprite:IsPlaying("ChargeWalkDown") then
+        sprite:Play(shootAnim, true)
+      end
+      if shootAnim == "ChargeWalkUp" and not sprite:IsPlaying("ChargeWalkUp") then
+        sprite:Play(shootAnim, true)
+      end
+    end
+    if charge == 0 then
+      sprite:Stop()
+    end
     
   end
   mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L22_Gluttony.PeUpdate)
+
+  function L22_Gluttony:onRender()
+    local player = Isaac.GetPlayer(0)
+    if player:GetPlayerType() ~= GluttonyType then
+      return
+    end
+    if charge > 0 then
+      local pos = player.Position
+      --sprite.Offset = player.Position
+      sprite:Update()
+      sprite:Render(Isaac.WorldToScreen(player.Position))
+    end
+  end
+  mod:AddCallback(ModCallbacks.MC_POST_RENDER, L22_Gluttony.onRender)
 
 end
 
