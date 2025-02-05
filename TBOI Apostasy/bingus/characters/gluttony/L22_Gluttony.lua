@@ -7,7 +7,6 @@ local hud = game:GetHUD()
 
 local GluttonyBod = Isaac.GetCostumeIdByPath("gfx/characters/character_l22_gluttony.anm2")
 local GluttonyType = Isaac.GetPlayerTypeByName("L22_Gluttony", false)
-
 local shootAnim
 local charge
 
@@ -164,8 +163,7 @@ function L22_Gluttony:postUpdate()
       return
     end
     if charge > 0 then
-      local pos = player.Position
-      --sprite.Offset = player.Position
+      sprite.PlaybackSpeed = .5   
       sprite:Update()
       sprite:Render(Isaac.WorldToScreen(player.Position))
     end
