@@ -75,7 +75,6 @@ function L19_Sloth:postUpdate()
       end
       local displace = player:GetTearDisplacement()
       local direction =  player:GetFireDirection()
-      print(displace)
         if displace == 1 and direction ~= 1 then
           player.TearsOffset = Vector(-5,-10)
         elseif displace == -1 and direction ~= 1 then
@@ -149,14 +148,12 @@ function L19_Sloth:postUpdate()
 
     function L19_Sloth:TakeDmg(player, _, DamageFlags)
       player = player:ToPlayer()
-      print(DamageFlags)
       if player:GetPlayerType() ~= SlothGuy then
         return
       end 
     -- bitset integer in next line codes for damage flags of no pentaly and spikes
       if DamageFlags == 268435584 and room:GetType() == RoomType.ROOM_SACRIFICE then  
         sacrificecount = sacrificecount + 1
-        print(sacrificecount)
         if sacrificecount == 11 then
           Isaac.Spawn(EntityType.ENTITY_SLOTH_STATION, 0, 0, room:FindFreeTilePosition(Vector(320, 210), 50), Vector(0, 0), nil)
         end
