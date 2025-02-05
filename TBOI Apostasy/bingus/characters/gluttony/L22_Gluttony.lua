@@ -77,6 +77,7 @@ function L22_Gluttony:postUpdate()
       return
     end
       player:AddNullCostume(GluttonyBod)
+     
   end 
     
   mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, L22_Gluttony.Costume)
