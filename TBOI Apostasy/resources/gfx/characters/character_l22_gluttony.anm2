@@ -1,5 +1,5 @@
 <AnimatedActor>
-	<Info CreatedBy="Frabk" CreatedOn="2/5/2025 1:32:59 PM" Version="125" Fps="30"/>
+	<Info CreatedBy="Frabk" CreatedOn="2/5/2025 5:04:35 PM" Version="127" Fps="30"/>
 	<Content>
 		<Spritesheets>
 			<Spritesheet Path="costumes\Character_022_Gluttonybody.png" Id="0"/>
@@ -377,7 +377,7 @@
 			<NullAnimations/>
 			<Triggers/>
 		</Animation>
-		<Animation Name="ChargeWalkDown" FrameNum="24" Loop="false">
+		<Animation Name="ChargeWalkDown" FrameNum="24" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="24" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -415,7 +415,7 @@
 			</NullAnimations>
 			<Triggers/>
 		</Animation>
-		<Animation Name="ChargeWalkRight" FrameNum="24" Loop="false">
+		<Animation Name="ChargeWalkRight" FrameNum="24" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="24" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -453,7 +453,7 @@
 			</NullAnimations>
 			<Triggers/>
 		</Animation>
-		<Animation Name="ChargeWalkLeft" FrameNum="24" Loop="false">
+		<Animation Name="ChargeWalkLeft" FrameNum="24" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="24" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -491,7 +491,7 @@
 			</NullAnimations>
 			<Triggers/>
 		</Animation>
-		<Animation Name="ChargeWalkUp" FrameNum="24" Loop="false">
+		<Animation Name="ChargeWalkUp" FrameNum="24" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="24" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -529,7 +529,7 @@
 			</NullAnimations>
 			<Triggers/>
 		</Animation>
-		<Animation Name="ChargeDown" FrameNum="24" Loop="false">
+		<Animation Name="ChargeDown" FrameNum="24" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="24" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -541,7 +541,7 @@
 			<NullAnimations/>
 			<Triggers/>
 		</Animation>
-		<Animation Name="ChargeRight" FrameNum="24" Loop="false">
+		<Animation Name="ChargeRight" FrameNum="24" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="24" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -553,7 +553,7 @@
 			<NullAnimations/>
 			<Triggers/>
 		</Animation>
-		<Animation Name="ChargeLeft" FrameNum="24" Loop="false">
+		<Animation Name="ChargeLeft" FrameNum="24" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="24" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -565,7 +565,7 @@
 			<NullAnimations/>
 			<Triggers/>
 		</Animation>
-		<Animation Name="ChargeUp" FrameNum="24" Loop="false">
+		<Animation Name="ChargeUp" FrameNum="24" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="24" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -577,7 +577,7 @@
 			<NullAnimations/>
 			<Triggers/>
 		</Animation>
-		<Animation Name="FireWalkDown" FrameNum="24" Loop="false">
+		<Animation Name="FireWalkDown" FrameNum="24" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="24" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -617,7 +617,7 @@
 			</NullAnimations>
 			<Triggers/>
 		</Animation>
-		<Animation Name="FireWalkRight" FrameNum="24" Loop="false">
+		<Animation Name="FireWalkRight" FrameNum="24" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="24" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -657,7 +657,7 @@
 			</NullAnimations>
 			<Triggers/>
 		</Animation>
-		<Animation Name="FireWalkLeft" FrameNum="24" Loop="false">
+		<Animation Name="FireWalkLeft" FrameNum="24" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="24" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -697,7 +697,7 @@
 			</NullAnimations>
 			<Triggers/>
 		</Animation>
-		<Animation Name="FireWalkUp" FrameNum="24" Loop="false">
+		<Animation Name="FireWalkUp" FrameNum="24" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="24" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -737,7 +737,7 @@
 			</NullAnimations>
 			<Triggers/>
 		</Animation>
-		<Animation Name="FireDown" FrameNum="20" Loop="false">
+		<Animation Name="FireDown" FrameNum="20" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="20" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -760,7 +760,7 @@
 			<NullAnimations/>
 			<Triggers/>
 		</Animation>
-		<Animation Name="FireRight" FrameNum="20" Loop="false">
+		<Animation Name="FireRight" FrameNum="20" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="20" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -783,7 +783,7 @@
 			<NullAnimations/>
 			<Triggers/>
 		</Animation>
-		<Animation Name="FireLeft" FrameNum="20" Loop="false">
+		<Animation Name="FireLeft" FrameNum="20" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="20" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
@@ -806,7 +806,7 @@
 			<NullAnimations/>
 			<Triggers/>
 		</Animation>
-		<Animation Name="FireUp" FrameNum="20" Loop="false">
+		<Animation Name="FireUp" FrameNum="20" Loop="true">
 			<RootAnimation>
 				<Frame XPosition="0" YPosition="0" XScale="100" YScale="100" Delay="20" Visible="true" RedTint="255" GreenTint="255" BlueTint="255" AlphaTint="255" RedOffset="0" GreenOffset="0" BlueOffset="0" Rotation="0" Interpolated="false"/>
 			</RootAnimation>
