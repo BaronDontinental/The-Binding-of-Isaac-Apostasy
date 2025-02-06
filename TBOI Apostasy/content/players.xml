@@ -15,7 +15,7 @@
           portrait="playerPortrait_021_envyl.png" skinColor="-1"
 		  birthright="Wish" />	  
 	
-	<player id="22" name="L22_Gluttony" skin="Character_022_Gluttony.png" hp="2" black="4" 
+	<player id="22" name="L22_Gluttony" skin="Character_022_Gluttony.png" hp="8" 
           nameimage="PlayerName_022_gluttonyl.png" 
           portrait="PlayerPortrait_Isaac.png" skinColor="-1" costumeSuffix="gluttonyl"
 		  birthright="Gobble" /> 
