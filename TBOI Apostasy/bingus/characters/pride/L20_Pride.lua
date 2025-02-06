@@ -44,9 +44,9 @@ function L20_Pride:postUpdate()
             if(cacheFlag == CacheFlag.CACHE_LUCK) then
               player.Luck = player.Luck + L20_PrideStats.LUCK
             end
-            if(cacheFlag == CacheFlag.CACHE_TEARCOLOR) then
+            --[[if(cacheFlag == CacheFlag.CACHE_TEARCOLOR) then
               player.TearColor = L20_PrideStats.TEARCOLOR
-            end
+            end ]]
             --[[if(cacheFlag == CacheFlag.CACHE_TEARFLAG) then
               player.TearFlags = player.TearFlags | L20_PrideStats.TEARFLAG
             end ]]
@@ -204,6 +204,17 @@ function L20_Pride:postUpdate()
       if Birthright == true and book == nil then
         sprite:Play("Hud", true)
         book = true
+      end
+      for _, entity in pairs(Isaac.GetRoomEntities()) do
+        local data = entity:GetData()
+        if entity.Type == EntityType.ENTITY_TEAR then
+          local Tear = entity:ToTear()
+          local TearData = entity:GetData()
+          if entity.Variant == TearVariant.BLUE then
+---@diagnostic disable-next-line: need-check-nil
+            Tear:ChangeVariant(TearVariant.BLOOD)
+          end
+        end
       end
     end
   mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L20_Pride.OnUpdate)
