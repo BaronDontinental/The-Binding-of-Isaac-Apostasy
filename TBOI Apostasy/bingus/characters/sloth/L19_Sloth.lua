@@ -85,7 +85,7 @@ function L19_Sloth:postUpdate()
           player.TearsOffset = Vector(-5,10)
         end
         if level:GetStage() == LevelStage.STAGE1_2 and level:GetStageType() == StageType.STAGETYPE_REPENTANCE_B then
-          roomcount = level:GetRoomCount() - 4
+          roomcount = level:GetRoomCount() - 5
           else
             roomcount = level:GetRoomCount() - 3
         end
