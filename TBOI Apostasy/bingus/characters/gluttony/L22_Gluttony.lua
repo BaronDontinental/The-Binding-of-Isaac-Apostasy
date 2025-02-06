@@ -227,7 +227,6 @@ function L22_Gluttony:postUpdate()
 
     end
 
-
     if charge > 0 and charge < 32 then
       if shootAnim == "ChargeWalkRight" and not sprite:IsPlaying("ChargeWalkRight") then
         sprite:Play(shootAnim, true)
@@ -251,6 +250,41 @@ function L22_Gluttony:postUpdate()
         sprite:Play(shootAnim, true)
       end
       if shootAnim == "ChargeRight" and not sprite:IsPlaying("ChargeRight") then
+        sprite:Play(shootAnim, true)
+      end
+    end
+
+    if charge >= 32 then
+      if shootAnim == "ChargeWalkRight" and not sprite:IsPlaying("FullChargeWalkRight") then
+        shootAnim = "FullChargeWalkRight"
+        sprite:Play(shootAnim, true)
+      end
+      if shootAnim == "ChargeWalkLeft" and not sprite:IsPlaying("FullChargeWalkLeft") then
+        shootAnim = "FullChargeWalkLeft"
+        sprite:Play(shootAnim, true)
+      end
+      if shootAnim == "ChargeWalkDown" and not sprite:IsPlaying("FullChargeWalkDown") then
+        shootAnim = "FullChargeWalkDown"
+        sprite:Play(shootAnim, true)
+      end
+      if shootAnim == "ChargeWalkUp" and not sprite:IsPlaying("FullChargeWalkUp") then
+        shootAnim = "FullChargeWalkUp"
+        sprite:Play(shootAnim, true)
+      end
+      if shootAnim == "ChargeUp" and not sprite:IsPlaying("FullChargeUp") then
+        shootAnim = "FullChargeUp"
+        sprite:Play(shootAnim, true)
+      end
+      if shootAnim == "ChargeDown" and not sprite:IsPlaying("FullChargeDown") then
+        shootAnim = "FullChargeDown"
+        sprite:Play(shootAnim, true)
+      end
+      if shootAnim == "ChargeLeft" and not sprite:IsPlaying("FullChargeLeft") then
+        shootAnim = "FullChargeLeft"
+        sprite:Play(shootAnim, true)
+      end
+      if shootAnim == "ChargeRight" and not sprite:IsPlaying("FullChargeRight") then
+        shootAnim = "FullChargeRight"
         sprite:Play(shootAnim, true)
       end
     end
