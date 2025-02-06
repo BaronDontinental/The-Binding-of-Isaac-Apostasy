@@ -340,6 +340,9 @@ function L22_Gluttony:postUpdate()
   mod:AddCallback(ModCallbacks.MC_POST_FIRE_BRIMSTONE, L22_Gluttony.fireBrim)
 
   function L22_Gluttony:onRender(player, head)
+    if player:GetPlayerType() ~= GluttonyType then
+      return
+    end
     if sprite2:IsPlaying() then
       sprite2.PlaybackSpeed = .5   
       sprite2:Update()
