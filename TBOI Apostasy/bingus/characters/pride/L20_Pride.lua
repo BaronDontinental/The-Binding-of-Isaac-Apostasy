@@ -222,6 +222,7 @@ function L20_Pride:postUpdate()
     function L20_Pride:birthright(item)
       local player = Isaac.GetPlayer(0)
       if Birthright == true then
+---@diagnostic disable-next-line: param-type-mismatch
         player:UseCard(Card.CARD_TOWER, UseFlag.USE_NOANNOUNCER)
         if player:HasCollectible(CollectibleType.COLLECTIBLE_REEEE) then
           return

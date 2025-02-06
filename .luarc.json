@@ -244,6 +244,10 @@
         "WispSubType",
         "XMLData",
         "XMLNode",
-        "REPENTOGON"
+        "REPENTOGON",
+        "mod"
+    ],
+    "diagnostics.disable": [
+        "need-check-nil"
     ]
 }
