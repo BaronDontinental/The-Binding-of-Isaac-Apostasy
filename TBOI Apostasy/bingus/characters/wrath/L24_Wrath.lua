@@ -78,8 +78,10 @@ function L24_Wrath:postUpdate()
                   TempBombParam.Velocity,
                   player):ToPickup()
                   
+---@diagnostic disable-next-line: need-check-nil
                   bomb:Morph(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_BOMB, BombSubType.BOMB_NORMAL, false, true, true)
                   bomb.Timeout = L24_WrathStats.BOMBPERSIST
+---@diagnostic disable-next-line: need-check-nil
                   bomb:Update()
               end
             end

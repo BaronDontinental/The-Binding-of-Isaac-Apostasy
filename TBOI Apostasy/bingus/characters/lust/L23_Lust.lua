@@ -80,11 +80,14 @@ function L23_Lust:postUpdate()
       local spawnpos = player.Position
       if not aura then
         cloud = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CHARMCLOUD, 0, spawnpos, Vector.Zero, player):ToEffect()
+---@diagnostic disable-next-line: need-check-nil
         cloud:FollowParent(player)
         cloud.SpriteOffset = Vector(0, -20)
         cloud.IsFollowing = true
+---@diagnostic disable-next-line: need-check-nil
         cloud:Update()
       end
+---@diagnostic disable-next-line: need-check-nil
       if cloud:Exists() then
         aura = true
       else
@@ -104,6 +107,7 @@ function L23_Lust:postUpdate()
   local spawnpos = player.Position
   local poggers = EntityRef(player)
   local capsule = CloudL:GetNullCapsule("capsule")
+---@diagnostic disable-next-line: param-type-mismatch
     for _, entity in ipairs(Isaac.FindInCapsule(capsule, EntityPartition.ENEMY)) do
       local hit = entity:GetData()
       if entity:IsVulnerableEnemy() and entity:IsActiveEnemy() then

@@ -36,6 +36,7 @@ mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Trench_Foot.onUpdate)
 
         if player:HasCollectible(CollectibleType.COLLECTIBLE_TRENCH_FOOT) then
             local capsule = Creep:GetCollisionCapsule("body")
+---@diagnostic disable-next-line: param-type-mismatch
             for _, entity in ipairs(Isaac.FindInCapsule(capsule, EntityPartition.ENEMY)) do
                 local hit = entity:GetData()
                 if entity:IsVulnerableEnemy() and entity:IsActiveEnemy() then
