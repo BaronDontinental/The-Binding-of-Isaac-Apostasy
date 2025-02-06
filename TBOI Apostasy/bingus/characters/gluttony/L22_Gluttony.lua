@@ -163,16 +163,37 @@ function L22_Gluttony:postUpdate()
 
     if charge == 0 then
       if player:GetMovementDirection() == Direction.NO_DIRECTION then
-        walkAnim = "Idle"
+        if player:IsHoldingItem() then
+          walkAnim = "PickupIdle"
+        else
+          walkAnim = "Idle"
+        end
       elseif player:GetMovementDirection() == Direction.RIGHT then
-        walkAnim = "WalkRight"
+        if player:IsHoldingItem() then
+          walkAnim = "PickupWalkRight"
+        else
+          walkAnim = "WalkRight"
+        end
       elseif player:GetMovementDirection() == Direction.LEFT then
-        walkAnim = "WalkLeft"
+        if player:IsHoldingItem() then
+          walkAnim = "PickupWalkLeft"
+        else
+          walkAnim = "WalkLeft"  
+        end
       elseif player:GetMovementDirection() == Direction.UP then
-        walkAnim = "WalkUp"
+        if player:IsHoldingItem() then
+          walkAnim = "PickupWalkUp"
+        else
+          walkAnim = "WalkUp"
+        end
       elseif player:GetMovementDirection() == Direction.DOWN then
-        walkAnim = "WalkDown"
+        if player:IsHoldingItem() then
+          walkAnim = "PickupWalkDown"
+        else
+          walkAnim = "WalkDown"
+        end
       end
+
       if walkAnim == "Idle" and not sprite3:IsPlaying("Idle") then
         sprite3:Play("Idle", false)
       end 
@@ -188,6 +209,22 @@ function L22_Gluttony:postUpdate()
       if walkAnim == "WalkDown" and not sprite3:IsPlaying("WalkDown") then
         sprite3:Play("WalkDown", true)
       end
+      if walkAnim == "PickupIdle" and not sprite3:IsPlaying("PickupIdle") then
+        sprite3:Play("PickupIdle", false)
+      end 
+      if walkAnim == "PickupWalkRight" and not sprite3:IsPlaying("PickupWalkRight") then
+        sprite3:Play("PickupWalkRight", false)
+      end 
+      if walkAnim == "PickupWalkLeft" and not sprite3:IsPlaying("PickupWalkLeft") then
+        sprite3:Play("PickupWalkLeft", false)
+      end
+      if walkAnim == "PickupWalkDown" and not sprite3:IsPlaying("PickupWalkDown") then
+        sprite3:Play("PickupWalkDown", false)
+      end
+      if walkAnim == "PickupWalkUp" and not sprite3:IsPlaying("PickupWalkUp") then
+        sprite3:Play("PickupWalkUp", false)
+      end
+
     end
 
 
@@ -219,7 +256,7 @@ function L22_Gluttony:postUpdate()
     end
   end
   mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L22_Gluttony.PeUpdate)
----@param laser EntityLaser
+  
   function L22_Gluttony:fireBrim(laser)
     local player = Isaac.GetPlayer(0)
     if player:GetPlayerType() ~= GluttonyType then
