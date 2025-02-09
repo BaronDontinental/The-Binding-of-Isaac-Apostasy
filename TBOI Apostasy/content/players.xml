@@ -12,7 +12,7 @@
 		  
 	<player id="21" name="L21_Envy" skin="Character_021_Envy.png" hp="6" items="" bombs="1"
           nameimage="PlayerName_021_envyl.png" eternalheart="1"
-          portrait="playerPortrait_021_envyl.png" skinColor="-1"
+          portrait="playerPortrait_021_envyl.png" skinColor="-1" costumeSuffix="envyl"
 		  birthright="Wish" />	  
 	
 	<player id="22" name="L22_Gluttony" skin="Character_022_Gluttony.png" hp="8" 
