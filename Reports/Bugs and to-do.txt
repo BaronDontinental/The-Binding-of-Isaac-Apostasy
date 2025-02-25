@@ -13,6 +13,7 @@ To-do
 2. Birthrites
 3. figure out how to bypass not getting any keys issue for sloth
 4. glottony shooting animation for brim
+5. sort out the balancing for envy
 
 
 
