@@ -9,7 +9,8 @@ DebugMode = true
 IncreaseColorCharge = true
 ColorTint = 0
 
-print("Hello Gomper, my name is Bingus!  The Mod has successfully booted!")
+print("Hello player, Welcome to The Binding of Isaac Apostasy.  The mod has loaded successfully.")
+print("Mod version: 0.0.0.4.2")
 
 yoink:bringC() --brings characters
 yoink:bringI() --brings items
