@@ -12,9 +12,9 @@ local dmgStep = 0
 local roll
 local completed = 0
 
---[[local Beggar = {
-    ENTITY_SLOTH_STATION = 600
-} ]]
+EntityType.ENTITY_SLOTH_STATION = Isaac.GetEntityTypeByName("Sloth Station")
+
+
 BeggarState = {
     IDLE = 0,
     PAYNOTHING = 2,
@@ -23,7 +23,6 @@ BeggarState = {
     TELEPORT = 5
 }
 
-EntityType.ENTITY_SLOTH_STATION = Isaac.GetEntityTypeByName("Sloth Station")
 
 function Sloth_Station:postUpdate()
     function Sloth_Station:RemoveFromRegister(entity)
