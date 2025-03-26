@@ -5,7 +5,8 @@ Bugs
 3. need to add envy orbital counts and sloth clear counts to a register to fix saving and exiting issues.  
 4. when you restart the game the entity for the sloth station is lost, need to add the register to a .json save.  
 5. Death cap applies to familiars
-
+6. Pride Birthright continuous on new runs.
+7. 2x2 room in sheol can crash game (likely repentagon)
 
 
 To-do
@@ -13,9 +14,10 @@ To-do
 1. sloth station spike does not do knockback
 2. Birthrites
 3. figure out how to bypass not getting any keys issue for sloth
-4. glottony shooting animation for brim
-5. sort out the balancing for envy
-
+4. gluttony shooting animation for brim
+5. sort out the balancing for envy and wrath
+6. Add meta data so sloth and envy counters and familiars remain on reload
+7. Give Lust an interesting mechanic, possibly involving pills.
 
 
 URGENT NEED TO DO
