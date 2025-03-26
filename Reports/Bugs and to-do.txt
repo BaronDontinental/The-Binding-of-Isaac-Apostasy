@@ -7,6 +7,7 @@ Bugs
 5. Death cap applies to familiars
 6. Pride Birthright continuous on new runs.
 7. 2x2 room in sheol can crash game (likely repentagon)
+8. Gluttony reflection bug (flooded caves, downpour, etc)
 
 
 To-do
