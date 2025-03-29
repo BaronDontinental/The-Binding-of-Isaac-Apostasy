@@ -200,6 +200,8 @@ function L20_Pride:postUpdate()
       end
       if player:HasCollectible(CollectibleType.COLLECTIBLE_BIRTHRIGHT) then
         Birthright = true
+      else
+        Birthright = false
       end
       if Birthright == true and book == nil then
         sprite:Play("Hud", true)
@@ -230,8 +232,13 @@ function L20_Pride:postUpdate()
        end
     end
   mod:AddCallback(ModCallbacks.MC_POST_RENDER, L20_Pride.render)
-    function L20_Pride:birthright(item)
-      local player = Isaac.GetPlayer(0)
+    function L20_Pride:birthright(item, _, player, _, slot)
+      if player:GetPlayerType() ~= PrideGuy then
+        return
+      end
+      if slot ~= 0 then
+        return
+      end
       if Birthright == true then
 ---@diagnostic disable-next-line: param-type-mismatch
         player:UseCard(Card.CARD_TOWER, UseFlag.USE_NOANNOUNCER)
