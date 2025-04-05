@@ -17,6 +17,7 @@ local L24_WrathStats = {
 }
 local count
 local HasBombs = nil
+local bomb
 
 function L24_Wrath:postUpdate()
     function L24_Wrath:OnCache(player, cacheFlag)
@@ -61,7 +62,7 @@ function L24_Wrath:postUpdate()
         end
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L24_Wrath.OnCache)
-    local bomb
+
     function L24_Wrath:OnUpdate()
         local player = Isaac.GetPlayer(0)
 
