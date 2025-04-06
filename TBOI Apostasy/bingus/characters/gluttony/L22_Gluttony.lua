@@ -64,6 +64,18 @@ function L22_Gluttony:postUpdate()
       if (cacheFlag == CacheFlag.CACHE_WEAPON) then
         player.EnableWeaponType(player, WeaponType.WEAPON_BRIMSTONE, true)
         player.EnableWeaponType(player, WeaponType.WEAPON_TEARS, false)
+        player.EnableWeaponType(player, WeaponType.WEAPON_BOMBS, false)
+        player.EnableWeaponType(player, WeaponType.WEAPON_LASER, false)
+        player.EnableWeaponType(player, WeaponType.WEAPON_KNIFE, false)
+        player.EnableWeaponType(player, WeaponType.WEAPON_MONSTROS_LUNGS, false)
+        player.EnableWeaponType(player, WeaponType.WEAPON_LUDOVICO_TECHNIQUE, false)
+        player.EnableWeaponType(player, WeaponType.WEAPON_TECH_X, false)
+        player.EnableWeaponType(player, WeaponType.WEAPON_BONE, false)
+        player.EnableWeaponType(player, WeaponType.WEAPON_NOTCHED_AXE, false)
+        player.EnableWeaponType(player, WeaponType.WEAPON_URN_OF_SOULS, false)
+        player.EnableWeaponType(player, WeaponType.WEAPON_SPIRIT_SWORD, false)
+        player.EnableWeaponType(player, WeaponType.WEAPON_FETUS, false)
+        player.EnableWeaponType(player, WeaponType.WEAPON_UMBILICAL_WHIP, false)
       end
       if (cacheFlag == CacheFlag.CACHE_FLYING) then
         if player:HasCollectible(CollectibleType.COLLECTIBLE_DOGMA) and game:GetLevel():GetStage() == LevelStage.STAGE8 then

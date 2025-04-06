@@ -17,6 +17,7 @@ local L24_WrathStats = {
 }
 local count
 local HasBombs = nil
+local bomb
 
 function L24_Wrath:postUpdate()
     function L24_Wrath:OnCache(player, cacheFlag)
@@ -45,11 +46,23 @@ function L24_Wrath:postUpdate()
             if (cacheFlag == CacheFlag.CACHE_WEAPON) then
               player.EnableWeaponType(player, WeaponType.WEAPON_BOMBS, true)
               player.EnableWeaponType(player, WeaponType.WEAPON_TEARS, false)
+              player.EnableWeaponType(player, WeaponType.WEAPON_BRIMSTONE, false)
+              player.EnableWeaponType(player, WeaponType.WEAPON_LASER, false)
+              player.EnableWeaponType(player, WeaponType.WEAPON_KNIFE, false)
+              player.EnableWeaponType(player, WeaponType.WEAPON_MONSTROS_LUNGS, false)
+              player.EnableWeaponType(player, WeaponType.WEAPON_LUDOVICO_TECHNIQUE, false)
+              player.EnableWeaponType(player, WeaponType.WEAPON_TECH_X, false)
+              player.EnableWeaponType(player, WeaponType.WEAPON_BONE, false)
+              player.EnableWeaponType(player, WeaponType.WEAPON_NOTCHED_AXE, false)
+              player.EnableWeaponType(player, WeaponType.WEAPON_URN_OF_SOULS, false)
+              player.EnableWeaponType(player, WeaponType.WEAPON_SPIRIT_SWORD, false)
+              player.EnableWeaponType(player, WeaponType.WEAPON_FETUS, false)
+              player.EnableWeaponType(player, WeaponType.WEAPON_UMBILICAL_WHIP, false)
             end
         end
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L24_Wrath.OnCache)
-    local bomb
+
     function L24_Wrath:OnUpdate()
         local player = Isaac.GetPlayer(0)
 

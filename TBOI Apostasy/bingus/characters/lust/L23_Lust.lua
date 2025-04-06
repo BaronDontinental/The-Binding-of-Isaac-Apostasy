@@ -117,9 +117,9 @@ function L23_Lust:postUpdate()
       if entity:IsVulnerableEnemy() and entity:IsActiveEnemy() and not hit.Charmed then
         local roll = math.random(1, 100)
         hit.Charmed = true
-        if roll >= 90 then
+        --[[if roll >= 90 then
           local fly = Isaac.Spawn(EntityType.ENTITY_FAMILIAR, FamiliarVariant.WISP, 0, spawnpos, Vector.Zero, player):ToFamiliar()
-        end
+        end]]
       end
     end
   end
