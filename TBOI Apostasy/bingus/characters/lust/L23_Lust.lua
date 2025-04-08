@@ -65,28 +65,26 @@ function L23_Lust:postUpdate()
         end
 
 
-    local entities = Isaac.GetRoomEntities()
-    local poggers = EntityRef(player)
-    local friendlyparam
-    for _, entity in ipairs(entities) do
-      local eData = entity:GetData()
-      friendlyparam = entity:ToNPC()
-      local friend = EntityRef(friendlyparam)
-      if friendlyparam and friendlyparam:IsEnemy() and friendlyparam:IsActiveEnemy(true) and friend.IsCharmed and not eData.Friend and not friend.IsFriendly and not friendlyparam:IsBoss() then
-        local color = friendlyparam:GetChampionColorIdx()
-        if friendlyparam:IsDead() and not eData.Died and not eData.Friend then
-          eData.Died = true
-          local obama
-          obama = Isaac.Spawn(friendlyparam.Type, friendlyparam.Variant, friendlyparam.SubType, friendlyparam.Position, Vector(0,0), player):ToNPC()
-          obama:Morph(friendlyparam.Type, friendlyparam.Variant, friendlyparam.SubType, color)
-          eData.Friend = true
-          obama:AddEntityFlags(EntityFlag.FLAG_CHARM)
-          obama:AddEntityFlags(EntityFlag.FLAG_FRIENDLY)
-          obama:AddEntityFlags(EntityFlag.FLAG_PERSISTENT)
-          obama.HitPoints = obama.MaxHitPoints
+      local entities = Isaac.GetRoomEntities()
+      local poggers = EntityRef(player)
+      local friendlyparam
+      for _, entity in ipairs(entities) do
+        local eData = entity:GetData()
+        friendlyparam = entity:ToNPC()
+        local friend = EntityRef(friendlyparam)
+        if friendlyparam and friendlyparam:IsEnemy() and friendlyparam:IsActiveEnemy(true) and friend.IsCharmed and not eData.Friend and not friend.IsFriendly and not friendlyparam:IsBoss() then
+          local color = friendlyparam:GetChampionColorIdx()
+          if friendlyparam:IsDead() and not eData.Died and not eData.Friend then
+            eData.Died = true
+            local obama
+            obama = Isaac.Spawn(friendlyparam.Type, friendlyparam.Variant, friendlyparam.SubType, friendlyparam.Position, Vector(0,0), player):ToNPC()
+            obama:Morph(friendlyparam.Type, friendlyparam.Variant, friendlyparam.SubType, color)
+            eData.Friend = true
+            obama:AddEntityFlags(EntityFlag.FLAG_CHARM | EntityFlag.FLAG_FRIENDLY | EntityFlag.FLAG_PERSISTENT)
+            obama.HitPoints = obama.MaxHitPoints
+          end
         end
       end
-    end
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L23_Lust.OnUpdate)
 
