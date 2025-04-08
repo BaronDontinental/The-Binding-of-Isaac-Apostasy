@@ -818,6 +818,14 @@ function B29_Lust:postUpdate()
             mogus:Update()
           end
         end
+        if LustPills.SomethingsWrong then
+          local mogus
+          local chance = 8
+          local roll = math.random(1,100)
+          if roll <= chance then
+            mogus = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.PLAYER_CREEP_BLACK, 0, enemy.Position, Vector.Zero, player):ToEffect()
+          end
+        end
         if LustPills.XLax then
           local mogus
           local chance = 8
@@ -909,7 +917,7 @@ function B29_Lust:postUpdate()
         local boom
         for i, entity in pairs(roomEntities) do
           boom = entity:ToNPC()
-          if boom and boom:HasEntityFlags(EntityFlag.FLAG_NO_FLASH_ON_DAMAGE) and boom:IsEnemy() and boom:IsActiveEnemy(false) then
+          if boom and boom:HasEntityFlags(EntityFlag.FLAG_NO_FLASH_ON_DAMAGE) and boom:IsEnemy() and boom:IsActiveEnemy(false) and not boom:IsBoss() then
             ExplosiveDiarrhea.target = boom
             ExplosiveDiarrhea.frame = Game:GetFrameCount() + ExplosiveDiarrhea.delay
           end
@@ -917,9 +925,7 @@ function B29_Lust:postUpdate()
       elseif Game:GetFrameCount() == ExplosiveDiarrhea.frame then
         if ExplosiveDiarrhea.target:IsActiveEnemy(false) then
           Isaac.Explode(ExplosiveDiarrhea.target.Position, ExplosiveDiarrhea.target, 100)
-          if not ExplosiveDiarrhea.target:IsBoss() then
-            ExplosiveDiarrhea.target:Remove()
-          end 
+          ExplosiveDiarrhea.target:Remove()
           ExplosiveDiarrhea.target = nil
         else
           ExplosiveDiarrhea.target = nil 
@@ -940,13 +946,13 @@ function B29_Lust:postUpdate()
         friendlyparam = entity:ToNPC()
         local friend = EntityRef(friendlyparam)
         if friendlyparam and friendlyparam:IsEnemy() and friendlyparam:IsActiveEnemy(true) and friend.IsCharmed and not eData.Friend and not friend.IsFriendly and not friendlyparam:IsBoss() then
-          if LustPills.PowerPill then
+          --[[if LustPills.PowerPill then
             if friend.IsCharmed then
               friendlyparam:SetInvincible(true)
             else
               friendlyparam:SetInvincible(false)
             end
-          end
+          end]]
           
           if LustPills.Vurp then
             local color = friendlyparam:GetChampionColorIdx()
