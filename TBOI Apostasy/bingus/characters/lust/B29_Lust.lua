@@ -439,6 +439,7 @@ function B29_Lust:postUpdate()
       if player:GetPlayerType() ~= LustGuy then
         return
       end
+      Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_PILL, PillColor.PILL_NULL, Vector(320,320), Vector(0,0), nil):ToPickup()
 
       B29_LustStats = {
         DAMAGE = 0,
