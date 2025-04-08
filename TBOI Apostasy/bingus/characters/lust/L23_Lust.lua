@@ -18,6 +18,10 @@ local L23_LustStats = {
     TEARCOLOR = Color(0, 0, 0, 0, 0, 0, 0)
 }
 
+local aura = false
+local cloud
+
+
 function L23_Lust:postUpdate()
     function L23_Lust:OnCache(player, cacheFlag)
         local player = Isaac.GetPlayer(0)
@@ -53,10 +57,36 @@ function L23_Lust:postUpdate()
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L23_Lust.OnCache)
     function L23_Lust:OnUpdate()
         local player = Isaac.GetPlayer(0)
-
+        if player:GetPlayerType() ~= LustGuy then
+          return
+        end
         if(Game:GetFrameCount() == 1 and player:GetName() == "L23_Lust") then
             --player:AddCard(math.random(1, 54)) 
         end
+
+
+    local entities = Isaac.GetRoomEntities()
+    local poggers = EntityRef(player)
+    local friendlyparam
+    for _, entity in ipairs(entities) do
+      local eData = entity:GetData()
+      friendlyparam = entity:ToNPC()
+      local friend = EntityRef(friendlyparam)
+      if friendlyparam and friendlyparam:IsEnemy() and friendlyparam:IsActiveEnemy(true) and friend.IsCharmed and not eData.Friend and not friend.IsFriendly and not friendlyparam:IsBoss() then
+        local color = friendlyparam:GetChampionColorIdx()
+        if friendlyparam:IsDead() and not eData.Died and not eData.Friend then
+          eData.Died = true
+          local obama
+          obama = Isaac.Spawn(friendlyparam.Type, friendlyparam.Variant, friendlyparam.SubType, friendlyparam.Position, Vector(0,0), player):ToNPC()
+          obama:Morph(friendlyparam.Type, friendlyparam.Variant, friendlyparam.SubType, color)
+          eData.Friend = true
+          obama:AddEntityFlags(EntityFlag.FLAG_CHARM)
+          obama:AddEntityFlags(EntityFlag.FLAG_FRIENDLY)
+          obama:AddEntityFlags(EntityFlag.FLAG_PERSISTENT)
+          obama.HitPoints = obama.MaxHitPoints
+        end
+      end
+    end
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L23_Lust.OnUpdate)
 
@@ -68,10 +98,6 @@ function L23_Lust:postUpdate()
     end 
       
     mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, L23_Lust.Costume)
-
-
-    local aura = false
-    local cloud
 
     function L23_Lust:PeUpdate(player)
       if player:GetPlayerType() ~= LustGuy then
@@ -97,16 +123,16 @@ function L23_Lust:postUpdate()
   mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L23_Lust.PeUpdate)
 
   function L23_Lust:EUpdate(CloudL)
-  local player = Isaac.GetPlayer(0)
-  if player:GetPlayerType() ~= LustGuy then
-    return
-  end
-  local sprite = CloudL:GetSprite()
-  local data = CloudL:GetData()
-  data.CharmBlacklist = {}
-  local spawnpos = player.Position
-  local poggers = EntityRef(player)
-  local capsule = CloudL:GetNullCapsule("capsule")
+    local player = Isaac.GetPlayer(0)
+    if player:GetPlayerType() ~= LustGuy then
+      return
+    end
+    local sprite = CloudL:GetSprite()
+    local data = CloudL:GetData()
+    data.CharmBlacklist = {}
+    local spawnpos = player.Position
+    local poggers = EntityRef(player)
+    local capsule = CloudL:GetNullCapsule("capsule")
 ---@diagnostic disable-next-line: param-type-mismatch
     for _, entity in ipairs(Isaac.FindInCapsule(capsule, EntityPartition.ENEMY)) do
       local hit = entity:GetData()
