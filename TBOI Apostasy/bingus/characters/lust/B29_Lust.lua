@@ -8,7 +8,7 @@ local sfxManager = SFXManager()
 
 local B29_LustStats = {
     DAMAGE = 0,
-    SPEED = 0,
+    SPEED = 0.3,
     SHOTSPEED = 0,
     MAXFIREDELAY = 0,
     TEARHEIGHT = 0,
