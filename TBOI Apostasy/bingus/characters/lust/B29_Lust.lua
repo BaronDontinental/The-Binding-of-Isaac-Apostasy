@@ -17,7 +17,8 @@ local B29_LustStats = {
     Flying = false,
     LUCK = 0,
     TEARCOLOR = Color(0, 0, 0, 0, 0, 0, 0),
-    CLOUDDAMAGE = .25
+    CLOUDDAMAGE = 0.25,
+    SCALING = 1
 }
 
 local LustPills = {
@@ -34,6 +35,8 @@ local LustPills = {
   PrettyFly = false,
   RangeDown = false,
   RangeUp = false,
+  RangeDown2 = false,
+  RangeUp2 = false,
   SpeedDown = false,
   SpeedUp = false,
   TearsDown = false,
@@ -245,10 +248,12 @@ function B29_Lust:postUpdate()
       end
       if pilleffect == PillEffect.PILLEFFECT_RANGE_DOWN then
         LustPills.RangeDown = true
+        LustPills.RangeDown2 = true
         LustPillsCnt.RangeDown = LustPillsCnt.RangeDown + 1
       end
       if pilleffect == PillEffect.PILLEFFECT_RANGE_UP then
         LustPills.RangeUp = true
+        LustPills.RangeUp2 = true
         LustPillsCnt.RangeUp = LustPillsCnt.RangeUp + 1
       end
       if pilleffect == PillEffect.PILLEFFECT_SPEED_DOWN then
@@ -452,7 +457,8 @@ function B29_Lust:postUpdate()
         Flying = false,
         LUCK = 0,
         TEARCOLOR = Color(0, 0, 0, 0, 0, 0, 0),
-        CLOUDDAMAGE = .25
+        CLOUDDAMAGE = 0.25,
+        SCALING = 1
       }
 
       LustPills = {
@@ -582,6 +588,13 @@ function B29_Lust:postUpdate()
 ---@diagnostic disable-next-line: need-check-nil
         cloud:FollowParent(player)
         cloud.SpriteOffset = Vector(0, -20)
+        cloud.SpriteScale = cloud.SpriteScale * 1.15
+        if LustPills.RangeDown2 then
+          cloud.SpriteScale = cloud.SpriteScale * (0.8) ^ LustPillsCnt.RangeDown
+        end
+        if LustPills.RangeUp2 then 
+          cloud.SpriteScale = cloud.SpriteScale * (1.25) ^ LustPillsCnt.RangeUp
+        end
         cloud.IsFollowing = true
 ---@diagnostic disable-next-line: need-check-nil
         cloud:Update()
@@ -592,6 +605,7 @@ function B29_Lust:postUpdate()
       else
         aura = false
       end
+      
       if LustPills.RangeDown then
         LustPills.RangeDown = false
         cloud.SpriteScale = cloud.SpriteScale * 0.8
@@ -602,6 +616,7 @@ function B29_Lust:postUpdate()
         cloud.SpriteScale = cloud.SpriteScale * 1.25
         --cloud:update()
       end
+
     end
   mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, B29_Lust.CloudPeUpdate)
 
@@ -801,10 +816,10 @@ function B29_Lust:postUpdate()
             enemy.SpriteScale = enemy.SpriteScale * 1.25
         end
         if LustPills.SpeedUp then
-          enemy.Velocity = enemy.Velocity * 1.5
+          enemy.Velocity = enemy.Velocity * 1.2
         end
         if LustPills.SpeedDown then
-          enemy.Velocity = enemy.Velocity * .5
+          enemy.Velocity = enemy.Velocity * .75
         end
         if LustPills.Paralysis then
           enemy:AddFreeze(poggers, 90)
