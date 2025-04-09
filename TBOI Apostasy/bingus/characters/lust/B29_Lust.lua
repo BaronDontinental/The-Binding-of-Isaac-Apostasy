@@ -815,11 +815,11 @@ function B29_Lust:postUpdate()
         if LustPills.Puberty then
             enemy.SpriteScale = enemy.SpriteScale * 1.25
         end
-        if LustPills.SpeedUp then
-          enemy.Velocity = enemy.Velocity * 1.2
+        if LustPills.SpeedUp and not hit.speedup then
+          enemy:SetSpeedMultiplier(2)
         end
-        if LustPills.SpeedDown then
-          enemy.Velocity = enemy.Velocity * .75
+        if LustPills.SpeedDown and not hit.speeddown then
+          enemy:AddSlowing(poggers, 30, 0.5, Color(1,1,1,1,0,0,0))
         end
         if LustPills.Paralysis then
           enemy:AddFreeze(poggers, 90)
