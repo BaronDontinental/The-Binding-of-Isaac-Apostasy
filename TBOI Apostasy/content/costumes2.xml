@@ -1,4 +1,5 @@
 <costumes anm2root="gfx/characters/">
     <costume id="22" anm2path="character_l22_gluttony.anm2" type="none" priority="100" />
     <costume anm2path="character_l23_lust.anm2" type="none" priority="100" />
+    <costume anm2path="character_b29_lust.anm2" type="none" priority="100" />
 </costumes>

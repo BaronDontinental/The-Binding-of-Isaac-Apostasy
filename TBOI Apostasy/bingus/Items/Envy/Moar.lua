@@ -15,7 +15,7 @@ function Moar:postUpdate()
             if game:GetLevel():GetStage() ~= LevelStage.STAGE6 then
                 for _, entity in ipairs(entities) do
                     local data = entity:GetData() 
-                     MoarE = entity:ToNPC()
+                    local MoarE = entity:ToNPC()
                     if MoarE and MoarE:IsBoss() then
                         if MoarE:IsDead() and not data.Died then
                             data.Died = true
