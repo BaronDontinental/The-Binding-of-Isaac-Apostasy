@@ -1,7 +1,7 @@
 local B29_Lust = {}
 local Game = Game()
 
-local LustLump = Isaac.GetCostumeIdByPath("gfx/characters/character_B29_Lust.anm2")
+local LustLump = Isaac.GetCostumeIdByPath("gfx/characters/character_b29_lust.anm2")
 local LustGuy = Isaac.GetPlayerTypeByName("B29_Lust", true)
 EffectVariant.CHARMCLOUD = Isaac.GetEntityVariantByName("Charm Cloud")
 local sfxManager = SFXManager()
@@ -186,6 +186,14 @@ function B29_Lust:postUpdate()
         end
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, B29_Lust.OnCache)
+    function B29_Lust:Costume(player)
+      if player:GetPlayerType() ~= LustGuy then
+        return
+      end
+        player:AddNullCostume(LustLump)
+    end 
+      
+    mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, B29_Lust.Costume)
     function B29_Lust:OnUpdate()
         local player = Isaac.GetPlayer(0)
         if player:GetPlayerType() ~= LustGuy then
