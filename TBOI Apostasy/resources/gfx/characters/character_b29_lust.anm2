@@ -1,8 +1,8 @@
 <AnimatedActor>
-	<Info CreatedBy="robot" CreatedOn="4/9/2025 10:41:59 PM" Version="105" Fps="30"/>
+	<Info CreatedBy="robot" CreatedOn="4/9/2025 10:48:20 PM" Version="106" Fps="30"/>
 	<Content>
 		<Spritesheets>
-			<Spritesheet Path="..\..\..\resources-dlc3\gfx\characters\costumes_lustl\Character_B29_Lustslumps.png" Id="0"/>
+			<Spritesheet Path="..\..\..\resources-dlc3\gfx\characters\costumes_lustb\Character_B29_Lustslumps.png" Id="0"/>
 		</Spritesheets>
 		<Layers>
 			<Layer Name="head0" Id="0" SpritesheetId="0"/>
