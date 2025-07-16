@@ -34,7 +34,7 @@
         <Item Name="Disability Papers" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Reeee!" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Death Cap" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
-        <Item Name="Bombinomicon" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Bombinomicon" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="library">
@@ -91,7 +91,7 @@
         <Item Name="Moar" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Rotgut" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
-        <Item Name="Bombinomicon" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Bombinomicon" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="greedDevil">
@@ -117,7 +117,7 @@
 <!--__________________________________________________-->
     <Pool Name="bombBum">
         <Item Name="Lil Wrath" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
-        <Item Name="Bombinomicon" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Bombinomicon" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="planetarium">
