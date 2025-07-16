@@ -9,11 +9,13 @@
         <Item Name="Reeee!" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Lil Wrath" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Lil Sloth" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="shop">
         <Item Name="Moar" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="boss">
@@ -48,7 +50,7 @@
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="beggar">
-        
+        <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="demonBeggar">
@@ -77,6 +79,7 @@
         <Item Name="Lil Sloth" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Death Cap" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Reeee!" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="greedBoss">
@@ -86,6 +89,7 @@
     <Pool Name="greedShop">
         <Item Name="Moar" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Rotgut" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="greedDevil">
@@ -102,6 +106,7 @@
 <!--__________________________________________________-->
     <Pool Name="craneGame">
         <Item Name="Trench Foot" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="ultraSecret">
