@@ -12,6 +12,7 @@
         <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Weighted Dice" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Devour" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Transfuse" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         
     </Pool>
 <!--__________________________________________________-->
@@ -20,6 +21,7 @@
         <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Weighted Dice" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Devour" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Transfuse" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="boss">
@@ -28,6 +30,7 @@
 <!--__________________________________________________-->
     <Pool Name="devil">
         <Item Name="UpChuck" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Transfuse" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="angel">
@@ -59,6 +62,7 @@
     <Pool Name="beggar">
         <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Devour" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Transfuse" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="demonBeggar">
@@ -67,6 +71,7 @@
 <!--__________________________________________________-->
     <Pool Name="curse">
         <Item Name="Trench Foot" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Transfuse" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="keyMaster">
@@ -90,6 +95,7 @@
         <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Weighted Dice" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Devour" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Transfuse" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="greedBoss">
@@ -103,6 +109,7 @@
         <Item Name="Bombinomicon" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Weighted Dice" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Devour" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Transfuse" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="greedDevil">
@@ -129,6 +136,7 @@
     <Pool Name="bombBum">
         <Item Name="Lil Wrath" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Bombinomicon" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Transfuse" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="planetarium">
