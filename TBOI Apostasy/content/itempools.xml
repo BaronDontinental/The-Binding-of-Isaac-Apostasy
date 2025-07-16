@@ -10,12 +10,14 @@
         <Item Name="Lil Wrath" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Lil Sloth" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Weighted Dice" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="shop">
         <Item Name="Moar" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Weighted Dice" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="boss">
@@ -35,6 +37,7 @@
         <Item Name="Reeee!" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Death Cap" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Bombinomicon" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Weighted Dice" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="library">
@@ -81,6 +84,7 @@
         <Item Name="Death Cap" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Reeee!" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Weighted Dice" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="greedBoss">
@@ -92,6 +96,7 @@
         <Item Name="Rotgut" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Envious Conception" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Bombinomicon" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Weighted Dice" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="greedDevil">

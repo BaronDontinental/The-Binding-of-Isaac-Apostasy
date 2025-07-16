@@ -173,7 +173,7 @@
     <active id="88" name="Cloning Machine" description="Multiple you's" cache=""
         tags="" maxcharges="4" gfx="Cloning_Machine.png" quality="1" />
     <active id="89" name="Weighted Dice" description="Is it chance, or is it just plain luck" cache=""
-        tags="" maxcharges="4" gfx="Weighted_Dice.png" quality="1" />
+        tags="" maxcharges="4" gfx="Weighted_Dice.png" quality="4" />
         <!--Achievement oohwahh-->
         <!--Achievement oohwahh-->
     <familiar name="Envy Orbit" description="WHAT" cache="familiars"
