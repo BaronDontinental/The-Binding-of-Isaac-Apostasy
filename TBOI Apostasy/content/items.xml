@@ -92,8 +92,8 @@
 
 <!--_____________________________________________________________________________________-->
     <!--GLUTTONY ITEM ZONE-->
-    <active id="47" name="Devour" description="Consume thy enemy" cache=""
-        tags="" maxcharges="0" gfx="Devour.png" quality="1" />
+    <passive id="47" name="Devour" description="Eat your heart out" cache=""
+        tags="" gfx="Devour.png" quality="1" />
         <!--Super gluttony baby is in babies.xml-->
     <passive id="49" name="Wide Brim Hat" description="Ain't enough room for the two of us" cache=""
         tags="" gfx="Wide_Brim_Hat.png" quality="1" />
