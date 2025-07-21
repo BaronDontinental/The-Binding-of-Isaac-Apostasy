@@ -65,7 +65,7 @@
 <!--_____________________________________________________________________________________-->
     <!--WRATH ITEMS ZONE-->
     <passive id="32" name="Transfuse" description="" cache=""
-        tags="" gfx="Trasfuse.png" quality="1" />
+        tags="" gfx="Transfuse.png" quality="1" />
         <!--Super wrath baby is in the babies.xml-->
     <passive id="34" name="Hornfel's Horn" description="" cache=""
         tags="" gfx="Hornfels_Horn.png" quality="1" />
