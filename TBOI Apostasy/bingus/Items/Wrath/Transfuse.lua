@@ -5,10 +5,10 @@ mod.COLLECTIBLE_TRANSFUSE = Isaac.GetItemIdByName("Transfuse")
 CollectibleType.COLLECTIBLE_TRANSFUSE = Isaac.GetItemIdByName("Transfuse")
 
 local STAT_BOOSTS = {
-    Damage = 0.10,
-    MoveSpeed = 0.02,
-    Luck = 0.1,
-    ShotSpeed = 0.02,
+    Damage = 0.2,
+    MoveSpeed = 0.04,
+    Luck = 0.2,
+    ShotSpeed = 0.04,
     TearHeight = -0.5, 
     FireDelay = -1     
 }
