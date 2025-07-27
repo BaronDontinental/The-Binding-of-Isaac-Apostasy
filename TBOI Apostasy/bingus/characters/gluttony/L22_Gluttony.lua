@@ -34,6 +34,8 @@ local L22_GluttonyStats = {
 }
 
 function L22_Gluttony:postUpdate()
+  ---@param player EntityPlayer
+  ---@param cacheFlag CacheFlag
   function L22_Gluttony:OnCache(player, cacheFlag)
     if (player:GetName() == "L22_Gluttony") then
       if (cacheFlag == CacheFlag.CACHE_DAMAGE) then
@@ -89,6 +91,7 @@ function L22_Gluttony:postUpdate()
 
   mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L22_Gluttony.OnCache)
 
+  ---@param player EntityPlayer
   function L22_Gluttony:Costume(player)
     if player:GetPlayerType() ~= GluttonyType then
       return
@@ -110,6 +113,7 @@ function L22_Gluttony:postUpdate()
   mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L22_Gluttony.OnUpdate)
 
 
+  ---@param player EntityPlayer
   function L22_Gluttony:PeUpdate(player)
     if player:GetPlayerType() ~= GluttonyType then
       return
@@ -303,6 +307,7 @@ function L22_Gluttony:postUpdate()
   end
   mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L22_Gluttony.PeUpdate)
   
+  ---@param laser EntityLaser
   function L22_Gluttony:fireBrim(laser)
     local player = Isaac.GetPlayer(0)
     if player:GetPlayerType() ~= GluttonyType then
@@ -351,6 +356,8 @@ function L22_Gluttony:postUpdate()
   end
   mod:AddCallback(ModCallbacks.MC_POST_FIRE_BRIMSTONE, L22_Gluttony.fireBrim)
 
+  ---@param player EntityPlayer
+  ---@param head Sprite
   function L22_Gluttony:onRender(player, head)
     if player:GetPlayerType() ~= GluttonyType then
       return

@@ -13,6 +13,7 @@ local Trench = {
 
 
 function Trench_Foot:postUpdate()
+    ---@param player EntityPlayer
     function Trench_Foot:onUpdate(player)
         if player:HasCollectible(CollectibleType.COLLECTIBLE_TRENCH_FOOT) then
             local roll = math.random(100)
@@ -26,6 +27,7 @@ function Trench_Foot:postUpdate()
     end
 mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Trench_Foot.onUpdate)
 
+    ---@param Creep EntityEffect
     function Trench_Foot:onEffect(Creep)
         local sprite = Creep:GetSprite()
         local player = Isaac.GetPlayer(0)

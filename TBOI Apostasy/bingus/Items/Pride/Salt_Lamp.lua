@@ -5,6 +5,8 @@ mod.COLLECTIBLE_SALT_LAMP = Isaac.GetItemIdByName("Salt Lamp")
 CollectibleType.COLLECTIBLE_SALT_LAMP = Isaac.GetItemIdByName("Salt Lamp")
 
 function Salt_Lamp:postUpdate()
+    ---@param player EntityPlayer
+    ---@param cacheFlag CacheFlag
     function Salt_Lamp:EvaluateCache(player, cacheFlags)
         if cacheFlags & CacheFlag.CACHE_DAMAGE == CacheFlag.CACHE_DAMAGE then
             local copyCount = player:GetCollectibleNum(CollectibleType.COLLECTIBLE_SALT_LAMP)
@@ -14,7 +16,8 @@ function Salt_Lamp:postUpdate()
     end
 mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Salt_Lamp.EvaluateCache)
 
-function Salt_Lamp:CurseR()
+---@param player EntityPlayer
+function Salt_Lamp:CurseR(player)
     local playerCount = game:GetNumPlayers()
     local entities = Isaac.GetRoomEntities()
     for playerIndex = 0, playerCount - 1 do

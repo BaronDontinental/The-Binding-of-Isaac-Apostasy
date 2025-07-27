@@ -12,6 +12,7 @@ function Active_Carbos:postUpdate()
         Scale = 1 }
     CarbsTearFlags = {
         TEARFLAG = TearFlags.TEAR_EXPLOSIVE }
+    ---@param player EntityPlayer
     function Active_Carbos:onPassive(player)
     --[[
         if game:GetFrameCount() == 1 then

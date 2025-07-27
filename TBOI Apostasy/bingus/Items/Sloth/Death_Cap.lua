@@ -7,6 +7,7 @@ local numyes = 0
 local num = 0
 
 function Death_Cap:postUpdate()
+    ---@param player EntityPlayer
     function Death_Cap:onUpdate(player)
         if player:HasCollectible(CollectibleType.COLLECTIBLE_DEATH_CAP) then
             player:EvaluateItems()
@@ -30,6 +31,8 @@ function Death_Cap:postUpdate()
         end
     end
 mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Death_Cap.onUpdate)
+    ---@param player EntityPlayer
+    ---@param cacheFlags CacheFlag
     function Death_Cap:onCache(player, cacheFlags)
         if player:HasCollectible(CollectibleType.COLLECTIBLE_DEATH_CAP) then
             if cacheFlags & CacheFlag.CACHE_DAMAGE == CacheFlag.CACHE_DAMAGE then

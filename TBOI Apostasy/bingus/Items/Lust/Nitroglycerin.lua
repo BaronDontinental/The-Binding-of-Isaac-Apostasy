@@ -50,6 +50,7 @@ local heartcount = {
 }
 
 function Nitroglycerin:postUpdate()
+    ---@param player EntityPlayer
     function Nitroglycerin:onUpdate(player)
         if player:HasCollectible(CollectibleType.COLLECTIBLE_NITROGLYCERIN) then
             for _, entity in pairs(Isaac.GetRoomEntities()) do
@@ -117,6 +118,8 @@ function Nitroglycerin:postUpdate()
     end
 mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Nitroglycerin.onUpdate)
 
+    ---@param player EntityPlayer
+    ---@param cacheFlags CacheFlag
     function Nitroglycerin:EvaluateCache(player, cacheFlags)
         local player = Isaac.GetPlayer(0)
         if Trigger.ANY == true then

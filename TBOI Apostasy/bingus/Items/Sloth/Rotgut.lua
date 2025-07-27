@@ -23,6 +23,7 @@ function Rotgut:postUpdate()
         ROT_VARIANT = TearVariant.BOOGER
     }
 
+    ---@param player EntityPlayer
     function Rotgut.onPassive(player)
 
         --[[if game:GetFrameCount() == 1 then

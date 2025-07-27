@@ -68,6 +68,8 @@ local fam = {
 local EnvyFamType
 
 function L21_Envy:postUpdate()
+    ---@param player EntityPlayer
+    ---@param cacheFlag CacheFlag
     function L21_Envy:OnCache(player, cacheFlag)
         local player = Isaac.GetPlayer(0)
 
@@ -104,6 +106,7 @@ function L21_Envy:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L21_Envy.OnCache)
     
+    ---@param player EntityPlayer
     function L21_Envy:EUpdate(player)
       if(Game:GetFrameCount() == 1) then
         fam = {
@@ -354,6 +357,11 @@ function L21_Envy:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L21_Envy.EUpdate)
 
+    ---@param entity Entity
+    ---@param Dmg number
+    ---@param DmgFlag integer
+    ---@param Source EntityRef
+    ---@param CountDwn integer
     function L21_Envy:DmgCheck(entity, Dmg, DmgFlag, Source, CountDwn)
       local player = Isaac.GetPlayer(0)
       if player:GetPlayerType() ~= EnvyGuy then
@@ -363,7 +371,7 @@ function L21_Envy:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_ENTITY_TAKE_DMG, L21_Envy.DmgCheck, EntityType.ENTITY_PLAYER)  
 
-  ---@param player EntityPlayer
+    ---@param player EntityPlayer
     function L21_Envy:ChacheFam(player)
     if player:GetPlayerType() ~= EnvyGuy then
       return
@@ -418,7 +426,7 @@ function L21_Envy:postUpdate()
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, L21_Envy.init, FAMILIAR_ENVY_FAR_ORBITV5)
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, L21_Envy.init, FAMILIAR_ENVY_FAR_ORBITV6)
 
-  ---@param familiar EntityFamiliar 
+    ---@param familiar EntityFamiliar
     function L21_Envy:UpdateFam(familiar)
       local sprite = familiar:GetSprite()
       local player = familiar.Player

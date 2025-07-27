@@ -15,6 +15,8 @@ local B26_PrideStats = {
 }
 
 function B26_Pride:postUpdate()
+    ---@param player EntityPlayer
+    ---@param cacheFlag CacheFlag
     function B26_Pride:OnCache(player, cacheFlag)
         local player = Isaac.GetPlayer(0)
 

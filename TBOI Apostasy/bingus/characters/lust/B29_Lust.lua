@@ -154,6 +154,8 @@ local Trench = {
 
 
 function B29_Lust:postUpdate()
+    ---@param player EntityPlayer
+    ---@param cacheFlag CacheFlag
     function B29_Lust:OnCache(player, cacheFlag)
         local player = Isaac.GetPlayer(0)
 
@@ -186,6 +188,7 @@ function B29_Lust:postUpdate()
         end
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, B29_Lust.OnCache)
+    ---@param player EntityPlayer
     function B29_Lust:Costume(player)
       if player:GetPlayerType() ~= LustGuy then
         return
@@ -206,6 +209,10 @@ function B29_Lust:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, B29_Lust.OnUpdate)
 
+    ---@param pilleffect PillEffect
+    ---@param player EntityPlayer
+    ---@param flag UseFlag
+    ---@param pillcolor PillColor
     function B29_Lust:PillGrab(pilleffect, player, flag, pillcolor)
       if player:GetPlayerType() ~= LustGuy then
         return
@@ -578,6 +585,7 @@ function B29_Lust:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, B29_Lust.NewLevel)
 
+    ---@param player EntityPlayer
     function B29_Lust:CloudPeUpdate(player)
       if player:GetPlayerType() ~= LustGuy then
         return
@@ -628,6 +636,7 @@ function B29_Lust:postUpdate()
     end
   mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, B29_Lust.CloudPeUpdate)
 
+  ---@param CloudL Entity
   function B29_Lust:CloudEUpdate(CloudL)
     local player = Isaac.GetPlayer(0)
     if player:GetPlayerType() ~= LustGuy then

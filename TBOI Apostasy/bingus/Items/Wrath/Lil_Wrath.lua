@@ -16,7 +16,8 @@ local WrathCount = 0
 
 function Lil_Wrath:postUpdate()
     ---@param player EntityPlayer
-    function Lil_Wrath:OnCache(player)
+    ---@param cacheFlag CacheFlag
+    function Lil_Wrath:OnCache(player, cacheFlag)
         local effect = player:GetEffects()
         local count = effect:GetCollectibleEffectNum(CollectibleType.COLLECTIBLE_LIL_WRATH) + player:GetCollectibleNum(CollectibleType.COLLECTIBLE_LIL_WRATH)
         local rng = RNG()

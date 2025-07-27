@@ -15,6 +15,8 @@ local B25_SlothStats = {
 }
 
 function B25_Sloth:postUpdate()
+    ---@param player EntityPlayer
+    ---@param cacheFlag CacheFlag
     function B25_Sloth:OnCache(player, cacheFlag)
         local player = Isaac.GetPlayer(0)
 

@@ -42,6 +42,7 @@ local EnvyFamType
 
 function Envious_Conception:postUpdate()
 
+    ---@param player EntityPlayer
     function Envious_Conception:EUpdate(player)
       if(game:GetFrameCount() == 1) then
         fam = {
@@ -288,6 +289,11 @@ function Envious_Conception:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Envious_Conception.EUpdate)
 
+    ---@param entity Entity
+    ---@param Dmg number
+    ---@param DmgFlag integer
+    ---@param Source EntityRef
+    ---@param CountDwn integer
     function Envious_Conception:DmgCheck(entity, Dmg, DmgFlag, Source, CountDwn)
       local player = Isaac.GetPlayer(0)
       if not player:HasCollectible(CollectibleType.COLLECTIBLE_ENVIOUS_CONCEPTION) then
@@ -298,7 +304,8 @@ function Envious_Conception:postUpdate()
     mod:AddCallback(ModCallbacks.MC_POST_ENTITY_TAKE_DMG, Envious_Conception.DmgCheck, EntityType.ENTITY_PLAYER)  
 
     ---@param player EntityPlayer
-    function Envious_Conception:ChacheFam(player)
+    ---@param cacheFlag CacheFlag
+    function Envious_Conception:ChacheFam(player, cacheFlag)
         if not player:HasCollectible(CollectibleType.COLLECTIBLE_ENVIOUS_CONCEPTION) then
             return
         end

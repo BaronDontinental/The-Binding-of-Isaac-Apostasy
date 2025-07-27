@@ -67,6 +67,7 @@ function Sloth_Station:postUpdate()
             end
         mod:SaveData(SaveData)
     end
+    ---@param fromSave boolean
     function Sloth_Station:onStarted(fromSave)
         if fromSave then
             local ModData = mod:LoadData()
@@ -130,12 +131,14 @@ function Sloth_Station:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL,Sloth_Station.onLevel)
 
+    ---@param shouldSave boolean
     function Sloth_Station:onExit(shouldSave)
         Sloth_Station:SaveState()
     end
     mod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, Sloth_Station.onExit)
 
     
+    ---@param entity EntityNPC
     function Sloth_Station:onBeggar(entity)
         local player = Isaac.GetPlayer(0)
         local entity = entity:ToNPC()
@@ -174,9 +177,14 @@ function Sloth_Station:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, Sloth_Station.onBeggar, EntityType.ENTITY_SLOTH_STATION)
 
-    function Sloth_Station:OnDmg(player, _, DamageFlags, entity)
-        if entity.Type == EntityType.ENTITY_SLOTH_STATION then
-            local bogentity = entity.Entity
+    ---@param entity Entity
+    ---@param amount number
+    ---@param damageFlags integer
+    ---@param source EntityRef
+    ---@param countdownFrames integer
+    function Sloth_Station:OnDmg(entity, amount, damageFlags, source, countdownFrames)
+        if source.Type == EntityType.ENTITY_SLOTH_STATION then
+            local bogentity = source.Entity
             bogentity:ToNPC()
             dmgStep = dmgStep + 1
             if dmgStep == 1 and completed == 0 then

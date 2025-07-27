@@ -15,6 +15,8 @@ local B27_EnvyStats = {
 }
 
 function B27_Envy:postUpdate()
+    ---@param player EntityPlayer
+    ---@param cacheFlag CacheFlag
     function B27_Envy:OnCache(player, cacheFlag)
         local player = Isaac.GetPlayer(0)
 

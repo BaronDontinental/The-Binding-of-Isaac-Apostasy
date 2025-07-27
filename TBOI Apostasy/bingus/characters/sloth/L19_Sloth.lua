@@ -32,6 +32,8 @@ local roomcount = 0
 local sacrificecount = 0
 
 function L19_Sloth:postUpdate()
+    ---@param player EntityPlayer
+    ---@param cacheFlag CacheFlag
     function L19_Sloth:OnCache(player, cacheFlag)
         local player = Isaac.GetPlayer(0)
 
@@ -69,6 +71,7 @@ function L19_Sloth:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L19_Sloth.OnUpdate)
 
+    ---@param player EntityPlayer
     function L19_Sloth:PEffect(player)
       if player:GetPlayerType() ~= SlothGuy then
         return
@@ -135,6 +138,8 @@ function L19_Sloth:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, L19_Sloth.NewRoom)
 
+    ---@param rng RNG
+    ---@param spawn boolean
     function L19_Sloth:RoomClear(rng, spawn)
       clearcount = clearcount + 1
     end
@@ -146,6 +151,9 @@ function L19_Sloth:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, L19_Sloth.NewLevel)
 
+    ---@param player Entity
+    ---@param _ number
+    ---@param DamageFlags integer
     function L19_Sloth:TakeDmg(player, _, DamageFlags)
       player = player:ToPlayer()
       if player:GetPlayerType() ~= SlothGuy then

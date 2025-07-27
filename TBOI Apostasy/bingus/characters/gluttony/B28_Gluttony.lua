@@ -17,6 +17,8 @@ local B28_GluttonyStats = {
 }
 
 function B28_Gluttony:postUpdate()
+  ---@param player EntityPlayer
+  ---@param cacheFlag CacheFlag
   function B28_Gluttony:OnCache(player, cacheFlag)
     local player = Isaac.GetPlayer(0)
 

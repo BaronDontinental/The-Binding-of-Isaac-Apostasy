@@ -21,6 +21,8 @@ local Birthright = nil
 local book = nil
 
 function L20_Pride:postUpdate()
+    ---@param player EntityPlayer
+    ---@param cacheFlag CacheFlag
     function L20_Pride:OnCache(player, cacheFlag)
       local player = Isaac.GetPlayer(0)
 
@@ -64,6 +66,7 @@ function L20_Pride:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L20_Pride.PostUpdate)
 
+    ---@param player EntityPlayer
     function L20_Pride:PlayerInit(player)
       if player:GetName() == "L20_Pride" then
       --player:SetPocketActiveItem(CollectibleType.COLLECTIBLE_REEEE, ActiveSlot.SLOT_pocket, true)
@@ -194,6 +197,7 @@ function L20_Pride:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, L20_Pride.PlayerInit)
 
+    ---@param player EntityPlayer
     function L20_Pride:OnUpdate(player)
       if player:GetPlayerType() ~= PrideGuy then
         return
@@ -232,6 +236,11 @@ function L20_Pride:postUpdate()
        end
     end
   mod:AddCallback(ModCallbacks.MC_POST_RENDER, L20_Pride.render)
+    ---@param item CollectibleType
+    ---@param _ RNG
+    ---@param player EntityPlayer
+    ---@param _ UseFlags
+    ---@param slot ActiveSlot
     function L20_Pride:birthright(item, _, player, _, slot)
       if player:GetPlayerType() ~= PrideGuy then
         return

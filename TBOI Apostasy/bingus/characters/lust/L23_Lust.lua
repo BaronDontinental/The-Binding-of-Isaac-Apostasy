@@ -23,6 +23,8 @@ local cloud
 
 
 function L23_Lust:postUpdate()
+    ---@param player EntityPlayer
+    ---@param cacheFlag CacheFlag
     function L23_Lust:OnCache(player, cacheFlag)
         local player = Isaac.GetPlayer(0)
 
@@ -88,6 +90,7 @@ function L23_Lust:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L23_Lust.OnUpdate)
 
+    ---@param player EntityPlayer
     function L23_Lust:Costume(player)
       if player:GetPlayerType() ~= LustGuy then
         return
@@ -97,6 +100,7 @@ function L23_Lust:postUpdate()
       
     mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, L23_Lust.Costume)
 
+    ---@param player EntityPlayer
     function L23_Lust:PeUpdate(player)
       if player:GetPlayerType() ~= LustGuy then
         return
@@ -120,6 +124,7 @@ function L23_Lust:postUpdate()
     end
   mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L23_Lust.PeUpdate)
 
+  ---@param CloudL Entity
   function L23_Lust:EUpdate(CloudL)
     local player = Isaac.GetPlayer(0)
     if player:GetPlayerType() ~= LustGuy then

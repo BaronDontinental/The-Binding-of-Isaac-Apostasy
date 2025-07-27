@@ -11,6 +11,7 @@ local stank = {
     
 
 function Stick_Of_Deodorant:postUpdate()
+    ---@param player EntityPlayer
     function Stick_Of_Deodorant:onUpdate(player)
         local Poggers = EntityRef(player)
 

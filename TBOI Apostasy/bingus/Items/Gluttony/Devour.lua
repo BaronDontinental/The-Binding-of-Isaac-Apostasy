@@ -50,6 +50,7 @@ local heartcount = {
 }
 
 function Devour:postUpdate()
+        ---@param player EntityPlayer
         function Devour:onUpdate(player)
             if player:HasCollectible(CollectibleType.COLLECTIBLE_DEVOUR) then
                 for _, entity in pairs(Isaac.GetRoomEntities()) do
@@ -117,6 +118,8 @@ function Devour:postUpdate()
         end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Devour.onUpdate)
 
+        ---@param player EntityPlayer
+        ---@param cacheFlags CacheFlag
         function Devour:EvaluateCache(player, cacheFlags)
             local player = Isaac.GetPlayer(0)
             if Trigger.ANY == true then

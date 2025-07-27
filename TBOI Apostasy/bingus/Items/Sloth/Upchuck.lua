@@ -19,6 +19,7 @@ function Upchuck:postUpdate()
         IsUpchuck = nil
     }
 
+    ---@param player EntityPlayer
     function Upchuck:onUpdate(player)
         if player:HasCollectible(CollectibleType.COLLECTIBLE_UPCHUCK) then
             if UpFlags.IsUpchuck ~= nil and game:GetLevel():GetCurrentRoomIndex() ~= UpFlags.Room then
@@ -65,6 +66,8 @@ function Upchuck:postUpdate()
     end
 mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Upchuck.onUpdate)
 
+---@param player EntityPlayer
+---@param cacheFlags CacheFlag
 function Upchuck:EvaluateCache(player, cacheFlags)
     local player = Isaac.GetPlayer(0)
     if UpFlags.IsUpchuck == true then
@@ -87,7 +90,13 @@ end
 mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Upchuck.EvaluateCache)
 
 
-    function Upchuck:OnUse(item)
+    ---@param item CollectibleType
+    ---@param rng RNG
+    ---@param player EntityPlayer
+    ---@param flags UseFlags
+    ---@param slot ActiveSlot
+    ---@param varData integer
+    function Upchuck:OnUse(item, rng, player, flags, slot, varData)
         local player = Isaac.GetPlayer(0)
         UpFlags.Room = game:GetLevel():GetCurrentRoomIndex()
         UpFlags.IsUpchuck = true

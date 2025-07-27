@@ -9,7 +9,13 @@ local LaserType = { LASER_PRIDE = 4 }
 local LASER_DURATION = 15
 
 function Reeee:postUpdate() 
-    function Reeee:onUse()
+    ---@param itemId CollectibleType
+    ---@param rng RNG
+    ---@param player EntityPlayer
+    ---@param useFlags UseFlags
+    ---@param slot ActiveSlot
+    ---@param customVarData integer
+    function Reeee:onUse(itemId, rng, player, useFlags, slot, customVarData)
         local BaseAngle = 45
         local entity = Isaac.GetRoomEntities()
         local playerCount = game:GetNumPlayers()local entities = Isaac.GetRoomEntities()

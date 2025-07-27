@@ -14,6 +14,8 @@ local STAT_BOOSTS = {
 }
 
 function Transfuse:postUpdate()
+    ---@param player EntityPlayer
+    ---@param cacheFlag CacheFlag
     function Transfuse:OnEvaluateCache(player, cacheFlag)
         if player:HasCollectible(CollectibleType.COLLECTIBLE_TRANSFUSE) then
             local data = player:GetData().TransfuseBonuses or {}
@@ -36,6 +38,7 @@ function Transfuse:postUpdate()
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Transfuse.OnEvaluateCache)
 
     -- When picking up a bomb
+    ---@param pickup EntityPickup
     function Transfuse:OnPickupCollect(pickup)
         local player= Isaac.GetPlayer(0)
         if player:HasCollectible(CollectibleType.COLLECTIBLE_TRANSFUSE) then

@@ -24,6 +24,7 @@ function Brownie_Pool:postUpdate()
         end
     end
 
+    ---@param player EntityPlayer
     function Brownie_Pool:onUpdate(player)
         local level = game:GetLevel()
         local copyCount = player:GetCollectibleNum(CollectibleType.COLLECTIBLE_MOAR)

@@ -6,6 +6,10 @@ TrinketType.COLLECTIBLE_DUD_BOMB = Isaac.GetTrinketIdByName("Dud Bomb")
 
 function Dud_Bomb:postUpdate()
 
+    ---@param player EntityPlayer
+    ---@param _ number
+    ---@param dmgFlag integer
+    ---@param DmgSourceRef EntityRef
     function Dud_Bomb:TakeDmg(player, _, dmgFlag, DmgSourceRef)
         if player:HasTrinket(TrinketType.COLLECTIBLE_DUD_BOMB) then
             if DmgSourceRef.Variant == BombVariant.BOMB_TROLL 

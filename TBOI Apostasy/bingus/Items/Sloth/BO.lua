@@ -7,6 +7,7 @@ local numyes = 0
 local num = 0
 local stink
 function BO:postUpdate()
+    ---@param player EntityPlayer
     function BO:onUpdate(player)
         if player:HasCollectible(CollectibleType.COLLECTIBLE_BO) then
             local spawnpos = player.Position

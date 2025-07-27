@@ -31,6 +31,11 @@ function Weighted_Dice:postUpdate()
         return candidates
     end
 
+    ---@param _ CollectibleType
+    ---@param rng RNG
+    ---@param player EntityPlayer
+    ---@param flags UseFlags
+    ---@param slot ActiveSlot
     function Weighted_Dice:UseWeightedDice(_, rng, player, flags, slot)
         local currentPool = GetRoomItemPool()
         local pedestals = Isaac.FindByType(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE)

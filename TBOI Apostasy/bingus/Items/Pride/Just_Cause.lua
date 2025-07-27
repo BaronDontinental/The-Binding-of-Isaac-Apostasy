@@ -12,9 +12,10 @@ local cause = {
 }
 
 function Just_Cause:postUpdate()
+    ---@param player Entity
     function Just_Cause:OnDmg(player)
-        player = player:ToPlayer()
-        if not player:HasTrinket(TrinketType.COLLECTIBLE_JUST_CAUSE) then
+        local playerEntity = player:ToPlayer()
+        if not playerEntity:HasTrinket(TrinketType.COLLECTIBLE_JUST_CAUSE) then
             return
         end
 

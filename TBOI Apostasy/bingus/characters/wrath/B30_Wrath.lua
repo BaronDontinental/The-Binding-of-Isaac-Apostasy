@@ -20,6 +20,8 @@ local HasBombs = nil
 local bomb
 
 function B30_Wrath:postUpdate()
+    ---@param player EntityPlayer
+    ---@param cacheFlag CacheFlag
     function B30_Wrath:OnCache(player, cacheFlag)
         local player = Isaac.GetPlayer(0)
 
@@ -108,6 +110,11 @@ function B30_Wrath:postUpdate()
       end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, B30_Wrath.OnUpdate)
 
+    ---@param entity Entity
+    ---@param amt number
+    ---@param flag integer
+    ---@param source EntityRef
+    ---@param frame integer
     function B30_Wrath:dmg(entity, amt, flag, source, frame)
       local player = Isaac.GetPlayer(0)
       if player:GetPlayerType() ~= WrathGuy then

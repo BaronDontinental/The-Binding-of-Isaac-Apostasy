@@ -6,6 +6,11 @@ CollectibleType.COLLECTIBLE_BOMBINOMICON = Isaac.GetItemIdByName("Bombinomicon")
 
 function Bombinomicon:postUpdate()
 
+    ---@param player EntityPlayer
+    ---@param damage float
+    ---@param damageFlags integer
+    ---@param source EntityRef
+    ---@param damageCountdownFrames integer
     function Bombinomicon:TakeDmg(player, _, dmgFlag, DmgSourceRef)
         if player:HasCollectible(CollectibleType.COLLECTIBLE_BOMBINOMICON)then
             

@@ -9,6 +9,7 @@ function Couch_Potato:postUpdate()
     local CustomRunes = {Card.COUCH_POTATO}
     local RuneChance = {0.02}
     local CouchChance = 0.02
+    ---@param player EntityPlayer
     function Couch_Potato:OnUpdate(player)
         for _, entity in pairs (Isaac.GetRoomEntities()) do
             if entity.Type == EntityType.ENTITY_PICKUP and entity.Variant == PickupVariant.PICKUP_TAROTCARD then
@@ -57,6 +58,11 @@ function Couch_Potato:postUpdate()
     end
 mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Couch_Potato.OnUpdate)
 
+    ---@param rng RNG
+    ---@param iCurrentCard Card
+    ---@param bPlaying boolean
+    ---@param bRunes boolean
+    ---@param bOnlyRunes boolean
     function Couch_Potato:onCard(rng, iCurrentCard, bPlaying, bRunes, bOnlyRunes)
         Isaac.DebugString(tostring(bPlaying) .. " " .. tostring(bRunes) .. " " .. tostring(bOnlyRunes))
         if bRunes then
@@ -76,9 +82,11 @@ mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Couch_Potato.OnUpdate)
     end
 mod:AddCallback(ModCallbacks.MC_GET_CARD, Couch_Potato.onCard)
 
-    function Couch_Potato:OnUse(...)
-        Isaac.GetPlayer(0):AnimateCard(Card.CARD_HOLY, "UseItem")
-        local player = Isaac.GetPlayer(0)
+    ---@param cardID Card
+    ---@param player EntityPlayer
+    ---@param useFlags integer
+    function Couch_Potato:OnUse(cardID, player, useFlags)
+        player:AnimateCard(Card.CARD_HOLY, "UseItem")
         local level = game:GetLevel()
         level:SetStage(LevelStage.STAGE8, StageType.STAGETYPE_REPENTANCE)
         game:StartStageTransition(false, 6, player)

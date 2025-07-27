@@ -20,6 +20,8 @@ local HasBombs = nil
 local bomb
 
 function L24_Wrath:postUpdate()
+    ---@param player EntityPlayer
+    ---@param cacheFlag CacheFlag
     function L24_Wrath:OnCache(player, cacheFlag)
         local player = Isaac.GetPlayer(0)        
 
@@ -102,6 +104,10 @@ function L24_Wrath:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L24_Wrath.OnUpdate)
 
+    ---@param dir Direction
+    ---@param amt number
+    ---@param entity Entity
+    ---@param weapon Weapon
     function L24_Wrath:OnFire(dir, amt, entity, weapon)
       local player = Isaac.GetPlayer(0)
       if player:GetPlayerType() ~= WrathGuy then
@@ -111,6 +117,7 @@ function L24_Wrath:postUpdate()
     end
 mod:AddCallback(ModCallbacks.MC_POST_TRIGGER_WEAPON_FIRED, L24_Wrath.OnFire)
 
+    ---@param player EntityPlayer
     function L24_Wrath:PeUpdate(player)
       if player:GetPlayerType() ~= WrathGuy then
         return
@@ -130,6 +137,11 @@ mod:AddCallback(ModCallbacks.MC_POST_TRIGGER_WEAPON_FIRED, L24_Wrath.OnFire)
     end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L24_Wrath.PeUpdate)
 
+    ---@param entity Entity
+    ---@param amt number
+    ---@param flag integer
+    ---@param source EntityRef
+    ---@param frame integer
     function L24_Wrath:dmg(entity, amt, flag, source, frame)
       local player = Isaac.GetPlayer(0)
       if player:GetPlayerType() ~= WrathGuy then
