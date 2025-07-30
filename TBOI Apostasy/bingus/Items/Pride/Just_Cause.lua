@@ -20,7 +20,12 @@ function Just_Cause:postUpdate()
 
         cause.hitct = cause.hitct + 1
         if cause.hitct == cause.hit then
-            Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_BOMB, BombSubType.BOMB_NORMAL, player.Position, player.Velocity, nil):ToPickup()
+            local roll = math.random(1,2)
+            if roll == 1 then
+                Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_BOMB, BombSubType.BOMB_NORMAL, player.Position, player.Velocity, nil):ToPickup()
+            else
+                Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_KEY, KeySubType.KEY_NORMAL, player.Position, player.Velocity, nil):ToPickup()
+            end
             cause.hitct = 0
         end
     end
