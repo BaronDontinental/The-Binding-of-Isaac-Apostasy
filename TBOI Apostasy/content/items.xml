@@ -143,7 +143,7 @@
     <passive id="73" name="Vaccine" description="I need to do my own research" cache=""
         tags="" gfx="Vaccine.png" quality="1"  />
     <passive id="74" name="Bombinomicon" description="We do a little bit of trolling" cache=""
-        tags="" gfx="Bombinomicon.png" quality="4" /> 
+        tags="book" gfx="Bombinomicon.png" quality="4" /> 
         <!--RIP Achievements-->
     <passive id="76" name="Haughty Spirit" description="Much gain with injustice" cache=""
         tags="" gfx="Haughty_Spirit.png" quality="1" />
