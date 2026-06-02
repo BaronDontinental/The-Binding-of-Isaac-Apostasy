@@ -8,6 +8,7 @@ Bugs
 6. Pride Birthright continuous on new runs.
 7. 2x2 room in sheol can crash game (likely repentagon)
 8. Gluttony reflection bug (flooded caves, downpour, etc)
+9. Sloth room counter for boss room lock out does not allow some instances of downpour 2 mirror world boss room entry, also will tick up when entering crawlspaces, angel/devil rooms, I am Error, (unknown if but likelie red rooms)
 
 
 To-do
