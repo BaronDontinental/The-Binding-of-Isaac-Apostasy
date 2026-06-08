@@ -123,6 +123,17 @@ function L19_Sloth:postUpdate()
               Tear.FallingSpeed = player.TearFallingSpeed - (L19_SlothStats.FLY_1)
               Tear.FallingAcceleration = player.TearFallingAcceleration + (L19_SlothStats.FLY_2)
             end
+            if entity.Variant == TearVariant.BLOOD or TearVariant.EGG or TearVariant.EXPLOSIVO or TearVariant.TOOTH 
+            or TearVariant.FIST or TearVariant.METALLIC or TearVariant.FIRE_MIND or TearVariant.DARK_MATTER  
+            or TearVariant.MYSTERIOUS  or TearVariant.GODS_FLESH or TearVariant.GODS_FLESH_BLOOD or TearVariant.MULTIDIMENSIONAL 
+            or TearVariant.GLAUCOMA or TearVariant.GLAUCOMA_BLOOD or TearVariant.BLACK_TOOTH or TearVariant.SPORE then
+---@diagnostic disable-next-line: need-check-nil
+              TearData.RotSize = 50
+---@diagnostic disable-next-line: need-check-nil
+              Tear.Height = Tear.Height * (L19_SlothStats.SCALE_1 + L19_SlothStats.SCALE_2 * (TearData.RotSize / 100))
+              Tear.FallingSpeed = player.TearFallingSpeed - (L19_SlothStats.FLY_1)
+              Tear.FallingAcceleration = player.TearFallingAcceleration + (L19_SlothStats.FLY_2)
+            end
           end
         end
       end
