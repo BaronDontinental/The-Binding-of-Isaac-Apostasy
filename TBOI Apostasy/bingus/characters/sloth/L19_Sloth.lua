@@ -84,9 +84,13 @@ function L19_Sloth:postUpdate()
         elseif displace == -1 and direction == 1 then
           player.TearsOffset = Vector(-5,10)
         end
-        if level:GetStage() == LevelStage.STAGE1_2 and level:GetStageType() == StageType.STAGETYPE_REPENTANCE_B then
+        if level:GetStage() == LevelStage.STAGE1_2 and (level:GetStageType() == StageType.STAGETYPE_REPENTANCE_B or level:GetStageType() == StageType.STAGETYPE_REPENTANCE) then
           roomcount = level:GetRoomCount() - 5
-          else
+        elseif level:GetStage() == LevelStage.STAGE7 then
+          roomcount = 0
+        elseif level:GetStage() == LevelStage.STAGE6 then
+          roomcount = level:GetRoomCount() - 4
+        else
             roomcount = level:GetRoomCount() - 3
         end
           for i = 7,0,-1 do
@@ -114,33 +118,35 @@ function L19_Sloth:postUpdate()
           if entity.Type == EntityType.ENTITY_TEAR then
             local Tear = entity:ToTear()
             local TearData = entity:GetData()
-            if entity.Variant == TearVariant.BLUE then
+            if entity.Variant == TearVariant.BLUE and not TearData.Cring then
 ---@diagnostic disable-next-line: need-check-nil
               Tear:ChangeVariant(TearVariant.BLOOD)
+              --TearData.Cring = true
               TearData.RotSize = 50
 ---@diagnostic disable-next-line: need-check-nil
               Tear.Height = Tear.Height * (L19_SlothStats.SCALE_1 + L19_SlothStats.SCALE_2 * (TearData.RotSize / 100))
               Tear.FallingSpeed = player.TearFallingSpeed - (L19_SlothStats.FLY_1)
               Tear.FallingAcceleration = player.TearFallingAcceleration + (L19_SlothStats.FLY_2)
             end
-            if entity.Variant == TearVariant.BLOOD or TearVariant.EGG or TearVariant.EXPLOSIVO or TearVariant.TOOTH 
+          --[[if entity.Variant == TearVariant.BLOOD or TearVariant.EGG or TearVariant.EXPLOSIVO or TearVariant.TOOTH 
             or TearVariant.FIST or TearVariant.METALLIC or TearVariant.FIRE_MIND or TearVariant.DARK_MATTER  
             or TearVariant.MYSTERIOUS  or TearVariant.GODS_FLESH or TearVariant.GODS_FLESH_BLOOD or TearVariant.MULTIDIMENSIONAL 
-            or TearVariant.GLAUCOMA or TearVariant.GLAUCOMA_BLOOD or TearVariant.BLACK_TOOTH or TearVariant.SPORE then
+            or TearVariant.GLAUCOMA or TearVariant.GLAUCOMA_BLOOD or TearVariant.BLACK_TOOTH or TearVariant.SPORE and not TearData.Cring then
 ---@diagnostic disable-next-line: need-check-nil
               TearData.RotSize = 50
 ---@diagnostic disable-next-line: need-check-nil
               Tear.Height = Tear.Height * (L19_SlothStats.SCALE_1 + L19_SlothStats.SCALE_2 * (TearData.RotSize / 100))
+              TearData.Cring = true
               Tear.FallingSpeed = player.TearFallingSpeed - (L19_SlothStats.FLY_1)
               Tear.FallingAcceleration = player.TearFallingAcceleration + (L19_SlothStats.FLY_2)
-            end
+            end ]]
           end
         end
       end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L19_Sloth.PEffect)
 
     function L19_Sloth:NewRoom()
-        if room:IsFirstVisit() and room:IsClear() then
+        if room:IsFirstVisit() and room:IsClear() and not (level:GetCurrentRoom() == (RoomType.ROOM_ANGEL or RoomType.ROOM_ERROR or RoomType.ROOM_DUNGEON or RoomType.ROOM_DEVIL or RoomType.ROOM_BLACK_MARKET or RoomType.ROOM_BLUE or RoomType.ROOM_ULTRASECRET)) then
           clearcount = clearcount + 1
         end
     end
