@@ -15,11 +15,11 @@
     <passive id="5" name="Trench Foot" description="Feel Immersed" cache=""
         tags="" gfx="Trench_Foot.png" quality="1" />
     <trinket id="6" name="Active Carbos" description="Bottle of Boom" cache=""
-        tags="" gfx="Active_Carbos.png" quality="1" />
+        tags="" gfx="Active_Carbos.png" quality="1" /> 
     <familiar id="7" name="Lil Sloth" description="Sloppy Friend" cache="familiars"
         tags="baby offensive summonable monstermanual" gfx="Lil_Sloth.png" quality="1" />
-    <trinket id="8" name="Puzzle Cube" description="" cache=""
-        tags="" gfx="Puzzle_Cube.png" quality="1" />
+    <!--<trinket id="8" name="Puzzle Cube" description="" cache=""
+        tags="" gfx="Puzzle_Cube.png" quality="1" /> -->
     <passive id="9" name="BO" description="You smell terrible." cache=""
         tags="" gfx="BO.png" quality="1" />
     <active id="10" name="Lazybony" description="" cache=""
@@ -43,13 +43,13 @@
         tags="" maxcharges="2" gfx="Epipen.png" quality="1" />
     <passive id="20" name="Nitroglycerin" description="Mix things up a bit" cache="damage"
         tags="" gfx="Nitroglycerin.png" quality="1" />
-    <trinket id="21" name="Message in a Bottle" description="Open it" cache=""
-        tags="" gfx="Message_in_a_Bottle.png" quality="1" />
+    <!--<trinket id="21" name="Message in a Bottle" description="Open it" cache=""
+        tags="" gfx="Message_in_a_Bottle.png" quality="1" /> -->
     <familiar id="22" name="Lil Lust" description="She just wants a hug"  cache=""
         tags="baby" gfx="Lil_Lust.png" quality="1" />
         <!--4 Tile is in pocketitems.xml-->
-    <trinket id="24" name="Stick of Deodorant" description="Smells good." cache=""
-        tags="" gfx="Stick_of_Deodorant.png" />
+    <!--<trinket id="24" name="Stick of Deodorant" description="Smells good." cache=""
+        tags="" gfx="Stick_of_Deodorant.png" /> -->
     <passive id="25" name="Glyph of Matrimony" description="Forever together" cache=""
         tags="" gfx="Glyph_of_Matrimony.png" quality="1" />
         <!--Suspicious baby is in babies.xml-->
@@ -72,7 +72,7 @@
     <passive id="35" name="Bowling Bombs" description="" cache=""
         tags="" gfx="Bowling_Bombs.png" quality="1" />
     <trinket id="36" name="Dud Bomb" description="" cache=""
-        tags="" gfx="Dud_Bomb.png" quality="1" />
+        tags="" gfx="Dud_Bomb.png" quality="1" /> 
     <familiar id="37" name="Lil Wrath" description="" cache=""
         tags="baby" gfx="Lil_Wrath.png" quality="1" />
     <active id="38" name="Blank Tile" description="" cache=""
@@ -99,8 +99,8 @@
         tags="" gfx="Wide_Brim_Hat.png" quality="1" />
     <passive id="50" name="Vox Populi" description="I feel bloated" cache=""
         tags="" gfx="Vox_Populi.png" quality="1" />
-    <trinket id="51" name="Ginger Breadmund" description="Can't catch me!" cache=""
-        tags="baby" gfx="Ginger_Breadmund.png" quality="1" />
+    <!--<trinket id="51" name="Ginger Breadmund" description="Can't catch me!" cache=""
+        tags="baby" gfx="Ginger_Breadmund.png" quality="1" /> -->
     <familiar id="52" name="Lil Gluttony" description="Give him sustenance" cache=""
         tags="baby" gfx="Lil_Gluttony.png" quality="1" />
     <passive id="53" name="Cake?" description="It's a lie!" cache=""
@@ -132,8 +132,8 @@
         tags="" gfx="Participation_Award.png" quality="1" />
     <familiar id="67" name="Lil Pride" description="Don't let it go to your head" cache=""
         tags="baby" gfx="Lil_Pride.png" quality="1" />
-    <trinket id="68" name="Just Cause" description="It was intentional" cache=""
-        tags="" gfx="Just_Cause.png" quality="1" />
+    <!--<trinket id="68" name="Just Cause" description="It was intentional" cache=""
+        tags="" gfx="Just_Cause.png" quality="1" /> -->
         <!--King of spades is in the pocket items xml-->
     <active id="70" name="Big, Boi, Bathwater" description="$19 Big, Boi, Bathwater" cache=""
         tags="" maxcharges="6" gfx="Big_Boi_Bathwater.png" quality="1" />
@@ -157,8 +157,8 @@
         tags="" gfx="collectibles_402_chaos.png" quality="1" />
     <passive id="80" name="Split Decision" description="" cache=""
         tags="" gfx="Split_Decision.png" quality="1" />
-    <trinket id="81" name="Snake Eyes" description="" cache=""
-        tags="" gfx="Snake_Eyes.png" quality="1" />
+    <!--<trinket id="81" name="Snake Eyes" description="" cache=""
+        tags="" gfx="Snake_Eyes.png" quality="1" /> -->
     <familiar id="82" name="Lil Envy" description="" cache=""
         tags="baby" gfx="Lil_Envy.png" quality="1" />
     <passive id="83" name="Yin-Yang" description="Some good in bad, Some bad in good" cache=""
@@ -184,8 +184,8 @@
 
 <!--_____________________________________________________________________________________-->
     <!-- TAINTED SLOTH ITEMS ZONE-->
-    <trinket id="102" name="Mycotoxins" description="" cache=""
-        tags="" gfx="Mycotoxins.png" quality="1" />
+    <!--<trinket id="102" name="Mycotoxins" description="" cache=""
+        tags="" gfx="Mycotoxins.png" quality="1" /> -->
         <!--12 tile is in pocketitems.xml-->
         <!--Soul of Gurgle is in pocketitems.xml-->
      <!--Bulb Bum is in Entities2.xml-->
@@ -212,8 +212,8 @@
 
 <!--_____________________________________________________________________________________-->
     <!--TAINTED WRATH ITEM ZONE-->
-    <trinket id="116" name="Golden Fuse" description="" cache=""
-        tags="" gfx="Golden_Fuse.png" quality="1" />
+   <!--<trinket id="116" name="Golden Fuse" description="" cache=""
+        tags="" gfx="Golden_Fuse.png" quality="1" /> -->
         <!--10 Tile is in Pocketitems.xml-->
         <!--Soul of the Boomer is in pocketitmes.xml-->
         <!--Stone Bum is in entities2.xml-->
@@ -225,8 +225,8 @@
 
 <!--_____________________________________________________________________________________-->
     <!--TAINTED Gluttony ITEM ZONE-->
-    <trinket id="123" name="Takeout" description="" cache=""
-        tags="" gfx="Takeout.png" quality="1" />
+    <!--<trinket id="123" name="Takeout" description="" cache=""
+        tags="" gfx="Takeout.png" quality="1" /> -->
         <!--1 Tile is in Pocketitems.xml-->
         <!--Soul of the Vis is in pocketitmes.xml-->
         <!--Mimic is in entities2.xml-->
@@ -239,8 +239,8 @@
 
 <!--_____________________________________________________________________________________-->
     <!--TAINTED PRIDE ITEM ZONE-->
-    <trinket id="130" name="The Hand That's Left" description="" cache=""
-        tags="" gfx="The_Hand_Thats_Left.png" quality="1" />
+    <!--<trinket id="130" name="The Hand That's Left" description="" cache=""
+        tags="" gfx="The_Hand_Thats_Left.png" quality="1" /> -->
         <!--7 Tile is in Pocketitems.xml-->
         <!--Soul of Pride is in pocketitmes.xml-->
                                                                                             <!--Holo Cards needs more explanation-->
@@ -253,15 +253,15 @@
     
 <!--_____________________________________________________________________________________-->
     <!--TAINTED ENVY ITEM ZONE-->
-    <trinket id="137" name="Paranoia" description="" cache=""
-        tags="" gfx="Paranoia.png" quality="1" />
+    <!--<trinket id="137" name="Paranoia" description="" cache=""
+        tags="" gfx="Paranoia.png" quality="1" /> -->
         <!--8 Tile is in Pocketitems.xml-->
         <!--Soul of the Beggar is in pocketitmes.xml-->
         <!--Key Stone is in entities2.xml-->
     <passive id="141" name="Split Personality" description="" cache=""
         tags="" gfx="Split_Personality.png" quality="1" />
-    <trinket id="142" name="Naughty List" description="" cache=""
-        tags="" gfx="Naughty_List.png" quality="1" />
+    <!--<trinket id="142" name="Naughty List" description="" cache=""
+        tags="" gfx="Naughty_List.png" quality="1" /> -->
     <passive id="143" name="Oily Penny" description="" cache=""
         tags="" gfx="Oily_Penny.png" quality="1" />
 

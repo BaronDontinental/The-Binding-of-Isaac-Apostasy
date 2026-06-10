@@ -1,5 +1,5 @@
 <pocketitems>
-    <card type="object" pickup="6" name="Couch Potato"
+    <!--<card type="object" pickup="6" name="Couch Potato"
         id="13" mimiccharge="4" hud="Couch_Potato" />
     <!--to spawn it in (spawn 5.300.98)-->
     <card type="object" pickup="6" name="4 Tile"
@@ -31,7 +31,7 @@
     <card type="object" pickup="6" name="8 Tile"
         id="138" mimiccharge="4" hud="8_Tile.png" />
     <card type="object" pickup="6" name="Soul of the Beggar"
-        id="139" mimiccharge="4" hud="Soul_of_the_Beggar.png" />
+        id="139" mimiccharge="4" hud="Soul_of_the_Beggar.png" /> -->
         
     
 </pocketitems>
