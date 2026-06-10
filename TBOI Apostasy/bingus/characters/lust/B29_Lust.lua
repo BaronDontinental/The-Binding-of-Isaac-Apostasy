@@ -27,7 +27,7 @@ local EmptyHeartColor = Color(0.75, 0.75, 0.75, 1, 0, 0, 0)
 local EmptyHeart = {
   DevilBonus = 0,       --flat devil deal bonus, applied after the game calculates (persists through red heart hits, like rock bottom)
   AngelBonus = 0,       --flat angel deal bonus, applied through AddAngelRoomChance
-  BonusPerHeart = 0.01, --1% per heart grabbed
+  BonusPerHeart = 0.02, --1% per heart grabbed
   Active = false,       --true while a heart should exist in the current boss room
   --BrokenRemoved = false --broken heart removal already happened this floor
 }
