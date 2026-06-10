@@ -52,7 +52,7 @@
 		portrait="PlayerPortrait_Isaac.png"  skinColor="-1"
 		bSkinParent="L22_Gluttony"/> 
 
-	<player id="29" name="B29_Lust" skin="Character_029_LustB.png" hp="4" bombs="1"
+	<player id="29" name="B29_Lust" skin="Character_029_LustB.png" hp="2" bombs="1"
 		nameimage="PlayerName_01_Isaac.png" 
 		portrait="PlayerPortrait_Isaac.png"  skinColor="-1" costumeSuffix="lustb"
 		bSkinParent="L23_Lust"/>

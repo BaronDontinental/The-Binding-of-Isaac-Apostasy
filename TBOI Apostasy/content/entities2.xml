@@ -95,6 +95,15 @@
     tag="" shadowSize="11" friction="1" 
     collisionDamage="8" collisionInterval="7" collisionRadius="15" collisionMass="3"/>
 
+<!--Pickups-->
+    <!--Tainted Lust's empty heart, reuses the vanilla heart anm2 until custom art is made-->
+    <entity anm2path="005.011_heart.anm2" collisionDamage="0"
+    collisionMass="3" collisionRadius="13" friction="1"
+    id="5" name="Empty Heart" numGridCollisionPoints="24" shadowSize="12" stageHP="0"
+    subtype="0" variant="2029">
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
+    </entity>
+
 
 <!--Effects-->
     <entity anm2path="charm_cloud_lust.anm2" collisionDamage="" 
