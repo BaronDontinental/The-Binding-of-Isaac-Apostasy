@@ -168,7 +168,7 @@ function B29_Lust:postUpdate()
       if pickup.SubType == HeartSubType.HEART_SOUL
       or pickup.SubType == HeartSubType.HEART_HALF_SOUL
       or pickup.SubType == HeartSubType.HEART_BLACK then
-        return true
+        return false
       end
     end
     mod:AddCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, B29_Lust.HeartBlock, PickupVariant.PICKUP_HEART)
@@ -185,6 +185,16 @@ function B29_Lust:postUpdate()
       end
     end
     mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, B29_Lust.OnHit, EntityType.ENTITY_PLAYER)
+
+      function B29_Lust:PeUpdate(player)
+      if player:GetPlayerType() ~= LustGuy then
+        return
+      end
+      if player:GetSoulHearts() > 0 then
+        player:AddSoulHearts(-player:GetSoulHearts())
+      end
+    end
+    mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, C29_Lust.PeUpdate)
 
     function B29_Lust:BossClear(rng, spawnpos)
       local player = Isaac.GetPlayer(0)
