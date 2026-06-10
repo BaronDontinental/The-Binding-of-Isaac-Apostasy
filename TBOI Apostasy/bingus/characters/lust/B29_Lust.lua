@@ -194,7 +194,7 @@ function B29_Lust:postUpdate()
         player:AddSoulHearts(-player:GetSoulHearts())
       end
     end
-    mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, C29_Lust.PeUpdate)
+    mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, B29_Lust.PeUpdate)
 
     function B29_Lust:BossClear(rng, spawnpos)
       local player = Isaac.GetPlayer(0)
