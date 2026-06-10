@@ -120,8 +120,12 @@ function B29_Lust:postUpdate()
       if player:GetPlayerType() ~= LustGuy then
         return
       end
+       if Game:GetLevel():GetStage() == LevelStage.STAGE1_1 then
+        EmptyHeart.Active = false
+        return
+      end
       local room = Game:GetRoom()
-      if room:GetType() == RoomType.ROOM_BOSS and not room:IsClear() and not level:GetStage() == LevelStage.STAGE1_1 then
+      if room:GetType() == RoomType.ROOM_BOSS and not room:IsClear() then
         EmptyHeart.Active = true
         SpawnEmptyHeart()
       else
