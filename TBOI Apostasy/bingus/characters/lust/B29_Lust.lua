@@ -29,7 +29,7 @@ local EmptyHeart = {
   AngelBonus = 0,       --flat angel deal bonus, applied through AddAngelRoomChance
   BonusPerHeart = 0.01, --1% per heart grabbed
   Active = false,       --true while a heart should exist in the current boss room
-  BrokenRemoved = false --broken heart removal already happened this floor
+  --BrokenRemoved = false --broken heart removal already happened this floor
 }
 
 local function SpawnEmptyHeart(position)
@@ -45,6 +45,16 @@ local function RemoveEmptyHearts()
   end
 end
 
+local function AnotherBossRoomCleared()
+  local rooms = Game:GetLevel():GetRooms()
+  for i = 0, rooms.Size - 1 do
+    local desc = rooms:Get(i)
+    if desc and desc.Data and desc.Data.Type == RoomType.ROOM_BOSS and desc.Clear then
+      return true
+    end
+  end
+  return false
+end
 
 function B29_Lust:postUpdate()
     function B29_Lust:OnCache(player, cacheFlag)
@@ -111,7 +121,7 @@ function B29_Lust:postUpdate()
       EmptyHeart.DevilBonus = 0
       EmptyHeart.AngelBonus = 0
       EmptyHeart.Active = false
-      EmptyHeart.BrokenRemoved = false
+      --EmptyHeart.BrokenRemoved = false
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, B29_Lust.NewLevel)
 
@@ -120,17 +130,22 @@ function B29_Lust:postUpdate()
       if player:GetPlayerType() ~= LustGuy then
         return
       end
-       if Game:GetLevel():GetStage() == LevelStage.STAGE1_1 then
-        EmptyHeart.Active = false
+      EmptyHeart.Active = false
+      local level = Game:GetLevel()
+      local room = Game:GetRoom()
+      if room:GetType() ~= RoomType.ROOM_BOSS or room:IsClear() then
         return
       end
-      local room = Game:GetRoom()
-      if room:GetType() == RoomType.ROOM_BOSS and not room:IsClear() then
-        EmptyHeart.Active = true
-        SpawnEmptyHeart()
-      else
-        EmptyHeart.Active = false
+      --no empty heart on the first stage, except the last boss room of an XL floor
+      --since that one stands in for the second stage's boss
+      if level:GetStage() == LevelStage.STAGE1_1 then
+        local isXL = level:GetCurses() & LevelCurse.CURSE_OF_LABYRINTH ~= 0
+        if not isXL or not AnotherBossRoomCleared() then
+          return
+        end
       end
+      EmptyHeart.Active = true
+      SpawnEmptyHeart()
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, B29_Lust.NewRoom)
 
@@ -212,8 +227,7 @@ function B29_Lust:postUpdate()
       EmptyHeart.Active = false
       RemoveEmptyHearts()
       --clearing the floor's boss room mends one broken heart, once per floor
-      if not EmptyHeart.BrokenRemoved and player:GetBrokenHearts() > 0 then
-        EmptyHeart.BrokenRemoved = true
+      if player:GetBrokenHearts() > 0 then
         player:AddBrokenHearts(-1)
       end
     end
