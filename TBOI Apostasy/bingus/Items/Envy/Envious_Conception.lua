@@ -5,77 +5,70 @@ mod.COLLECTIBLE_ENVIOUS_CONCEPTION = Isaac.GetItemIdByName("Envious Conception")
 CollectibleType.COLLECTIBLE_ENVIOUS_CONCEPTION = Isaac.GetItemIdByName("Envious Conception")
 
 local RNG_SHIFT_INDEX = 35
-local fam = {
-  dmgCount = 0,
-  hitChance = 3,
-  CloseOrbit1 = 0,
-  CloseOrbit2 = 0,
-  CloseOrbit3 = 0,
-  CloseOrbit4 = 0,
-  FarOrbit1 = 0,
-  FarOrbit2 = 0,
-  FarOrbit3 = 0,
-  FarOrbit4 = 0,
-  FarOrbit5 = 0,
-  FarOrbit6 = 0,
-  ZigOrbit1 = 0,
-  ZigOrbit2 = 0,
-  ZigOrbit3 = 0,
-  ZigOrbit4 = 0,
-  chance = 10,
-  TrySpawn = false,
-  Close1 = 1,
-  Close2 = 0,
-  Close3 = 0,
-  Far1 = 0,
-  Far2 = 0,
-  Far3 = 0,
-  ZigZag1 = 0,
-  ZigZag2 = 0,
-  ZigZag3 = 0,
-  TryCount = 0,
-  RollCount = 0
-}
+local SaveManager = require("callbacks.save_manager")
+
+local function freshFam()
+  return {
+    dmgCount = 0,
+    hitChance = 15,
+    CloseOrbit1 = 0,
+    CloseOrbit2 = 0,
+    CloseOrbit3 = 0,
+    CloseOrbit4 = 0,
+    FarOrbit1 = 0,
+    FarOrbit2 = 0,
+    FarOrbit3 = 0,
+    FarOrbit4 = 0,
+    FarOrbit5 = 0,
+    FarOrbit6 = 0,
+    ZigOrbit1 = 0,
+    ZigOrbit2 = 0,
+    ZigOrbit3 = 0,
+    ZigOrbit4 = 0,
+    chance = 10,
+    TrySpawn = false,
+    Close1 = 0,
+    Close2 = 0,
+    Close3 = 0,
+    Far1 = 0,
+    Far2 = 0,
+    Far3 = 0,
+    ZigZag1 = 0,
+    ZigZag2 = 0,
+    ZigZag3 = 0,
+    TryCount = 0,
+    RollCount = 0
+  }
+end
+local fam = freshFam()
 local EnvyFamType
 
 
 
 function Envious_Conception:postUpdate()
 
-    function Envious_Conception:EUpdate(player)
-      if(game:GetFrameCount() == 1) then
-        fam = {
-          dmgCount = 0,
-          hitChance = 15,
-          CloseOrbit1 = 0,
-          CloseOrbit2 = 0,
-          CloseOrbit3 = 0,
-          CloseOrbit4 = 0,
-          FarOrbit1 = 0,
-          FarOrbit2 = 0,
-          FarOrbit3 = 0,
-          FarOrbit4 = 0,
-          FarOrbit5 = 0,
-          FarOrbit6 = 0,
-          ZigOrbit1 = 0,
-          ZigOrbit2 = 0,
-          ZigOrbit3 = 0,
-          ZigOrbit4 = 0,
-          chance = 10,
-          TrySpawn = false,
-          Close1 = 0,
-          Close2 = 0,
-          Close3 = 0,
-          Far1 = 0,
-          Far2 = 0,
-          Far3 = 0,
-          ZigZag1 = 0,
-          ZigZag2 = 0,
-          ZigZag3 = 0,
-          TryCount = 0,
-          RollCount = 0
-          }
+    -- The familiar progression lives in fam, save and restore it so the
+    -- orbitals survive quitting the game and continuing the run
+    function Envious_Conception:onGameStarted(fromSave)
+      if fromSave then
+        local saved = SaveManager.Get("EnviousConception")
+        if saved then
+          fam = saved
+        end
+      else
+        fam = freshFam()
+        SaveManager.Set("EnviousConception", fam)
       end
+    end
+    mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, Envious_Conception.onGameStarted)
+
+    function Envious_Conception:onSave()
+      SaveManager.Set("EnviousConception", fam)
+    end
+    mod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, Envious_Conception.onSave)
+    mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, Envious_Conception.onSave)
+
+    function Envious_Conception:EUpdate(player)
       if not player:HasCollectible(CollectibleType.COLLECTIBLE_ENVIOUS_CONCEPTION) then
         return
       end 

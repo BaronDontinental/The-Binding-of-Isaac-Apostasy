@@ -33,38 +33,42 @@ local L21_EnvyStats = {
     TEARCOLOR = Color(0, 0, 0, 0, 0, 0, 0)
 }
 local RNG_SHIFT_INDEX = 35
+local SaveManager = require("callbacks.save_manager")
 
-local fam = {
-  dmgCount = 0,
-  hitChance = 3,
-  CloseOrbit1 = 0,
-  CloseOrbit2 = 0,
-  CloseOrbit3 = 0,
-  CloseOrbit4 = 0,
-  FarOrbit1 = 0,
-  FarOrbit2 = 0,
-  FarOrbit3 = 0,
-  FarOrbit4 = 0,
-  FarOrbit5 = 0,
-  FarOrbit6 = 0,
-  ZigOrbit1 = 0,
-  ZigOrbit2 = 0,
-  ZigOrbit3 = 0,
-  ZigOrbit4 = 0,
-  chance = 10,
-  TrySpawn = false,
-  Close1 = 1,
-  Close2 = 0,
-  Close3 = 0,
-  Far1 = 0,
-  Far2 = 0,
-  Far3 = 0,
-  ZigZag1 = 0,
-  ZigZag2 = 0,
-  ZigZag3 = 0,
-  TryCount = 0,
-  RollCount = 0
-}
+local function freshFam()
+  return {
+    dmgCount = 0,
+    hitChance = 15,
+    CloseOrbit1 = 0,
+    CloseOrbit2 = 0,
+    CloseOrbit3 = 0,
+    CloseOrbit4 = 0,
+    FarOrbit1 = 0,
+    FarOrbit2 = 0,
+    FarOrbit3 = 0,
+    FarOrbit4 = 0,
+    FarOrbit5 = 0,
+    FarOrbit6 = 0,
+    ZigOrbit1 = 0,
+    ZigOrbit2 = 0,
+    ZigOrbit3 = 0,
+    ZigOrbit4 = 0,
+    chance = 10,
+    TrySpawn = false,
+    Close1 = 0,
+    Close2 = 0,
+    Close3 = 0,
+    Far1 = 0,
+    Far2 = 0,
+    Far3 = 0,
+    ZigZag1 = 0,
+    ZigZag2 = 0,
+    ZigZag3 = 0,
+    TryCount = 0,
+    RollCount = 0
+  }
+end
+local fam = freshFam()
 local EnvyFamType
 
 function L21_Envy:postUpdate()
@@ -104,40 +108,28 @@ function L21_Envy:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L21_Envy.OnCache)
     
-    function L21_Envy:EUpdate(player)
-      if(Game:GetFrameCount() == 1) then
-        fam = {
-          dmgCount = 0,
-          hitChance = 15,
-          CloseOrbit1 = 0,
-          CloseOrbit2 = 0,
-          CloseOrbit3 = 0,
-          CloseOrbit4 = 0,
-          FarOrbit1 = 0,
-          FarOrbit2 = 0,
-          FarOrbit3 = 0,
-          FarOrbit4 = 0,
-          FarOrbit5 = 0,
-          FarOrbit6 = 0,
-          ZigOrbit1 = 0,
-          ZigOrbit2 = 0,
-          ZigOrbit3 = 0,
-          ZigOrbit4 = 0,
-          chance = 10,
-          TrySpawn = false,
-          Close1 = 0,
-          Close2 = 0,
-          Close3 = 0,
-          Far1 = 0,
-          Far2 = 0,
-          Far3 = 0,
-          ZigZag1 = 0,
-          ZigZag2 = 0,
-          ZigZag3 = 0,
-          TryCount = 0,
-          RollCount = 0
-          }
+    -- The familiar progression lives in fam, save and restore it so the
+    -- orbitals survive quitting the game and continuing the run
+    function L21_Envy:onGameStarted(fromSave)
+      if fromSave then
+        local saved = SaveManager.Get("L21Envy")
+        if saved then
+          fam = saved
+        end
+      else
+        fam = freshFam()
+        SaveManager.Set("L21Envy", fam)
       end
+    end
+    mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, L21_Envy.onGameStarted)
+
+    function L21_Envy:onSave()
+      SaveManager.Set("L21Envy", fam)
+    end
+    mod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, L21_Envy.onSave)
+    mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, L21_Envy.onSave)
+
+    function L21_Envy:EUpdate(player)
       if player:GetPlayerType() ~= EnvyGuy then
         return
       end 

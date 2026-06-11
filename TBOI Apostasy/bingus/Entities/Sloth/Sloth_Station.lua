@@ -5,12 +5,14 @@ local room = Game:GetRoom()
 local SlothGuy = Isaac.GetPlayerTypeByName("L19_Sloth", false)
 local sprite = Sprite()
 local sound = SFXManager()
-local CurrentStage
+local SaveManager = require("callbacks.save_manager")
+local CurStage
 local RoomConfig
-local Register
+local Register = {}
 local dmgStep = 0
 local roll
 local completed = 0
+local runActive = false
 
 EntityType.ENTITY_SLOTH_STATION = Isaac.GetEntityTypeByName("Sloth Station")
 
@@ -56,40 +58,49 @@ function Sloth_Station:postUpdate()
         end
     end
     function Sloth_Station:SaveState()
-        local SaveData = ""
-            for j = 1, #Register do
-                SaveData = SaveData
-                    .. string.format("%5u",Register[j].Room)
-                    .. string.format("%4u",Register[j].Position.X)
-                    .. string.format("%4u",Register[j].Position.Y)
-                    .. string.format("%4u",Register[j].Entity.Type)
-                    .. string.format("%4u",Register[j].Entity.Variant)
-            end
-        mod:SaveData(SaveData)
+        local data = {
+            dmgStep = dmgStep,
+            completed = completed,
+            roll = roll,
+            Register = {},
+        }
+        for j = 1, #Register do
+            data.Register[j] = {
+                Room = Register[j].Room,
+                X = Register[j].Position.X,
+                Y = Register[j].Position.Y,
+                Type = Register[j].Entity.Type,
+                Variant = Register[j].Entity.Variant,
+            }
+        end
+        SaveManager.Set("SlothStation", data)
     end
     function Sloth_Station:onStarted(fromSave)
+        runActive = true
+        CurStage = Game:GetLevel():GetStage()
+        Register = {}
+        dmgStep = 0
+        completed = 0
+        roll = nil
         if fromSave then
-            local ModData = mod:LoadData()
-            Isaac.DebugString(ModData)
-            Register = {}
-            dmgStep = 0
-            completed = 0
-            for i = 1, ModData:len(), 21 do
-                local X = tonumber(ModData:sub(i + 5, i + 8))
-                local Y = tonumber(ModData:sub(i + 9, i + 12))
-                table.insert(Register, 
-                    {
-                    Room = tonumber(ModData:sub(i, i + 4)),
-                    ---@diagnostic disable-next-line: param-type-mismatch
-                    Position = Vector(X, Y),
-                    Entity = { Type = tonumber(ModData:sub(i + 13, i + 16)), Variant = tonumber(ModData:sub(i + 17, i + 20))}
-                    }
-                )
+            local data = SaveManager.Get("SlothStation")
+            if data then
+                dmgStep = data.dmgStep or 0
+                completed = data.completed or 0
+                roll = data.roll
+                for _, saved in ipairs(data.Register or {}) do
+                    table.insert(Register,
+                        {
+                        Room = saved.Room,
+                        Position = Vector(saved.X, saved.Y),
+                        Entity = { Type = saved.Type, Variant = saved.Variant }
+                        }
+                    )
+                end
             end
             Sloth_Station:SpawnRegister()
         else
-            local level = Game:GetLevel()
-            CurStage = level:GetStage()
+            Sloth_Station:SaveState()
         end
     end
     mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, Sloth_Station.onStarted)
@@ -106,10 +117,11 @@ function Sloth_Station:postUpdate()
             end
         end
 
-        if Game:GetFrameCount() <= 1 then
-            Register = {}
-            dmgStep = 0
-            completed = 0
+        -- The first rooms of a session fire before MC_POST_GAME_STARTED has
+        -- restored the saved state, touching the register there would wipe
+        -- the save before it ever gets loaded
+        if not runActive then
+            return
         end
 
         local level = Game:GetLevel()
@@ -126,12 +138,17 @@ function Sloth_Station:postUpdate()
     mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, Sloth_Station.onRoom)
 
     function Sloth_Station:onLevel()
-        Sloth_Station:SaveState()
+        if runActive then
+            Sloth_Station:SaveState()
+        end
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL,Sloth_Station.onLevel)
 
     function Sloth_Station:onExit(shouldSave)
-        Sloth_Station:SaveState()
+        if runActive then
+            Sloth_Station:SaveState()
+        end
+        runActive = false
     end
     mod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, Sloth_Station.onExit)
 
@@ -230,9 +247,6 @@ function Sloth_Station:postUpdate()
         end
     end
     mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, Sloth_Station.OnDmg, EntityType.ENTITY_PLAYER)
-
-    Sloth_Station:onRoom()
-    Sloth_Station:onLevel()
 
 end
 
