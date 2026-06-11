@@ -3,17 +3,23 @@ local game = Game()
 
 mod.COLLECTIBLE_LIL_GLUTTONY = Isaac.GetItemIdByName("Lil Gluttony")
 CollectibleType.COLLECTIBLE_LIL_GLUTTONY = Isaac.GetItemIdByName("Lil Gluttony")
-
 FAMILIAR_GLUTTONY_VARIANT = Isaac.GetEntityVariantByName("LIL_GLUTTONY")
 
 local CONFIG_LILGLUTTONY = Isaac.GetItemConfig():GetCollectible(CollectibleType.COLLECTIBLE_LIL_GLUTTONY)
 
 -- How many full red hearts Lil Gluttony has to eat before he drops a food
 -- item. Dark Bum pays out at 1.5 hearts, Lil Gluttony is greedier.
-local HEARTS_PER_DROP = 3
+local HEARTS_PER_DROP = 6
 
 -- How close (in pixels) a heart has to be before he eats it
 local EAT_RANGE = 25
+
+-- How fast he waddles toward a heart he has his eye on
+local SEEK_SPEED = 3.5
+
+-- Dark Bum's chuckle (vanilla sound 853, named by REPENTOGON). It is the
+-- only bum sound in the game, vanilla plays it on payout.
+local EAT_SOUND = SoundEffect.SOUND_VAMP_GULP
 
 -- The HP up food items he can drop, picked at random
 local FOOD_ITEMS = {
@@ -34,7 +40,7 @@ local HEART_VALUES = {
     [HeartSubType.HEART_DOUBLEPACK] = 4,
     [HeartSubType.HEART_SCARED] = 2,
     [HeartSubType.HEART_BLENDED] = 2,
-    [HeartSubType.HEART_ROTTEN] = 1,
+    [HeartSubType.HEART_ROTTEN] = 2,
 }
 
 local RNG_SHIFT_INDEX = 35
@@ -62,20 +68,41 @@ mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, Lil_Gluttony.init, FAMILIAR_GLUTT
 ---@param familiar EntityFamiliar
     function Lil_Gluttony:UpdateFam(familiar)
         local sprite = familiar:GetSprite()
-        familiar:FollowParent()
 
-        -- Eat any red heart within reach. Progress is stored in half hearts
-        -- on the familiar's Coins field, the same one the bum familiars use,
-        -- so it sticks to each Lil Gluttony individually.
+        -- Find the nearest red heart in the room, like the vanilla bums he
+        -- goes after hearts anywhere, not just the ones that come to him
+        local target = nil
+        local targetDistance = 0
         for _, entity in ipairs(Isaac.FindByType(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_HEART, -1, false, false)) do
             local heart = entity:ToPickup()
-            if heart and heart:Exists() and HEART_VALUES[heart.SubType]
-            and heart.Price == 0 and heart.Wait <= 0
-            and heart.Position:Distance(familiar.Position) <= EAT_RANGE then
-                familiar.Coins = familiar.Coins + HEART_VALUES[heart.SubType]
-                heart:Remove()
-                SFXManager():Play(SoundEffect.SOUND_VAMP_GULP, 1, 0, false, 1)
+            if heart and heart:Exists() and HEART_VALUES[heart.SubType] and heart.Price == 0 then
+                local distance = heart.Position:Distance(familiar.Position)
+                if target == nil or distance < targetDistance then
+                    target = heart
+                    targetDistance = distance
+                end
             end
+        end
+
+        -- Eat the heart when on top of it, otherwise waddle toward it. With
+        -- no heart in sight he falls back in line behind the player.
+        -- Progress is stored in half hearts on the familiar's Coins field,
+        -- the same one the bum familiars use, so it sticks to each Lil
+        -- Gluttony individually.
+        if target ~= nil and targetDistance <= EAT_RANGE then
+            if target.Wait <= 0 then
+                familiar.Coins = familiar.Coins + HEART_VALUES[target.SubType]
+                target:Remove()
+                SFXManager():Play(EAT_SOUND, 1, 0, false, 1)
+            end
+            familiar.Velocity = Vector.Zero
+        elseif target ~= nil then
+            -- Ease toward the heart instead of snapping, gives the waddle a
+            -- bit of weight like the vanilla bums
+            local wanted = (target.Position - familiar.Position):Normalized() * SEEK_SPEED
+            familiar.Velocity = familiar.Velocity * 0.8 + wanted * 0.2
+        else
+            familiar:FollowParent()
         end
 
         -- Ate enough, cough up a random food item
@@ -86,6 +113,7 @@ mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, Lil_Gluttony.init, FAMILIAR_GLUTT
             local foodId = FOOD_ITEMS[rng:RandomInt(#FOOD_ITEMS) + 1]
             local pos = game:GetRoom():FindFreePickupSpawnPosition(familiar.Position, 0, true)
             Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, foodId, pos, Vector.Zero, nil)
+            SFXManager():Play(SoundEffect.SOUND_SUMMONSOUND, 1, 0, false, 1)
         end
 
         if sprite:IsFinished() then
