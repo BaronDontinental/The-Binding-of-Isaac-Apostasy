@@ -18,8 +18,8 @@
         tags="" gfx="Active_Carbos.png" quality="1" /> 
     <familiar id="7" name="Lil Sloth" description="Sloppy Friend" cache="familiars"
         tags="baby offensive summonable monstermanual" gfx="Lil_Sloth.png" quality="1" />
-    <!--<trinket id="8" name="Puzzle Cube" description="" cache=""
-        tags="" gfx="Puzzle_Cube.png" quality="1" /> -->
+    <trinket id="8" name="Puzzle Cube" description="Solves itself" cache=""
+        tags="nogreed" gfx="Puzzle_Cube.png" quality="1" />  
     <passive id="9" name="BO" description="You smell terrible." cache=""
         tags="" gfx="BO.png" quality="1" />
     <active id="10" name="Lazybony" description="" cache=""
@@ -48,8 +48,8 @@
     <familiar id="22" name="Lil Lust" description="She just wants a hug"  cache=""
         tags="baby" gfx="Lil_Lust.png" quality="1" />
         <!--4 Tile is in pocketitems.xml-->
-    <!--<trinket id="24" name="Stick of Deodorant" description="Smells good." cache=""
-        tags="" gfx="Stick_of_Deodorant.png" /> -->
+    <trinket id="24" name="Stick of Deodorant" description="Smells good." cache=""
+        tags="" gfx="Stick_of_Deodorant.png" /> 
     <passive id="25" name="Glyph of Matrimony" description="Forever together" cache=""
         tags="" gfx="Glyph_of_Matrimony.png" quality="1" />
         <!--Suspicious baby is in babies.xml-->
@@ -101,7 +101,7 @@
         tags="" gfx="Vox_Populi.png" quality="1" />
     <!--<trinket id="51" name="Ginger Breadmund" description="Can't catch me!" cache=""
         tags="baby" gfx="Ginger_Breadmund.png" quality="1" /> -->
-    <familiar id="52" name="Lil Gluttony" description="Give him sustenance" cache=""
+    <familiar id="52" name="Lil Gluttony" description="Give him sustenance" cache="familiars"
         tags="baby" gfx="Lil_Gluttony.png" quality="1" />
     <passive id="53" name="Cake?" description="It's a lie!" cache=""
         tags="" gfx="Cake.png" quality="1" />
