@@ -1,0 +1,17 @@
+PRIDE:
+WRATH:
+    - Bosses do not drop a temp bomb on death, instead they drop 5 temp bombs after their death animation finishes. Final Bosses spawn a randmom regular bomb on your position every 5 seconds.
+    - If you have a golden bomb, bomb count does not reduce.
+ENVY:
+LUST:
+    - Speed 1.3
+
+GLUTTONY:
+SLOTH:
+TAINTED PRIDE:
+TAINTED WRATH:
+TAINTED ENVY:
+TAINTED LUST:
+    - blood Creep trail
+TAINTED GLUTTONY:
+TAINTED SLOTH:
