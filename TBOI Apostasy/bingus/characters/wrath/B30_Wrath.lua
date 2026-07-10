@@ -2,11 +2,13 @@ local B30_Wrath = {}
 local Game = Game()
 local sfxManager = SFXManager()
 local WrathGuy = Isaac.GetPlayerTypeByName("B30_Wrath", true)
-local sprite = Sprite()
 local costumeWrath = "gfx/characters/character_b30_wrath.anm2"
+local sprite = Sprite()
+local sprightsheeg1 = Renderer.LoadImage("gfx/ui/ui_bombhearts.png")
+local sprightsheeg2 = Renderer.LoadImage("gfx/ui/ui_hearts.png")
 
 local B30_WrathStats = {
-  DAMAGE = 15,
+  DAMAGE = 10,
   SPEED = -0,
   SHOTSPEED = 0,
   MAXFIREDELAY = 0,
@@ -31,10 +33,10 @@ local HasBombs = nil
 local bomb
 
 local hudIsBomb = false
-local burstSprite = Sprite()
+--local burstSprite = Sprite()
 --burstSprite:Load("gfx/ui/ui_bombheart_burst.anm2", true)
-local burstActive = false
-local burstIndex = 0
+--local burstActive = false
+--local burstIndex = 0
 local heartsPos = Vector(0, 0)
 
 function B30_Wrath:postUpdate()
@@ -43,7 +45,7 @@ function B30_Wrath:postUpdate()
 
         if(player:GetName() == "B30_Wrath") then
             if(cacheFlag == CacheFlag.CACHE_DAMAGE) then
-              player.Damage = (player.Damage * 10) + B30_WrathStats.DAMAGE
+              player.Damage = (player.Damage * 7.5) + B30_WrathStats.DAMAGE
             end
             if(cacheFlag == CacheFlag.CACHE_SPEED) then
               player.MoveSpeed = player.MoveSpeed + B30_WrathStats.SPEED
@@ -105,18 +107,25 @@ function B30_Wrath:postUpdate()
     mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, B30_Wrath.OnInit)
     mod:AddCallback(ModCallbacks.MC_POST_PLAYER_RENDER, B30_Wrath.OnInit)
 
+      function B30_Wrath:reset(player)
+        if player:GetPlayerType() ~= WrathGuy then
+          return
+        end
+        hudIsBomb = false
+      end
+    mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, B30_Wrath.reset)
+
     function B30_Wrath:OnUpdate()
       local player = Isaac.GetPlayer(0)
 
       if(Game:GetFrameCount() == 1 and player:GetName() == "B30_Wrath") then
         --player:AddPill()
+
       end
       if player:GetPlayerType() ~= WrathGuy then
         return
       end
-          sprite:Load("gfx/ui/ui_hearts.anm2", true)
-          sprite:ReplaceSpritesheet(0, "gfx/ui/ui_bombhearts.png")
-          sprite:LoadGraphics()
+
       local entities = Isaac.GetRoomEntities()
         for _, entity in ipairs(entities) do
           local data = entity:GetData()
@@ -125,7 +134,7 @@ function B30_Wrath:postUpdate()
           if Bombinfo then
             Bombinfo.ExplosionDamage = 0 + player.Damage
           end
-          if TempBombParam and TempBombParam:IsEnemy() and TempBombParam:IsActiveEnemy(true) then
+         --[[ if TempBombParam and TempBombParam:IsEnemy() and TempBombParam:IsActiveEnemy(true) then
             if TempBombParam:IsDead() and not data.Died then
               data.Died = true
               bomb = Isaac.Spawn(
@@ -142,7 +151,7 @@ function B30_Wrath:postUpdate()
 ---@diagnostic disable-next-line: need-check-nil
                 bomb:Update()
             end
-          end
+          end]]
         end
       end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, B30_Wrath.OnUpdate)
@@ -241,9 +250,9 @@ function B30_Wrath:postUpdate()
       if amount <= 0 or flags & DamageFlag.DAMAGE_FAKE ~= 0 then
         return
       end
-      burstIndex = math.floor(player:GetHearts() / 2) --the container that just emptied
-      burstActive = true
-      burstSprite:Play("Break", true)
+      --burstIndex = math.floor(player:GetHearts() / 2) --the container that just emptied
+      --burstActive = true
+     -- burstSprite:Play("Break", true)
       --EFFECT TBD: broken bomb heart effect goes here
       sfxManager:Play(SoundEffect.SOUND_BOSS1_EXPLOSIONS, 1, 0, false, 1) --sound TBD
     end
@@ -268,12 +277,14 @@ function B30_Wrath:postUpdate()
       local wantBomb = player ~= nil and player:GetPlayerType() == WrathGuy
       if wantBomb ~= hudIsBomb then
         if wantBomb then
+          print("im boutta")
           heartsSprite:Load("gfx/ui/ui_hearts.anm2", true)
-          heartsSprite:ReplaceSpritesheet(0, "gfx/ui/ui_bombhearts.png")
+          heartsSprite:SetSpritesheet(0, sprightsheeg1)
           heartsSprite:LoadGraphics()
         else
+          print("im nota")
           heartsSprite:Load("gfx/ui/ui_hearts.anm2", true)
-          heartsSprite:ReplaceSpritesheet(0, "gfx/ui/ui_hearts.png")
+          heartsSprite:SetSpritesheet(0, sprightsheeg2)
           heartsSprite:LoadGraphics()
         end
         hudIsBomb = wantBomb
