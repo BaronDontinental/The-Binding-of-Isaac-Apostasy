@@ -46,9 +46,7 @@ local EnvyFamType
 
 
 function Envious_Conception:postUpdate()
-
-    -- The familiar progression lives in fam, save and restore it so the
-    -- orbitals survive quitting the game and continuing the run
+  
     function Envious_Conception:onGameStarted(fromSave)
       if fromSave then
         local saved = SaveManager.Get("EnviousConception")

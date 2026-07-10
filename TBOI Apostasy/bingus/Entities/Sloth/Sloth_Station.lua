@@ -116,10 +116,6 @@ function Sloth_Station:postUpdate()
                 RoomConfig[i] = {Type = Grid.Desc.Type, Variant = Grid.Desc.Variant, State = Grid.Desc.State}
             end
         end
-
-        -- The first rooms of a session fire before MC_POST_GAME_STARTED has
-        -- restored the saved state, touching the register there would wipe
-        -- the save before it ever gets loaded
         if not runActive then
             return
         end

@@ -21,15 +21,14 @@ local B29_LustStats = {
     STARTINGBROKENHEARTS = 11
 }
 
---placeholder grey tint so the vanilla heart sprite reads as "empty" until custom art is made
 local EmptyHeartColor = Color(0.75, 0.75, 0.75, 1, 0, 0, 0)
 
 local EmptyHeart = {
-  DevilBonus = 0,       --flat devil deal bonus, applied after the game calculates (persists through red heart hits, like rock bottom)
-  AngelBonus = 0,       --flat angel deal bonus, applied through AddAngelRoomChance
-  BonusPerHeart = 0.02, --1% per heart grabbed
-  Active = false,       --true while a heart should exist in the current boss room
-  --BrokenRemoved = false --broken heart removal already happened this floor
+  DevilBonus = 0,       
+  AngelBonus = 0,      
+  BonusPerHeart = 0.02, 
+  Active = false,       
+  
 }
 
 local function SpawnEmptyHeart(position)
@@ -84,7 +83,7 @@ function B29_Lust:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, B29_Lust.OnCache)
 
-    function B29_Lust:Costume(player)
+    --[[function B29_Lust:Costume(player)
       if player:GetPlayerType() ~= LustGuy then
         return
       end
@@ -93,7 +92,7 @@ function B29_Lust:postUpdate()
       end
     end
 
-    mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, B29_Lust.Costume)
+    mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, B29_Lust.Costume)]]
 
     function B29_Lust:OnUpdate()
         local player = Isaac.GetPlayer(0)
@@ -101,7 +100,6 @@ function B29_Lust:postUpdate()
           return
         end
         if(Game:GetFrameCount() == 1 and player:GetName() == "B29_Lust") then
-            --starts with 11 broken hearts on top of the 1 red heart from players.xml
             if player:GetBrokenHearts() == 0 then
               player:AddBrokenHearts(B29_LustStats.STARTINGBROKENHEARTS)
             end
@@ -114,14 +112,12 @@ function B29_Lust:postUpdate()
       if player:GetPlayerType() ~= LustGuy then
         return
       end
-      --deal chance bonus resets every floor
       if EmptyHeart.AngelBonus > 0 then
         Game:GetLevel():AddAngelRoomChance(-EmptyHeart.AngelBonus)
       end
       EmptyHeart.DevilBonus = 0
       EmptyHeart.AngelBonus = 0
       EmptyHeart.Active = false
-      --EmptyHeart.BrokenRemoved = false
     end
     mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, B29_Lust.NewLevel)
 
@@ -136,8 +132,6 @@ function B29_Lust:postUpdate()
       if room:GetType() ~= RoomType.ROOM_BOSS or room:IsClear() then
         return
       end
-      --no empty heart on the first stage, except the last boss room of an XL floor
-      --since that one stands in for the second stage's boss
       if level:GetStage() == LevelStage.STAGE1_1 then
         local isXL = level:GetCurses() & LevelCurse.CURSE_OF_LABYRINTH ~= 0
         if not isXL or not AnotherBossRoomCleared() then
@@ -159,7 +153,6 @@ function B29_Lust:postUpdate()
       if not player or player:GetPlayerType() ~= LustGuy then
         return true
       end
-      --whichever deal chance is already higher is the one that grows
       local devilChance = Game:GetRoom():GetDevilRoomChance()
       local angelChance = Game:GetLevel():GetAngelRoomChance()
       if angelChance > devilChance then
@@ -170,7 +163,6 @@ function B29_Lust:postUpdate()
       end
       sfxManager:Play(SoundEffect.SOUND_VAMP_GULP, 1, 0, false, 1, 0)
       pickup:Remove()
-      --golden coin behavior, the heart reappears somewhere else in the room
       if EmptyHeart.Active then
         SpawnEmptyHeart()
       end
@@ -178,7 +170,6 @@ function B29_Lust:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, B29_Lust.EmptyHeartTouch, PickupVariant.PICKUP_EMPTYHEART)
 
-    --red health only, soul and black hearts still spawn but pass through her
     function B29_Lust:HeartBlock(pickup, collider, low)
       local player = collider:ToPlayer()
       if not player or player:GetPlayerType() ~= LustGuy then
@@ -197,7 +188,6 @@ function B29_Lust:postUpdate()
       if not player or player:GetPlayerType() ~= LustGuy then
         return
       end
-      --getting hit makes the heart vanish, the bonus already banked sticks around
       if EmptyHeart.Active then
         EmptyHeart.Active = false
         RemoveEmptyHearts()
@@ -223,17 +213,14 @@ function B29_Lust:postUpdate()
       if Game:GetRoom():GetType() ~= RoomType.ROOM_BOSS then
         return
       end
-      --boss is dead, heart goes away
       EmptyHeart.Active = false
       RemoveEmptyHearts()
-      --clearing the floor's boss room mends one broken heart, once per floor
       if player:GetBrokenHearts() > 0 then
         player:AddBrokenHearts(-1)
       end
     end
     mod:AddCallback(ModCallbacks.MC_PRE_SPAWN_CLEAN_AWARD, B29_Lust.BossClear)
 
-    --REPENTOGON, lets the bonus ride on top of the game's devil chance math so red heart hits never eat it
     function B29_Lust:DevilCalc(chance)
       local player = Isaac.GetPlayer(0)
       if player:GetPlayerType() ~= LustGuy then

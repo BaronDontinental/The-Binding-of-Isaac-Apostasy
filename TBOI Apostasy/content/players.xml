@@ -11,7 +11,7 @@
 		  birthright="Gloat" />
 		  
 	<player id="21" name="L21_Envy" skin="Character_021_Envy.png" hp="6" items="" bombs="1"
-          nameimage="PlayerName_021_envyl.png" eternalheart="1"
+          nameimage="PlayerName_021_envyl.png" eternalheart="1" noshake="true"
           portrait="playerPortrait_021_envyl.png" skinColor="-1" costumeSuffix="envyl"
 		  birthright="Wish" />	  
 	
@@ -21,7 +21,7 @@
 		  birthright="Gobble" /> 
 		  
 	<player id="23" name="L23_Lust" skin="Character_023_Lust.png" hp="4" items="" bombs="1"
-          nameimage="PlayerName_023_lustl.png" 
+          nameimage="PlayerName_023_lustl.png" modcostume="824"
           portrait="playerPortrait_023_lustl.png" skinColor="-1" costumeSuffix="lustl"
 		  birthright="Desire" />	 
 		  
@@ -53,12 +53,12 @@
 		bSkinParent="L22_Gluttony"/> 
 
 	<player id="29" name="B29_Lust" skin="Character_029_LustB.png" hp="2" bombs="1"
-		nameimage="PlayerName_01_Isaac.png" 
+		nameimage="PlayerName_01_Isaac.png"  modcostume="825"
 		portrait="PlayerPortrait_Isaac.png"  skinColor="-1" costumeSuffix="lustb"
 		bSkinParent="L23_Lust"/>
 
-	<player id="30" name="B30_Wrath" skin="Character_030_WrathB.png" hp="4" bombs="10"
-		nameimage="PlayerName_01_Isaac.png" 
+	<player id="30" name="B30_Wrath" skin="Character_030_WrathB.png" hp="8" bombs="10"
+		nameimage="PlayerName_01_Isaac.png"  modcostume="826"
 		portrait="PlayerPortrait_Isaac.png"  skinColor="-1"
 		bSkinParent="L24_Wrath"/>
 
