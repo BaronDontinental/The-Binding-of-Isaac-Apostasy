@@ -1,5 +1,6 @@
 <costumes anm2root="gfx/characters/">
     <costume id="22" anm2path="character_l22_gluttony.anm2" type="none" priority="100" />
+    <costume id="823" anm2path="character_l21_envy.anm2" type="none" priority="100" />
     <costume id="824" anm2path="character_l23_lust.anm2" type="none" priority="100" />
     <costume id="825" anm2path="character_b29_lust.anm2" type="none" priority="100" />
     <costume id="826" anm2path="character_b30_wrath.anm2" type="none" priority="100" />
