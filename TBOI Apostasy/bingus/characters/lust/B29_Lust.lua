@@ -83,7 +83,7 @@ function B29_Lust:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, B29_Lust.OnCache)
 
-    function B29_Lust:Costume(player)
+    --[[function B29_Lust:Costume(player)
       if player:GetPlayerType() ~= LustGuy then
         return
       end
@@ -92,7 +92,7 @@ function B29_Lust:postUpdate()
       end
     end
 
-    mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, B29_Lust.Costume)
+    mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, B29_Lust.Costume)]]
 
     function B29_Lust:OnUpdate()
         local player = Isaac.GetPlayer(0)

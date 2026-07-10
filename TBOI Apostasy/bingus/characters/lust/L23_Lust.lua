@@ -88,14 +88,14 @@ function L23_Lust:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L23_Lust.OnUpdate)
 
-    function L23_Lust:Costume(player)
+    --[[function L23_Lust:Costume(player)
       if player:GetPlayerType() ~= LustGuy then
         return
       end
         player:AddNullCostume(LustLump)
     end 
       
-    mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, L23_Lust.Costume)
+    mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, L23_Lust.Costume)]]
 
     function L23_Lust:PeUpdate(player)
       if player:GetPlayerType() ~= LustGuy then
