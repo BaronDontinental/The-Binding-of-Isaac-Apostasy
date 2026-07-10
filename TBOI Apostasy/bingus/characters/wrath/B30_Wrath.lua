@@ -93,9 +93,6 @@ function B30_Wrath:postUpdate()
         end
         local playSprite = player:GetSprite()
         if playSprite:GetFilename() ~= costumeWrath then
-
-
-
           local anim = playSprite:GetAnimation()
           local frame = playSprite:GetFrame()
           playSprite:Load(costumeWrath, true)
