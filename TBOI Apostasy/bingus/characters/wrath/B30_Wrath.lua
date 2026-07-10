@@ -14,29 +14,35 @@ local B30_WrathStats = {
   MAXFIREDELAY = 0,
   TEARHEIGHT = 0,
   TEARFALLINGSPEED = 0,
-  --TEARFLAG = TearFlags,
   Flying = false,
   LUCK = 0,
   TEARCOLOR = Color(0, 0, 0, 0, 0, 0, 0),
   BOMBPERSIST = 60,
-  --bomb hearts
   MAXHEARTS = 24,              
   HEAL_NORMAL = 2,           
   HEAL_DOUBLEPACK = 4,        
   HEART_SPACING_X = 12,       
   HEART_SPACING_Y = 10,     
   HEARTS_PER_ROW = 6,
-  BURST_OFFSET = Vector(6, 6) 
+  BURST_OFFSET = Vector(6, 6), 
+  FUSETIME = 30,              
+  FUSE_WARNTIME = 3,           
+  FUSE_FLASHCOLOR = Color(1, 1, 1, 1, 0.6, 0, 0), 
+  NUM_BOMB = 5
 }
 local count
 local HasBombs = nil
 local bomb
 
 local hudIsBomb = false
---local burstSprite = Sprite()
---burstSprite:Load("gfx/ui/ui_bombheart_burst.anm2", true)
---local burstActive = false
---local burstIndex = 0
+local burstSprite = Sprite()
+burstSprite:Load("gfx/ui/ui_bombheart_burst.anm2", true)
+local burstActive = false
+local burstIndex = 0
+local fuseSprite = Sprite()
+fuseSprite:Load("gfx/ui/ui_bombheart_fuse.anm2", true)
+fuseSprite:Play("Burn", true)
+local fuseTimer = B30_WrathStats.FUSETIME * 30 
 local heartsPos = Vector(0, 0)
 
 function B30_Wrath:postUpdate()
@@ -112,6 +118,7 @@ function B30_Wrath:postUpdate()
           return
         end
         hudIsBomb = false
+        fuseTimer = B30_WrathStats.FUSETIME * 30
       end
     mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, B30_Wrath.reset)
 
@@ -126,6 +133,23 @@ function B30_Wrath:postUpdate()
         return
       end
 
+      fuseSprite:Update()
+      fuseTimer = fuseTimer - 1
+      if fuseTimer > 0 and fuseTimer <= B30_WrathStats.FUSE_WARNTIME * 30 then
+        if fuseTimer % 10 < 5 then
+          player:SetColor(B30_WrathStats.FUSE_FLASHCOLOR, 2, 1, false, false)
+        end
+        if fuseTimer % 30 == 0 then
+          sfxManager:Play(SoundEffect.SOUND_BEEP, 1, 0, false, 1) 
+        end
+      end
+      if fuseTimer <= 0 then
+        fuseTimer = B30_WrathStats.FUSETIME * 30
+        player:TakeDamage(2, 0, EntityRef(player), 0)
+        sfxManager:Stop(SoundEffect.SOUND_ISAAC_HURT_GRUNT) --no hurt grunt
+        Isaac.Spawn(EntityType.ENTITY_BOMB, BombVariant.BOMB_TROLL, 0, player.Position, Vector(0,0), player)
+      end
+
       local entities = Isaac.GetRoomEntities()
         for _, entity in ipairs(entities) do
           local data = entity:GetData()
@@ -134,24 +158,26 @@ function B30_Wrath:postUpdate()
           if Bombinfo then
             Bombinfo.ExplosionDamage = 0 + player.Damage
           end
-         --[[ if TempBombParam and TempBombParam:IsEnemy() and TempBombParam:IsActiveEnemy(true) then
-            if TempBombParam:IsDead() and not data.Died then
-              data.Died = true
-              bomb = Isaac.Spawn(
-                EntityType.ENTITY_PICKUP,
-                PickupVariant.PICKUP_BOMB,
-                BombSubType.BOMB_NORMAL,
-                TempBombParam.Position,
-                TempBombParam.Velocity,
-                player):ToPickup()
-
----@diagnostic disable-next-line: need-check-nil
-                bomb:Morph(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_BOMB, BombSubType.BOMB_NORMAL, false, true, true)
-                bomb.Timeout = B30_WrathStats.BOMBPERSIST
----@diagnostic disable-next-line: need-check-nil
-                bomb:Update()
-            end
-          end]]
+         if TempBombParam and TempBombParam:IsEnemy() and TempBombParam:IsActiveEnemy(true) then
+            if TempBombParam:IsDead() and TempBombParam:IsBoss() and not data.Died then
+                data.Died = true
+                for i = 1, B30_WrathStats.NUM_BOMB do
+                  bomb = Isaac.Spawn(
+                    EntityType.ENTITY_PICKUP,
+                    PickupVariant.PICKUP_BOMB,
+                    BombSubType.BOMB_NORMAL,
+                    TempBombParam.Position,
+                    TempBombParam.Velocity,
+                    player):ToPickup()
+                end
+                    bomb:Morph(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_BOMB, BombSubType.BOMB_NORMAL, false, true, true)
+                    bomb.Timeout = B30_WrathStats.BOMBPERSIST
+                    bomb:Update()
+              elseif TempBombParam.ParentNPC
+                then
+                  data.Died = true
+              end
+          end
         end
       end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, B30_Wrath.OnUpdate)
@@ -212,7 +238,7 @@ function B30_Wrath:postUpdate()
         return 
       end
       pickup:GetData().BombHeartTaken = true
-      sfxManager:Play(SoundEffect.SOUND_STEAM_HALFSEC, .75, 0, false, 1) --pickup sound TBD
+      sfxManager:Play(SoundEffect.SOUND_STEAM_HALFSEC, .75, 0, false, 1) 
       pickup:GetSprite():Play("Collect", true)
       pickup:Die()
       return false
@@ -260,9 +286,10 @@ function B30_Wrath:postUpdate()
       if amount <= 0 or flags & DamageFlag.DAMAGE_FAKE ~= 0 then
         return
       end
-      --burstIndex = math.floor(player:GetHearts() / 2) --the container that just emptied
-      --burstActive = true
-     -- burstSprite:Play("Break", true)
+      fuseTimer = B30_WrathStats.FUSETIME * 30 
+      burstIndex = math.floor(player:GetHearts() / 2) --the container that just emptied
+      burstActive = true
+      burstSprite:Play("Break", true)
       --EFFECT TBD: broken bomb heart effect goes here
       sfxManager:Play(SoundEffect.SOUND_ROCKET_EXPLOSION, 1, 0, false, 1) --sound TBD
     end
@@ -281,9 +308,9 @@ function B30_Wrath:postUpdate()
     end
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, B30_Wrath.dmg, EntityType.ENTITY_PLAYER)
 
-    --swaps the hud heart spritesheet for the bomb heart sheet
+
     function B30_Wrath:HudHearts(offset, heartsSprite, position, unknown, player)
-      heartsPos = position --remember where the hearts render for the burst
+      heartsPos = position 
       local wantBomb = player ~= nil and player:GetPlayerType() == WrathGuy
       if wantBomb ~= hudIsBomb then
         if wantBomb then
@@ -300,8 +327,7 @@ function B30_Wrath:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_PRE_PLAYERHUD_RENDER_HEARTS, B30_Wrath.HudHearts)
 
-    --advances the burst at game speed so it pauses with the game
-   --[[ function B30_Wrath:BurstUpdate()
+    function B30_Wrath:BurstUpdate()
       if burstActive then
         burstSprite:Update()
         if burstSprite:IsFinished("Break") then
@@ -311,9 +337,8 @@ function B30_Wrath:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, B30_Wrath.BurstUpdate)
 
-    --draws the burst over the hud on the heart that broke
     function B30_Wrath:BurstRender()
-      if not burstActive then
+      if not burstActive or not Game:GetHUD():IsVisible() then
         return
       end
       local row = math.floor(burstIndex / B30_WrathStats.HEARTS_PER_ROW)
@@ -322,7 +347,26 @@ function B30_Wrath:postUpdate()
         + Vector(col * B30_WrathStats.HEART_SPACING_X, row * B30_WrathStats.HEART_SPACING_Y)
       burstSprite:Render(pos)
     end
-    mod:AddCallback(ModCallbacks.MC_POST_RENDER, B30_Wrath.BurstRender)]]
+    mod:AddCallback(ModCallbacks.MC_POST_RENDER, B30_Wrath.BurstRender)
+
+    --draws the burning fuse on the rightmost filled bomb heart
+    function B30_Wrath:FuseRender()
+      local player = Isaac.GetPlayer(0)
+      if player:GetPlayerType() ~= WrathGuy or not Game:GetHUD():IsVisible() then
+        return
+      end
+      local filled = math.floor(player:GetHearts() / 2)
+      if filled <= 0 then
+        return
+      end
+      local index = filled - 1 --rightmost filled heart
+      local row = math.floor(index / B30_WrathStats.HEARTS_PER_ROW)
+      local col = index % B30_WrathStats.HEARTS_PER_ROW
+      local pos = heartsPos + B30_WrathStats.BURST_OFFSET
+        + Vector(col * B30_WrathStats.HEART_SPACING_X, row * B30_WrathStats.HEART_SPACING_Y)
+      fuseSprite:Render(pos)
+    end
+    mod:AddCallback(ModCallbacks.MC_POST_RENDER, B30_Wrath.FuseRender)
 end
 
 return B30_Wrath
