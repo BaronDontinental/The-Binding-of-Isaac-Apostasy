@@ -108,8 +108,6 @@ function L21_Envy:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L21_Envy.OnCache)
     
-    -- The familiar progression lives in fam, save and restore it so the
-    -- orbitals survive quitting the game and continuing the run
     function L21_Envy:onGameStarted(fromSave)
       if fromSave then
         local saved = SaveManager.Get("L21Envy")

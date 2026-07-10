@@ -5,15 +5,14 @@ local room = Game:GetRoom()
 local SlothGuy = Isaac.GetPlayerTypeByName("B25_Sloth", false)
 local sfxManager = SFXManager()
 
---set this to true if soul hearts and black hearts should be allowed on him in the future
 local ALLOWSOULHEARTS = false
 
 local B25_SlothStats = {
     DAMAGE = 2.857,
     SPEED = -0.2,
     SHOTSPEED = 0,
-    MAXFIREDELAY = 20,      --quite low fire rate while dry
-    CREEPFIREDELAY = 10,    --regular sloth fire rate while standing in his creep
+    MAXFIREDELAY = 20,      
+    CREEPFIREDELAY = 10,    
     TEARHEIGHT = 0,
     TEARFALLINGSPEED = 0,
     TEARFLAG = TearFlags.TEAR_EXPLOSIVE,
@@ -24,12 +23,12 @@ local B25_SlothStats = {
     SCALE_2 = 0.4,
     FLY_1 = 20,
     FLY_2 = 1.5,
-    CREEP_MIN_TIME = 60,    --fastest creep spawn, in update frames (2 seconds)
-    CREEP_MAX_TIME = 150,   --slowest creep spawn, in update frames (5 seconds)
-    CREEP_SCALE = 2,        --multiplier on the standard creep size
-    CREEP_RADIUS = 26,      --standing range of one pool before the scale is applied
-    CREEP_TIMEOUT = 90,     --how long a pool sticks around, in update frames
-    CREEPCOLOR = Color(0.7, 0.9, 0.2, 1.0, 0, 0, 0)    --puke green
+    CREEP_MIN_TIME = 60,    
+    CREEP_MAX_TIME = 150,   
+    CREEP_SCALE = 2,       
+    CREEP_RADIUS = 26,      
+    CREEP_TIMEOUT = 90,     
+    CREEPCOLOR = Color(0.7, 0.9, 0.2, 1.0, 0, 0, 0)    
 }
 
 local clearcount = 0
@@ -161,7 +160,6 @@ function B25_Sloth:postUpdate()
             end
           end
         end
-        --he drools out a puddle of creep every so often
         creeptimer = creeptimer - 1
         if creeptimer <= 0 then
           local creep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.PLAYER_CREEP_GREEN, 0, player.Position, Vector(0,0), player):ToEffect()
@@ -175,7 +173,6 @@ function B25_Sloth:postUpdate()
           creep:Update()
           creeptimer = math.random(B25_SlothStats.CREEP_MIN_TIME, B25_SlothStats.CREEP_MAX_TIME)
         end
-        --standing in a pool wakes him up to the regular sloth fire rate
         local standing = false
         for _, creep in pairs(Isaac.FindByType(EntityType.ENTITY_EFFECT, EffectVariant.PLAYER_CREEP_GREEN, -1, false, false)) do
           if (creep.Position - player.Position):Length() <= B25_SlothStats.CREEP_RADIUS * B25_SlothStats.CREEP_SCALE then
@@ -187,7 +184,6 @@ function B25_Sloth:postUpdate()
           player:AddCacheFlags(CacheFlag.CACHE_FIREDELAY)
           player:EvaluateItems()
         end
-        --his whole health pool is rotten, red healing of any kind gets rebuilt as rotten hearts
         local rotten = player:GetRottenHearts()
         local red = player:GetHearts() - rotten
         if red > 0 then
@@ -200,7 +196,6 @@ function B25_Sloth:postUpdate()
       end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, B25_Sloth.PEffect)
 
-    --soul and black hearts still spawn but pass through him, he can not pick them up
     function B25_Sloth:HeartBlock(pickup, collider, low)
       local player = collider:ToPlayer()
       if not player or player:GetPlayerType() ~= SlothGuy then
@@ -236,7 +231,6 @@ function B25_Sloth:postUpdate()
       if player:GetPlayerType() ~= SlothGuy then
         return
       end
-    --birthright lets him pay in halves, two half hits cost one rotten heart instead of two
       if player:HasCollectible(CollectibleType.COLLECTIBLE_BIRTHRIGHT) and amount == 1 then
         halfdamage = halfdamage + 1
         if halfdamage % 2 == 1 then
@@ -245,7 +239,6 @@ function B25_Sloth:postUpdate()
           return false
         end
       end
-    --any hit that lands pops a rotten heart, mark the window so its blue flies become chargers
       flywindow = Game:GetFrameCount() + 2
     end
     mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, B25_Sloth.TakeDmg, EntityType.ENTITY_PLAYER)
@@ -258,7 +251,6 @@ function B25_Sloth:postUpdate()
       if Game:GetFrameCount() > flywindow then
         return
       end
-    --rotten hearts pay out the black chargers My Shadow makes instead of blue flies
       familiar:Remove()
       local charger = Isaac.Spawn(EntityType.ENTITY_CHARGER, 0, 1, familiar.Position, Vector(0,0), player)
       charger:AddCharmed(EntityRef(player), -1)
