@@ -57,7 +57,7 @@
 		portrait="PlayerPortrait_Isaac.png"  skinColor="-1" costumeSuffix="lustb"
 		bSkinParent="L23_Lust"/>
 
-	<player id="30" name="B30_Wrath" skin="Character_030_WrathB.png" hp="4" bombs="10"
+	<player id="30" name="B30_Wrath" skin="Character_030_WrathB.png" hp="8" bombs="10"
 		nameimage="PlayerName_01_Isaac.png" 
 		portrait="PlayerPortrait_Isaac.png"  skinColor="-1"
 		bSkinParent="L24_Wrath"/>

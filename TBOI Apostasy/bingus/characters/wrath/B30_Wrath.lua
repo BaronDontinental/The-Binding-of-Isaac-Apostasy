@@ -18,6 +18,7 @@ local B30_WrathStats = {
 local count
 local HasBombs = nil
 local bomb
+local hudIsBomb = false
 
 function B30_Wrath:postUpdate()
     function B30_Wrath:OnCache(player, cacheFlag)
@@ -120,6 +121,7 @@ function B30_Wrath:postUpdate()
       end
     end
   mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, B30_Wrath.dmg, EntityType.ENTITY_PLAYER)
+
 end
 
 return B30_Wrath
