@@ -20,13 +20,13 @@ local B30_WrathStats = {
   TEARCOLOR = Color(0, 0, 0, 0, 0, 0, 0),
   BOMBPERSIST = 60,
   --bomb hearts
-  MAXHEARTS = 24,              --4 full bomb hearts, in half heart units
-  HEAL_NORMAL = 2,            --one full bomb heart per normal bomb
-  HEAL_DOUBLEPACK = 4,        --two full bomb hearts per double pack
-  HEART_SPACING_X = 12,       --hud distance between heart containers
-  HEART_SPACING_Y = 10,       --hud distance between heart rows
+  MAXHEARTS = 24,              
+  HEAL_NORMAL = 2,           
+  HEAL_DOUBLEPACK = 4,        
+  HEART_SPACING_X = 12,       
+  HEART_SPACING_Y = 10,     
   HEARTS_PER_ROW = 6,
-  BURST_OFFSET = Vector(6, 6) --nudge the burst onto the heart, tweak in game
+  BURST_OFFSET = Vector(6, 6) 
 }
 local count
 local HasBombs = nil
@@ -156,8 +156,6 @@ function B30_Wrath:postUpdate()
       end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, B30_Wrath.OnUpdate)
 
-    --keeps health in a legal bomb heart state every frame:
-    --no half hearts, no soul/bone/eternal/rotten hearts, max 4 containers
     function B30_Wrath:PEffect(player)
       if player:GetPlayerType() ~= WrathGuy then
         return
@@ -180,31 +178,33 @@ function B30_Wrath:postUpdate()
         player:AddHearts(rotten * 2)
       end
       if player:GetHearts() % 2 == 1 then
-        player:AddHearts(1) --half heals from items snap up to a full bomb heart
+        player:AddHearts(1) 
       end
     end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, B30_Wrath.PEffect)
 
-    --bomb pickups fill empty bomb hearts before they give ammo
     function B30_Wrath:BombTouch(pickup, collider, low)
       local player = collider:ToPlayer()
       if not player or player:GetPlayerType() ~= WrathGuy then
         return
       end
-      if pickup:IsShopItem() or pickup:GetData().BombHeartTaken then
+      if pickup:GetData().BombHeartTaken then
         return
       end
       local missing = player:GetMaxHearts() - player:GetHearts()
-      if pickup.SubType == BombSubType.BOMB_GOLDEN then
+      if pickup.SubType == BombSubType.BOMB_GOLDEN and missing <= 0 then
         player:AddGoldenHearts(1)
       end
       if missing <= 0 then
-        return --bomb hearts full, vanilla bomb pickup
+        return 
       end
       if pickup.SubType == BombSubType.BOMB_NORMAL then
         player:AddHearts(B30_WrathStats.HEAL_NORMAL)
       elseif pickup.SubType == BombSubType.BOMB_DOUBLEPACK then
         player:AddHearts(B30_WrathStats.HEAL_DOUBLEPACK)
+      elseif pickup.SubType == BombSubType.BOMB_GOLDEN then
+        player:AddHearts(B30_WrathStats.HEAL_NORMAL)
+        player:AddGoldenHearts(1)
         if missing == 2 then
           player:AddBombs(1) 
         end
@@ -212,14 +212,13 @@ function B30_Wrath:postUpdate()
         return 
       end
       pickup:GetData().BombHeartTaken = true
-      sfxManager:Play(SoundEffect.SOUND_VAMP_GULP, 1, 0, false, 1) --pickup sound TBD
+      sfxManager:Play(SoundEffect.SOUND_STEAM_HALFSEC, .75, 0, false, 1) --pickup sound TBD
       pickup:GetSprite():Play("Collect", true)
       pickup:Die()
       return false
     end
     mod:AddCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, B30_Wrath.BombTouch, PickupVariant.PICKUP_BOMB)
 
-    --hearts never get collected, he just shoves them around the room
     function B30_Wrath:HeartBlock(pickup, collider, low)
       local player = collider:ToPlayer()
       if not player or player:GetPlayerType() ~= WrathGuy then
@@ -229,7 +228,6 @@ function B30_Wrath:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, B30_Wrath.HeartBlock, PickupVariant.PICKUP_HEART)
 
-    --every hit costs exactly one full bomb heart, they never break in half
     function B30_Wrath:TakeDmg(entity, amount, flags, source, countdown)
       local player = entity:ToPlayer()
       if not player or player:GetPlayerType() ~= WrathGuy then
@@ -241,8 +239,14 @@ function B30_Wrath:postUpdate()
       if flags ~= DamageFlag.DAMAGE_EXPLOSION then
         flags = flags | DamageFlag.DAMAGE_NO_PENALTIES
       end
-      if amount > 0 then
-        return {Damage = 2, DamageFlags = flags} --REPENTOGON: overrides the damage amount
+      if amount > 0 and amount <= 2 then
+        return {Damage = 2, DamageFlags = flags} 
+      elseif amount > 2 and amount <= 4 then
+        return {Damage = 4, DamageFlags = flags}
+      elseif amount > 4 and amount <= 6 then
+        return {Damage = 6, DamageFlags = flags}
+      elseif amount > 6 and amount <= 8 then
+        return {Damage = 8, DamageFlags = flags}
       end
     end
     mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, B30_Wrath.TakeDmg, EntityType.ENTITY_PLAYER)
@@ -260,7 +264,7 @@ function B30_Wrath:postUpdate()
       --burstActive = true
      -- burstSprite:Play("Break", true)
       --EFFECT TBD: broken bomb heart effect goes here
-      sfxManager:Play(SoundEffect.SOUND_BOSS1_EXPLOSIONS, 1, 0, false, 1) --sound TBD
+      sfxManager:Play(SoundEffect.SOUND_ROCKET_EXPLOSION, 1, 0, false, 1) --sound TBD
     end
     mod:AddCallback(ModCallbacks.MC_POST_ENTITY_TAKE_DMG, B30_Wrath.HeartBreak, EntityType.ENTITY_PLAYER)
 
