@@ -20,7 +20,7 @@ local B30_WrathStats = {
   TEARCOLOR = Color(0, 0, 0, 0, 0, 0, 0),
   BOMBPERSIST = 60,
   --bomb hearts
-  MAXHEARTS = 8,              --4 full bomb hearts, in half heart units
+  MAXHEARTS = 24,              --4 full bomb hearts, in half heart units
   HEAL_NORMAL = 2,            --one full bomb heart per normal bomb
   HEAL_DOUBLEPACK = 4,        --two full bomb hearts per double pack
   HEART_SPACING_X = 12,       --hud distance between heart containers
@@ -195,6 +195,9 @@ function B30_Wrath:postUpdate()
         return
       end
       local missing = player:GetMaxHearts() - player:GetHearts()
+      if pickup.SubType == BombSubType.BOMB_GOLDEN then
+        player:AddGoldenHearts(1)
+      end
       if missing <= 0 then
         return --bomb hearts full, vanilla bomb pickup
       end
@@ -203,10 +206,10 @@ function B30_Wrath:postUpdate()
       elseif pickup.SubType == BombSubType.BOMB_DOUBLEPACK then
         player:AddHearts(B30_WrathStats.HEAL_DOUBLEPACK)
         if missing == 2 then
-          player:AddBombs(1) --second bomb of the pack spills into ammo
+          player:AddBombs(1) 
         end
       else
-        return --golden/giga stay vanilla
+        return 
       end
       pickup:GetData().BombHeartTaken = true
       sfxManager:Play(SoundEffect.SOUND_VAMP_GULP, 1, 0, false, 1) --pickup sound TBD
@@ -235,8 +238,11 @@ function B30_Wrath:postUpdate()
       if flags & DamageFlag.DAMAGE_FAKE ~= 0 then
         return
       end
-      if amount > 0 and amount ~= 2 then
-        return {Damage = 2, DamageFlag.DAMAGE_NO_PENALTIES} --REPENTOGON: overrides the damage amount
+      if flags ~= DamageFlag.DAMAGE_EXPLOSION then
+        flags = flags | DamageFlag.DAMAGE_NO_PENALTIES
+      end
+      if amount > 0 then
+        return {Damage = 2, DamageFlags = flags} --REPENTOGON: overrides the damage amount
       end
     end
     mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, B30_Wrath.TakeDmg, EntityType.ENTITY_PLAYER)
@@ -259,11 +265,11 @@ function B30_Wrath:postUpdate()
     mod:AddCallback(ModCallbacks.MC_POST_ENTITY_TAKE_DMG, B30_Wrath.HeartBreak, EntityType.ENTITY_PLAYER)
 
     function B30_Wrath:dmg(entity, amt, flag, source, frame)
-      local player = Isaac.GetPlayer(0)
-      if player:GetPlayerType() ~= WrathGuy then
+      local player = entity:ToPlayer()
+      if not player or player:GetPlayerType() ~= WrathGuy then
         return
       end
-      if flag == DamageFlag.DAMAGE_EXPLOSION then
+      if (flag & DamageFlag.DAMAGE_EXPLOSION) ~=0 then
 ---@diagnostic disable-next-line: param-type-mismatch
         player:UseCard(Card.CARD_TOWER, UseFlag.USE_NOANNOUNCER)
         player:Die()

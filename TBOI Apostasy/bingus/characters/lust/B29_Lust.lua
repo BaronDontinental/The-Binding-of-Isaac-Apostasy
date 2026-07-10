@@ -31,6 +31,12 @@ local EmptyHeart = {
   
 }
 
+    local creepin = {
+    Size1 = .75,
+    Size2 = 1,
+    Chance = 4
+}
+
 local function SpawnEmptyHeart(position)
   local room = Game:GetRoom()
   local pos = room:FindFreePickupSpawnPosition(position or room:GetRandomPosition(40), 0, true)
@@ -83,6 +89,19 @@ function B29_Lust:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, B29_Lust.OnCache)
 
+    function B29_Lust:Creepdate(player)
+        if player:GetPlayerType() ~= LustGuy then
+          return
+        end
+          local roll = math.random(100)
+          if creepin.Chance <= roll then
+              local spawnpos = player.Position
+              local creep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.PLAYER_CREEP_RED, 0, spawnpos, Vector.Zero, player):ToEffect()
+              creep.Scale = creepin.Size1 * (roll/100)
+              creep:Update()
+          end
+    end
+  mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, B29_Lust.Creepdate)
     --[[function B29_Lust:Costume(player)
       if player:GetPlayerType() ~= LustGuy then
         return
