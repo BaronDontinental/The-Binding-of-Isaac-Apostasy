@@ -5,6 +5,7 @@ WRATH:
 ENVY:
 LUST:
     - Speed 1.3
+    -Dash based character?
 
 GLUTTONY:
 SLOTH:
