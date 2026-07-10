@@ -3,6 +3,7 @@ local Game = Game()
 local sfxManager = SFXManager()
 local WrathGuy = Isaac.GetPlayerTypeByName("B30_Wrath", true)
 local sprite = Sprite()
+local costumeWrath = "gfx/characters/character_b30_wrath.anm2"
 
 local B30_WrathStats = {
   DAMAGE = 15,
@@ -85,6 +86,27 @@ function B30_Wrath:postUpdate()
         end
       end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, B30_Wrath.OnCache)
+
+      function B30_Wrath:OnInit(player)
+        if player:GetPlayerType() ~= WrathGuy then
+          return
+        end
+        local playSprite = player:GetSprite()
+        if playSprite:GetFilename() ~= costumeWrath then
+
+
+
+          local anim = playSprite:GetAnimation()
+          local frame = playSprite:GetFrame()
+          playSprite:Load(costumeWrath, true)
+          if anim and anim ~= "" then
+            playSprite:Play(anim, true)
+            playSprite:SetFrame(frame)
+          end
+        end
+      end
+    mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, B30_Wrath.OnInit)
+    mod:AddCallback(ModCallbacks.MC_POST_PLAYER_RENDER, B30_Wrath.OnInit)
 
     function B30_Wrath:OnUpdate()
       local player = Isaac.GetPlayer(0)
