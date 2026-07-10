@@ -10,6 +10,7 @@ GLUTTONY:
 SLOTH:
 TAINTED PRIDE:
 TAINTED WRATH:
+    - Bomb Heart fuse timer of 30 seconds; drop a troll bomb on position and lose a heart. Bosses drop 5 bombs.  
 TAINTED ENVY:
 TAINTED LUST:
     - blood Creep trail
