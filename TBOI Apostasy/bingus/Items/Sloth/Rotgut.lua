@@ -28,6 +28,7 @@ function Rotgut:postUpdate()
         --[[if game:GetFrameCount() == 1 then
             Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, CollectibleType.COLLECTIBLE_ROTGUT, Vector(320,300), Vector(0,0), nil)
         end ]]
+        local player = Isaac.GetPlayer(0)
         local copyCount = player:GetCollectibleNum(CollectibleType.COLLECTIBLE_ROTGUT)
         player:EvaluateItems()
 

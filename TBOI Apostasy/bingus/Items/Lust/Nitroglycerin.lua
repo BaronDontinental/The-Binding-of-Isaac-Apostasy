@@ -118,9 +118,7 @@ function Nitroglycerin:postUpdate()
 mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Nitroglycerin.onUpdate)
 
     function Nitroglycerin:EvaluateCache(player, cacheFlags)
-        if not player:HasCollectible(CollectibleType.COLLECTIBLE_NITROGLYCERIN) then
-            return
-        end
+        local player = Isaac.GetPlayer(0)
         if Trigger.ANY == true then
             if Trigger.HALFH == true then
                 if cacheFlags & CacheFlag.CACHE_DAMAGE == CacheFlag.CACHE_DAMAGE then
