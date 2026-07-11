@@ -98,7 +98,7 @@ function Envious_Conception:postUpdate()
                 elseif fam.Close1 == 3 then
                   fam.CloseOrbit2 = fam.CloseOrbit2 - 1
                   fam.CloseOrbit3 = fam.CloseOrbit3 + 1
-                  elseif fam.close1 == 4 then
+                  elseif fam.Close1 == 4 then
                     fam.CloseOrbit3 = fam.CloseOrbit3 - 1
                     fam.CloseOrbit4 = fam.CloseOrbit4 + 1
                     elseif fam.Close1 >= 5 then
@@ -119,7 +119,7 @@ function Envious_Conception:postUpdate()
                 elseif fam.Close2 == 3 then
                   fam.CloseOrbit2 = fam.CloseOrbit2 - 1
                   fam.CloseOrbit3 = fam.CloseOrbit3 + 1
-                  elseif fam.close2 == 4 then
+                  elseif fam.Close2 == 4 then
                     fam.CloseOrbit3 = fam.CloseOrbit3 - 1
                     fam.CloseOrbit4 = fam.CloseOrbit4 + 1
                     elseif fam.Close2 >= 5 then
@@ -140,7 +140,7 @@ function Envious_Conception:postUpdate()
                 elseif fam.Close3 == 3 then
                   fam.CloseOrbit2 = fam.CloseOrbit2 - 1
                   fam.CloseOrbit3 = fam.CloseOrbit3 + 1
-                  elseif fam.close3 == 4 then
+                  elseif fam.Close3 == 4 then
                     fam.CloseOrbit3 = fam.CloseOrbit3 - 1
                     fam.CloseOrbit4 = fam.CloseOrbit4 + 1
                     elseif fam.Close3 >= 5 then
