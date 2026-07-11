@@ -26,7 +26,7 @@ local B30_WrathStats = {
   HEARTS_PER_ROW = 6,
   BURST_OFFSET = Vector(6, 6), 
   FUSETIME = 30,              
-  FUSE_WARNTIME = 3,           
+  FUSE_WARNTIME = 1.5,           
   FUSE_FLASHCOLOR = Color(1, 1, 1, 1, 0.6, 0, 0), 
   NUM_BOMB = 5
 }
@@ -170,8 +170,6 @@ function B30_Wrath:postUpdate()
                     TempBombParam.Velocity,
                     player):ToPickup()
                 end
-                    bomb:Morph(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_BOMB, BombSubType.BOMB_NORMAL, false, true, true)
-                    bomb.Timeout = B30_WrathStats.BOMBPERSIST
                     bomb:Update()
               elseif TempBombParam.ParentNPC
                 then
