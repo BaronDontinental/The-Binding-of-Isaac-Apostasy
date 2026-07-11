@@ -18,7 +18,7 @@ local NitroFlags = {
     SCAREDH = 1,
     BLENDEDH = 1.25,
 }
-Trigger = {
+local Trigger = {
     ANY = false,
     HALFH = false,
     FULLH = false,
