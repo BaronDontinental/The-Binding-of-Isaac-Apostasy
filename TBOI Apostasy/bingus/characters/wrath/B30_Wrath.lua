@@ -26,7 +26,7 @@ local B30_WrathStats = {
   HEARTS_PER_ROW = 6,
   BURST_OFFSET = Vector(6, 6), 
   FUSETIME = 30,              
-  FUSE_WARNTIME = 3,           
+  FUSE_WARNTIME = 1.5,           
   FUSE_FLASHCOLOR = Color(1, 1, 1, 1, 0.6, 0, 0), 
   NUM_BOMB = 5
 }
