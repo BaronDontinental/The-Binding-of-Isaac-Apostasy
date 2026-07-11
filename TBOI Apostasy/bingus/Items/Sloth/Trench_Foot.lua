@@ -28,7 +28,10 @@ mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Trench_Foot.onUpdate)
 
     function Trench_Foot:onEffect(Creep)
         local sprite = Creep:GetSprite()
-        local player = Isaac.GetPlayer(0)
+        local player = Creep.SpawnerEntity and Creep.SpawnerEntity:ToPlayer()
+        if not player then
+            return
+        end
         local data = Creep:GetData()
         data.FlyBlacklist = {}
         local spawnpos = player.Position

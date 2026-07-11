@@ -118,7 +118,9 @@ function Devour:postUpdate()
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Devour.onUpdate)
 
         function Devour:EvaluateCache(player, cacheFlags)
-            local player = Isaac.GetPlayer(0)
+            if not player:HasCollectible(CollectibleType.COLLECTIBLE_DEVOUR) then
+                return
+            end
             if Trigger.ANY == true then
                 if Trigger.HALFH == true then
                     if cacheFlags & CacheFlag.CACHE_DAMAGE == CacheFlag.CACHE_DAMAGE then

@@ -280,8 +280,8 @@ function Envious_Conception:postUpdate()
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Envious_Conception.EUpdate)
 
     function Envious_Conception:DmgCheck(entity, Dmg, DmgFlag, Source, CountDwn)
-      local player = Isaac.GetPlayer(0)
-      if not player:HasCollectible(CollectibleType.COLLECTIBLE_ENVIOUS_CONCEPTION) then
+      local player = entity:ToPlayer()
+      if not player or not player:HasCollectible(CollectibleType.COLLECTIBLE_ENVIOUS_CONCEPTION) then
         return
       end
       fam.dmgCount = fam.dmgCount + 1   

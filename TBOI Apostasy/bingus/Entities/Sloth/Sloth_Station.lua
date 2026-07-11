@@ -150,7 +150,6 @@ function Sloth_Station:postUpdate()
 
     
     function Sloth_Station:onBeggar(entity)
-        local player = Isaac.GetPlayer(0)
         local entity = entity:ToNPC()
         local beggarFlag = EntityFlag.FLAG_NO_TARGET | EntityFlag.FLAG_NO_STATUS_EFFECTS
         if entity:GetEntityFlags() ~= beggarFlag then
@@ -177,10 +176,14 @@ function Sloth_Station:postUpdate()
             if entity.StateFrame == 0 then
                 --sprite:Play("Idle", true)
             end
-            if (entity.Position - player.Position):Length() <= entity.Size + player.Size then
-                if entity.Variant == 0 then
-                    player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES | DamageFlag.DAMAGE_SPAWN_COIN, EntityRef(entity), 0)
-                    roll = math.random(0,100)
+            if entity.Variant == 0 then
+                for i = 0, Game:GetNumPlayers() - 1 do
+                    local player = Isaac.GetPlayer(i)
+                    if (entity.Position - player.Position):Length() <= entity.Size + player.Size then
+                        player:TakeDamage(2, DamageFlag.DAMAGE_NO_PENALTIES | DamageFlag.DAMAGE_SPAWN_COIN, EntityRef(entity), 0)
+                        roll = math.random(0,100)
+                        break
+                    end
                 end
             end
         end

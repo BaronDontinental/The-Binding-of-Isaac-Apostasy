@@ -36,9 +36,9 @@ function Transfuse:postUpdate()
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Transfuse.OnEvaluateCache)
 
     -- When picking up a bomb
-    function Transfuse:OnPickupCollect(pickup)
-        local player= Isaac.GetPlayer(0)
-        if player:HasCollectible(CollectibleType.COLLECTIBLE_TRANSFUSE) then
+    function Transfuse:OnPickupCollect(pickup, collider, low)
+        local player = collider:ToPlayer()
+        if player and player:HasCollectible(CollectibleType.COLLECTIBLE_TRANSFUSE) then
             local statNames = {}
             for stat in pairs(STAT_BOOSTS) do table.insert(statNames, stat) end
 

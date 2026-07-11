@@ -21,17 +21,16 @@ function Upchuck:postUpdate()
 
     function Upchuck:onUpdate(player)
         if player:HasCollectible(CollectibleType.COLLECTIBLE_UPCHUCK) then
-            if UpFlags.IsUpchuck ~= nil and game:GetLevel():GetCurrentRoomIndex() ~= UpFlags.Room then
-                UpFlags.IsUpchuck =  false
-                UpFlags.Room = nil
+            local data = player:GetData()
+            if data.IsUpchuck ~= nil and game:GetLevel():GetCurrentRoomIndex() ~= data.UpchuckRoom then
+                data.IsUpchuck = false
+                data.UpchuckRoom = nil
                 player:EvaluateItems()
                 player:AddCacheFlags(CacheFlag.CACHE_DAMAGE)
                 player:AddCacheFlags(CacheFlag.CACHE_FIREDELAY)
                 player:AddCacheFlags(CacheFlag.CACHE_RANGE)
             end
-
-
-            if UpFlags.IsUpchuck == true then
+            if data.IsUpchuck == true then
                 player:EvaluateItems()
                 player:AddCacheFlags(CacheFlag.CACHE_DAMAGE)
                 player:AddCacheFlags(CacheFlag.CACHE_FIREDELAY)
@@ -66,8 +65,8 @@ function Upchuck:postUpdate()
 mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Upchuck.onUpdate)
 
 function Upchuck:EvaluateCache(player, cacheFlags)
-    local player = Isaac.GetPlayer(0)
-    if UpFlags.IsUpchuck == true then
+    local data = player:GetData()
+    if data.IsUpchuck == true then
         if cacheFlags & CacheFlag.CACHE_DAMAGE == CacheFlag.CACHE_DAMAGE then
                 player.Damage = player.Damage + 40
         end
@@ -75,7 +74,7 @@ function Upchuck:EvaluateCache(player, cacheFlags)
             player.MaxFireDelay = player.MaxFireDelay * 3
         end
     end
-    if UpFlags.IsUpchuck == false then
+    if data.IsUpchuck == false then
         if cacheFlags & CacheFlag.CACHE_DAMAGE == CacheFlag.CACHE_DAMAGE then
             player.Damage = player.Damage 
         end
@@ -87,10 +86,10 @@ end
 mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Upchuck.EvaluateCache)
 
 
-    function Upchuck:OnUse(item)
-        local player = Isaac.GetPlayer(0)
-        UpFlags.Room = game:GetLevel():GetCurrentRoomIndex()
-        UpFlags.IsUpchuck = true
+    function Upchuck:OnUse(item, rng, player)
+        local data = player:GetData()
+        data.UpchuckRoom = game:GetLevel():GetCurrentRoomIndex()
+        data.IsUpchuck = true
     --[[for _, entity in pairs(Isaac.GetRoomEntities()) do
             if entity.Type == EntityType.ENTITY_TEAR then
                 local TearData = entity:GetData()
