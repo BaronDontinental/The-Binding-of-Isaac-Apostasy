@@ -15,11 +15,35 @@ local STAT_BOOSTS = {
     Range = 6.0,   
     Tears = 0.2    
 }
+local bombspawn = false
 
 --accumulated transfuse bonuses for the current run, persisted across save+continue
 local bonuses = {}
 
 function Transfuse:postUpdate()
+    function Transfuse:OnUpdate(player)
+        if player:HasCollectible(CollectibleType.COLLECTIBLE_TRANSFUSE) then 
+            if not bombspawn then
+                Isaac.Spawn(
+                    EntityType.ENTITY_PICKUP,
+                    PickupVariant.PICKUP_BOMB,
+                    BombSubType.BOMB_NORMAL,
+                    player.Position,
+                    player.Velocity,
+                    player):ToPickup()
+                Isaac.Spawn(
+                    EntityType.ENTITY_PICKUP,
+                    PickupVariant.PICKUP_BOMB,
+                    BombSubType.BOMB_NORMAL,
+                    player.Position,
+                    player.Velocity,
+                    player):ToPickup()
+                bombspawn = true
+            end
+        end
+    end
+    mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, Transfuse.OnUpdate)
+
     function Transfuse:OnEvaluateCache(player, cacheFlag)
         if player:HasCollectible(CollectibleType.COLLECTIBLE_TRANSFUSE) then
             if cacheFlag == CacheFlag.CACHE_DAMAGE and bonuses.Damage then
