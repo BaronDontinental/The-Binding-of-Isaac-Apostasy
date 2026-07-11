@@ -5,8 +5,8 @@ mod.COLLECTIBLE_STICK_OF_DEODORANT = Isaac.GetTrinketIdByName("Stick of Deodoran
 TrinketType.COLLECTIBLE_STICK_OF_DEODORANT = Isaac.GetTrinketIdByName("Stick of Deodorant")
 
 local stank = {
-    chance = 100,
-    length = 30,
+    chance = 33,
+    length = 90,
     }
     
 
