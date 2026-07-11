@@ -170,8 +170,6 @@ function B30_Wrath:postUpdate()
                     TempBombParam.Velocity,
                     player):ToPickup()
                 end
-                    bomb:Morph(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_BOMB, BombSubType.BOMB_NORMAL, false, true, true)
-                    bomb.Timeout = B30_WrathStats.BOMBPERSIST
                     bomb:Update()
               elseif TempBombParam.ParentNPC
                 then
