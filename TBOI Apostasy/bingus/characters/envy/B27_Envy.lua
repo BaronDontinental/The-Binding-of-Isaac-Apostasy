@@ -317,6 +317,7 @@ function B27_Envy:postUpdate()
       if familiar.SubType == CLONE_SUBTYPE then
         local clone = getClone()
         if clone then
+---@diagnostic disable-next-line: cast-local-type
           center = clone
         end
       end
