@@ -96,6 +96,41 @@
 <entity anm2path="EnvyOrbitZigV4.anm2" id="3" name="ENVY_ZIG_ORBITV4" 
     tag="" shadowSize="11" friction="1" 
     collisionDamage="8" collisionInterval="7" collisionRadius="15" collisionMass="3"/>
+---------------
+<entity anm2path="BEnvyOrbitCloseV1.anm2" id="3" name="BENVY_CLOSE_ORBITV1" 
+    tag="" shadowSize="11" friction="1" 
+    collisionDamage="2" collisionInterval="1" collisionRadius="3" collisionMass="3"/>
+<entity anm2path="BEnvyOrbitCloseV2.anm2" id="3" name="BENVY_CLOSE_ORBITV2" 
+    tag="" shadowSize="11" friction="1" 
+    collisionDamage="4" collisionInterval="1" collisionRadius="4" collisionMass="3"/>
+<entity anm2path="BEnvyOrbitCloseV3.anm2" id="3" name="BENVY_CLOSE_ORBITV3" 
+    tag="" shadowSize="11" friction="1" 
+    collisionDamage="6" collisionInterval="1" collisionRadius="6" collisionMass="3"/>
+<entity anm2path="BEnvyOrbitCloseV4.anm2" id="3" name="BENVY_CLOSE_ORBITV4" 
+    tag="" shadowSize="11" friction="1" 
+    collisionDamage="8" collisionInterval="1" collisionRadius="10" collisionMass="3"/>
+
+<entity anm2path="BEnvyOrbitFarV1.anm2" id="3" name="BENVY_FAR_ORBITV1" 
+    tag="" shadowSize="11" friction="1" 
+    collisionDamage="2" collisionInterval="2" collisionRadius="3" collisionMass="3"/>
+<entity anm2path="BEnvyOrbitFarV2.anm2" id="3" name="BENVY_FAR_ORBITV2" 
+    tag="" shadowSize="11" friction="1" 
+    collisionDamage="4" collisionInterval="2" collisionRadius="4" collisionMass="3"/>
+<entity anm2path="BEnvyOrbitFarV1.anm2" id="3" name="BENVY_FAR_ORBITV3" 
+    tag="" shadowSize="11" friction="1" 
+    collisionDamage="6" collisionInterval="2" collisionRadius="6" collisionMass="3"/>
+<entity anm2path="BEnvyOrbitFarV2.anm2" id="3" name="BENVY_FAR_ORBITV4" 
+    tag="" shadowSize="11" friction="1" 
+    collisionDamage="8" collisionInterval="2" collisionRadius="10" collisionMass="3"/>
+<entity anm2path="BEnvyOrbitFarV1.anm2" id="3" name="BENVY_FAR_ORBITV5" 
+    tag="" shadowSize="11" friction="1" 
+    collisionDamage="6" collisionInterval="2" collisionRadius="6" collisionMass="3"/>
+<entity anm2path="BEnvyOrbitFarV2.anm2" id="3" name="BENVY_FAR_ORBITV6" 
+    tag="" shadowSize="11" friction="1" 
+    collisionDamage="8" collisionInterval="2" collisionRadius="10" collisionMass="3"/>
+<entity anm2path="BEnvyClone.anm2" id="3" name="BENVY_CLONE" 
+    tag="" shadowSize="11" friction="1" 
+    collisionDamage="8" collisionInterval="2" collisionRadius="10" collisionMass="3"/>
 
 <!--Pickups-->
     <!--Tainted Lust's empty heart, reuses the vanilla heart anm2 until custom art is made-->
@@ -104,7 +139,7 @@
     id="5" name="Empty Heart" numGridCollisionPoints="24" shadowSize="12" stageHP="0"
     subtype="0" variant="2029">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
-    </entity>
+    </entity> 
 
 
 <!--Effects-->

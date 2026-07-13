@@ -10,23 +10,23 @@ end
 local RNG_SHIFT_INDEX = 35
 local SaveManager = require("callbacks.save_manager")
 
-local FAMILIAR_ENVY_CLONE = Isaac.GetEntityVariantByName("ENVY_ZIG_ORBITV4")
+local FAMILIAR_ENVY_CLONE = Isaac.GetEntityVariantByName("BENVY_CLONE")
 local PLAYER_SUBTYPE = 0
 local CLONE_SUBTYPE = 1
 
 local ORBIT_CLOSE = {
-    Isaac.GetEntityVariantByName("ENVY_CLOSE_ORBITV1"),
-    Isaac.GetEntityVariantByName("ENVY_CLOSE_ORBITV2"),
-    Isaac.GetEntityVariantByName("ENVY_CLOSE_ORBITV3"),
-    Isaac.GetEntityVariantByName("ENVY_CLOSE_ORBITV4")
+    Isaac.GetEntityVariantByName("BENVY_CLOSE_ORBITV1"),
+    Isaac.GetEntityVariantByName("BENVY_CLOSE_ORBITV2"),
+    Isaac.GetEntityVariantByName("BENVY_CLOSE_ORBITV3"),
+    Isaac.GetEntityVariantByName("BENVY_CLOSE_ORBITV4")
 }
 local ORBIT_FAR = {
-    Isaac.GetEntityVariantByName("ENVY_FAR_ORBITV1"),
-    Isaac.GetEntityVariantByName("ENVY_FAR_ORBITV2"),
-    Isaac.GetEntityVariantByName("ENVY_FAR_ORBITV3"),
-    Isaac.GetEntityVariantByName("ENVY_FAR_ORBITV4"),
-    Isaac.GetEntityVariantByName("ENVY_FAR_ORBITV5"),
-    Isaac.GetEntityVariantByName("ENVY_FAR_ORBITV6")
+    Isaac.GetEntityVariantByName("BENVY_FAR_ORBITV1"),
+    Isaac.GetEntityVariantByName("BENVY_FAR_ORBITV2"),
+    Isaac.GetEntityVariantByName("BENVY_FAR_ORBITV3"),
+    Isaac.GetEntityVariantByName("BENVY_FAR_ORBITV4"),
+    Isaac.GetEntityVariantByName("BENVY_FAR_ORBITV5"),
+    Isaac.GetEntityVariantByName("BENVY_FAR_ORBITV6")
 }
 
 local B27_EnvyStats = {
