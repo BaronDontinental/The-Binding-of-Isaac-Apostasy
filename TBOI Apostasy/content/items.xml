@@ -7,8 +7,8 @@
  
 <!--_____________________________________________________________________________________-->
     <!--SLOTH ITEMS ZONE-->
-    <familiar id="2" name="Slug" description="Ew" cache=""
-        tags="baby" gfx="Slug.png" quality="1" />
+    <familiar id="2" name="Slug" description="Ew" cache="familiars"
+        tags="baby offensive summonable monstermanual" gfx="Slug.png" quality="1" />
         <!--Super sloth baby is in babies.xml-->
     <passive id="4" name="Rotgut" description="Bad Stash" cache=""
         tags="" gfx="Rotgut.png" quality="1" />

@@ -10,23 +10,23 @@ end
 local RNG_SHIFT_INDEX = 35
 local SaveManager = require("callbacks.save_manager")
 
-local FAMILIAR_ENVY_CLONE = Isaac.GetEntityVariantByName("ENVY_ZIG_ORBITV4")
+local FAMILIAR_ENVY_CLONE = Isaac.GetEntityVariantByName("BENVY_CLONE")
 local PLAYER_SUBTYPE = 0
 local CLONE_SUBTYPE = 1
 
 local ORBIT_CLOSE = {
-    Isaac.GetEntityVariantByName("ENVY_CLOSE_ORBITV1"),
-    Isaac.GetEntityVariantByName("ENVY_CLOSE_ORBITV2"),
-    Isaac.GetEntityVariantByName("ENVY_CLOSE_ORBITV3"),
-    Isaac.GetEntityVariantByName("ENVY_CLOSE_ORBITV4")
+    Isaac.GetEntityVariantByName("BENVY_CLOSE_ORBITV1"),
+    Isaac.GetEntityVariantByName("BENVY_CLOSE_ORBITV2"),
+    Isaac.GetEntityVariantByName("BENVY_CLOSE_ORBITV3"),
+    Isaac.GetEntityVariantByName("BENVY_CLOSE_ORBITV4")
 }
 local ORBIT_FAR = {
-    Isaac.GetEntityVariantByName("ENVY_FAR_ORBITV1"),
-    Isaac.GetEntityVariantByName("ENVY_FAR_ORBITV2"),
-    Isaac.GetEntityVariantByName("ENVY_FAR_ORBITV3"),
-    Isaac.GetEntityVariantByName("ENVY_FAR_ORBITV4"),
-    Isaac.GetEntityVariantByName("ENVY_FAR_ORBITV5"),
-    Isaac.GetEntityVariantByName("ENVY_FAR_ORBITV6")
+    Isaac.GetEntityVariantByName("BENVY_FAR_ORBITV1"),
+    Isaac.GetEntityVariantByName("BENVY_FAR_ORBITV2"),
+    Isaac.GetEntityVariantByName("BENVY_FAR_ORBITV3"),
+    Isaac.GetEntityVariantByName("BENVY_FAR_ORBITV4"),
+    Isaac.GetEntityVariantByName("BENVY_FAR_ORBITV5"),
+    Isaac.GetEntityVariantByName("BENVY_FAR_ORBITV6")
 }
 
 local B27_EnvyStats = {
@@ -44,7 +44,9 @@ local B27_EnvyStats = {
     CLONESPEED = 1.5,     
     CLONEDRAG = 0.85,     
     CLONEDAMAGE = 1,      
-    STARTBLACKHEARTS = 2  
+    STARTBLACKHEARTS = 2,
+    BLINK_WARNTIME = 1.5, 
+    BLINK_FLASHCOLOR = Color(1, 1, 1, 1, 0.6, 0, 0) 
 }
 
 local closeSteps = { {1,0,0,0}, {0,1,0,0}, {0,0,1,0}, {0,0,0,1} }
@@ -209,6 +211,14 @@ function B27_Envy:postUpdate()
 
       if clone then
         fam.BlinkFrames = (fam.BlinkFrames or B27_EnvyStats.BLINKTIME * 30) - 1
+        if fam.BlinkFrames > 0 and fam.BlinkFrames <= B27_EnvyStats.BLINK_WARNTIME * 30 then
+          if fam.BlinkFrames % 10 < 5 then
+            player:SetColor(B27_EnvyStats.BLINK_FLASHCOLOR, 2, 1, false, false)
+          end
+          if fam.BlinkFrames % 30 == 0 then
+            sfxManager:Play(SoundEffect.SOUND_BEEP, 1, 0, false, 1)
+          end
+        end        
         if fam.BlinkFrames <= 0 then
           fam.BlinkFrames = B27_EnvyStats.BLINKTIME * 30
           local room = Game:GetRoom()

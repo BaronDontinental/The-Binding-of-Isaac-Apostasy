@@ -10,6 +10,7 @@
         <Item Name="Lil Wrath" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Lil Sloth" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Transfuse" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Slug" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         
     </Pool>
 <!--__________________________________________________-->
@@ -149,6 +150,7 @@
     <Pool Name="babyShop">
         <Item Name="Lil Wrath" Weight=".75" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Lil Sloth" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Slug" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
 <!--__________________________________________________-->
     <Pool Name="woodenChest">
