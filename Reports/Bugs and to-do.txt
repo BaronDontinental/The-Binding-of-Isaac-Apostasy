@@ -23,5 +23,4 @@ To-do
 
 URGENT NEED TO DO
 ===========================================================================================================================================================================
-1. t wrath wont take any more the 2 damage at once
-2. t wrath does not heal when buying a bomb or picking up a bomb collectible that grants bombs
+2. t wrath does not heal when picking up a bomb collectible that grants bombs
