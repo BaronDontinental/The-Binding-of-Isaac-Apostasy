@@ -20,10 +20,10 @@
         tags="baby offensive summonable monstermanual" gfx="Lil_Sloth.png" quality="1" />
     <trinket id="8" name="Puzzle Cube" description="Solves itself" cache=""
         tags="nogreed" gfx="Puzzle_Cube.png" quality="1" />  
-    <passive id="9" name="BO" description="You smell terrible." cache=""
+    <passive id="9" name="Body Odor" description="You smell terrible." cache=""
         tags="" gfx="BO.png" quality="1" />
     <active id="10" name="Lazybony" description="" cache=""
-        tags="" maxcharges="4" gfx="Lazybony.png" quality="1" />
+        tags="" maxcharges="90" chargetype="special" gfx="Lazybony.png" quality="1" />
         <!--Ugly Baby is in babies.xml-->
     <active id="12" name="Upchuck" description="" cache="damage"
         tags="" maxcharges="3" gfx="Upchuck.png" quality="1" />
@@ -39,8 +39,8 @@
     <passive id="17" name="Cooties" description="Don't touch me." cache=""
         tags="" gfx="Cooties.png" quality="1" />
         <!--Super lust baby is in babies.xml-->
-    <active id="19" name="Epipen" description="It's in my back pocket" cache=""
-        tags="" maxcharges="2" gfx="Epipen.png" quality="1" />
+    <active id="19" name="Epipen" description="It's in my back pocket" cache="damage speed"
+        tags="" maxcharges="2" chargetype="special" gfx="Epipen.png" quality="1" />
     <passive id="20" name="Nitroglycerin" description="Mix things up a bit" cache="damage"
         tags="" gfx="Nitroglycerin.png" quality="1" />
     <!--<trinket id="21" name="Message in a Bottle" description="Open it" cache=""
