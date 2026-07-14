@@ -5,69 +5,69 @@
 
 [h1]The Binding of Isaac: Apostasy[/h1]
 
-What if the Seven Deadly Sins stopped chasing Isaac around the basement... and picked up the tears themselves?
+The Seven Deadly Sins are done chasing Isaac around the basement. Now you play as them.
 
-Apostasy is a DLC-sized content mod born from two morons who thought they could make the next Isaac expansion. Somewhere between not knowing why anything worked and not knowing why anything didn't, an actual mod happened. Now the Sins are playable — each with their own gimmick, stats, items, and terrible life choices.
+Apostasy started as two morons deciding they could make the next Isaac DLC with zero experience in spriting, animation, or coding. We got stuck constantly, figured things out eventually, and now there's a real mod here. Every sin plays completely different, with their own stats, items, and problems.
 
 [h2]What's inside[/h2]
 [list]
-[*][b]6 new playable characters[/b] — Sloth, Pride, Envy, Gluttony, Lust, and Wrath — each built around a completely different way to play.
-[*][b]6 Tainted counterparts[/b] that twist every sin into something meaner.
-[*][b]70+ new items[/b] split into themed pools for each sin, from Bowling Bombs to the Regular Cookbook.
-[*][b]15+ new trinkets[/b] and a pile of new pocket items — cards, souls (Soul of Pride, Soul of the Boomer...), and mysterious numbered Tiles.
-[*][b]A "Lil" familiar for every sin[/b] — collect the whole dysfunctional family.
-[*][b]Unique Birthright effects[/b] for every character.
-[*]Custom HUD elements, pickups, sounds, and secrets we won't spoil here.
+[*][b]6 new playable characters[/b]: Sloth, Pride, Envy, Gluttony, Lust, and Wrath. Each one plays nothing like the others.
+[*][b]Tainted versions of all 6.[/b]
+[*][b]Over 70 new items[/b] in themed pools for each sin.
+[*][b]15+ new trinkets[/b] plus new pocket items: cards, souls, and some weird numbered tiles.
+[*][b]A Lil familiar for every sin.[/b]
+[*][b]Every character has their own Birthright effect.[/b]
+[*]New HUD stuff, pickups, sounds, and a few secrets you'll have to find yourself.
 [/list]
 
 [h2]The Characters[/h2]
 
 [b]Sloth[/b]
-Slow to move, slow to shoot, hits like a dump truck. Sloth lobs huge explosive tears with a massive damage multiplier — when he can be bothered. The catch: the boss door stays barred until the rest of the floor is cleared. No shortcuts. No skipping work. Challenge Rooms, on the other hand, swing right open — fighting where you stand takes less effort than walking away. They say something is waiting for those who bleed enough in Sacrifice Rooms...
+Barely moves, barely shoots, hits like a truck. His tears are big, slow, explosive, and do a ton of damage. The downside is he refuses to fight the boss until the rest of the floor is cleared. The boss door stays barred until the work is done. Challenge rooms are always open though, since fighting where you're already standing is less effort than leaving. Also, if you bleed enough in a Sacrifice Room, something might show up.
 [i]Birthright: Lazy.[/i]
 
 [b]Pride[/b]
-Better than you at everything, and he knows it. Above-average stats across the board, the No! trinket, and his signature scream — [b]Reeee![/b] — an active item that blasts four lasers diagonally outward. But Pride is far too good for hand-me-downs: a huge chunk of the item pool (mostly other people's stat-ups) simply refuses to appear for him. He doesn't need the help anyway. Right?
-[i]Birthright: Gloat — every tantrum also brings down the Tower.[/i]
+Better stats than everyone else and fully aware of it. Starts with the No! trinket and his signature active item, Reeee!, which fires four lasers out diagonally. The downside is that a big chunk of the item pool just won't show up for him. Mostly stat ups. He doesn't need them anyway. Probably.
+[i]Birthright: Gloat. Using Reeee! also triggers the Tower.[/i]
 
 [b]Envy[/b]
-Why would he cry his own tears when he could take yours? Envy can't shoot at all — but he flies, and every hit he takes feeds his jealousy. Take enough damage and he manifests orbital familiars: close-range guards, wide sweepers, and erratic zig-zagging wreckers, all upgrading through tiers and dealing contact damage that scales to absurd multipliers. The more the world hurts him, the more he takes from it.
+Can't shoot. At all. He flies, and every time he gets hit there's a chance he gains an orbital familiar. There are close orbitals, far ones, and zig-zagging ones that upgrade through tiers and do stupid amounts of contact damage. Getting hurt is how he gets stronger, so play accordingly.
 [i]Birthright: Wish.[/i]
 
 [b]Gluttony[/b]
-A mountain of a boy with an appetite to match. Gluttony starts with 4 heart containers and swaps tears for a devastating Brimstone beam — but he's far too big to multitask. Moving interrupts his shot: plant your feet, charge, and erase whatever's in front of you. Flight? He'd love to see something lift him.
+Big boy. 4 heart containers, no tears, just a Brimstone beam. He can't walk and shoot at the same time, so you have to stand still, charge, and delete whatever's in front of you. Don't bother with flight items either. He's not getting off the ground.
 [i]Birthright: Gobble.[/i]
 
 [b]Lust[/b]
-Why fight when you can seduce? Lust's own tears are feeble, but she drifts through the basement wrapped in a charm aura that turns enemies against each other — and anything that dies while charmed gets back up as a permanent friend that follows her from room to room. Build the harem. Let it do the killing.
+Her tears are weak, but she has a charm aura that turns enemies against each other, and anything that dies while charmed comes back as a permanent friend that follows you between rooms. Let the army do the work.
 [i]Birthright: Desire.[/i]
 
 [b]Wrath[/b]
-Tears are for babies. Wrath doesn't shoot — he throws bombs, and only bombs, starting with 10 and an obscene explosion damage stat. Enemies drop bombs when they die (grab them fast, they don't stick around), bosses drop handfuls, and taking a hit sets HIM off — literally. Reach the Depths and he unlocks Deep Pockets: a bomb bank that stockpiles up to 999. Run dry, and you're just an angry kid in a basement.
+No tears. He throws bombs, and only bombs. Starts with 10, and his explosion damage is absurd. Enemies drop bombs when they die (grab them quick, they disappear), bosses drop a bunch, and if something hits him, he explodes too. Once you hit the Depths he unlocks Deep Pockets and can bank up to 999 bombs. If you run out, you can't attack, so don't run out.
 [i]Birthright: Destroy.[/i]
 
 [h2]The Tainted Sins[/h2]
 
 [b]Tainted Sloth[/b]
-Effort is a scam. His draw is even slower — but he constantly dribbles toxic creep behind him, and standing in his own filth doubles his fire rate. Fights from the puddle like nature intended. Lives exclusively on rotten hearts (red hearts rot on contact, soul hearts refuse to stick), and blue flies born near him grow up into loyal charmed Chargers.
+Almost there, but being lazy about it. In development.
 
 [b]Tainted Pride[/b]
-The scream, sharpened. Keeps the stat edge and the Reeee!, plus a random card to start. Still deciding exactly how insufferable to make him — actively in development.
+Still deciding exactly how insufferable to make him. In development.
 
 [b]Tainted Envy[/b]
-Jealousy with a body double. He can't shoot either — instead, your fire keys steer a clone around the room. Every orbital earned through pain alternates between you and your double, and every ten seconds (after a warning flash) you SWAP PLACES with it. Position both halves or die by your own hand. Runs on soul hearts only and starts with black hearts.
+Same deal as Envy, can't shoot, but now your fire keys control a clone that you drive around the room. Orbitals you earn alternate between you and the clone, and every 10 seconds you swap places with it (you get a warning first). Keep track of both bodies or one of them is going to get you killed. Runs on soul hearts only and starts with two black hearts.
 
 [b]Tainted Gluttony[/b]
-Still marinating. In development — expect something big.
+Still cooking. In development.
 
 [b]Tainted Lust[/b]
-Heartbroken, and running from it. Starts with a staggering 11 broken hearts and almost no damage, but blistering speed and a trail of blood creep wherever she goes. During boss fights, Empty Hearts appear around the arena — snatch them mid-fight to build Devil and Angel Deal chance, but take one hit and they shatter. Every boss you fell mends one broken heart. Outrun the heartbreak, one boss at a time.
+Starts with 11 broken hearts and almost no damage, but she's fast and leaves a trail of blood creep everywhere she goes. During boss fights, Empty Hearts spawn around the room. Grab them mid-fight for Devil and Angel deal chance, but they all break if you get hit. Every boss you kill removes one broken heart.
 
 [b]Tainted Wrath[/b]
-A ticking time bomb. Literally. His health bar is a row of bomb hearts with a burning fuse — every 30 seconds the fuse burns down, a heart detonates, and a troll bomb hits the floor at his feet. Heart pickups do nothing; he patches himself up by grabbing bombs instead, and bosses drop five. Every hit rounds up to a full heart, and enemy explosions don't hurt him — they END him, Tower card and all. Sprint. The fuse doesn't wait.
+His health is bomb hearts, and one of them always has a lit fuse. Every 30 seconds it goes off: he takes the damage and a troll bomb drops at his feet. Heart pickups do nothing. He heals by picking up bombs instead, and bosses drop 5 of them. Enemy explosions don't damage him, they just kill him. Get to the boss before the fuses do you in.
 
 [h2]State of the mod[/h2]
-Apostasy is a work in progress and everything is subject to change. Most things work. Some things work in ways we don't fully understand. Balance feedback, bug reports, and ideas are very welcome — drop them in the comments and we'll keep them in mind.
+Apostasy is a work in progress and everything is subject to change. Most things work. Some things work and we don't know why. If something's broken or feels unbalanced, tell us in the comments and we'll keep it in mind.
 
 Have fun, don't skill-issue.
 
@@ -75,4 +75,4 @@ Have fun, don't skill-issue.
  SHORT BLURB (for the Workshop summary box, if needed)
 =====================================================================
 
-Play as the Seven Deadly Sins! Apostasy adds 6 new characters and their Tainted forms — bomb-slinging Wrath, charm-queen Lust, orbital-stacking Envy, Brimstone tank Gluttony, and more — plus 70+ items, new trinkets, pocket items, familiars, and Birthrights. A DLC-sized mod, in progress and growing.
+Play as the Seven Deadly Sins. 6 new characters plus Tainted versions of each, over 70 items, new trinkets, pocket items, familiars, and a Birthright for everyone. Work in progress, more on the way.
