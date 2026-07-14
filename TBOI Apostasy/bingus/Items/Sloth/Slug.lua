@@ -16,6 +16,7 @@ local CREEP_COOLDOWN = 4
 local CREEP_TIMEOUT = 120
 local CREEP_SCALE = 1
 local PATH_MARKER = 0
+local IDLE_SPEED_THRESHOLD = 0.1
 
 
 function Slug:postUpdate()
@@ -80,26 +81,31 @@ mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, Slug.init, FAMILIAR_SLUG_VARIANT)
 
         if not (sprite:IsPlaying("Appear") and not sprite:IsFinished("Appear")) then
             local attacking = target ~= nil and targetDist <= (familiar.Size + target.Size + 4)
-            local faceDir
-            if attacking then
-                faceDir = target.Position - familiar.Position
+            local moving = familiar.Velocity:Length() > IDLE_SPEED_THRESHOLD
+            if attacking or moving then
+                local faceDir
+                if attacking then
+                    faceDir = target.Position - familiar.Position
+                else
+                    faceDir = familiar.Velocity
+                end
+                local anim
+                local flip = false
+                if math.abs(faceDir.X) >= math.abs(faceDir.Y) then
+                    anim = attacking and "Attack Hori" or "Move Hori"
+                    flip = faceDir.X < 0
+                elseif faceDir.Y < 0 then
+                    anim = attacking and "Attack Up" or "Move Up"
+                else
+                    anim = attacking and "Attack Down" or "Move Down"
+                end
+                if not sprite:IsPlaying(anim) then
+                    sprite:Play(anim, true)
+                end
+                sprite.FlipX = flip
             else
-                faceDir = familiar.Velocity
+                sprite:Stop()
             end
-            local anim
-            local flip = false
-            if math.abs(faceDir.X) >= math.abs(faceDir.Y) then
-                anim = attacking and "Attack Hori" or "Move Hori"
-                flip = faceDir.X < 0
-            elseif faceDir.Y < 0 then
-                anim = attacking and "Attack Up" or "Move Up"
-            else
-                anim = attacking and "Attack Down" or "Move Down"
-            end
-            if not sprite:IsPlaying(anim) then
-                sprite:Play(anim, true)
-            end
-            sprite.FlipX = flip
         end
     end
 mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Slug.UpdateFam, FAMILIAR_SLUG_VARIANT)

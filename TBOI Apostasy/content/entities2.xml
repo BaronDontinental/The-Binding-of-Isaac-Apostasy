@@ -53,6 +53,9 @@
     shadowSize="11" friction="1" />   
 <entity anm2path="Slug.anm2" id="3" name="SLUG" tag="cansacrifice"
     shadowSize="11" friction="1" collisionDamage="2"
+    collisionInterval="6" collisionRadius="13" collisionMass="3"/>  
+<entity anm2path="Lil_Lust.anm2" id="3" name="LIL_LUST" tag="cansacrifice"
+    shadowSize="11" friction="1" collisionDamage="3"
     collisionInterval="6" collisionRadius="13" collisionMass="3"/>    
 
 <entity anm2path="EnvyOrbitCloseV1.anm2" id="3" name="ENVY_CLOSE_ORBITV1" 

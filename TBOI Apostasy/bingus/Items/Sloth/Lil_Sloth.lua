@@ -3,7 +3,7 @@ local game = Game()
 
 mod.COLLECTIBLE_LIL_SLOTH = Isaac.GetItemIdByName("Lil Sloth")
 CollectibleType.COLLECTIBLE_LIL_SLOTH = Isaac.GetItemIdByName("Lil Sloth")
-FAMILIAR_SLOTH_VARIANT = Isaac.GetEntityVariantByName("LIL_SLOTH")
+FAMILIAR_SLOTH_VARIANT = Isaac.GetEntityVariantByName("LIL_SLOTH") 
 
 local itemconfig = Isaac.GetItemConfig()
 local CONFIG_LILSLOTH = Isaac.GetItemConfig():GetCollectible(CollectibleType.COLLECTIBLE_LIL_SLOTH)

@@ -153,7 +153,7 @@ function B30_Wrath:postUpdate()
       local entities = Isaac.GetRoomEntities()
         for _, entity in ipairs(entities) do
           local data = entity:GetData()
-          TempBombParam = entity:ToNPC()
+          local TempBombParam = entity:ToNPC()
           Bombinfo = entity:ToBomb()
           if Bombinfo then
             Bombinfo.ExplosionDamage = 0 + player.Damage
