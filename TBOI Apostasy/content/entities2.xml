@@ -162,5 +162,13 @@
     subtype="0" variant="2001">
         <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
     </entity>
+
+    <entity anm2path="001.000_player.anm2" collisionDamage="0"
+    collisionMass="0" collisionRadius="1" friction="1"
+    id="1000" name="Pride Body" numGridCollisionPoints="0" shadowSize="12" stageHP="0"
+    subtype="0" variant="2002">
+        <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
+    </entity>
+
     
 </entities>

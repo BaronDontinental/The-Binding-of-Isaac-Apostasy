@@ -116,6 +116,8 @@
         tags="" maxcharges="12" gfx="Regular_Cookbook.png" quality="1" />
     <passive id="59" name="Pack 'em in" description="Bonus fruit" cache=""
         tags="" gfx="Pack_em_in.png" quality="1" />
+    <active id="60" name="Gorge" description="Waste not, want not" cache=""
+        tags="nogreed" maxcharges="0" gfx="Gorge.png" quality="0" />
         <!--ooh wahh no achievement-->
         <!--IDK how to do transformations yet...-->
 
@@ -244,8 +246,8 @@
         <!--7 Tile is in Pocketitems.xml-->
         <!--Soul of Pride is in pocketitmes.xml-->
                                                                                             <!--Holo Cards needs more explanation-->
-    <active id="134" name="Ethos" description="" cache=""
-        tags="" maxcharges="1" gfx="Ethos.png" quality="1" />
+    <active id="134" name="Hubris" description="Know thyself" cache=""
+        tags="nogreed" maxcharges="90" chargetype="timed" gfx="Hubris.png" quality="0" />
     <active id="135" name="Jacob Jr." description="" cache=""
         tags="" maxcharges="1" gfx="Jacob_Jr.png" quality="1" />
     <active id="136" name="Prejudice" description="" cache=""
