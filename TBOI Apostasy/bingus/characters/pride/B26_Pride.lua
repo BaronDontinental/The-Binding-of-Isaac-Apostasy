@@ -1,14 +1,22 @@
 local B26_Pride = {}
 local game = Game()
 local sfx = SFXManager()
-local SaveManager = require("callbacks.save_manager")
+local okSave, SaveManager = pcall(require, "callbacks.save_manager")
+if not okSave or type(SaveManager) ~= "table" then
+    print("[Apostasy] B26_Pride: save_manager failed to load, saving disabled: " .. tostring(SaveManager))
+    SaveManager = {Get = function() return nil end, Set = function() end}
+end
 
 local PrideBType = Isaac.GetPlayerTypeByName("B26_Pride", false)
 local DogmaType = Isaac.GetPlayerTypeByName("B26_Dogma", false)
 local PRIDE_BODY_VARIANT = Isaac.GetEntityVariantByName("Pride Body")
+local SOUND_APPEAR = SoundEffect.SOUND_DOGMA_APPEAR_SCREAM or 541
+local SOUND_TV_BREAK = SoundEffect.SOUND_DOGMA_TV_BREAK or 567
+print("[Apostasy] B26_Pride loaded: PrideBType=" .. tostring(PrideBType) .. " DogmaType=" .. tostring(DogmaType) .. " BodyVariant=" .. tostring(PRIDE_BODY_VARIANT))
 
 mod.COLLECTIBLE_HUBRIS = Isaac.GetItemIdByName("Hubris")
 CollectibleType.COLLECTIBLE_HUBRIS = Isaac.GetItemIdByName("Hubris")
+print("[Apostasy] B26_Pride: Hubris id=" .. tostring(CollectibleType.COLLECTIBLE_HUBRIS))
 
 local B26_PrideStats = {
     DAMAGE = 0,
@@ -41,6 +49,7 @@ chainSprite:Load("gfx/dogma_chain.anm2", true)
 chainSprite:Play("Idle", true)
 
 function B26_Pride:postUpdate()
+    print("[Apostasy] B26_Pride registering callbacks")
 
     local function removeBody()
         for _, entity in ipairs(Isaac.FindByType(EntityType.ENTITY_EFFECT, PRIDE_BODY_VARIANT, -1, false, false)) do
@@ -82,7 +91,8 @@ function B26_Pride:postUpdate()
         state.radialUntil = -1
         player:AddCacheFlags(CacheFlag.CACHE_ALL)
         player:EvaluateItems()
-        sfx:Play(SoundEffect.SOUND_DOGMA_APPEAR_SCREAM, 0.6, 0, false, 1)
+        sfx:Play(SOUND_APPEAR, 0.6, 0, false, 1)
+        print("[Apostasy] FlipToDogma done: pattern=" .. tostring(state.pattern))
     end
 
 ---@param player EntityPlayer
@@ -102,7 +112,8 @@ function B26_Pride:postUpdate()
         state.autoFlipped = false
         player:AddCacheFlags(CacheFlag.CACHE_ALL)
         player:EvaluateItems()
-        sfx:Play(SoundEffect.SOUND_DOGMA_TV_BREAK, 0.6, 0, false, 1)
+        sfx:Play(SOUND_TV_BREAK, 0.6, 0, false, 1)
+        print("[Apostasy] FlipToPride done")
     end
 
 ---@param player EntityPlayer
@@ -130,11 +141,13 @@ function B26_Pride:postUpdate()
 
 ---@param player EntityPlayer
     function B26_Pride:PlayerInit(player)
+        print("[Apostasy] B26_Pride PlayerInit: playerType=" .. tostring(player:GetPlayerType()) .. " expected=" .. tostring(PrideBType))
         if player:GetPlayerType() ~= PrideBType then
             return
         end
         if player:GetActiveItem(ActiveSlot.SLOT_POCKET) ~= CollectibleType.COLLECTIBLE_HUBRIS then
             player:SetPocketActiveItem(CollectibleType.COLLECTIBLE_HUBRIS, ActiveSlot.SLOT_POCKET, false)
+            print("[Apostasy] B26_Pride: Hubris granted to pocket slot")
         end
     end
     mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, B26_Pride.PlayerInit)
@@ -183,7 +196,18 @@ function B26_Pride:postUpdate()
             end
         end
 
-        local enemies = game:GetRoom():GetAliveEnemiesCount() > 0
+        local enemies = false
+        for _, entity in ipairs(Isaac.GetRoomEntities()) do
+            if entity:IsActiveEnemy(false) and entity:IsVulnerableEnemy() then
+                enemies = true
+                break
+            end
+        end
+
+        if DebugMode and game:GetFrameCount() % 60 == 0 then
+            print("[Apostasy] B26_Pride PeUpdate: form=" .. tostring(state.form) .. " timer=" .. tostring(state.timer) .. " enemies=" .. tostring(enemies))
+        end
+
         if enemies then
             state.timer = state.timer + 1
             if state.timer >= B26_PrideStats.FLIP_INTERVAL then
@@ -238,6 +262,7 @@ function B26_Pride:postUpdate()
         end
     end
     mod:AddCallback(ModCallbacks.MC_POST_RENDER, B26_Pride.OnRender)
+    print("[Apostasy] B26_Pride callbacks registered")
 
 end
 

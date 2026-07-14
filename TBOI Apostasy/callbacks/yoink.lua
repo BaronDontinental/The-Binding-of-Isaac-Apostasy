@@ -96,6 +96,7 @@ local Brownie_Pool = require("bingus.Pools.Brownie_Pool")
 
 --callbacks
 function yoink:bringC()
+    print("[Apostasy] bringC start")
     L19_Sloth:postUpdate()
     L20_Pride:postUpdate()
     L21_Envy:postUpdate()
@@ -109,6 +110,7 @@ function yoink:bringC()
     B28_Gluttony:postUpdate()
     B29_Lust:postUpdate()
     B30_Wrath:postUpdate()
+    print("[Apostasy] bringC done, all characters registered")
 end
 
 function yoink:bringI()

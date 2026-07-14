@@ -3,6 +3,11 @@ local game = Game()
 local sfx = SFXManager()
 
 local DogmaType = Isaac.GetPlayerTypeByName("B26_Dogma", false)
+local SOUND_BRIM_CHARGE = SoundEffect.SOUND_DOGMA_BRIMSTONE_CHARGE or 547
+local SOUND_BRIM_SHOOT = SoundEffect.SOUND_DOGMA_BRIMSTONE_SHOOT or 548
+local SOUND_GODHEAD = SoundEffect.SOUND_DOGMA_GODHEAD or 549
+local SOUND_FEATHERS = SoundEffect.SOUND_DOGMA_FEATHER_SPRAY or 556
+print("[Apostasy] B26_Dogma loaded: DogmaType=" .. tostring(DogmaType))
 
 local B26_DogmaStats = {
     BRIM_CHARGE = 15,
@@ -31,6 +36,7 @@ staticSprite:Play("Idle", true)
 
 function B26_Dogma:postUpdate()
     local state = mod.PrideB
+    print("[Apostasy] B26_Dogma registering callbacks, state=" .. tostring(state))
 
 ---@param player EntityPlayer
     function B26_Dogma:OnCache(player, cacheFlag)
@@ -67,7 +73,7 @@ function B26_Dogma:postUpdate()
                 state.charge = 0
             elseif held and not state.fired then
                 if state.charge == 0 then
-                    sfx:Play(SoundEffect.SOUND_DOGMA_BRIMSTONE_CHARGE, 0.7, 0, false, 1)
+                    sfx:Play(SOUND_BRIM_CHARGE, 0.7, 0, false, 1)
                 end
                 state.charge = state.charge + 1
                 if state.charge >= B26_DogmaStats.BRIM_CHARGE then
@@ -76,7 +82,7 @@ function B26_Dogma:postUpdate()
                     laser:SetTimeout(B26_DogmaStats.BRIM_DURATION)
                     laser.Color = state.STATIC_COLOR
                     laser:GetData().DogmaStatic = true
-                    sfx:Play(SoundEffect.SOUND_DOGMA_BRIMSTONE_SHOOT, 0.8, 0, false, 1)
+                    sfx:Play(SOUND_BRIM_SHOOT, 0.8, 0, false, 1)
                     state.beamUntil = frame + B26_DogmaStats.BRIM_DURATION
                     state.charge = 0
                     state.fired = true
@@ -102,7 +108,7 @@ function B26_Dogma:postUpdate()
                     state.radialUntil = frame + B26_DogmaStats.RADIAL_DURATION
                     state.charge = 0
                     state.fired = true
-                    sfx:Play(SoundEffect.SOUND_DOGMA_GODHEAD, 0.8, 0, false, 1)
+                    sfx:Play(SOUND_GODHEAD, 0.8, 0, false, 1)
                 end
             elseif not held then
                 state.charge = 0
@@ -111,7 +117,7 @@ function B26_Dogma:postUpdate()
         else
             if held and not state.fired then
                 if state.charge == 0 then
-                    sfx:Play(SoundEffect.SOUND_DOGMA_BRIMSTONE_CHARGE, 0.5, 0, false, 1)
+                    sfx:Play(SOUND_BRIM_CHARGE, 0.5, 0, false, 1)
                 end
                 state.charge = state.charge + 1
                 if state.charge >= B26_DogmaStats.FEATHER_CHARGE then
@@ -127,7 +133,7 @@ function B26_Dogma:postUpdate()
                         tdata.DogmaStatic = true
                         tdata.StopFrame = frame + math.random(B26_DogmaStats.FEATHER_TRAVEL_MIN, B26_DogmaStats.FEATHER_TRAVEL_MAX)
                     end
-                    sfx:Play(SoundEffect.SOUND_DOGMA_FEATHER_SPRAY, 0.8, 0, false, 1)
+                    sfx:Play(SOUND_FEATHERS, 0.8, 0, false, 1)
                     state.charge = 0
                     state.fired = true
                 end
