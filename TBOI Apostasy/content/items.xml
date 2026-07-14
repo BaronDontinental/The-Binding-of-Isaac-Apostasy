@@ -43,8 +43,8 @@
         tags="" maxcharges="2" chargetype="special" gfx="Epipen.png" quality="1" />
     <passive id="20" name="Nitroglycerin" description="Mix things up a bit" cache="damage"
         tags="" gfx="Nitroglycerin.png" quality="1" />
-    <!--<trinket id="21" name="Message in a Bottle" description="Open it" cache=""
-        tags="" gfx="Message_in_a_Bottle.png" quality="1" /> -->
+    <trinket id="21" name="Message in a Bottle" description="Open it" cache=""
+        tags="" gfx="Message_in_a_Bottle.png" quality="1" /> 
     <familiar id="22" name="Lil Lust" description="She just wants a hug"  cache=""
         tags="baby" gfx="Lil_Lust.png" quality="1" />
         <!--4 Tile is in pocketitems.xml-->

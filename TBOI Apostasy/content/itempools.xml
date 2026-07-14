@@ -163,6 +163,32 @@
         <Item Name="UpChuck" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Trench Foot" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
+<!--__________________________________________________-->
+    <Pool Name="Paper">
+        <Item Name="Coupon" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Death Certificate" Weight="0.22" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Blue Map" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Bogo Bombs" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Contract from Below" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Humbling Bundle" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Missing Page 2" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="PHD" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Steam Sale" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="The Negative" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="The Pact" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="The Polaroid" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Torn Photo" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Treasure Map" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="7 Seals" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Death's List" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Divorce Papers" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Act of Contrition" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Birthright" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="False PHD" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Disability Papers" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Restraining Order" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Suicide Pact" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+    </Pool>
 
 
 </ItemPools>
