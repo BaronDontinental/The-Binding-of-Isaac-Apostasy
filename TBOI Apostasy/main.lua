@@ -10,7 +10,7 @@ IncreaseColorCharge = true
 ColorTint = 0
 
 print("Hello, Welcome to The Binding of Isaac Apostasy.  The mod has loaded successfully.")
-print("Mod version: 0.0.0.4.2")
+print("Mod version: 0.5.6")
 
 yoink:bringC() --brings characters
 yoink:bringI() --brings items
