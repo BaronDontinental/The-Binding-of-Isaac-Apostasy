@@ -10,7 +10,7 @@ local CONFIG_LUST = Isaac.GetItemConfig():GetCollectible(CollectibleType.COLLECT
 local RNG_SHIFT_INDEX = 35
 
 local LUST_SPEED = 1.25
-local LUST_FRICTION = 1.0
+local LUST_FRICTION = 0.8
 local WANDER_DISTANCE = 40
 local PATH_MARKER = 0
 local IDLE_SPEED_THRESHOLD = 0.1
@@ -95,7 +95,19 @@ mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, Lil_Lust.init, FAMILIAR_LUST_VARI
     end
 mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Lil_Lust.UpdateFam, FAMILIAR_LUST_VARIANT)
 
-    function Lil_Lust:postUpdate()
+ function Lil_Lust:onDamage(entity, amount, flags, source, countdown)
+        local npc = entity:ToNPC()
+        if not npc then
+            return
+        end
+        local data = npc:GetData()
+        data.KilledByLilLust = source ~= nil and source.Entity ~= nil
+            and source.Entity.Type == EntityType.ENTITY_FAMILIAR
+            and source.Entity.Variant == FAMILIAR_LUST_VARIANT
+    end
+mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, Lil_Lust.onDamage, EntityType.ENTITY_NPC)
+
+    function Lil_Lust:heartUpdate()
         local player = Isaac.GetPlayer(0)
         local entities = Isaac.GetRoomEntities()
         for _, entity in ipairs(entities) do
@@ -104,6 +116,7 @@ mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Lil_Lust.UpdateFam, FAMILIAR_LU
          if heartSpawn and heartSpawn:IsEnemy() and heartSpawn:IsActiveEnemy(true) then
             if heartSpawn:IsDead() and not data.Died then
                 data.Died = true
+                if data.KilledByLilLust then
                   local heart = Isaac.Spawn(
                     EntityType.ENTITY_PICKUP,
                     PickupVariant.PICKUP_HEART,
@@ -113,6 +126,7 @@ mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Lil_Lust.UpdateFam, FAMILIAR_LU
                     player):ToPickup()
 
                     heart:Update()
+                end
               elseif heartSpawn.ParentNPC
                 then
                   data.Died = true
@@ -120,7 +134,7 @@ mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, Lil_Lust.UpdateFam, FAMILIAR_LU
           end
         end
     end
-mod:AddCallback(ModCallbacks.MC_POST_UPDATE, Lil_Lust.postUpdate)
+mod:AddCallback(ModCallbacks.MC_POST_UPDATE, Lil_Lust.heartUpdate)
 
 end
 
