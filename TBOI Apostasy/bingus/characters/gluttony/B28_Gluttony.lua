@@ -48,8 +48,8 @@ function B28_Gluttony:postUpdate()
 
 ---@param player EntityPlayer
   function B28_Gluttony:PlayerInit(player)
-    print("[Apostasy] B28 PlayerInit: playerType=" .. tostring(player:GetPlayerType()) .. " expected=" .. tostring(GluttonyBType))
-    if player:GetPlayerType() ~= GluttonyBType then
+    print("[Apostasy] B28 PlayerInit: name=" .. tostring(player:GetName()))
+    if player:GetName() ~= "B28_Gluttony" then
       return
     end
     gorgeMode = false
@@ -69,7 +69,7 @@ function B28_Gluttony:postUpdate()
 
 ---@param player EntityPlayer
   function B28_Gluttony:OnCache(player, cacheFlag)
-    if player:GetPlayerType() ~= GluttonyBType then
+    if player:GetName() ~= "B28_Gluttony" then
       return
     end
     if cacheFlag == CacheFlag.CACHE_DAMAGE then
@@ -123,7 +123,7 @@ function B28_Gluttony:postUpdate()
 
 ---@param player EntityPlayer
   function B28_Gluttony:PeUpdate(player)
-    if player:GetPlayerType() ~= GluttonyBType then
+    if player:GetName() ~= "B28_Gluttony" then
       return
     end
 
@@ -213,7 +213,7 @@ function B28_Gluttony:postUpdate()
       return
     end
     local player = (laser.SpawnerEntity and laser.SpawnerEntity:ToPlayer()) or Isaac.GetPlayer(0)
-    if not player or player:GetPlayerType() ~= GluttonyBType then
+    if not player or player:GetName() ~= "B28_Gluttony" then
       return
     end
     firingBack = true
@@ -241,7 +241,7 @@ function B28_Gluttony:postUpdate()
       end
     end
     local player = Isaac.GetPlayer(0)
-    if player:GetPlayerType() == GluttonyBType then
+    if player:GetName() == "B28_Gluttony" then
       player:AddCacheFlags(CacheFlag.CACHE_DAMAGE | CacheFlag.CACHE_FIREDELAY | CacheFlag.CACHE_RANGE | CacheFlag.CACHE_SPEED | CacheFlag.CACHE_SHOTSPEED | CacheFlag.CACHE_LUCK)
       player:EvaluateItems()
     end

@@ -40,7 +40,7 @@ function B26_Dogma:postUpdate()
 
 ---@param player EntityPlayer
     function B26_Dogma:OnCache(player, cacheFlag)
-        if player:GetPlayerType() ~= DogmaType then
+        if player:GetName() ~= "B26_Dogma" then
             return
         end
         if cacheFlag == CacheFlag.CACHE_FLYING then
@@ -51,7 +51,7 @@ function B26_Dogma:postUpdate()
 
 ---@param player EntityPlayer
     function B26_Dogma:PeUpdate(player)
-        if player:GetPlayerType() ~= DogmaType then
+        if player:GetName() ~= "B26_Dogma" then
             return
         end
         player:SetCanShoot(false)
@@ -172,7 +172,7 @@ function B26_Dogma:postUpdate()
 ---@param pickup EntityPickup
     function B26_Dogma:HeartBlock(pickup, collider, low)
         local player = collider:ToPlayer()
-        if player and player:GetPlayerType() == DogmaType then
+        if player and player:GetName() == "B26_Dogma" then
             return false
         end
     end
@@ -180,7 +180,7 @@ function B26_Dogma:postUpdate()
 
     function B26_Dogma:TakeDmg(entity, amount, flags, source, countdown)
         local player = entity:ToPlayer()
-        if not player or player:GetPlayerType() ~= DogmaType then
+        if not player or player:GetName() ~= "B26_Dogma" then
             return
         end
         if player:GetEffects():HasCollectibleEffect(CollectibleType.COLLECTIBLE_HOLY_MANTLE) then
@@ -193,7 +193,7 @@ function B26_Dogma:postUpdate()
 
     if ModCallbacks.MC_PRE_PLAYERHUD_RENDER_HEARTS ~= nil then
         function B26_Dogma:RenderHearts(offset, heartsSprite, position, unknown, player)
-            if player ~= nil and player:GetPlayerType() == DogmaType then
+            if player ~= nil and player:GetName() == "B26_Dogma" then
                 heartsSprite.Color = B26_DogmaStats.HEART_FADE
             else
                 heartsSprite.Color = Color(1, 1, 1, 1, 0, 0, 0)
