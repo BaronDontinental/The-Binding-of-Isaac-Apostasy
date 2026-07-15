@@ -25,6 +25,7 @@ local B25_SlothStats = {
 }
 
 local inCreep = false
+local slothChargerCount = 0
 
 local function isSloth(player)
     if player == nil then
@@ -56,6 +57,14 @@ function B25_Sloth:postUpdate()
         creep.Timeout = B25_SlothStats.CREEP_TIME
         creep.Color = B25_SlothStats.CREEPCOLOR
         creep:Update()
+    end
+
+    local function spawnCharger(position, player)
+        local charger = Isaac.Spawn(EntityType.ENTITY_CHARGER, 0, 1, position, Vector.Zero, player)
+        charger:AddCharmed(EntityRef(player), -1)
+        charger:AddEntityFlags(EntityFlag.FLAG_FRIENDLY | EntityFlag.FLAG_CHARM)
+        charger:GetData().SlothCharger = true
+        return charger
     end
 
 ---@param player EntityPlayer
@@ -118,8 +127,29 @@ function B25_Sloth:postUpdate()
             player:AddCacheFlags(CacheFlag.CACHE_FIREDELAY)
             player:EvaluateItems()
         end
+
+        local alive = 0
+        for _, entity in ipairs(Isaac.FindByType(EntityType.ENTITY_CHARGER, -1, -1, false, false)) do
+            if entity:GetData().SlothCharger and not entity:IsDead() then
+                alive = alive + 1
+            end
+        end
+        slothChargerCount = alive
     end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, B25_Sloth.PEffect)
+
+    function B25_Sloth:ChargerRoom()
+        local player = Isaac.GetPlayer(0)
+        if not isSloth(player) or slothChargerCount <= 0 then
+            return
+        end
+        local room = Game:GetRoom()
+        for _ = 1, slothChargerCount do
+            local pos = room:FindFreePickupSpawnPosition(player.Position, 2, true)
+            spawnCharger(pos, player)
+        end
+    end
+    mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, B25_Sloth.ChargerRoom)
 
 ---@param pickup EntityPickup
     function B25_Sloth:HeartBlock(pickup, collider, low)
@@ -181,8 +211,8 @@ function B25_Sloth:postUpdate()
                 local position = familiar.Position
                 fly:Remove()
                 familiar:Remove()
-                local charger = Isaac.Spawn(EntityType.ENTITY_CHARGER, 0, 1, position, Vector.Zero, player)
-                charger:AddCharmed(EntityRef(player), -1)
+                spawnCharger(position, player)
+                slothChargerCount = slothChargerCount + 1
                 return
             end
         end
