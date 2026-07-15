@@ -3,7 +3,6 @@ local game = Game()
 local sfx = SFXManager()
 local okSave, SaveManager = pcall(require, "callbacks.save_manager")
 if not okSave or type(SaveManager) ~= "table" then
-    print("[Apostasy] B26_Pride: save_manager failed to load, saving disabled: " .. tostring(SaveManager))
     SaveManager = {Get = function() return nil end, Set = function() end}
 end
 
@@ -34,11 +33,9 @@ local function resolveDogmaType()
     return resolvedDogmaType
 end
 
-print("[Apostasy] B26_Pride loaded: BodyVariant=" .. tostring(PRIDE_BODY_VARIANT))
 
 mod.COLLECTIBLE_HUBRIS = Isaac.GetItemIdByName("Hubris")
 CollectibleType.COLLECTIBLE_HUBRIS = Isaac.GetItemIdByName("Hubris")
-print("[Apostasy] B26_Pride: Hubris id=" .. tostring(CollectibleType.COLLECTIBLE_HUBRIS))
 
 local B26_PrideStats = {
     DAMAGE = 0,
@@ -72,7 +69,6 @@ chainSprite:Load("gfx/dogma_chain.anm2", true)
 chainSprite:Play("Idle", true)
 
 function B26_Pride:postUpdate()
-    print("[Apostasy] B26_Pride registering callbacks")
 
     local function removeBody()
         for _, entity in ipairs(Isaac.FindByType(EntityType.ENTITY_EFFECT, PRIDE_BODY_VARIANT, -1, false, false)) do
@@ -116,13 +112,11 @@ function B26_Pride:postUpdate()
         end
         local dt = resolveDogmaType()
         if dt < 0 then
-            print("[Apostasy] FlipToDogma ABORT: B26_Dogma player type unresolved (-1). Check players.xml name.")
             return
         end
         spawnBody(player)
         player:ChangePlayerType(dt)
         if player:GetName() ~= "B26_Dogma" then
-            print("[Apostasy] FlipToDogma: ChangePlayerType(" .. tostring(dt) .. ") did not take, name=" .. tostring(player:GetName()))
             removeBody()
             return
         end
@@ -140,7 +134,6 @@ function B26_Pride:postUpdate()
         player:AddCacheFlags(CacheFlag.CACHE_ALL)
         player:EvaluateItems()
         sfx:Play(SOUND_APPEAR, 0.6, 0, false, 1)
-        print("[Apostasy] FlipToDogma done: pattern=" .. tostring(state.pattern))
     end
 
 ---@param player EntityPlayer
@@ -150,7 +143,6 @@ function B26_Pride:postUpdate()
         end
         local pt = resolvePrideType()
         if pt < 0 then
-            print("[Apostasy] FlipToPride ABORT: B26_Pride player type unresolved (-1)")
             return
         end
         player:ChangePlayerType(pt)
@@ -167,7 +159,6 @@ function B26_Pride:postUpdate()
         player:AddCacheFlags(CacheFlag.CACHE_ALL)
         player:EvaluateItems()
         sfx:Play(SOUND_TV_BREAK, 0.6, 0, false, 1)
-        print("[Apostasy] FlipToPride done")
     end
 
 ---@param player EntityPlayer
@@ -199,10 +190,8 @@ function B26_Pride:postUpdate()
             return
         end
         resolvedPrideType = player:GetPlayerType()
-        print("[Apostasy] B26_Pride PlayerInit: captured PrideType=" .. tostring(resolvedPrideType) .. " dogmaLookup=" .. tostring(resolveDogmaType()))
         if player:GetActiveItem(ActiveSlot.SLOT_POCKET) ~= CollectibleType.COLLECTIBLE_HUBRIS then
             player:SetPocketActiveItem(CollectibleType.COLLECTIBLE_HUBRIS, ActiveSlot.SLOT_POCKET, false)
-            print("[Apostasy] B26_Pride: Hubris granted to pocket slot")
         end
     end
     mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, B26_Pride.PlayerInit)
@@ -264,9 +253,6 @@ function B26_Pride:postUpdate()
             end
         end
 
-        if DebugMode and game:GetFrameCount() % 60 == 0 then
-            print("[Apostasy] B26_Pride PeUpdate: form=" .. tostring(state.form) .. " timer=" .. tostring(state.timer) .. " enemies=" .. tostring(enemies))
-        end
 
         if enemies then
             state.timer = state.timer + 1
@@ -285,7 +271,6 @@ function B26_Pride:postUpdate()
 
 ---@param player EntityPlayer
     function B26_Pride:UseHubris(item, rng, player, useFlags, slot, varData)
-        print("[Apostasy] Hubris used by name=" .. tostring(player:GetName()))
         state.hubrisCharge = 0
         if player:GetName() == "B26_Pride" then
             mod.PrideB.FlipToDogma(player, false)
@@ -324,7 +309,6 @@ function B26_Pride:postUpdate()
         end
     end
     mod:AddCallback(ModCallbacks.MC_POST_RENDER, B26_Pride.OnRender)
-    print("[Apostasy] B26_Pride callbacks registered")
 
 end
 

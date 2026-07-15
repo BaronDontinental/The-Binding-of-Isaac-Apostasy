@@ -3,16 +3,13 @@ local game = Game()
 local sfx = SFXManager()
 local okSave, SaveManager = pcall(require, "callbacks.save_manager")
 if not okSave or type(SaveManager) ~= "table" then
-    print("[Apostasy] B28_Gluttony: save_manager failed to load, saving disabled: " .. tostring(SaveManager))
     SaveManager = {Get = function() return nil end, Set = function() end}
 end
 
-local GluttonyBType = Isaac.GetPlayerTypeByName("B28_Gluttony", false)
 local GluttonyBBod = Isaac.GetCostumeIdByPath("gfx/character_B28_Gluttony.anm2")
 
 mod.COLLECTIBLE_GORGE = Isaac.GetItemIdByName("Gorge")
 CollectibleType.COLLECTIBLE_GORGE = Isaac.GetItemIdByName("Gorge")
-print("[Apostasy] B28_Gluttony loaded: type=" .. tostring(GluttonyBType) .. " Gorge id=" .. tostring(CollectibleType.COLLECTIBLE_GORGE))
 
 local B28_GluttonyStats = {
   DAMAGE = -0.5,
@@ -40,7 +37,6 @@ local gorgeBonus = {DAMAGE = 0, TEARS = 0, RANGE = 0, SPEED = 0, SHOTSPEED = 0, 
 local firingBack = false
 
 function B28_Gluttony:postUpdate()
-  print("[Apostasy] B28_Gluttony registering callbacks")
 
   local function saveState()
     SaveManager.Set("B28_Gluttony", {bonus = gorgeBonus, mode = gorgeMode})
@@ -48,7 +44,6 @@ function B28_Gluttony:postUpdate()
 
 ---@param player EntityPlayer
   function B28_Gluttony:PlayerInit(player)
-    print("[Apostasy] B28 PlayerInit: name=" .. tostring(player:GetName()))
     if player:GetName() ~= "B28_Gluttony" then
       return
     end
@@ -93,9 +88,6 @@ function B28_Gluttony:postUpdate()
       player.Luck = player.Luck + B28_GluttonyStats.LUCK + gorgeBonus.LUCK
     end
     if cacheFlag == CacheFlag.CACHE_WEAPON then
-      if DebugMode then
-        print("[Apostasy] B28 CACHE_WEAPON: enabling brimstone")
-      end
       player.EnableWeaponType(player, WeaponType.WEAPON_BRIMSTONE, true)
       player.EnableWeaponType(player, WeaponType.WEAPON_TEARS, false)
       player.EnableWeaponType(player, WeaponType.WEAPON_BOMBS, false)
@@ -247,7 +239,6 @@ function B28_Gluttony:postUpdate()
     end
   end
   mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, B28_Gluttony.GameStarted)
-  print("[Apostasy] B28_Gluttony callbacks registered")
 
 end
 

@@ -2,12 +2,10 @@ local B26_Dogma = {}
 local game = Game()
 local sfx = SFXManager()
 
-local DogmaType = Isaac.GetPlayerTypeByName("B26_Dogma", false)
 local SOUND_BRIM_CHARGE = SoundEffect.SOUND_DOGMA_BRIMSTONE_CHARGE or 547
 local SOUND_BRIM_SHOOT = SoundEffect.SOUND_DOGMA_BRIMSTONE_SHOOT or 548
 local SOUND_GODHEAD = SoundEffect.SOUND_DOGMA_GODHEAD or 549
 local SOUND_FEATHERS = SoundEffect.SOUND_DOGMA_FEATHER_SPRAY or 556
-print("[Apostasy] B26_Dogma loaded: DogmaType=" .. tostring(DogmaType))
 
 local B26_DogmaStats = {
     BRIM_CHARGE = 15,
@@ -36,7 +34,6 @@ staticSprite:Play("Idle", true)
 
 function B26_Dogma:postUpdate()
     local state = mod.PrideB
-    print("[Apostasy] B26_Dogma registering callbacks, state=" .. tostring(state))
 
 ---@param player EntityPlayer
     function B26_Dogma:OnCache(player, cacheFlag)
