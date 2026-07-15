@@ -62,6 +62,7 @@ mod.PrideB = {
     fired = false,
     beamUntil = -1,
     radialUntil = -1,
+    hubrisCharge = 0,
     STATIC_COLOR = Color(0.5, 0.8, 1.0, 1.0, 0, 0.1, 0.3)
 }
 local state = mod.PrideB
@@ -95,6 +96,20 @@ function B26_Pride:postUpdate()
     end
 
 ---@param player EntityPlayer
+    local function ensureHubris(player)
+        if CollectibleType.COLLECTIBLE_HUBRIS == nil or CollectibleType.COLLECTIBLE_HUBRIS <= 0 then
+            return
+        end
+        if player:GetActiveItem(ActiveSlot.SLOT_POCKET) ~= CollectibleType.COLLECTIBLE_HUBRIS then
+            player:SetPocketActiveItem(CollectibleType.COLLECTIBLE_HUBRIS, ActiveSlot.SLOT_POCKET, false)
+            player:SetActiveCharge(state.hubrisCharge or 0, ActiveSlot.SLOT_POCKET)
+        else
+            state.hubrisCharge = player:GetActiveCharge(ActiveSlot.SLOT_POCKET)
+        end
+    end
+    mod.PrideB.ensureHubris = ensureHubris
+
+---@param player EntityPlayer
     function mod.PrideB.FlipToDogma(player, auto)
         if player:GetName() ~= "B26_Pride" then
             return
@@ -121,6 +136,7 @@ function B26_Pride:postUpdate()
         state.fired = false
         state.beamUntil = -1
         state.radialUntil = -1
+        ensureHubris(player)
         player:AddCacheFlags(CacheFlag.CACHE_ALL)
         player:EvaluateItems()
         sfx:Play(SOUND_APPEAR, 0.6, 0, false, 1)
@@ -147,6 +163,7 @@ function B26_Pride:postUpdate()
         state.form = "pride"
         state.timer = 0
         state.autoFlipped = false
+        ensureHubris(player)
         player:AddCacheFlags(CacheFlag.CACHE_ALL)
         player:EvaluateItems()
         sfx:Play(SOUND_TV_BREAK, 0.6, 0, false, 1)
@@ -224,6 +241,8 @@ function B26_Pride:postUpdate()
             return
         end
 
+        ensureHubris(player)
+
         if name == "B26_Pride" then
             local red = player:GetMaxHearts()
             if red > 0 then
@@ -267,6 +286,7 @@ function B26_Pride:postUpdate()
 ---@param player EntityPlayer
     function B26_Pride:UseHubris(item, rng, player, useFlags, slot, varData)
         print("[Apostasy] Hubris used by name=" .. tostring(player:GetName()))
+        state.hubrisCharge = 0
         if player:GetName() == "B26_Pride" then
             mod.PrideB.FlipToDogma(player, false)
             return true

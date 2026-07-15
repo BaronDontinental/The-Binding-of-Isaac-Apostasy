@@ -25,7 +25,7 @@ local B26_DogmaStats = {
     FEATHER_TRAVEL_MAX = 20,
     FEATHER_HOVER = 90,
     FEATHER_VARIANT = TearVariant.TOOTH,
-    CHAIN_LENGTH = 120,
+    CHAIN_LENGTH = 260,
     HEART_FADE = Color(1, 1, 1, 0.25, 0, 0, 0),
     STATIC_SPACING = 40
 }
