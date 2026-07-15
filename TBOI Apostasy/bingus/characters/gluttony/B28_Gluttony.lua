@@ -39,6 +39,7 @@ local firingBack = false
 function B28_Gluttony:postUpdate()
 
   local function saveState()
+---@diagnostic disable-next-line: redundant-parameter
     SaveManager.Set("B28_Gluttony", {bonus = gorgeBonus, mode = gorgeMode})
   end
 
@@ -216,9 +217,11 @@ function B28_Gluttony:postUpdate()
 
   function B28_Gluttony:GameStarted(isContinued)
     if not isContinued then
+---@diagnostic disable-next-line: redundant-parameter
       SaveManager.Set("B28_Gluttony", nil)
       return
     end
+---@diagnostic disable-next-line: redundant-parameter
     local state = SaveManager.Get("B28_Gluttony")
     if type(state) ~= "table" then
       return

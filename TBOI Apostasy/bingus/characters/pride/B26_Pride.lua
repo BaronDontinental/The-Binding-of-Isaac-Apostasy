@@ -125,6 +125,7 @@ function B26_Pride:postUpdate()
         state.autoFlipped = auto == true
         state.pattern = state.cycle
         state.cycle = state.cycle % 3 + 1
+---@diagnostic disable-next-line: redundant-parameter
         SaveManager.Set("B26_Pride", {cycle = state.cycle})
         state.charge = 0
         state.fired = false
@@ -208,9 +209,11 @@ function B26_Pride:postUpdate()
             end
         end
         if not isContinued then
+---@diagnostic disable-next-line: redundant-parameter
             SaveManager.Set("B26_Pride", nil)
             state.cycle = 1
         else
+---@diagnostic disable-next-line: redundant-parameter
             local saved = SaveManager.Get("B26_Pride")
             if type(saved) == "table" and tonumber(saved.cycle) then
                 state.cycle = tonumber(saved.cycle)
