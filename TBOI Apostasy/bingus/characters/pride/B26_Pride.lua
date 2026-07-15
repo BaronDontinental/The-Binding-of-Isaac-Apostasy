@@ -1,14 +1,44 @@
 local B26_Pride = {}
 local game = Game()
 local sfx = SFXManager()
-local SaveManager = require("callbacks.save_manager")
+local okSave, SaveManager = pcall(require, "callbacks.save_manager")
+if not okSave or type(SaveManager) ~= "table" then
+    print("[Apostasy] B26_Pride: save_manager failed to load, saving disabled: " .. tostring(SaveManager))
+    SaveManager = {Get = function() return nil end, Set = function() end}
+end
 
-local PrideBType = Isaac.GetPlayerTypeByName("B26_Pride", false)
-local DogmaType = Isaac.GetPlayerTypeByName("B26_Dogma", false)
 local PRIDE_BODY_VARIANT = Isaac.GetEntityVariantByName("Pride Body")
+local SOUND_APPEAR = SoundEffect.SOUND_DOGMA_APPEAR_SCREAM or 541
+local SOUND_TV_BREAK = SoundEffect.SOUND_DOGMA_TV_BREAK or 567
+
+local resolvedPrideType = -1
+local resolvedDogmaType = -1
+
+local function resolvePrideType()
+    if resolvedPrideType < 0 then
+        resolvedPrideType = Isaac.GetPlayerTypeByName("B26_Pride", true)
+        if resolvedPrideType < 0 then
+            resolvedPrideType = Isaac.GetPlayerTypeByName("B26_Pride", false)
+        end
+    end
+    return resolvedPrideType
+end
+
+local function resolveDogmaType()
+    if resolvedDogmaType < 0 then
+        resolvedDogmaType = Isaac.GetPlayerTypeByName("B26_Dogma", true)
+        if resolvedDogmaType < 0 then
+            resolvedDogmaType = Isaac.GetPlayerTypeByName("B26_Dogma", false)
+        end
+    end
+    return resolvedDogmaType
+end
+
+print("[Apostasy] B26_Pride loaded: BodyVariant=" .. tostring(PRIDE_BODY_VARIANT))
 
 mod.COLLECTIBLE_HUBRIS = Isaac.GetItemIdByName("Hubris")
 CollectibleType.COLLECTIBLE_HUBRIS = Isaac.GetItemIdByName("Hubris")
+print("[Apostasy] B26_Pride: Hubris id=" .. tostring(CollectibleType.COLLECTIBLE_HUBRIS))
 
 local B26_PrideStats = {
     DAMAGE = 0,
@@ -41,6 +71,7 @@ chainSprite:Load("gfx/dogma_chain.anm2", true)
 chainSprite:Play("Idle", true)
 
 function B26_Pride:postUpdate()
+    print("[Apostasy] B26_Pride registering callbacks")
 
     local function removeBody()
         for _, entity in ipairs(Isaac.FindByType(EntityType.ENTITY_EFFECT, PRIDE_BODY_VARIANT, -1, false, false)) do
@@ -65,11 +96,21 @@ function B26_Pride:postUpdate()
 
 ---@param player EntityPlayer
     function mod.PrideB.FlipToDogma(player, auto)
-        if player:GetPlayerType() ~= PrideBType then
+        if player:GetName() ~= "B26_Pride" then
+            return
+        end
+        local dt = resolveDogmaType()
+        if dt < 0 then
+            print("[Apostasy] FlipToDogma ABORT: B26_Dogma player type unresolved (-1). Check players.xml name.")
             return
         end
         spawnBody(player)
-        player:ChangePlayerType(DogmaType)
+        player:ChangePlayerType(dt)
+        if player:GetName() ~= "B26_Dogma" then
+            print("[Apostasy] FlipToDogma: ChangePlayerType(" .. tostring(dt) .. ") did not take, name=" .. tostring(player:GetName()))
+            removeBody()
+            return
+        end
         state.form = "dogma"
         state.timer = 0
         state.autoFlipped = auto == true
@@ -82,15 +123,21 @@ function B26_Pride:postUpdate()
         state.radialUntil = -1
         player:AddCacheFlags(CacheFlag.CACHE_ALL)
         player:EvaluateItems()
-        sfx:Play(SoundEffect.SOUND_DOGMA_APPEAR_SCREAM, 0.6, 0, false, 1)
+        sfx:Play(SOUND_APPEAR, 0.6, 0, false, 1)
+        print("[Apostasy] FlipToDogma done: pattern=" .. tostring(state.pattern))
     end
 
 ---@param player EntityPlayer
     function mod.PrideB.FlipToPride(player, teleport)
-        if player:GetPlayerType() ~= DogmaType then
+        if player:GetName() ~= "B26_Dogma" then
             return
         end
-        player:ChangePlayerType(PrideBType)
+        local pt = resolvePrideType()
+        if pt < 0 then
+            print("[Apostasy] FlipToPride ABORT: B26_Pride player type unresolved (-1)")
+            return
+        end
+        player:ChangePlayerType(pt)
         if teleport and state.bodyPos ~= nil then
             player.Position = state.bodyPos
         end
@@ -102,12 +149,13 @@ function B26_Pride:postUpdate()
         state.autoFlipped = false
         player:AddCacheFlags(CacheFlag.CACHE_ALL)
         player:EvaluateItems()
-        sfx:Play(SoundEffect.SOUND_DOGMA_TV_BREAK, 0.6, 0, false, 1)
+        sfx:Play(SOUND_TV_BREAK, 0.6, 0, false, 1)
+        print("[Apostasy] FlipToPride done")
     end
 
 ---@param player EntityPlayer
     function B26_Pride:OnCache(player, cacheFlag)
-        if player:GetPlayerType() ~= PrideBType then
+        if player:GetName() ~= "B26_Pride" then
             return
         end
         if cacheFlag == CacheFlag.CACHE_DAMAGE then
@@ -130,19 +178,25 @@ function B26_Pride:postUpdate()
 
 ---@param player EntityPlayer
     function B26_Pride:PlayerInit(player)
-        if player:GetPlayerType() ~= PrideBType then
+        if player:GetName() ~= "B26_Pride" then
             return
         end
+        resolvedPrideType = player:GetPlayerType()
+        print("[Apostasy] B26_Pride PlayerInit: captured PrideType=" .. tostring(resolvedPrideType) .. " dogmaLookup=" .. tostring(resolveDogmaType()))
         if player:GetActiveItem(ActiveSlot.SLOT_POCKET) ~= CollectibleType.COLLECTIBLE_HUBRIS then
             player:SetPocketActiveItem(CollectibleType.COLLECTIBLE_HUBRIS, ActiveSlot.SLOT_POCKET, false)
+            print("[Apostasy] B26_Pride: Hubris granted to pocket slot")
         end
     end
     mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, B26_Pride.PlayerInit)
 
     function B26_Pride:GameStarted(isContinued)
         local player = Isaac.GetPlayer(0)
-        if player:GetPlayerType() == DogmaType then
-            player:ChangePlayerType(PrideBType)
+        if player:GetName() == "B26_Dogma" then
+            local pt = resolvePrideType()
+            if pt >= 0 then
+                player:ChangePlayerType(pt)
+            end
             if player:GetSoulHearts() == 0 and player:GetMaxHearts() == 0 then
                 player:AddSoulHearts(6)
             end
@@ -165,12 +219,12 @@ function B26_Pride:postUpdate()
 
 ---@param player EntityPlayer
     function B26_Pride:PeUpdate(player)
-        local ptype = player:GetPlayerType()
-        if ptype ~= PrideBType and ptype ~= DogmaType then
+        local name = player:GetName()
+        if name ~= "B26_Pride" and name ~= "B26_Dogma" then
             return
         end
 
-        if ptype == PrideBType then
+        if name == "B26_Pride" then
             local red = player:GetMaxHearts()
             if red > 0 then
                 player:AddMaxHearts(-red)
@@ -183,17 +237,28 @@ function B26_Pride:postUpdate()
             end
         end
 
-        local enemies = game:GetRoom():GetAliveEnemiesCount() > 0
+        local enemies = false
+        for _, entity in ipairs(Isaac.GetRoomEntities()) do
+            if entity:IsActiveEnemy(false) and entity:IsVulnerableEnemy() then
+                enemies = true
+                break
+            end
+        end
+
+        if DebugMode and game:GetFrameCount() % 60 == 0 then
+            print("[Apostasy] B26_Pride PeUpdate: form=" .. tostring(state.form) .. " timer=" .. tostring(state.timer) .. " enemies=" .. tostring(enemies))
+        end
+
         if enemies then
             state.timer = state.timer + 1
             if state.timer >= B26_PrideStats.FLIP_INTERVAL then
-                if ptype == PrideBType then
+                if name == "B26_Pride" then
                     mod.PrideB.FlipToDogma(player, true)
                 else
                     mod.PrideB.FlipToPride(player, true)
                 end
             end
-        elseif ptype == DogmaType and state.autoFlipped then
+        elseif name == "B26_Dogma" and state.autoFlipped then
             mod.PrideB.FlipToPride(player, true)
         end
     end
@@ -201,10 +266,11 @@ function B26_Pride:postUpdate()
 
 ---@param player EntityPlayer
     function B26_Pride:UseHubris(item, rng, player, useFlags, slot, varData)
-        if player:GetPlayerType() == PrideBType then
+        print("[Apostasy] Hubris used by name=" .. tostring(player:GetName()))
+        if player:GetName() == "B26_Pride" then
             mod.PrideB.FlipToDogma(player, false)
             return true
-        elseif player:GetPlayerType() == DogmaType then
+        elseif player:GetName() == "B26_Dogma" then
             mod.PrideB.FlipToPride(player, true)
             return true
         end
@@ -214,7 +280,7 @@ function B26_Pride:postUpdate()
 
     function B26_Pride:NewRoom()
         local player = Isaac.GetPlayer(0)
-        if player:GetPlayerType() == DogmaType then
+        if player:GetName() == "B26_Dogma" then
             mod.PrideB.FlipToPride(player, false)
         end
         removeBody()
@@ -227,7 +293,7 @@ function B26_Pride:postUpdate()
             return
         end
         local player = Isaac.GetPlayer(0)
-        if player:GetPlayerType() ~= DogmaType then
+        if player:GetName() ~= "B26_Dogma" then
             return
         end
         local delta = player.Position - state.bodyPos
@@ -238,6 +304,7 @@ function B26_Pride:postUpdate()
         end
     end
     mod:AddCallback(ModCallbacks.MC_POST_RENDER, B26_Pride.OnRender)
+    print("[Apostasy] B26_Pride callbacks registered")
 
 end
 
