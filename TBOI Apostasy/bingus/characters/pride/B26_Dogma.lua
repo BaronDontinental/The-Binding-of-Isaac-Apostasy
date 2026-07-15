@@ -28,9 +28,9 @@ local B26_DogmaStats = {
     STATIC_SPACING = 40
 }
 
-local staticSprite = Sprite()
-staticSprite:Load("gfx/dogma_static.anm2", true)
-staticSprite:Play("Idle", true)
+--local staticSprite = Sprite()
+--staticSprite:Load("gfx/dogma_static.anm2", true)
+--staticSprite:Play("Idle", true)
 
 function B26_Dogma:postUpdate()
     local state = mod.PrideB
@@ -199,23 +199,23 @@ function B26_Dogma:postUpdate()
         mod:AddCallback(ModCallbacks.MC_PRE_PLAYERHUD_RENDER_HEARTS, B26_Dogma.RenderHearts)
     end
 
-    local function renderStatic(position, scale)
+    --[[local function renderStatic(position, scale)
         staticSprite.Scale = Vector(scale, scale)
         staticSprite:SetFrame("Idle", math.random(0, 3))
         staticSprite:Render(Isaac.WorldToScreen(position))
-    end
+    end]]
 
     function B26_Dogma:RenderStaticOverlay()
         if state.form ~= "dogma" then
             return
         end
         if state.bodyPos ~= nil then
-            renderStatic(state.bodyPos, 1.0)
+            --renderStatic(state.bodyPos, 1.0)
         end
         for _, entity in ipairs(Isaac.FindByType(EntityType.ENTITY_TEAR, -1, -1, false, false)) do
             if entity:GetData().DogmaStatic then
                 local tear = entity:ToTear()
-                renderStatic(tear.Position + Vector(0, tear.Height), 0.5)
+                --renderStatic(tear.Position + Vector(0, tear.Height), 0.5)
             end
         end
         for _, entity in ipairs(Isaac.FindByType(EntityType.ENTITY_LASER, -1, -1, false, false)) do
@@ -225,10 +225,10 @@ function B26_Dogma:postUpdate()
                     local delta = laser:GetEndPoint() - laser.Position
                     local steps = math.max(math.floor(delta:Length() / B26_DogmaStats.STATIC_SPACING), 1)
                     for i = 0, steps do
-                        renderStatic(laser.Position + delta * (i / steps), 0.6)
+                        --renderStatic(laser.Position + delta * (i / steps), 0.6)
                     end
                 else
-                    renderStatic(laser.Position, 0.6)
+                    --renderStatic(laser.Position, 0.6)
                 end
             end
         end

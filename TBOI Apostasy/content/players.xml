@@ -42,7 +42,7 @@
 		portrait="PlayerPortrait_Isaac.png"  skinColor="-1"
 		bSkinParent="L20_Pride"/>
 
-	<player id="31" name="B26_Dogma" skin="Character_026_PrideB.png" hp="0" bombs="0"
+	<player id="31" name="B26_Dogma" skin="Character_026_Dogma.png" hp="0" bombs="0"
 		nameimage="PlayerName_01_Isaac.png"
 		portrait="PlayerPortrait_Isaac.png"  skinColor="-1" hidden="true"
 		bSkinParent="L20_Pride"/>
