@@ -24,7 +24,7 @@ function Moar:postUpdate()
                                 PickupVariant.PICKUP_CHEST,
                                 ChestSubType.CHEST_CLOSED,
                                 MoarE.Position,
-                                MoarE.Velocity,
+                                Vector(0,0),
                                 nil)
                         elseif MoarE.ParentNPC or
                             MoarE.Type == EntityType.ENTITY_BLASTOCYST_MEDIUM
