@@ -23,4 +23,4 @@ To-do
 
 URGENT NEED TO DO
 ===========================================================================================================================================================================
-2. t wrath does not heal when picking up a bomb collectible that grants bombs
+1. t wrath does not heal when picking up a bomb collectible that grants bombs
