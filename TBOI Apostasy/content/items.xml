@@ -22,8 +22,8 @@
         tags="nogreed" gfx="Puzzle_Cube.png" quality="1" />  
     <passive id="9" name="Body Odor" description="You smell terrible." cache=""
         tags="" gfx="BO.png" quality="1" />
-    <active id="10" name="Lazybony" description="" cache=""
-        tags="" maxcharges="90" chargetype="special" gfx="Lazybony.png" quality="1" />
+    <active id="10" name="Lazyboney" description="" cache=""
+        tags="" maxcharges="90" chargetype="special" gfx="Lazyboney.png" quality="1" />
         <!--Ugly Baby is in babies.xml-->
     <active id="12" name="Upchuck" description="" cache="damage"
         tags="" maxcharges="3" gfx="Upchuck.png" quality="1" />

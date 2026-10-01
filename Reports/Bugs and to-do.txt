@@ -18,8 +18,7 @@ To-do
 5. sort out the balancing for envy and wrath
 6. Add meta data so sloth and envy counters and familiars remain on reload
 7. Give Lust an interesting mechanic, possibly involving pills.
-8. Lazybony: replace all instances of "Lazybony" with "Lazyboney"
-9. Epipen: replace all instances of "Epipen" with "Auto-Injector"
+8. Epipen: replace all instances of "Epipen" with "Auto-Injector"
 
 
 URGENT NEED TO DO
