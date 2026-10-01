@@ -1,13 +1,12 @@
 Bugs
 ==========================================================================================================================================================================
-1. holding R or starting a run will randomly cause a crash
+1. holding R or starting a run will randomly cause a crash (repentagon?)
 2. occasionally, the sacrifice counter for sloth will not tick up, and i have no clue why, it should be working, inorder to clear this bug you have to restart the game
 3. need to add envy orbital counts and sloth clear counts to a register to fix saving and exiting issues.  
 4. when you restart the game the entity for the sloth station is lost, need to add the register to a .json save.  
 5. Death cap applies to familiars
 6. Pride Birthright continuous on new runs.
-7. 2x2 room in sheol can crash game (likely repentagon)
-8. Gluttony reflection bug (flooded caves, downpour, etc)
+7. Gluttony reflection bug (flooded caves, downpour, etc)
 
 
 To-do
@@ -19,8 +18,15 @@ To-do
 5. sort out the balancing for envy and wrath
 6. Add meta data so sloth and envy counters and familiars remain on reload
 7. Give Lust an interesting mechanic, possibly involving pills.
+8. Lazybony: replace all instances of "Lazybony" with "Lazyboney"
+9. Epipen: replace all instances of "Epipen" with "Auto-Injector"
 
 
 URGENT NEED TO DO
 ===========================================================================================================================================================================
-2. t wrath does not heal when picking up a bomb collectible that grants bombs
+1. t wrath does not heal when picking up a bomb collectible that grants bombs
+2. Lust:
+Box of Chocalates (2 charge Active): pay all but 1 red hearts for X cards/runes/pills (consumables). Payout would be based on hearts dumped into it, and would be semi random in amount with fully random consumables.
+
+Red HP only; starts with 2 full and 2 empty. Every heart container filled above half is a tbd all stats down, every heart below half is a tbd all stats up.
+Base stats otherwise
