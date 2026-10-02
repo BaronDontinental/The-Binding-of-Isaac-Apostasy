@@ -53,8 +53,8 @@
     <passive id="25" name="Glyph of Matrimony" description="Forever together" cache=""
         tags="" gfx="Glyph_of_Matrimony.png" quality="1" />
         <!--Suspicious baby is in babies.xml-->
-    <passive id="27" name="House Arrest" description="A shocking aura" cache=""
-        tags="" gfx="House_Arrest.png" quality="1" />
+    <active id="27" name="Box of Chocolates" description="Whatcha Gonna Get?" cache=""
+        tags="" maxcharges="2" gfx="Box_of_Chocolates.png" quality="1" />
     <active id="28" name="Empty Syringe" description="Spread your love" cache=""
         tags="" maxcharges="6" gfx="Empty_Syringe.png" quality="!" />
     <passive id="29" name="Restraining Order" description="Stay away from me" cache=""
