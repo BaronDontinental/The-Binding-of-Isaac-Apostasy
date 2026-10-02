@@ -19,8 +19,6 @@ local L23_LustStats = {
     STARTINGEMPTYHEARTS = 2
 }
 
--- Applied once for every heart filled ABOVE the halfway point of Lust's containers
--- TBD: placeholder values
 local L23_LustStatsDown = {
     DAMAGE = 0.5,
     SPEED = 0.1,
@@ -30,8 +28,6 @@ local L23_LustStatsDown = {
     LUCK = 0.5
 }
 
--- Applied once for every heart left empty BELOW the halfway point of Lust's containers
--- TBD: placeholder values
 local L23_LustStatsUp = {
     DAMAGE = 0.5,
     SPEED = 0.1,
@@ -41,14 +37,12 @@ local L23_LustStatsUp = {
     LUCK = 0.5
 }
 
--- Positive = hearts filled past half, negative = hearts missing below half (half hearts count as 0.5)
 local function GetHeartOffset(player)
   local filled = player:GetHearts() / 2
   local half = player:GetMaxHearts() / 4
   return filled - half
 end
 
--- Returns how much the given stat should be buffed (negative = debuffed)
 local function GetHeartStat(player, stat)
   local offset = GetHeartOffset(player)
   if offset > 0 then
@@ -74,7 +68,6 @@ function L23_Lust:postUpdate()
           player.ShotSpeed = player.ShotSpeed + L23_LustStats.SHOTSPEED + GetHeartStat(player, "SHOTSPEED")
         end
         if(cacheFlag == CacheFlag.CACHE_FIREDELAY) then
-          -- lower fire delay = more tears, so the bonus is subtracted
           player.MaxFireDelay = math.max(1, player.MaxFireDelay + L23_LustStats.MAXFIREDELAY - GetHeartStat(player, "MAXFIREDELAY"))
         end
         if(cacheFlag == CacheFlag.CACHE_RANGE) then
@@ -114,11 +107,9 @@ function L23_Lust:postUpdate()
       if player:GetPlayerType() ~= LustGuy then
         return
       end
-      -- Red HP only
       if player:GetSoulHearts() > 0 then
         player:AddSoulHearts(-player:GetSoulHearts())
       end
-      -- Re-evaluate stats whenever hearts change
       local data = player:GetData()
       local hearts = player:GetHearts()
       local maxHearts = player:GetMaxHearts()

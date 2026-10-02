@@ -4,24 +4,22 @@ local game = Game()
 mod.COLLECTIBLE_BOX_OF_CHOCOLATES = Isaac.GetItemIdByName("Box of Chocolates")
 CollectibleType.COLLECTIBLE_BOX_OF_CHOCOLATES = Isaac.GetItemIdByName("Box of Chocolates")
 
---Tweak these to change how the box pays out (hearts are in half hearts, 2 = 1 full red heart)
 local SETTINGS = {
-    KEEP_HALF_HEARTS = 2,           --Red health left behind after paying
-    PAYOUT_PER_HALF_HEART = 0.5,    --Base consumables per half heart paid (0.5 = 1 per full heart)
-    MULT_MIN = 0.75,                --Base payout gets multiplied by a random value between MULT_MIN and MULT_MAX
+    KEEP_HALF_HEARTS = 2,           
+    PAYOUT_PER_HALF_HEART = 0.5,    
+    MULT_MIN = 0.75,               
     MULT_MAX = 1.5,
-    FLAT_MIN = 0,                   --Random flat amount added on top, between FLAT_MIN and FLAT_MAX
+    FLAT_MIN = 0,                   
     FLAT_MAX = 1,
-    JACKPOT_CHANCE = 0.05,          --Chance to get JACKPOT_BONUS extra consumables
+    JACKPOT_CHANCE = 0.05,          
     JACKPOT_BONUS = 3,
-    MIN_PAYOUT = 1,                 --Payout is clamped between these
+    MIN_PAYOUT = 1,                 
     MAX_PAYOUT = 15,
-    PILL_CHANCE = 0.5,              --Chance each consumable is a pill, otherwise it's a card/rune/soul stone
-    SPAWN_SPEED_MIN = 2,            --How hard the consumables get flung out of the box
+    PILL_CHANCE = 0.5,              
+    SPAWN_SPEED_MIN = 2,            
     SPAWN_SPEED_MAX = 5,
 }
 
---Items that force every consumable to be one kind (holding one from each list cancels out, same as vanilla)
 local ONLY_CARD_ITEMS = {
     CollectibleType.COLLECTIBLE_STARTER_DECK,
 }
@@ -57,7 +55,6 @@ local SPECIAL_CARDS = {
     Card.CARD_HUGE_GROWTH, Card.CARD_ANCIENT_RECALL, Card.CARD_ERA_WALK, Card.CARD_CRACKED_KEY, Card.CARD_WILD,
 }
 
---Rune Shard isn't in the wiki's drop table, add Card.RUNE_SHARD here to let the box give it
 local RUNES = {
     Card.RUNE_HAGALAZ, Card.RUNE_JERA, Card.RUNE_EHWAZ, Card.RUNE_DAGAZ, Card.RUNE_ANSUZ,
     Card.RUNE_PERTHRO, Card.RUNE_BERKANO, Card.RUNE_ALGIZ, Card.RUNE_BLANK, Card.RUNE_BLACK,
@@ -70,7 +67,6 @@ local SOUL_STONES = {
     Card.CARD_SOUL_BETHANY, Card.CARD_SOUL_JACOB,
 }
 
---Pills are spawned by color, the effect each color has is decided by the run like normal
 local NORMAL_PILLS = {
     PillColor.PILL_BLUE_BLUE, PillColor.PILL_WHITE_BLUE, PillColor.PILL_ORANGE_ORANGE, PillColor.PILL_WHITE_WHITE,
     PillColor.PILL_REDDOTS_RED, PillColor.PILL_PINK_RED, PillColor.PILL_BLUE_CADETBLUE, PillColor.PILL_YELLOW_ORANGE,
@@ -82,7 +78,6 @@ local GOLD_PILLS = {
     PillColor.PILL_GOLD,
 }
 
---Weights are the wiki drop rates (%), a group's weight is split evenly between everything in its pool
 local CARD_GROUPS = {
     { Weight = 66.66, Pool = TAROT_CARDS },           --3.03% each
     { Weight = 11.22, Pool = REVERSE_TAROT_CARDS },   --0.51% each
@@ -128,7 +123,6 @@ local function rollPayout(rng, halfHeartsPaid)
     local flat = SETTINGS.FLAT_MIN + rng:RandomInt(SETTINGS.FLAT_MAX - SETTINGS.FLAT_MIN + 1)
     local amount = halfHeartsPaid * SETTINGS.PAYOUT_PER_HALF_HEART * mult + flat
 
-    --Leftover fraction becomes a chance at one more
     local payout = math.floor(amount)
     if rng:RandomFloat() < amount - payout then
         payout = payout + 1
@@ -181,11 +175,9 @@ function Box_Of_Chocolates:postUpdate()
             return { Discharge = false, Remove = false, ShowAnim = false }
         end
 
-        --Taken straight out of health so it doesn't count as damage
         player:AddHearts(-halfHeartsPaid)
         SFXManager():Play(SoundEffect.SOUND_VAMP_GULP, 1, 0, false, 1)
 
-        --rng is this item's collectible RNG, seeded from the run seed so the same seed gives the same payouts
         local pillChance = getPillChance()
         local payout = rollPayout(rng, halfHeartsPaid)
         for _ = 1, payout do
