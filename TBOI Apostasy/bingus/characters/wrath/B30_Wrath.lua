@@ -202,10 +202,38 @@ function B30_Wrath:postUpdate()
         player:AddHearts(rotten * 2)
       end
       if player:GetHearts() % 2 == 1 then
-        player:AddHearts(1) 
+        player:AddHearts(1)
+      end
+      local data = player:GetData()
+      if data.WrathItemBombs then
+        local grant = data.WrathItemBombs
+        local gained = math.max(0, player:GetNumBombs() - data.WrathItemBombsBefore)
+        data.WrathItemBombs = nil
+        data.WrathItemBombsBefore = nil
+        local heal = math.min(grant, math.floor((player:GetMaxHearts() - player:GetHearts()) / 2))
+        if heal > 0 then
+          player:AddHearts(heal * B30_WrathStats.HEAL_NORMAL)
+          player:AddBombs(-math.min(heal, gained))
+          sfxManager:Play(SoundEffect.SOUND_STEAM_HALFSEC, .75, 0, false, 1)
+        end
       end
     end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, B30_Wrath.PEffect)
+
+    function B30_Wrath:ItemBombs(itemType, charge, firstTime, slot, varData, player)
+      if not firstTime or not player or player:GetPlayerType() ~= WrathGuy then
+        return
+      end
+      local entry = XMLData.GetEntryById(XMLNode.ITEM, itemType)
+      local grant = entry and tonumber(entry.bombs) or 0
+      if grant <= 0 then
+        return
+      end
+      local data = player:GetData()
+      data.WrathItemBombs = (data.WrathItemBombs or 0) + grant
+      data.WrathItemBombsBefore = data.WrathItemBombsBefore or player:GetNumBombs()
+    end
+    mod:AddCallback(ModCallbacks.MC_PRE_ADD_COLLECTIBLE, B30_Wrath.ItemBombs)
 
     function B30_Wrath:BombTouch(pickup, collider, low)
       local player = collider:ToPlayer()

@@ -114,8 +114,8 @@ mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, Lil_Lust.onDamage, EntityType.E
           local data = entity:GetData()
           local heartSpawn = entity:ToNPC()
          if heartSpawn and heartSpawn:IsEnemy() and heartSpawn:IsActiveEnemy(true) then
-            if heartSpawn:IsDead() and not data.Died then
-                data.Died = true
+            if heartSpawn:IsDead() and not data.LilLustDied then
+                data.LilLustDied = true
                 if data.KilledByLilLust then
                   local heart = Isaac.Spawn(
                     EntityType.ENTITY_PICKUP,
@@ -129,7 +129,7 @@ mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, Lil_Lust.onDamage, EntityType.E
                 end
               elseif heartSpawn.ParentNPC
                 then
-                  data.Died = true
+                  data.LilLustDied = true
               end
           end
         end

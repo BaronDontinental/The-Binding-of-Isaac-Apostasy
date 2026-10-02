@@ -23,9 +23,3 @@ To-do
 
 URGENT NEED TO DO
 ===========================================================================================================================================================================
-1. t wrath does not heal when picking up a bomb collectible that grants bombs
-2. Lust:
-Box of Chocalates (2 charge Active): pay all but 1 red hearts for X cards/runes/pills (consumables). Payout would be based on hearts dumped into it, and would be semi random in amount with fully random consumables.
-
-Red HP only; starts with 2 full and 2 empty. Every heart container filled above half is a tbd all stats down, every heart below half is a tbd all stats up.
-Base stats otherwise

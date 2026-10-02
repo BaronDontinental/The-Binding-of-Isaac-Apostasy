@@ -2,7 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
     "runtime.version": "Lua 5.3",
     "workspace.library": [
-        "c:\\Users\\Jackson Terrell\\.vscode\\extensions\\filloax.isaac-lua-api-vscode-1.14.0\\out\\emmylua\\repentogon"
+        "c:\\Users\\Jackson Terrell\\.vscode\\extensions\\filloax.isaac-lua-api-vscode-1.16.0\\out\\emmylua\\repentogon"
     ],
     "diagnostics.globals": [
         "ActionTriggers",
@@ -245,9 +245,12 @@
         "XMLData",
         "XMLNode",
         "REPENTOGON",
-        "mod"
+        "mod",
+
+        "Renderer"
     ],
     "diagnostics.disable": [
         "need-check-nil"
-    ]
+    ],
+    "runtime.plugin": "c:\\Users\\Jackson Terrell\\.vscode\\extensions\\filloax.isaac-lua-api-vscode-1.16.0\\out\\plugin\\plugin.lua"
 }
