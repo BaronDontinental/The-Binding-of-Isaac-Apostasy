@@ -3,11 +3,11 @@ local Game = Game()
 
 local LustLump = Isaac.GetCostumeIdByPath("gfx/characters/character_l23_lust.anm2")
 local LustGuy = Isaac.GetPlayerTypeByName("L23_Lust", false)
-EffectVariant.CHARMCLOUD = Isaac.GetEntityVariantByName("Charm Cloud")
+local BoxOfChocolates = Isaac.GetItemIdByName("Box of Chocolates")
 
 local L23_LustStats = {
-    DAMAGE = 0.375,
-    SPEED = -0,
+    DAMAGE = 0,
+    SPEED = 0,
     SHOTSPEED = 0,
     MAXFIREDELAY = 0,
     TEARHEIGHT = 0,
@@ -15,76 +15,89 @@ local L23_LustStats = {
     TEARFLAG = TearFlags,
     Flying = false,
     LUCK = 0,
-    TEARCOLOR = Color(0, 0, 0, 0, 0, 0, 0)
+    TEARCOLOR = Color(0, 0, 0, 0, 0, 0, 0),
+    STARTINGEMPTYHEARTS = 2
 }
 
-local aura = false
-local cloud
+-- Applied once for every heart filled ABOVE the halfway point of Lust's containers
+-- TBD: placeholder values
+local L23_LustStatsDown = {
+    DAMAGE = 0.5,
+    SPEED = 0.1,
+    SHOTSPEED = 0.1,
+    MAXFIREDELAY = 0.5,
+    RANGE = 20,
+    LUCK = 0.5
+}
 
+-- Applied once for every heart left empty BELOW the halfway point of Lust's containers
+-- TBD: placeholder values
+local L23_LustStatsUp = {
+    DAMAGE = 0.5,
+    SPEED = 0.1,
+    SHOTSPEED = 0.1,
+    MAXFIREDELAY = 0.5,
+    RANGE = 20,
+    LUCK = 0.5
+}
+
+-- Positive = hearts filled past half, negative = hearts missing below half (half hearts count as 0.5)
+local function GetHeartOffset(player)
+  local filled = player:GetHearts() / 2
+  local half = player:GetMaxHearts() / 4
+  return filled - half
+end
+
+-- Returns how much the given stat should be buffed (negative = debuffed)
+local function GetHeartStat(player, stat)
+  local offset = GetHeartOffset(player)
+  if offset > 0 then
+    return -offset * L23_LustStatsDown[stat]
+  elseif offset < 0 then
+    return -offset * L23_LustStatsUp[stat]
+  end
+  return 0
+end
 
 function L23_Lust:postUpdate()
     function L23_Lust:OnCache(player, cacheFlag)
-        local player = Isaac.GetPlayer(0)
-
-        if(player:GetName() == "L23_Lust") then
-            if(cacheFlag == CacheFlag.CACHE_DAMAGE) then
-              player.Damage = (player.Damage * 0.75) + L23_LustStats.DAMAGE
-            end
-            if(cacheFlag == CacheFlag.CACHE_SPEED) then
-              player.MoveSpeed = player.MoveSpeed + L23_LustStats.SPEED
-            end
-            if(cacheFlag == CacheFlag.CACHE_SHOTSPEED) then
-              player.ShotSpeed = player.ShotSpeed + L23_LustStats.SHOTSPEED
-            end
-            if(cacheFlag == CacheFlag.CACHE_FIREDELAY) then
-              player.MaxFireDelay = player.MaxFireDelay + L23_LustStats.MAXFIREDELAY
-            end
-            if(cacheFlag == CacheFlag.CACHE_RANGE) then
-              player.TearHeight = player.TearHeight - L23_LustStats.TEARHEIGHT
-              player.TearFallingSpeed = player.TearFallingSpeed + L23_LustStats.TEARFALLINGSPEED
-            end
-            if(cacheFlag == CacheFlag.CACHE_LUCK) then
-              player.Luck = player.Luck + L23_LustStats.LUCK
-            end
-            --if(cacheFlag == CacheFlag.CACHE_TEARCOLOR) then
-              --player.TearColor = L23_LustStats.TEARCOLOR
-            --end
-            --if(cacheFlag == CacheFlag.CACHE_TEARFLAG) then
-              --player.TearFlags = player.TearFlags | L23_LustStats.TEARFLAG
-            --end
+        if player:GetPlayerType() ~= LustGuy then
+          return
+        end
+        if(cacheFlag == CacheFlag.CACHE_DAMAGE) then
+          player.Damage = player.Damage + L23_LustStats.DAMAGE + GetHeartStat(player, "DAMAGE")
+        end
+        if(cacheFlag == CacheFlag.CACHE_SPEED) then
+          player.MoveSpeed = player.MoveSpeed + L23_LustStats.SPEED + GetHeartStat(player, "SPEED")
+        end
+        if(cacheFlag == CacheFlag.CACHE_SHOTSPEED) then
+          player.ShotSpeed = player.ShotSpeed + L23_LustStats.SHOTSPEED + GetHeartStat(player, "SHOTSPEED")
+        end
+        if(cacheFlag == CacheFlag.CACHE_FIREDELAY) then
+          -- lower fire delay = more tears, so the bonus is subtracted
+          player.MaxFireDelay = math.max(1, player.MaxFireDelay + L23_LustStats.MAXFIREDELAY - GetHeartStat(player, "MAXFIREDELAY"))
+        end
+        if(cacheFlag == CacheFlag.CACHE_RANGE) then
+          player.TearHeight = player.TearHeight - L23_LustStats.TEARHEIGHT
+          player.TearFallingSpeed = player.TearFallingSpeed + L23_LustStats.TEARFALLINGSPEED
+          player.TearRange = player.TearRange + GetHeartStat(player, "RANGE")
+        end
+        if(cacheFlag == CacheFlag.CACHE_LUCK) then
+          player.Luck = player.Luck + L23_LustStats.LUCK + GetHeartStat(player, "LUCK")
         end
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, L23_Lust.OnCache)
+
     function L23_Lust:OnUpdate()
         local player = Isaac.GetPlayer(0)
         if player:GetPlayerType() ~= LustGuy then
           return
         end
         if(Game:GetFrameCount() == 1 and player:GetName() == "L23_Lust") then
-            --player:AddCard(math.random(1, 54)) 
+            player:AddMaxHearts(L23_LustStats.STARTINGEMPTYHEARTS * 2, false)
+            player:AddCollectible(BoxOfChocolates)
+            Game:GetItemPool():RemoveCollectible(BoxOfChocolates)
         end
-
-
-      local entities = Isaac.GetRoomEntities()
-      local poggers = EntityRef(player)
-      local friendlyparam
-      for _, entity in ipairs(entities) do
-        local eData = entity:GetData()
-        friendlyparam = entity:ToNPC()
-        local friend = EntityRef(friendlyparam)
-        if friendlyparam and friendlyparam:IsEnemy() and friendlyparam:IsActiveEnemy(true) and friend.IsCharmed and not eData.Friend and not friend.IsFriendly and not friendlyparam:IsBoss() then
-          local color = friendlyparam:GetChampionColorIdx()
-          if friendlyparam:IsDead() and not eData.Died and not eData.Friend then
-            eData.Died = true
-            local obama
-            obama = Isaac.Spawn(friendlyparam.Type, friendlyparam.Variant, friendlyparam.SubType, friendlyparam.Position, Vector(0,0), player):ToNPC()
-            obama:Morph(friendlyparam.Type, friendlyparam.Variant, friendlyparam.SubType, color)
-            eData.Friend = true
-            obama:AddEntityFlags(EntityFlag.FLAG_CHARM | EntityFlag.FLAG_FRIENDLY | EntityFlag.FLAG_PERSISTENT)
-            obama.HitPoints = obama.MaxHitPoints
-          end
-        end
-      end
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, L23_Lust.OnUpdate)
 
@@ -93,61 +106,44 @@ function L23_Lust:postUpdate()
         return
       end
         player:AddNullCostume(LustLump)
-    end 
-      
+    end
+
     mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, L23_Lust.Costume)]]
 
     function L23_Lust:PeUpdate(player)
       if player:GetPlayerType() ~= LustGuy then
         return
       end
-      local spawnpos = player.Position
-      if not aura then
-        cloud = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.CHARMCLOUD, 0, spawnpos, Vector.Zero, player):ToEffect()
----@diagnostic disable-next-line: need-check-nil
-        cloud:FollowParent(player)
-        cloud.SpriteOffset = Vector(0, -20)
-        cloud.IsFollowing = true
----@diagnostic disable-next-line: need-check-nil
-        cloud:Update()
+      -- Red HP only
+      if player:GetSoulHearts() > 0 then
+        player:AddSoulHearts(-player:GetSoulHearts())
       end
----@diagnostic disable-next-line: need-check-nil
-      if cloud:Exists() then
-        aura = true
-      else
-        aura = false
+      -- Re-evaluate stats whenever hearts change
+      local data = player:GetData()
+      local hearts = player:GetHearts()
+      local maxHearts = player:GetMaxHearts()
+      if data.L23Hearts ~= hearts or data.L23MaxHearts ~= maxHearts then
+        data.L23Hearts = hearts
+        data.L23MaxHearts = maxHearts
+        player:AddCacheFlags(CacheFlag.CACHE_DAMAGE | CacheFlag.CACHE_SPEED | CacheFlag.CACHE_SHOTSPEED
+          | CacheFlag.CACHE_FIREDELAY | CacheFlag.CACHE_RANGE | CacheFlag.CACHE_LUCK)
+        player:EvaluateItems()
       end
     end
-  mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L23_Lust.PeUpdate)
+    mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L23_Lust.PeUpdate)
 
-  function L23_Lust:EUpdate(CloudL)
-    local player = Isaac.GetPlayer(0)
-    if player:GetPlayerType() ~= LustGuy then
-      return
-    end
-    local sprite = CloudL:GetSprite()
-    local data = CloudL:GetData()
-    data.CharmBlacklist = {}
-    local spawnpos = player.Position
-    local poggers = EntityRef(player)
-    local capsule = CloudL:GetNullCapsule("capsule")
----@diagnostic disable-next-line: param-type-mismatch
-    for _, entity in ipairs(Isaac.FindInCapsule(capsule, EntityPartition.ENEMY)) do
-      local hit = entity:GetData()
-      if entity:IsVulnerableEnemy() and entity:IsActiveEnemy() then
-          entity:AddCharmed(poggers, 90)
-          entity:TakeDamage(.25, 0, poggers, 50)
+    function L23_Lust:HeartBlock(pickup, collider, low)
+      local player = collider:ToPlayer()
+      if not player or player:GetPlayerType() ~= LustGuy then
+        return
       end
-      if entity:IsVulnerableEnemy() and entity:IsActiveEnemy() and not hit.Charmed then
-        local roll = math.random(1, 100)
-        hit.Charmed = true
-        --[[if roll >= 90 then
-          local fly = Isaac.Spawn(EntityType.ENTITY_FAMILIAR, FamiliarVariant.WISP, 0, spawnpos, Vector.Zero, player):ToFamiliar()
-        end]]
+      if pickup.SubType == HeartSubType.HEART_SOUL
+      or pickup.SubType == HeartSubType.HEART_HALF_SOUL
+      or pickup.SubType == HeartSubType.HEART_BLACK then
+        return false
       end
     end
-  end
-  mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, L23_Lust.EUpdate, EffectVariant.CHARMCLOUD)
+    mod:AddCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, L23_Lust.HeartBlock, PickupVariant.PICKUP_HEART)
 end
 
 return L23_Lust
