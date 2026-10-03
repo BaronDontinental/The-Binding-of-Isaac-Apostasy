@@ -113,7 +113,7 @@
     <active id="57" name="Bottomless Pit" description="Nom Nom" cache=""
         tags="" maxcharges="12" chargetype="special" gfx="Bottomless_Pit.png" quality="1" />
     <active id="58" name="Regular Cookbook" description="I'm not cooking tonight" cache=""
-        tags="" maxcharges="12" gfx="Regular_Cookbook.png" quality="1" />
+        tags="book" maxcharges="12" gfx="Regular_Cookbook.png" quality="3" />
     <passive id="59" name="Pack 'em in" description="Bonus fruit" cache=""
         tags="" gfx="Pack_em_in.png" quality="1" />
     <active id="60" name="Gorge" description="Waste not, want not" cache=""
