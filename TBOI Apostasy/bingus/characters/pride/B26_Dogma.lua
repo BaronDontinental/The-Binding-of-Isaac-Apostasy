@@ -28,6 +28,15 @@ local B26_DogmaStats = {
     STATIC_SPACING = 40
 }
 
+local function setStatic(sprite, on)
+    local flags = sprite:GetRenderFlags()
+    if on then
+        sprite:SetRenderFlags(flags | AnimRenderFlags.STATIC)
+    else
+        sprite:SetRenderFlags(flags & ~AnimRenderFlags.STATIC)
+    end
+end
+
 --local staticSprite = Sprite()
 --staticSprite:Load("gfx/dogma_static.anm2", true)
 --staticSprite:Play("Idle", true)
@@ -52,7 +61,6 @@ function B26_Dogma:postUpdate()
             return
         end
         player:SetCanShoot(false)
-        player.Color = state.STATIC_COLOR
 
         if state.bodyPos ~= nil then
             local delta = player.Position - state.bodyPos
@@ -77,7 +85,6 @@ function B26_Dogma:postUpdate()
                     local laser = player:FireBrimstone(input:Normalized())
                     laser.TearFlags = laser.TearFlags | TearFlags.TEAR_HOMING
                     laser:SetTimeout(B26_DogmaStats.BRIM_DURATION)
-                    laser.Color = state.STATIC_COLOR
                     laser:GetData().DogmaStatic = true
                     sfx:Play(SOUND_BRIM_SHOOT, 0.8, 0, false, 1)
                     state.beamUntil = frame + B26_DogmaStats.BRIM_DURATION
@@ -95,7 +102,6 @@ function B26_Dogma:postUpdate()
                         local dir = Vector.FromAngle(i * (360 / B26_DogmaStats.RADIAL_COUNT) + frame * 3)
                         local tear = player:FireTear(player.Position, dir * B26_DogmaStats.RADIAL_SPEED, false, true, false, player, 1)
                         tear.TearFlags = tear.TearFlags | TearFlags.TEAR_GLOW
-                        tear.Color = state.STATIC_COLOR
                         tear:GetData().DogmaStatic = true
                     end
                 end
@@ -124,7 +130,6 @@ function B26_Dogma:postUpdate()
                         local speed = B26_DogmaStats.FEATHER_SPEED * (0.7 + math.random() * 0.6)
                         local tear = player:FireTear(player.Position, aim:Rotated(angle) * speed, false, true, false, player, 1)
                         tear:ChangeVariant(B26_DogmaStats.FEATHER_VARIANT)
-                        tear.Color = state.STATIC_COLOR
                         local tdata = tear:GetData()
                         tdata.DogmaFeather = true
                         tdata.DogmaStatic = true
@@ -141,6 +146,21 @@ function B26_Dogma:postUpdate()
         end
     end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, B26_Dogma.PeUpdate)
+
+---@param player EntityPlayer
+    function B26_Dogma:StaticRender(player, offset)
+        local isDogma = player:GetName() == "B26_Dogma"
+        local data = player:GetData()
+        if not isDogma and not data.DogmaStaticSprite then
+            return
+        end
+        data.DogmaStaticSprite = isDogma or nil
+        setStatic(player:GetSprite(), isDogma)
+        for _, desc in ipairs(player:GetCostumeSpriteDescs()) do
+            setStatic(desc:GetSprite(), isDogma)
+        end
+    end
+    mod:AddCallback(ModCallbacks.MC_PRE_PLAYER_RENDER, B26_Dogma.StaticRender)
 
 ---@param tear EntityTear
     function B26_Dogma:TearUpdate(tear)

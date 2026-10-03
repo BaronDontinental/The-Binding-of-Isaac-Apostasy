@@ -61,6 +61,10 @@
 <entity anm2path="Lil_Lust.anm2" id="3" name="LIL_PRIDE" tag="cansacrifice"
     shadowSize="11" friction="1" collisionDamage="3"
     collisionInterval="6" collisionRadius="13" collisionMass="3"/>
+<!--Lil Envy reuses the Lil Lust anm2 until custom art is made-->
+<entity anm2path="Lil_Lust.anm2" id="3" name="Lil Envy" tag="cansacrifice"
+    shadowSize="11" friction="1" collisionDamage="0.5"
+    collisionInterval="6" collisionRadius="13" collisionMass="3"/>
 
 <entity anm2path="EnvyOrbitCloseV1.anm2" id="3" name="ENVY_CLOSE_ORBITV1" 
     tag="" shadowSize="11" friction="1" 

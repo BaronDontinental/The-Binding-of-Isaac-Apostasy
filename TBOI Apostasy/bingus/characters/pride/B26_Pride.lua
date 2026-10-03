@@ -45,8 +45,7 @@ local B26_PrideStats = {
     MAXFIREDELAY = 0,
     LUCK = 0,
     FLIP_INTERVAL = 150,
-    CHAIN_SPACING = 12,
-    STATIC_COLOR = Color(0.5, 0.8, 1.0, 1.0, 0, 0.1, 0.3)
+    CHAIN_SPACING = 12
 }
 
 mod.PrideB = {
@@ -60,8 +59,7 @@ mod.PrideB = {
     fired = false,
     beamUntil = -1,
     radialUntil = -1,
-    hubrisCharge = 0,
-    STATIC_COLOR = Color(0.5, 0.8, 1.0, 1.0, 0, 0.1, 0.3)
+    hubrisCharge = 0
 }
 local state = mod.PrideB
 
@@ -87,7 +85,6 @@ function B26_Pride:postUpdate()
         end
         sprite:LoadGraphics()
         sprite:SetFrame("WalkDown", 0)
-        body.Color = B26_PrideStats.STATIC_COLOR
         body.DepthOffset = -10
         state.bodyPos = player.Position
     end

@@ -357,19 +357,19 @@ function Envious_Conception:postUpdate()
       if (familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV1 or familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV2 or
           familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV3 or familiar.Variant == FAMILIAR_ENVY_CLOSE_ORBITV3) then
         familiar.OrbitDistance = Vector(20,20)
-        familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
+        familiar.Velocity = familiar:GetOrbitPosition(mod.LilEnvyOrbitCenter(player)) - familiar.Position
         elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV1 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV2) then
           familiar.OrbitDistance = Vector(55,55)
           familiar.OrbitSpeed = .03
-          familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
+          familiar.Velocity = familiar:GetOrbitPosition(mod.LilEnvyOrbitCenter(player)) - familiar.Position
           elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV3 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV4) then
             familiar.OrbitDistance = Vector(80,80)
             familiar.OrbitSpeed = -.025
-            familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
+            familiar.Velocity = familiar:GetOrbitPosition(mod.LilEnvyOrbitCenter(player)) - familiar.Position
             elseif (familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV5 or familiar.Variant == FAMILIAR_ENVY_FAR_ORBITV6) then
               familiar.OrbitDistance = Vector(120,120)
               familiar.OrbitSpeed = .015
-              familiar.Velocity = familiar:GetOrbitPosition(player.Position + player.Velocity) - familiar.Position
+              familiar.Velocity = familiar:GetOrbitPosition(mod.LilEnvyOrbitCenter(player)) - familiar.Position
               elseif (familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV1 or familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV2 or
                       familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV3 or familiar.Variant == FAMILIAR_ENVY_ZIG_ORBITV4) then
                 familiar:MoveDiagonally(1)
