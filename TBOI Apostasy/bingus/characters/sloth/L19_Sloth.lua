@@ -1,5 +1,6 @@
 local L19_Sloth = {}
 local Game = Game()
+local Birthright_L19_Sloth = require("bingus.Characters.sloth.birthright.Birthright_L19_Sloth")
 local level = Game:GetLevel()
 local room = Game:GetRoom()
 local SlothGuy = Isaac.GetPlayerTypeByName("L19_Sloth", false)
@@ -183,6 +184,7 @@ function L19_Sloth:postUpdate()
     end 
     mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, L19_Sloth.Render)
 
+    Birthright_L19_Sloth:postUpdate()
 end
 
 return L19_Sloth

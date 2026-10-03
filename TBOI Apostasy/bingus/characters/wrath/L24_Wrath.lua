@@ -1,5 +1,6 @@
 local L24_Wrath = {}
 local Game = Game()
+local Birthright_L24_Wrath = require("bingus.Characters.wrath.birthright.Birthright_L24_Wrath")
 local WrathGuy = Isaac.GetPlayerTypeByName("L24_Wrath", false)
 local SaveManager = require("callbacks.save_manager")
 
@@ -249,6 +250,7 @@ mod:AddCallback(ModCallbacks.MC_POST_TRIGGER_WEAPON_FIRED, L24_Wrath.OnFire)
       mod:AddCallback(ModCallbacks.MC_POST_RENDER, L24_Wrath.onRender)
     end
 
+    Birthright_L24_Wrath:postUpdate()
 end
 
 return L24_Wrath

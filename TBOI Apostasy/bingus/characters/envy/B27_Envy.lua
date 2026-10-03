@@ -1,5 +1,6 @@
 local B27_Envy = {}
 local Game = Game()
+local Birthright_B27_Envy = require("bingus.Characters.envy.birthright.Birthright_B27_Envy")
 local sfxManager = SFXManager()
 
 local EnvyGuyB = Isaac.GetPlayerTypeByName("B27_Envy", true)
@@ -364,6 +365,7 @@ function B27_Envy:postUpdate()
         end
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, B27_Envy.OnUpdate)
+    Birthright_B27_Envy:postUpdate()
 end
 
 return B27_Envy

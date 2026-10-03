@@ -1,5 +1,6 @@
 local L23_Lust = {}
 local Game = Game()
+local Birthright_L23_Lust = require("bingus.Characters.lust.birthright.Birthright_L23_Lust")
 
 local LustLump = Isaac.GetCostumeIdByPath("gfx/characters/character_l23_lust.anm2")
 local LustGuy = Isaac.GetPlayerTypeByName("L23_Lust", false)
@@ -135,6 +136,7 @@ function L23_Lust:postUpdate()
       end
     end
     mod:AddCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, L23_Lust.HeartBlock, PickupVariant.PICKUP_HEART)
+    Birthright_L23_Lust:postUpdate()
 end
 
 return L23_Lust

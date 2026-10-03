@@ -1,5 +1,6 @@
 local L22_Gluttony = {}
 local game = Game()
+local Birthright_L22_Gluttony = require("bingus.Characters.gluttony.birthright.Birthright_L22_Gluttony")
 local sfx = SFXManager()
 local sprite3 = Sprite()
 sprite3:Load("gfx/characters/character_l22_gluttonywalk.anm2", true)
@@ -376,6 +377,7 @@ function L22_Gluttony:postUpdate()
   end
   mod:AddCallback(ModCallbacks.MC_PRE_RENDER_PLAYER_HEAD, L22_Gluttony.onRender, GluttonyType)
 
+    Birthright_L22_Gluttony:postUpdate()
 end
 
 return L22_Gluttony

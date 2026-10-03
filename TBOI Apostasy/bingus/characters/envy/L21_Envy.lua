@@ -1,5 +1,6 @@
 local L21_Envy = {}
 local Game = Game()
+local Birthright_L21_Envy = require("bingus.Characters.envy.birthright.Birthright_L21_Envy")
 
 FAMILIAR_ENVY_CLOSE_ORBITV1 = Isaac.GetEntityVariantByName("ENVY_CLOSE_ORBITV1")
 FAMILIAR_ENVY_CLOSE_ORBITV2 = Isaac.GetEntityVariantByName("ENVY_CLOSE_ORBITV2")
@@ -485,6 +486,7 @@ function L21_Envy:postUpdate()
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_ZIG_ORBITV2)
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_ZIG_ORBITV3)
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_UPDATE, L21_Envy.UpdateFam, FAMILIAR_ENVY_ZIG_ORBITV4)
+    Birthright_L21_Envy:postUpdate()
 end
 
 return L21_Envy

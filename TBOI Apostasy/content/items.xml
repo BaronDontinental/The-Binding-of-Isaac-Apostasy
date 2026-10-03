@@ -86,7 +86,7 @@
     <active id="43" name="Suicide Pact" description="Are you sure you want to quit?" cache=""
         tags="" maxcharges="-1" gfx="Suicide_Pact.png" quality="1" />
     <passive id="44" name="Inferno Bombs" description="" cache=""
-        tags="" gfx="Inferno_Bombs.png" quality="1" />
+        tags="" bombs="5" gfx="Inferno_Bombs.png" quality="1" />
         <!--OOh WAAh  goodbye the Vexed achievement-->
         <!--ummm idk how to do transformations yet.  ill figure that out later-->
 

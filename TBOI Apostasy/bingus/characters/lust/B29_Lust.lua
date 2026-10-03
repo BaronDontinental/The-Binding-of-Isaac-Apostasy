@@ -1,5 +1,6 @@
 local B29_Lust = {}
 local Game = Game()
+local Birthright_B29_Lust = require("bingus.Characters.lust.birthright.Birthright_B29_Lust")
 local level = Game:GetLevel()
 
 local LustLump = Isaac.GetCostumeIdByPath("gfx/characters/character_b29_lust.anm2")
@@ -251,6 +252,7 @@ function B29_Lust:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_DEVIL_CALCULATE, B29_Lust.DevilCalc)
 
+    Birthright_B29_Lust:postUpdate()
 end
 
 return B29_Lust
