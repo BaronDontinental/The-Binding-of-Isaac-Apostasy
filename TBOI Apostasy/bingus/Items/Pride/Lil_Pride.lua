@@ -11,7 +11,7 @@ local CONFIG_PRIDE = Isaac.GetItemConfig():GetCollectible(CollectibleType.COLLEC
 
 local RNG_SHIFT_INDEX = 35
 
-local PRIDE_SPEED = 2.5
+local PRIDE_SPEED = 2
 local PRIDE_FRICTION = 0.8
 local WANDER_DISTANCE = 40
 local PATH_MARKER = 0

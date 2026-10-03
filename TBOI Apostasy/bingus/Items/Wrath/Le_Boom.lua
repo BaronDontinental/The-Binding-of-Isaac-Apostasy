@@ -27,16 +27,6 @@ function Le_Boom:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Le_Boom.onCache)
 
-    function Le_Boom:onDamage(entity, amount, flags, source, countdown)
-        local player = entity:ToPlayer()
-        if not player or not player:HasCollectible(CollectibleType.COLLECTIBLE_LE_BOOM) then
-            return
-        end
-        if flags & DamageFlag.DAMAGE_EXPLOSION ~= 0 then
-            return false
-        end
-    end
-    mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, Le_Boom.onDamage, EntityType.ENTITY_PLAYER)
 end
 
 return Le_Boom
