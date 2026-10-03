@@ -56,7 +56,7 @@
     <active id="27" name="Box of Chocolates" description="Whatcha Gonna Get?" cache=""
         tags="" maxcharges="2" gfx="Box_of_Chocolates.png" quality="1" />
     <active id="28" name="Empty Syringe" description="Spread your love" cache=""
-        tags="" maxcharges="6" gfx="Empty_Syringe.png" quality="!" />
+        tags="" maxcharges="6" chargetype="special" gfx="Empty_Syringe.png" quality="1" />
     <passive id="29" name="Restraining Order" description="Stay away from me" cache=""
         tags="" gfx="Restraining_Order.png" quality="1" /> 
         <!--OOh WAAh  goodbye the stalker achievement-->
@@ -81,12 +81,12 @@
     <active id="40" name="Blitzfrag" description="" cache=""
         tags="" maxcharges="12" gfx="Blitzfrag.png" quality="1" />
         <!--Vengeful baby is in babies.png-->
-    <passive id="42" name="Malicious Intense" description="Locked and Loaded" cache=""
-        tags="" gfx="Malicious_Intense.png" quality="" />
+    <passive id="42" name="Le Boom" description="Cover yourself in oil" cache="flying"
+        tags="" gfx="Le_Boom.png" quality="1" />
     <active id="43" name="Suicide Pact" description="Are you sure you want to quit?" cache=""
-        tags="" maxcharges="-1" gfx="Suicide_Pact.png" quality="" />
+        tags="" maxcharges="-1" gfx="Suicide_Pact.png" quality="1" />
     <passive id="44" name="Inferno Bombs" description="" cache=""
-        tags="" gfx="Inferno_Bombs.png" quality="" />
+        tags="" gfx="Inferno_Bombs.png" quality="1" />
         <!--OOh WAAh  goodbye the Vexed achievement-->
         <!--ummm idk how to do transformations yet.  ill figure that out later-->
 
@@ -194,7 +194,7 @@
     <passive id="106" name="Sludgy" description="" cache=""
         tags="" gfx="Sludgy.png" quality="1" />
     <active id="107" name="HP... Yuck" description="" cache=""
-        tags="" maxcharges="0" gfx="HP_Yuck" quality="" />
+        tags="" maxcharges="0" gfx="HP_Yuck" quality="1" />
     <passive id="108" name="1000 Hours" description="" cache=""
         tags="" gfx="1000_Hours.png" quality="1" />
     

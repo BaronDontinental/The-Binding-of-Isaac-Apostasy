@@ -16,7 +16,8 @@ function Death_Cap:postUpdate()
                 local data = entity:GetData()
                 if entity.Type == EntityType.ENTITY_TEAR then
                     local tear = entity:ToTear()
-                    if entity.Variant == TearVariant.BLUE then
+                    if entity.Variant == TearVariant.BLUE and tear.SpawnerEntity
+                        and GetPtrHash(tear.SpawnerEntity) == GetPtrHash(player) then
                         tear:ChangeVariant(TearVariant.BLOOD)
                     end
                 end
