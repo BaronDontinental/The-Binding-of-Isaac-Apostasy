@@ -161,7 +161,7 @@
         tags="" gfx="Split_Decision.png" quality="1" />
     <!--<trinket id="81" name="Snake Eyes" description="" cache=""
         tags="" gfx="Snake_Eyes.png" quality="1" /> -->
-    <familiar id="82" name="Lil Envy" description="" cache=""
+    <familiar id="82" name="Lil Envy" description="" cache="familiars"
         tags="baby" gfx="Lil_Envy.png" quality="1" />
     <passive id="83" name="Yin-Yang" description="Some good in bad, Some bad in good" cache=""
         tags="" gfx="Yin_Yang.png" quality="1" />
