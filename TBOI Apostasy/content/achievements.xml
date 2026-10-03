@@ -102,7 +102,7 @@
     <!--Beat Mega Satan as Wrath--> 
     <achievement id="41" name="Vengeful Baby" text='You unlocked "Vengeful Baby"' gfx="Achievement_Vengeful_Baby.png" />
     <!--Beat Delerium as Wrath--> 
-    <achievement id="42" name="Malicious Intense" text='"Malicious Intense" has appeared in the basement' gfx="Achievement_Malicious_Intense.png" />
+    <achievement id="42" name="Le Boom" text='"Le Boom" has appeared in the basement' gfx="Achievement_Le_Boom.png" />
     <!--Beat Mother as Wrath--> 
     <achievement id="43" name="Suicide Pact" text='"Suicide Pact" has appeared in the basement' gfx="Achievement_Suicide_Pact.png" />
     <!--Beat The Beast as Wrath--> 

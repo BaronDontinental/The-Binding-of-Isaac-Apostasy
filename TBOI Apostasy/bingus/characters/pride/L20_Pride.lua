@@ -1,9 +1,7 @@
 local L20_Pride = {}
 local Game = Game()
 local PrideGuy = Isaac.GetPlayerTypeByName("L20_Pride", false)
-local sfx = SFXManager()
-local sprite = Sprite()
-sprite:Load("gfx/ui/bookofboom.anm2", true)
+local Birthright_L20_Pride = require("bingus.Characters.pride.birthright.Birthright_L20_Pride")
 
 local L20_PrideStats = {
     DAMAGE = 1.05,
@@ -17,8 +15,6 @@ local L20_PrideStats = {
     LUCK = 1,
     TEARCOLOR = Color(0.9, 0, 0, 1, 0.1, 0, 0)
 }
-local Birthright = nil
-local book = nil
 
 function L20_Pride:postUpdate()
     function L20_Pride:OnCache(player, cacheFlag)
@@ -198,15 +194,6 @@ function L20_Pride:postUpdate()
       if player:GetPlayerType() ~= PrideGuy then
         return
       end
-      if player:HasCollectible(CollectibleType.COLLECTIBLE_BIRTHRIGHT) then
-        Birthright = true
-      else
-        Birthright = false
-      end
-      if Birthright == true and book == nil then
-        sprite:Play("Hud", true)
-        book = true
-      end
       for _, entity in pairs(Isaac.GetRoomEntities()) do
         local data = entity:GetData()
         if entity.Type == EntityType.ENTITY_TEAR then
@@ -221,36 +208,7 @@ function L20_Pride:postUpdate()
     end
   mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, L20_Pride.OnUpdate)
 
-    function L20_Pride:render()
-      local player = Isaac.GetPlayer(0)
-      if player:GetPlayerType() ~= PrideGuy then
-        return
-      end
-      if player:HasCollectible(CollectibleType.COLLECTIBLE_BIRTHRIGHT) then
-        sprite:Update()
-        sprite:Render(Vector(40, 35), Vector(0,0), Vector(0,0))
-       end
-    end
-  mod:AddCallback(ModCallbacks.MC_POST_RENDER, L20_Pride.render)
-    function L20_Pride:birthright(item, _, player, _, slot)
-      if player:GetPlayerType() ~= PrideGuy then
-        return
-      end
-      if slot ~= 0 then
-        return
-      end
-      if Birthright == true then
----@diagnostic disable-next-line: param-type-mismatch
-        player:UseCard(Card.CARD_TOWER, UseFlag.USE_NOANNOUNCER)
-        if player:HasCollectible(CollectibleType.COLLECTIBLE_REEEE) then
-          return
-        end
-        sfx:Play(SoundEffect.SOUND_BOSS_LITE_HISS, 1, 0, false, 1)
-        player:AnimateHappy()
-        sfx:Stop(SoundEffect.SOUND_THUMBSUP)
-      end
-    end
-  mod:AddCallback(ModCallbacks.MC_USE_ITEM, L20_Pride.birthright)
+    Birthright_L20_Pride:postUpdate()
 end
 
 return L20_Pride

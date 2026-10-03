@@ -1,5 +1,6 @@
 local B28_Gluttony = {}
 local game = Game()
+local Birthright_B28_Gluttony = require("bingus.Characters.gluttony.birthright.Birthright_B28_Gluttony")
 local sfx = SFXManager()
 local okSave, SaveManager = pcall(require, "callbacks.save_manager")
 if not okSave or type(SaveManager) ~= "table" then
@@ -243,6 +244,7 @@ function B28_Gluttony:postUpdate()
   end
   mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, B28_Gluttony.GameStarted)
 
+    Birthright_B28_Gluttony:postUpdate()
 end
 
 return B28_Gluttony

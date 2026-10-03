@@ -56,7 +56,7 @@
     <active id="27" name="Box of Chocolates" description="Whatcha Gonna Get?" cache=""
         tags="" maxcharges="2" gfx="Box_of_Chocolates.png" quality="1" />
     <active id="28" name="Empty Syringe" description="Spread your love" cache=""
-        tags="" maxcharges="6" gfx="Empty_Syringe.png" quality="!" />
+        tags="" maxcharges="6" chargetype="special" gfx="Empty_Syringe.png" quality="1" />
     <passive id="29" name="Restraining Order" description="Stay away from me" cache=""
         tags="" gfx="Restraining_Order.png" quality="1" /> 
         <!--OOh WAAh  goodbye the stalker achievement-->
@@ -81,12 +81,12 @@
     <active id="40" name="Blitzfrag" description="" cache=""
         tags="" maxcharges="12" gfx="Blitzfrag.png" quality="1" />
         <!--Vengeful baby is in babies.png-->
-    <passive id="42" name="Malicious Intense" description="Locked and Loaded" cache=""
-        tags="" gfx="Malicious_Intense.png" quality="" />
+    <passive id="42" name="Le Boom" description="Cover yourself in oil" cache="flying"
+        tags="" gfx="Le_Boom.png" quality="1" />
     <active id="43" name="Suicide Pact" description="Are you sure you want to quit?" cache=""
-        tags="" maxcharges="-1" gfx="Suicide_Pact.png" quality="" />
+        tags="" maxcharges="-1" gfx="Suicide_Pact.png" quality="1" />
     <passive id="44" name="Inferno Bombs" description="" cache=""
-        tags="" gfx="Inferno_Bombs.png" quality="" />
+        tags="" bombs="5" gfx="Inferno_Bombs.png" quality="1" />
         <!--OOh WAAh  goodbye the Vexed achievement-->
         <!--ummm idk how to do transformations yet.  ill figure that out later-->
 
@@ -103,17 +103,17 @@
         tags="baby" gfx="Ginger_Breadmund.png" quality="1" /> -->
     <familiar id="52" name="Lil Gluttony" description="Give him sustenance" cache="familiars"
         tags="baby" gfx="Lil_Gluttony.png" quality="1" />
-    <passive id="53" name="Cake?" description="It's a lie!" cache=""
+    <passive id="53" name="Cake?" description="It's a lie!" cache="firedelay"
         tags="" gfx="Cake.png" quality="1" />
     <active id="54" name="Cake!" description="Make a wish!" cache=""
-        tags="" gfx="Cake.png" quality="1" />
+        tags="" soulhearts="2" gfx="Cake.png" quality="1" />
     <passive id="55" name="Grease" description="Real sick" cache=""
         tags="" gfx="Grease.png" quality="1" />
         <!--Chunky baby is in babies.xml-->
     <active id="57" name="Bottomless Pit" description="Nom Nom" cache=""
-        tags="" maxcharges="12" gfx="Grease.png" quality="1" />
+        tags="" maxcharges="12" chargetype="special" gfx="Bottomless_Pit.png" quality="1" />
     <active id="58" name="Regular Cookbook" description="I'm not cooking tonight" cache=""
-        tags="" maxcharges="12" gfx="Regular_Cookbook.png" quality="1" />
+        tags="book" maxcharges="12" gfx="Regular_Cookbook.png" quality="3" />
     <passive id="59" name="Pack 'em in" description="Bonus fruit" cache=""
         tags="" gfx="Pack_em_in.png" quality="1" />
     <active id="60" name="Gorge" description="Waste not, want not" cache=""
@@ -123,7 +123,7 @@
 
 <!--_____________________________________________________________________________________-->
     <!--PRIDE ITEMS ZONE-->
-    <passive id="62" name="Chicken" description="Dance, Baby!" cache=""
+    <passive id="62" name="Chicken" description="Dance, Baby!" cache="damage"
         tags="" gfx="Chicken.png" quality="1" />
         <!--Super Pride Baby is in the babies.xml-->
     <passive id="64" name="The Shaker" description="Salt of the Earth" cache=""
@@ -132,7 +132,7 @@
         tags="" gfx="Salt_Lamp.png" quality="1" />
     <trinket id="66" name="Participation Award" description="I won, but at what cost" cache=""
         tags="" gfx="Participation_Award.png" quality="1" />
-    <familiar id="67" name="Lil Pride" description="Don't let it go to your head" cache=""
+    <familiar id="67" name="Lil Pride" description="Don't let it go to your head" cache="familiars"
         tags="baby" gfx="Lil_Pride.png" quality="1" />
     <!--<trinket id="68" name="Just Cause" description="It was intentional" cache=""
         tags="" gfx="Just_Cause.png" quality="1" /> -->
@@ -194,7 +194,7 @@
     <passive id="106" name="Sludgy" description="" cache=""
         tags="" gfx="Sludgy.png" quality="1" />
     <active id="107" name="HP... Yuck" description="" cache=""
-        tags="" maxcharges="0" gfx="HP_Yuck" quality="" />
+        tags="" maxcharges="0" gfx="HP_Yuck" quality="1" />
     <passive id="108" name="1000 Hours" description="" cache=""
         tags="" gfx="1000_Hours.png" quality="1" />
     

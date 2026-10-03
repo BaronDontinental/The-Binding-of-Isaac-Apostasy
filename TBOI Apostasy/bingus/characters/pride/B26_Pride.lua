@@ -1,5 +1,6 @@
 local B26_Pride = {}
 local game = Game()
+local Birthright_B26_Pride = require("bingus.Characters.pride.birthright.Birthright_B26_Pride")
 local sfx = SFXManager()
 local okSave, SaveManager = pcall(require, "callbacks.save_manager")
 if not okSave or type(SaveManager) ~= "table" then
@@ -313,6 +314,7 @@ function B26_Pride:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_POST_RENDER, B26_Pride.OnRender)
 
+    Birthright_B26_Pride:postUpdate()
 end
 
 return B26_Pride

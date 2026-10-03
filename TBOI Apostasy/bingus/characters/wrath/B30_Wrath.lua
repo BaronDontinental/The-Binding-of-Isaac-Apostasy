@@ -1,5 +1,6 @@
 local B30_Wrath = {}
 local Game = Game()
+local Birthright_B30_Wrath = require("bingus.Characters.wrath.birthright.Birthright_B30_Wrath")
 local sfxManager = SFXManager()
 local WrathGuy = Isaac.GetPlayerTypeByName("B30_Wrath", true)
 local costumeWrath = "gfx/characters/character_b30_wrath.anm2"
@@ -133,21 +134,23 @@ function B30_Wrath:postUpdate()
         return
       end
 
-      fuseSprite:Update()
-      fuseTimer = fuseTimer - 1
-      if fuseTimer > 0 and fuseTimer <= B30_WrathStats.FUSE_WARNTIME * 30 then
-        if fuseTimer % 10 < 5 then
-          player:SetColor(B30_WrathStats.FUSE_FLASHCOLOR, 2, 1, false, false)
+      if not Birthright_B30_Wrath:IsBurnedOut() then
+        fuseSprite:Update()
+        fuseTimer = fuseTimer - 1
+        if fuseTimer > 0 and fuseTimer <= B30_WrathStats.FUSE_WARNTIME * 30 then
+          if fuseTimer % 10 < 5 then
+            player:SetColor(B30_WrathStats.FUSE_FLASHCOLOR, 2, 1, false, false)
+          end
+          if fuseTimer % 30 == 0 then
+            sfxManager:Play(SoundEffect.SOUND_BEEP, 1, 0, false, 1)
+          end
         end
-        if fuseTimer % 30 == 0 then
-          sfxManager:Play(SoundEffect.SOUND_BEEP, 1, 0, false, 1) 
+        if fuseTimer <= 0 then
+          fuseTimer = B30_WrathStats.FUSETIME * 30
+          player:TakeDamage(2, 0, EntityRef(player), 0)
+          sfxManager:Stop(SoundEffect.SOUND_ISAAC_HURT_GRUNT) --no hurt grunt
+          Isaac.Spawn(EntityType.ENTITY_BOMB, BombVariant.BOMB_TROLL, 0, player.Position, Vector(0,0), player)
         end
-      end
-      if fuseTimer <= 0 then
-        fuseTimer = B30_WrathStats.FUSETIME * 30
-        player:TakeDamage(2, 0, EntityRef(player), 0)
-        sfxManager:Stop(SoundEffect.SOUND_ISAAC_HURT_GRUNT) --no hurt grunt
-        Isaac.Spawn(EntityType.ENTITY_BOMB, BombVariant.BOMB_TROLL, 0, player.Position, Vector(0,0), player)
       end
 
       local entities = Isaac.GetRoomEntities()
@@ -202,10 +205,38 @@ function B30_Wrath:postUpdate()
         player:AddHearts(rotten * 2)
       end
       if player:GetHearts() % 2 == 1 then
-        player:AddHearts(1) 
+        player:AddHearts(1)
+      end
+      local data = player:GetData()
+      if data.WrathItemBombs then
+        local grant = data.WrathItemBombs
+        local gained = math.max(0, player:GetNumBombs() - data.WrathItemBombsBefore)
+        data.WrathItemBombs = nil
+        data.WrathItemBombsBefore = nil
+        local heal = math.min(grant, math.floor((player:GetMaxHearts() - player:GetHearts()) / 2))
+        if heal > 0 then
+          player:AddHearts(heal * B30_WrathStats.HEAL_NORMAL)
+          player:AddBombs(-math.min(heal, gained))
+          sfxManager:Play(SoundEffect.SOUND_STEAM_HALFSEC, .75, 0, false, 1)
+        end
       end
     end
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, B30_Wrath.PEffect)
+
+    function B30_Wrath:ItemBombs(itemType, charge, firstTime, slot, varData, player)
+      if not firstTime or not player or player:GetPlayerType() ~= WrathGuy then
+        return
+      end
+      local entry = XMLData.GetEntryById(XMLNode.ITEM, itemType)
+      local grant = entry and tonumber(entry.bombs) or 0
+      if grant <= 0 then
+        return
+      end
+      local data = player:GetData()
+      data.WrathItemBombs = (data.WrathItemBombs or 0) + grant
+      data.WrathItemBombsBefore = data.WrathItemBombsBefore or player:GetNumBombs()
+    end
+    mod:AddCallback(ModCallbacks.MC_PRE_ADD_COLLECTIBLE, B30_Wrath.ItemBombs)
 
     function B30_Wrath:BombTouch(pickup, collider, low)
       local player = collider:ToPlayer()
@@ -299,6 +330,9 @@ function B30_Wrath:postUpdate()
         return
       end
       if (flag & DamageFlag.DAMAGE_EXPLOSION) ~=0 then
+        if Birthright_B30_Wrath:TryRevive(player) then
+          return false
+        end
 ---@diagnostic disable-next-line: param-type-mismatch
         player:UseCard(Card.CARD_TOWER, UseFlag.USE_NOANNOUNCER)
         player:Die()
@@ -350,7 +384,7 @@ function B30_Wrath:postUpdate()
     --draws the burning fuse on the rightmost filled bomb heart
     function B30_Wrath:FuseRender()
       local player = Isaac.GetPlayer(0)
-      if player:GetPlayerType() ~= WrathGuy or not Game:GetHUD():IsVisible() then
+      if player:GetPlayerType() ~= WrathGuy or not Game:GetHUD():IsVisible() or Birthright_B30_Wrath:IsBurnedOut() then
         return
       end
       local filled = math.floor(player:GetHearts() / 2)
@@ -365,6 +399,7 @@ function B30_Wrath:postUpdate()
       fuseSprite:Render(pos)
     end
     mod:AddCallback(ModCallbacks.MC_POST_RENDER, B30_Wrath.FuseRender)
+    Birthright_B30_Wrath:postUpdate()
 end
 
 return B30_Wrath

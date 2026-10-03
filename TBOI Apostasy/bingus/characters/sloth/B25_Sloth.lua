@@ -1,5 +1,6 @@
 local B25_Sloth = {}
 local Game = Game()
+local Birthright_B25_Sloth = require("bingus.Characters.sloth.birthright.Birthright_B25_Sloth")
 local SlothGuy = Isaac.GetPlayerTypeByName("B25_Sloth", false)
 local sfxManager = SFXManager()
 
@@ -230,6 +231,7 @@ function B25_Sloth:postUpdate()
     end
     mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, B25_Sloth.TakeDmg, EntityType.ENTITY_PLAYER)
 
+    Birthright_B25_Sloth:postUpdate()
 end
 
 return B25_Sloth

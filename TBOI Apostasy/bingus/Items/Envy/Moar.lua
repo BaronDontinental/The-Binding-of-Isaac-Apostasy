@@ -17,8 +17,7 @@ function Moar:postUpdate()
                     local data = entity:GetData() 
                     local MoarE = entity:ToNPC()
                     if MoarE and MoarE:IsBoss() then
-                        if MoarE:IsDead() and not data.Died then
-                            print("ball5")
+                        if MoarE:IsDead() and not data.MoarDied then
                             Isaac.Spawn(
                                 EntityType.ENTITY_PICKUP,
                                 PickupVariant.PICKUP_CHEST,
@@ -26,14 +25,14 @@ function Moar:postUpdate()
                                 MoarE.Position,
                                 Vector(0,0),
                                 nil)
-                            data.Died = true
+                            data.MoarDied = true
                         elseif MoarE.ParentNPC or
                             MoarE.Type == EntityType.ENTITY_BLASTOCYST_MEDIUM
                             or MoarE.Type == EntityType.ENTITY_BLASTOCYST_SMALL
                             or MoarE.Type == EntityType.ENTITY_FISTULA_MEDIUM
                             or MoarE.Type == EntityType.ENTITY_FISTULA_SMALL
                             or MoarE.Type == EntityType.ENTITY_ENVY then
-                                data.Died = true
+                                data.MoarDied = true
                         end
                     end
                 end
