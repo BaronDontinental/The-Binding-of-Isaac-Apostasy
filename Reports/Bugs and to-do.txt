@@ -1,8 +1,9 @@
 Bugs
 ==========================================================================================================================================================================
-2. occasionally, the sacrifice counter for sloth will not tick up, and i have no clue why, it should be working, inorder to clear this bug you have to restart the game
-6. Pride Birthright continuous on new runs.
-7. Gluttony reflection bug (flooded caves, downpour, etc)
+1. occasionally, the sacrifice counter for sloth will not tick up, and i have no clue why, it should be working, inorder to clear this bug you have to restart the game
+2. Pride Birthright continuous on new runs.
+3. Gluttony reflection bug (flooded caves, downpour, etc)
+4. Bombinomicon sometimes spawns troll bombs on any damage type
 
 
 To-do

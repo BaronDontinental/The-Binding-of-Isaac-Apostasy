@@ -17,7 +17,6 @@ function Bombinomicon:postUpdate()
 
 
             if (dmgFlag & DamageFlag.DAMAGE_EXPLOSION == DamageFlag.DAMAGE_EXPLOSION) then
-                print("try")
                 return false
             end
         end
