@@ -13,6 +13,7 @@ To-do
 4. gluttony shooting animation for brim
 5. sort out the balancing for envy and wrath
 8. Epipen: replace all instances of "Epipen" with "Auto-Injector"
+9. Weighted Dice shouldn't reroll story items
 
 
 URGENT NEED TO DO
